@@ -27,7 +27,9 @@ module BinMan
         gsub(/^\.PP(?=\n\\f)/, '.TP').
 
         # encode references to other man pages as "hyperlinks"
-        gsub(/(\w+)(\([1-9nol]\)\s*)/, "\n.BR \\1 \\2\n")
+        gsub(/(\w+)(\([1-9nol]\)[[:punct:]]?\s*)/, "\n.BR \\1 \\2\n").
+        # keep the SEE ALSO sequence of references in-line
+        gsub(/(?:^\.BR.+\n)+/m){ |sequence| sequence.squeeze("\n") }
     end
   end
 
