@@ -7,11 +7,27 @@ module BinMan
       text.gsub(/(?<=\W)-(?=\W)/, '\\-') if text
     end
 
+    def paragraph(text)
+      "\n.PP\n#{text}\n"
+    end
+
     alias codespan double_emphasis
 
     def postprocess document
-      # encode references to other man pages
-      document.gsub(/(\w+)(\([1-9nol]\)\s*)/, "\n.BR \\1 \\2\n")
+      document.
+        # squeeze blank lines to prevent double-spaced output
+        gsub(/^\n/, '').
+
+        # make indented paragraphs occupy less space on screen:
+        # roff will fit the second line of the paragraph along
+        # side the first line if it has enough room to do so!
+        gsub(/^  (?=\S)/, '').
+
+        # paragraphs beginning with bold/italic are definitions
+        gsub(/^\.PP(?=\n\\f)/, '.TP').
+
+        # encode references to other man pages as "hyperlinks"
+        gsub(/(\w+)(\([1-9nol]\)\s*)/, "\n.BR \\1 \\2\n")
     end
   end
 
