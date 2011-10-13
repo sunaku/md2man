@@ -9,5 +9,11 @@ module BinMan
     end
   end
 
-  RENDERER = Redcarpet::Markdown.new(Renderer)
+  RENDERER = Redcarpet::Markdown.new(Renderer,
+                                     #:tables => true,
+                                     :autolink => true,
+                                     #:superscript => true,
+                                     :no_intra_emphasis => true,
+                                     :fenced_code_blocks => true,
+                                     :space_after_headers => true)
 end
