@@ -12,6 +12,15 @@ module BinMan
     end
 
     alias codespan double_emphasis
+    alias triple_emphasis double_emphasis
+
+    def autolink link, link_type
+      emphasis link
+    end
+
+    def link link, title, content
+      "#{triple_emphasis content} #{emphasis link}"
+    end
 
     DEFINITION_INDENT = '  ' # two spaces
 
