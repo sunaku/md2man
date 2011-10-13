@@ -4,8 +4,14 @@ require 'redcarpet/render_man'
 module BinMan
   class Renderer < Redcarpet::Render::ManPage
     def normal_text text
-      # XXX: workaround for https://github.com/tanoku/redcarpet/pull/65
-      super text.to_s
+      text.gsub(/(?<=\W)-(?=\W)/, '\\-') if text
+    end
+
+    alias codespan double_emphasis
+
+    def postprocess document
+      # encode references to other man pages
+      document.gsub(/(\w+)(\([1-9nol]\)\s*)/, "\n.BR \\1 \\2\n")
     end
   end
 
