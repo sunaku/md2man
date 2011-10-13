@@ -13,18 +13,21 @@ module BinMan
 
     alias codespan double_emphasis
 
+    DEFINITION_INDENT = '  ' # two spaces
+
     def postprocess document
       document.
         # squeeze blank lines to prevent double-spaced output
         gsub(/^\n/, '').
 
+        # paragraphs beginning with bold/italic and followed by
+        # at least one definition-indented line are definitions
+        gsub(/^\.PP(?=\n\\f.+\n#{DEFINITION_INDENT}\S)/, '.TP').
+
         # make indented paragraphs occupy less space on screen:
         # roff will fit the second line of the paragraph along
         # side the first line if it has enough room to do so!
-        gsub(/^  (?=\S)/, '').
-
-        # paragraphs beginning with bold/italic are definitions
-        gsub(/^\.PP(?=\n\\f)/, '.TP').
+        gsub(/^#{DEFINITION_INDENT}(?=\S)/, '').
 
         # encode references to other man pages as "hyperlinks"
         gsub(/(\w+)(\([1-9nol]\)[[:punct:]]?\s*)/, "\n.BR \\1 \\2\n").
