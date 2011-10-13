@@ -4,14 +4,12 @@ require "redcarpet-manpage/version"
 
 Gem::Specification.new do |s|
   s.name        = "redcarpet-manpage"
-  s.version     = Redcarpet::Manpage::VERSION
-  s.authors     = ["Suraj N. Kurapati"]
-  s.email       = ["sunaku@gmail.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
-
-  s.rubyforge_project = "redcarpet-manpage"
+  s.version     = RedcarpetManpage::VERSION
+  s.authors,
+  s.email       = File.read('LICENSE').scan(/Copyright \d+ (.+) <(.+?)>/).transpose
+  s.homepage    = "http://github.com/sunaku/redcarpet-manpage"
+  s.summary     = "UNIX man page renderer for Redcarpet2"
+  s.description = nil
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -21,4 +19,5 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"
   # s.add_runtime_dependency "rest-client"
+  s.add_runtime_dependency "redcarpet", ">= 2.0.0b5"
 end
