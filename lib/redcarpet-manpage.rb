@@ -18,7 +18,7 @@ module RedcarpetManpage
     end
 
     def block_code(code, language)
-      "\n.nf\n#{normal_text(code)}\n.fi\n"
+      paragraph("\n.nf\n#{normal_text(code)}\n.fi\n")
     end
 
     alias codespan double_emphasis
