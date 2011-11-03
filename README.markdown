@@ -40,10 +40,13 @@ Specification
 Although your input documents are written in [Markdown], RedcarpetManpage
 introduces the following additional conventions to simplify common tasks:
 
-1. Paragraphs beginning with bold/italic and followed by at least
-   one two-space indented line are considered to be definitions.
-   The first line of such a paragraph is the term being defined and
-   the subsequent two-space indented lines are the definition body.
+1. Paragraphs beginning with bold/italic and followed by a two-space indented
+   line are considered to be definitions.  The first line of such a paragraph
+   is the term being defined and the subsequent two-space indented lines are
+   the definition body.
+
+2. Paragraphs beginning with a two-space indented line are considered to be a
+   part of multi-paragraph definitions.
 
 ------------------------------------------------------------------------------
 Usage

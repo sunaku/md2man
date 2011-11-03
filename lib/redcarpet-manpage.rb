@@ -81,8 +81,12 @@ module RedcarpetManpage
         gsub(/^(\.IP.*)\n\.PP/, '\1').
 
         # paragraphs beginning with bold/italic and followed by
-        # at least one definition-indented line are definitions
+        # a definition-indented line are considered definitions
         gsub(/^\.PP(?=\n\\f.+\n#{DEFINITION_INDENT}\S)/, '.TP').
+
+        # paragraphs beginning with a definition-indented line
+        # are considered a part of multi-paragraph definitions
+        gsub(/^\.PP(?=\n#{DEFINITION_INDENT}\S)/, '.IP').
 
         # make indented paragraphs occupy less space on screen:
         # roff will fit the second line of the paragraph along
