@@ -82,16 +82,15 @@ module RedcarpetManpage
 
         # paragraphs beginning with bold/italic and followed by
         # a definition-indented line are considered definitions
-        gsub(/^\.PP(?=\n\\f.+\n#{DEFINITION_INDENT}\S)/, '.TP').
+        #
+        # also remove indentation of first definition line to
+        # make roff try to fit the definition beside the term
+        #
+        gsub(/^\.PP(\n\\f.+\n)#{DEFINITION_INDENT}(?=\S)/, '.TP\1').
 
         # paragraphs beginning with a definition-indented line
         # are considered a part of multi-paragraph definitions
         gsub(/^\.PP(?=\n#{DEFINITION_INDENT}\S)/, '.IP').
-
-        # make indented paragraphs occupy less space on screen:
-        # roff will fit the second line of the paragraph along
-        # side the first line if it has enough room to do so!
-        gsub(/^#{DEFINITION_INDENT}(?=\S)/, '').
 
         # encode references to other man pages as "hyperlinks"
         gsub(/(\S+)(\([1-9nol]\)[[:punct:]]?\s*)/, "\n.BR \\1 \\2\n").
