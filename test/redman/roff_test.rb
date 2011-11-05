@@ -1,0 +1,567 @@
+# http://www.linuxjournal.com/article/1158
+# http://www.premvet.co.uk/premvet/faq/roff.html
+# http://www.linuxhowtos.org/System/creatingman.htm
+# http://www.fnal.gov/docs/products/ups/ReferenceManual/html/manpages.html
+# http://serverfault.com/questions/109490/how-do-i-write-man-pages
+# man groff_man
+# man 7 groff
+
+require 'test_helper'
+require 'redman/roff'
+
+describe Redman::Roff do
+  before do
+    @markdown = Redcarpet::Markdown.new(
+      Redman::Roff,
+      :tables => true,
+      :autolink => true,
+      :superscript => true,
+      :strikethrough => true,
+    )
+  end
+
+  SPACE = 0x20.chr
+
+  def heredoc document
+    document.gsub(/^\s*\|/, '').chomp
+  end
+
+  it 'renders nothing as nothing' do
+    @markdown.render('').must_be_empty
+  end
+
+  it 'renders paragraphs' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |just some paragraph
+      |spanning
+      |multiple
+      |lines
+      |but within 4-space indent
+    INPUT
+      |.PP
+      |just some paragraph
+      |spanning
+      |multiple
+      |lines
+      |but within 4\\-space indent
+    OUTPUT
+  end
+
+  it 'renders paragraphs with unevenly indented bodies' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |just some paragraph
+      | spanning
+      |  multiple
+      |   lines
+      |but within 4-space indent
+    INPUT
+      |.PP
+      |just some paragraph
+      | spanning
+      |  multiple
+      |   lines
+      |but within 4\\-space indent
+    OUTPUT
+  end
+
+  it 'renders tagged paragraphs with uniformly two-space indented bodies' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |just some paragraph
+      |  spanning
+      |  multiple
+      |  lines
+      |  but within 4-space indent
+    INPUT
+      |.TP
+      |just some paragraph
+      |spanning
+      |multiple
+      |lines
+      |but within 4\\-space indent
+    OUTPUT
+  end
+
+  it 'renders tagged paragraphs with uniformly two-space indented headings' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |This is a
+      |normal paragraph.
+      |
+      |This is a
+      |  tagged paragraph.
+      |
+      |  This is another
+      |tagged paragraph.
+      |
+      |  This is yet another
+      |  tagged paragraph.
+      |
+      |This
+      | is another
+      |  normal
+      |   paragraph.
+    INPUT
+      |.PP
+      |This is a
+      |normal paragraph.
+      |.TP
+      |This is a
+      |tagged paragraph.
+      |.TP
+      |This is another
+      |tagged paragraph.
+      |.TP
+      |This is yet another
+      |tagged paragraph.
+      |.PP
+      |This
+      | is another
+      |  normal
+      |   paragraph.
+    OUTPUT
+  end
+  it 'escapes hyphens in normal text' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |pre-process
+    INPUT
+      |.PP
+      |pre\\-process
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |1-5
+    INPUT
+      |.PP
+      |1\\-5
+    OUTPUT
+  end
+
+  it 'renders emphasis' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |just *some paragraph*
+      | spanning
+      |  multiple
+      |   *lines*
+      |but within 4-*space* indent
+    INPUT
+      |.PP
+      |just \\fIsome paragraph\\fP
+      | spanning
+      |  multiple
+      |   \\fIlines\\fP
+      |but within 4\\-\\fIspace\\fP indent
+    OUTPUT
+  end
+
+  it 'renders double emphasis' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |just **some paragraph**
+      | spanning
+      |  multiple
+      |   **lines**
+      |but within 4-**space** indent
+    INPUT
+      |.PP
+      |just \\fBsome paragraph\\fP
+      | spanning
+      |  multiple
+      |   \\fBlines\\fP
+      |but within 4\\-\\fBspace\\fP indent
+    OUTPUT
+  end
+
+  it 'renders triple emphasis' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |just ***some paragraph***
+      | spanning
+      |  multiple
+      |   ***lines***
+      |but within 4-***space*** indent
+    INPUT
+      |.PP
+      |just \\s+2\\fBsome paragraph\\fP\\s-2
+      | spanning
+      |  multiple
+      |   \\s+2\\fBlines\\fP\\s-2
+      |but within 4\\-\\s+2\\fBspace\\fP\\s-2 indent
+    OUTPUT
+  end
+
+  it 'renders top-level headings' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |just some h1 heading
+      |====================
+    INPUT
+      |.TH just some h1 heading
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |BINMAN 1 "2011-11-05" "1.1.0" "Ruby User Manuals"
+      |=================================================
+    INPUT
+      |.TH BINMAN 1 "2011\\-11\\-05" "1.1.0" "Ruby User Manuals"
+    OUTPUT
+  end
+
+  it 'renders 2nd-level headings' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |just some h2 heading
+      |--------------------
+    INPUT
+      |.SH just some h2 heading
+    OUTPUT
+  end
+
+  it 'renders level 3..6 headings' do
+    (3..6).each do |level|
+      @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+        |#{'#' * level} just some subheading
+      INPUT
+        |.SS just some subheading
+      OUTPUT
+    end
+  end
+
+  it 'renders linebreaks (2 spaces at EOL)' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |line#{SPACE}#{SPACE}
+      |break
+    INPUT
+      |.PP
+      |line
+      |.br
+      |break
+    OUTPUT
+  end
+
+  it 'renders blockquotes' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |>just some paragraph
+      |> spanning
+      |>  multiple
+      |>   lines
+      |>but within 4-space indent
+    INPUT
+      |.RS
+      |just some paragraph
+      |spanning
+      | multiple
+      |  lines
+      |but within 4\\-space indent
+      |.RE
+    OUTPUT
+  end
+
+  it 'renders code blocks' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    single preformatted line
+    INPUT
+      |.nf
+      |single preformatted line
+      |.fi
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    just some *paragraph*
+      |     spanning
+      |      **multiple**
+      |    >  lines
+      |    with 4-space indent
+    INPUT
+      |.nf
+      |just some *paragraph*
+      | spanning
+      |  **multiple**
+      |>  lines
+      |with 4-space indent
+      |.fi
+    OUTPUT
+  end
+
+  it 'renders code spans' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |here is `some code` for you
+    INPUT
+      |.PP
+      |here is \\fB\\fCsome code\\fR for you
+    OUTPUT
+  end
+
+  it 'renders hyperlinks' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |Send [me](mailto:foo@bar.baz), e-mail.
+    INPUT
+      |.PP
+      |Send me
+      |.MT foo@bar.baz
+      |.ME , e\\-mail.
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |Take [me](http://myself), somewhere.
+    INPUT
+      |.PP
+      |Take me
+      |.UR http://myself
+      |.UE , somewhere.
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |Mail me foo@bar.baz now.
+    INPUT
+      |.PP
+      |Mail me#{SPACE}
+      |.MT foo@bar.baz
+      |.ME
+      |now.
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |Take me http://www.somewhere now.
+    INPUT
+      |.PP
+      |Take me#{SPACE}
+      |.UR http://www.somewhere
+      |.UE
+      |now.
+    OUTPUT
+  end
+
+  it 'renders unordered lists' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |Here is an unordered list:
+      |
+      |* foo
+      |    * bar
+      |        * baz
+      |* qux
+    INPUT
+      |.PP
+      |Here is an unordered list:
+      |.RS
+      |.IP \\(bu 2
+      |foo
+      |.RS
+      |.IP \\(bu 2
+      |bar
+      |.RS
+      |.IP \\(bu 2
+      |baz
+      |.RE
+      |.RE
+      |.IP \\(bu 2
+      |qux
+      |.RE
+    OUTPUT
+  end
+
+  it 'renders unordered lists while squashing first paragraphs' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |Here is an unordered list:
+      |
+      |  * here is a
+      |    paragraph
+      |
+      |    here is a
+      |    subparagraph
+    INPUT
+      |.PP
+      |Here is an unordered list:
+      |.RS
+      |.IP \\(bu 2
+      |here is a
+      |paragraph
+      |.PP
+      |here is a
+      |subparagraph
+      |.RE
+    OUTPUT
+  end
+
+  it 'renders ordered lists' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |Here is an ordered list:
+      |
+      |1.  foo
+      |    1.  bar
+      |        1.  baz
+      |2.  qux
+    INPUT
+      |.PP
+      |Here is an ordered list:
+      |.nr step2 0 1
+      |.RS
+      |.IP \\n+[step2]
+      |foo
+      |.nr step1 0 1
+      |.RS
+      |.IP \\n+[step1]
+      |bar
+      |.nr step0 0 1
+      |.RS
+      |.IP \\n+[step0]
+      |baz
+      |.RE
+      |.RE
+      |.IP \\n+[step2]
+      |qux
+      |.RE
+    OUTPUT
+  end
+
+  it 'renders ordered lists while squashing first paragraphs' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |Here is an ordered list:
+      |
+      |1.  here is a
+      |    paragraph
+      |
+      |    here is a
+      |    subparagraph
+    INPUT
+      |.PP
+      |Here is an ordered list:
+      |.nr step0 0 1
+      |.RS
+      |.IP \\n+[step0]
+      |here is a
+      |paragraph
+      |.PP
+      |here is a
+      |subparagraph
+      |.RE
+    OUTPUT
+  end
+
+  it 'renders horizontal rules' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |foo
+      |
+      |* * *
+      |
+      |bar
+    INPUT
+      |.PP
+      |foo
+      |.ti 0
+      |\\l'\\n(.lu'
+      |.PP
+      |bar
+    OUTPUT
+  end
+
+  it 'renders horizontal rules inside blockquotes' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |>foo
+      |>
+      |>* * *
+      |>
+      |>bar
+    INPUT
+      |.RS
+      |foo
+      |.ti 0
+      |\\l'\\n(.lu'
+      |.PP
+      |bar
+      |.RE
+    OUTPUT
+  end
+
+  it 'renders some named entities' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |&middot; &#183;
+      |&copy; &#169;
+      |&cent; &#162;
+      |&Dagger; &#8225;
+      |&deg; &#176;
+      |&dagger; &#8224;
+      |&quot; &#34;
+      |&mdash; &#8212;
+      |&ndash; &#8211;
+      |&reg; &#174;
+      |&sect; &#167;
+      |&oline; &#8254;
+      |&equiv; &#8801;
+      |&ge; &#8805;
+      |&le; &#8804;
+      |&ne; &#8800;
+      |&rarr; &#8594;
+      |&larr; &#8592;
+      |&plusmn; &#177;
+    INPUT
+      |.PP
+      |\\[pc] \\[pc]
+      |\\[co] \\[co]
+      |\\[ct] \\[ct]
+      |\\[dd] \\[dd]
+      |\\[de] \\[de]
+      |\\[dg] \\[dg]
+      |\\[dq] \\[dq]
+      |\\[em] \\[em]
+      |\\[en] \\[en]
+      |\\[rg] \\[rg]
+      |\\[sc] \\[sc]
+      |\\[rn] \\[rn]
+      |\\[==] \\[==]
+      |\\[>=] \\[>=]
+      |\\[<=] \\[<=]
+      |\\[!=] \\[!=]
+      |\\[->] \\[->]
+      |\\[<-] \\[<-]
+      |\\[+-] \\[+-]
+    OUTPUT
+  end
+
+  it 'renders tables' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |First Header  | Second Header
+      |------------- | -------------
+      |First Content | Second Content
+    INPUT
+      |.TS
+      |allbox;
+      |cb cb
+      |l l
+      |.
+      |First Header\tSecond Header
+      |First Content\tSecond Content
+      |.TE
+    OUTPUT
+  end
+
+  it 'renders tables with alignment' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      || Item      | Value |
+      || --------- | -----:|
+      || Computer  | $1600 |
+      || Phone     |   $12 |
+      || Pipe      |    $1 |
+    INPUT
+      |.TS
+      |allbox;
+      |cb cb
+      |l r
+      |l r
+      |l r
+      |.
+      |Item\tValue
+      |Computer\t$1600
+      |Phone\t$12
+      |Pipe\t$1
+      |.TE
+    OUTPUT
+  end
+
+  it 'renders references to other man pages as hyperlinks' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |convert them from markdown(7) into roff(7), using
+    INPUT
+      |.PP
+      |convert them from#{SPACE}
+      |.BR markdown (7)#{SPACE}
+      |into#{SPACE}
+      |.BR roff (7),#{SPACE}
+      |using
+    OUTPUT
+  end
+end

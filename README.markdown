@@ -1,11 +1,11 @@
-RedcarpetManpage - UNIX man page renderer for Redcarpet2
-========================================================
+Redman - UNIX man pages in Markdown
+==============================================================================
 
-RedcarpetManpage is a Ruby library that converts [Markdown] documents into
-UNIX man pages ([roff] documents) using the awesome [Redcarpet2] library.
+Redman is a Ruby library for converting [Markdown] documents into UNIX man
+pages ([Roff] documents) using the awesome [Redcarpet2] library.
 
+[Roff]: http://troff.org
 [Markdown]: http://daringfireball.net/projects/markdown/
-[roff]: http://man.cx/roff(7)
 [Redcarpet2]: https://github.com/tanoku/redcarpet
 
 ------------------------------------------------------------------------------
@@ -14,39 +14,13 @@ Installation
 
 As a Ruby gem:
 
-    gem install redcarpet-manpage
+    gem install redman
 
 As a Git clone:
 
-    git clone git://github.com/sunaku/redcarpet-manpage
-    cd redcarpet-manpage
+    git clone git://github.com/sunaku/redman
+    cd redman
     bundle install
-
-------------------------------------------------------------------------------
-Specification
-------------------------------------------------------------------------------
-
-### Markdown Processing Extensions
-
-`RedcarpetManpage::RENDERER` enables the following [Redcarpet2] extensions:
-
-* `autolink`
-* `no_intra_emphasis`
-* `fenced_code_blocks`
-* `space_after_headers`
-
-### Markdown Processing Divergence
-
-Although your input documents are written in [Markdown], RedcarpetManpage
-introduces the following additional conventions to simplify common tasks:
-
-1. Paragraphs beginning with bold/italic and followed by a two-space indented
-   line are considered to be definitions.  The first line of such a paragraph
-   is the term being defined and the subsequent two-space indented lines are
-   the definition body.
-
-2. Paragraphs beginning with a two-space indented line are considered to be a
-   part of multi-paragraph definitions.
 
 ------------------------------------------------------------------------------
 Usage
@@ -54,25 +28,104 @@ Usage
 
 Use the default renderer:
 
-``` ruby
-require 'redcarpet-manpage'
-your_roff_output = RedcarpetManpage::RENDERER.render(your_markdown_input)
-```
+    require 'redman'
+    markdown = Redcarpet::Markdown.new(Redman::Roff, your_options_hash)
+    your_roff_output = markdown.render(your_markdown_input)
 
 Or extend it for yourself:
 
-``` ruby
-require 'redcarpet-manpage'
+    require 'redman'
 
-class YourManpageRenderer < RedcarpetManpage::Renderer
-  # ... your stuff here ...
-  # See Redcarpet::Render::Base documentation for more information:
-  # http://rdoc.info/github/tanoku/redcarpet/master/Redcarpet/Render/Base
-end
+    class YourManpageRenderer < Redman::Roff
+      # ... your stuff here ...
+      # See Redcarpet::Render::Base documentation for more information:
+      # http://rdoc.info/github/tanoku/redcarpet/master/Redcarpet/Render/Base
+    end
 
-renderer = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-your_roff_output = renderer.render(your_markdown_input)
-```
+    markdown = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+    your_roff_output = markdown.render(your_markdown_input)
+
+------------------------------------------------------------------------------
+Specification
+------------------------------------------------------------------------------
+
+Redman introduces the following additions to the core [Markdown] language:
+
+  * If a paragraph's first or subsequent lines are uniformly indented by two
+    spaces, then it is considered to be a "tagged paragraph" and its body is
+    unindented before being emitted under a `.TP` macro in the [Roff] output.
+
+    For example, the following [Markdown] input:
+
+        This is a
+        normal paragraph.
+
+        This is a
+          tagged paragraph.
+
+          This is another
+        tagged paragraph.
+
+          This is yet another
+          tagged paragraph.
+
+        This
+         is another
+          normal
+           paragraph.
+
+    Yields the following [Roff] output:
+
+        .PP
+        This is a
+        normal paragraph.
+        .TP
+        This is a
+        tagged paragraph.
+        .TP
+        This is another
+        tagged paragraph.
+        .TP
+        This is yet another
+        tagged paragraph.
+        .PP
+        This
+         is another
+          normal
+           paragraph.
+
+    Which appears like the following:
+
+      >This is a
+      >normal paragraph.
+      >
+      >>This is a
+      >>tagged paragraph.
+      >
+      >>This is another
+      >>tagged paragraph.
+      >
+      >>This is yet another
+      >>tagged paragraph.
+      >
+      >This
+      > is another
+      >  normal
+      >   paragraph.
+
+------------------------------------------------------------------------------
+Limitations
+------------------------------------------------------------------------------
+
+At present, Redman does not translate the following [Redcarpet2] node types:
+
+  * `block_html`
+  * `strikethrough`
+  * `superscript`
+  * `image`
+  * `raw_html`
+
+It issues a warning when it encounters these instead.  Patches are welcome!
 
 ------------------------------------------------------------------------------
 License

@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "redcarpet-manpage/version"
+require "redman/version"
 
 Gem::Specification.new do |s|
-  s.name        = "redcarpet-manpage"
-  s.version     = RedcarpetManpage::VERSION
+  s.name        = "redman"
+  s.version     = Redman::VERSION
   s.authors,
   s.email       = File.read('LICENSE').scan(/Copyright \d+ (.+) <(.+?)>/).transpose
-  s.homepage    = "http://github.com/sunaku/redcarpet-manpage"
-  s.summary     = "UNIX man page renderer for Redcarpet2"
+  s.homepage    = "http://github.com/sunaku/redman"
+  s.summary     = "UNIX man pages using Redcarpet2"
   s.description = nil
 
   s.files         = `git ls-files`.split("\n")
@@ -19,5 +19,6 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"
   # s.add_runtime_dependency "rest-client"
-  s.add_runtime_dependency "redcarpet", ">= 2.0.0b5"
+  s.add_runtime_dependency "redcarpet", ">= 2.0.0b5", "< 3"
+  s.add_development_dependency "minitest", ">= 2.7.0", "< 3"
 end
