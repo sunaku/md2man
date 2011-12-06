@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
 require "redman/version"
+require "binman/gemspec"
 
 Gem::Specification.new do |s|
   s.name        = "redman"

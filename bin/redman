@@ -1,0 +1,71 @@
+#!/usr/bin/env ruby
+=begin
+
+REDMAN 1 "2011-12-06" "1.0.0" "Ruby User Manuals"
+=================================================
+
+NAME
+----
+
+redman - transforms markdown(7) into roff(7)
+
+SYNOPSIS
+--------
+
+`redman` [*OPTION*]... [*FILE*]
+
+DESCRIPTION
+-----------
+
+Transforms markdown(7) input from the given *FILE* into roff(7) using
+[Redcarpet2] and then prints the result to the standard output stream.
+If *FILE* is not given, the standard input stream is read in its place.
+
+### Document Format
+
+This program introduces the following additions to markdown(7):
+
+* If a paragraph's first or subsequent lines are uniformly indented by two
+  spaces, then it is considered to be a "tagged paragraph" and its body is
+  unindented before being emitted under a `.TP` macro in the roff(7) output.
+
+### Markdown Extensions
+
+This program enables the following [Redcarpet2] extensions for markdown(7):
+
+* tables
+* autolink
+* superscript
+* strikethrough
+* no_intra_emphasis
+* fenced_code_blocks
+
+OPTIONS
+-------
+
+`-h`, `--help`
+  Display this help manual using man(1).
+
+SEE ALSO
+--------
+
+markdown(7), roff(7)
+
+[Redman]: https://github.com/sunaku/redman
+[Redcarpet2]: https://github.com/tanoku/redcarpet
+
+=end =========================================================================
+
+require 'binman'
+BinMan.help
+
+require 'redman'
+puts Redcarpet::Markdown.new(
+  Redman::Roff,
+  :tables => true,
+  :autolink => true,
+  :superscript => true,
+  :strikethrough => true,
+  :no_intra_emphasis => true,
+  :fenced_code_blocks => true
+).render(ARGF.read)
