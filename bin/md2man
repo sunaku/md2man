@@ -60,12 +60,4 @@ require 'binman'
 BinMan.help
 
 require 'md2man'
-puts Redcarpet::Markdown.new(
-  Md2man::Roff,
-  :tables => true,
-  :autolink => true,
-  :superscript => true,
-  :strikethrough => true,
-  :no_intra_emphasis => true,
-  :fenced_code_blocks => true
-).render(ARGF.read)
+puts Md2man::ENGINE.render(ARGF.read)

@@ -37,21 +37,36 @@ Library Usage
 Use the default renderer:
 
     require 'md2man'
-    markdown = Redcarpet::Markdown.new(Md2man::Roff, your_options_hash)
-    your_roff_output = markdown.render(your_markdown_input)
+    your_roff_output = Md2man::ENGINE.render(your_markdown_input)
 
-Or extend it for yourself:
+Build your own renderer:
+
+    require 'md2man'
+    engine = Redcarpet::Markdown.new(Md2man::Engine, your_options_hash)
+    your_roff_output = engine.render(your_markdown_input)
+
+Define your own renderer:
 
     require 'md2man'
 
-    class YourManpageRenderer < Md2man::Roff
+    class YourManpageRenderer < Md2man::Engine
       # ... your stuff here ...
-      # See Redcarpet::Render::Base documentation for more information:
-      # http://rdoc.info/github/tanoku/redcarpet/master/Redcarpet/Render/Base
     end
 
-    markdown = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-    your_roff_output = markdown.render(your_markdown_input)
+    engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+    your_roff_output = engine.render(your_markdown_input)
+
+Mix-in your own renderer:
+
+    require 'md2man'
+
+    class YourManpageRenderer < Redcarpet::Render::Base
+      include Md2man::Roff
+      # ... your stuff here ...
+    end
+
+    engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+    your_roff_output = engine.render(your_markdown_input)
 
 ------------------------------------------------------------------------------
 Document Format
