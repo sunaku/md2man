@@ -17,13 +17,13 @@ SYNOPSIS
 DESCRIPTION
 -----------
 
-This program converts markdown(7) input from the given *FILE* into roff(7)
-using [Redcarpet2] and then prints the result to the standard output stream.
-If *FILE* is not given, then the standard input stream is read in its place.
+[md2man] converts markdown(7) input from the given *FILE* into roff(7) using
+[Redcarpet2] and then prints the result to the standard output stream.  If
+*FILE* is not given, then the standard input stream is read in its place.
 
 ### Document Format
 
-This program attaches the following additional semantics to markdown(7):
+The following additional semantics are attached to markdown(7):
 
   * There can be at most one top-level heading (H1).  It is emitted as `.TH`
     in the roff(7) output, specifying the UNIX man page's header and footer.
@@ -38,7 +38,7 @@ This program attaches the following additional semantics to markdown(7):
 
 ### Markdown Extensions
 
-This program enables the following [Redcarpet2] extensions for markdown(7):
+The following [Redcarpet2] extensions for markdown(7) are enabled:
 
 * tables
 * autolink
