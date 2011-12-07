@@ -7,6 +7,17 @@ documents into UNIX man pages (really [Roff] documents) using [Redcarpet2].
 [Roff]: http://troff.org
 [Markdown]: http://daringfireball.net/projects/markdown/
 [Redcarpet2]: https://github.com/tanoku/redcarpet
+[example]: https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown
+
+------------------------------------------------------------------------------
+Demonstration
+------------------------------------------------------------------------------
+
+Try converting [this example Markdown file][example] into a UNIX man page:
+
+    md2man EXAMPLE.markdown | man -l -
+
+![Obligatory screenshot of md2man(1) in action!](http://ompldr.org/vYnFvbw)
 
 ------------------------------------------------------------------------------
 Installation
