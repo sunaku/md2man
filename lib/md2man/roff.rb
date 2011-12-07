@@ -1,6 +1,6 @@
 require 'redcarpet'
 
-module Redman
+module Md2man
   class Roff < Redcarpet::Render::Base
 
     #-------------------------------------------------------------------------
@@ -57,7 +57,7 @@ module Redman
     end
 
     def block_html html
-      warn "redman/roff: block_html not implemented: #{html.inspect}"
+      warn "md2man/roff: block_html not implemented: #{html.inspect}"
     end
 
     def header text, level
@@ -149,11 +149,11 @@ module Redman
     end
 
     def strikethrough text
-      warn "redman/roff: strikethrough not implemented: #{text.inspect}"
+      warn "md2man/roff: strikethrough not implemented: #{text.inspect}"
     end
 
     def superscript text
-      warn "redman/roff: superscript not implemented: #{text.inspect}"
+      warn "md2man/roff: superscript not implemented: #{text.inspect}"
     end
 
     def codespan code
@@ -180,11 +180,11 @@ module Redman
     end
 
     def image link, title, alt_text
-      warn "redman/roff: image not implemented: #{link.inspect}"
+      warn "md2man/roff: image not implemented: #{link.inspect}"
     end
 
     def raw_html html
-      warn "redman/roff: raw_html not implemented: #{html.inspect}"
+      warn "md2man/roff: raw_html not implemented: #{html.inspect}"
     end
 
     #-------------------------------------------------------------------------
@@ -199,7 +199,7 @@ module Redman
       if unicode = entity_to_unicode(text)
         unicode_to_glyph unicode
       else
-        warn "redman/roff: entity not implemented: #{text.inspect}"
+        warn "md2man/roff: entity not implemented: #{text.inspect}"
       end
     end
 

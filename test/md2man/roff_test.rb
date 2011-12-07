@@ -7,12 +7,12 @@
 # man 7 groff
 
 require 'test_helper'
-require 'redman/roff'
+require 'md2man/roff'
 
-describe Redman::Roff do
+describe Md2man::Roff do
   before do
     @markdown = Redcarpet::Markdown.new(
-      Redman::Roff,
+      Md2man::Roff,
       :tables => true,
       :autolink => true,
       :superscript => true,

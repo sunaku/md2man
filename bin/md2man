@@ -1,25 +1,25 @@
 #!/usr/bin/env ruby
 =begin
 
-REDMAN 1 "2011-12-06" "1.0.0" "Ruby User Manuals"
-=================================================
+MD2MAN 1 "2011-12-06" "1.0.0"
+=============================
 
 NAME
 ----
 
-redman - transforms markdown(7) into roff(7)
+md2man - convert markdown(7) into roff(7)
 
 SYNOPSIS
 --------
 
-`redman` [*OPTION*]... [*FILE*]
+`md2man` [*OPTION*]... [*FILE*]
 
 DESCRIPTION
 -----------
 
-Transforms markdown(7) input from the given *FILE* into roff(7) using
-[Redcarpet2] and then prints the result to the standard output stream.
-If *FILE* is not given, the standard input stream is read in its place.
+This program converts markdown(7) input from the given *FILE* into roff(7)
+using [Redcarpet2] and then prints the result to the standard output stream.
+If *FILE* is not given, then the standard input stream is read in its place.
 
 ### Document Format
 
@@ -51,7 +51,7 @@ SEE ALSO
 
 markdown(7), roff(7)
 
-[Redman]: https://github.com/sunaku/redman
+[md2man]: https://github.com/sunaku/md2man
 [Redcarpet2]: https://github.com/tanoku/redcarpet
 
 =end =========================================================================
@@ -59,9 +59,9 @@ markdown(7), roff(7)
 require 'binman'
 BinMan.help
 
-require 'redman'
+require 'md2man'
 puts Redcarpet::Markdown.new(
-  Redman::Roff,
+  Md2man::Roff,
   :tables => true,
   :autolink => true,
   :superscript => true,

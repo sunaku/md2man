@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "redman/version"
+require "md2man/version"
 require "binman/gemspec"
 
 Gem::Specification.new do |s|
-  s.name        = "redman"
-  s.version     = Redman::VERSION
+  s.name        = "md2man"
+  s.version     = Md2man::VERSION
   s.authors,
   s.email       = File.read('LICENSE').scan(/Copyright \d+ (.+) <(.+?)>/).transpose
-  s.homepage    = "http://github.com/sunaku/redman"
+  s.homepage    = "http://github.com/sunaku/md2man"
   s.summary     = "UNIX man pages using Redcarpet2"
   s.description = nil
 

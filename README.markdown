@@ -1,8 +1,8 @@
-Redman - UNIX man pages in Markdown
+md2man - write UNIX man pages in Markdown
 ==============================================================================
 
-Redman is a Ruby library for converting [Markdown] documents into UNIX man
-pages ([Roff] documents) using the awesome [Redcarpet2] library.
+md2man is a Ruby library and command-line program that converts [Markdown]
+documents into UNIX man pages (really [Roff] documents) using [Redcarpet2].
 
 [Roff]: http://troff.org
 [Markdown]: http://daringfireball.net/projects/markdown/
@@ -14,29 +14,37 @@ Installation
 
 As a Ruby gem:
 
-    gem install redman
+    gem install md2man
 
 As a Git clone:
 
-    git clone git://github.com/sunaku/redman
-    cd redman
+    git clone git://github.com/sunaku/md2man
+    cd md2man
     bundle install
 
 ------------------------------------------------------------------------------
-Usage
+Command Usage
+------------------------------------------------------------------------------
+
+Read the manual page:
+
+    md2man --help
+
+------------------------------------------------------------------------------
+Library Usage
 ------------------------------------------------------------------------------
 
 Use the default renderer:
 
-    require 'redman'
-    markdown = Redcarpet::Markdown.new(Redman::Roff, your_options_hash)
+    require 'md2man'
+    markdown = Redcarpet::Markdown.new(Md2man::Roff, your_options_hash)
     your_roff_output = markdown.render(your_markdown_input)
 
 Or extend it for yourself:
 
-    require 'redman'
+    require 'md2man'
 
-    class YourManpageRenderer < Redman::Roff
+    class YourManpageRenderer < Md2man::Roff
       # ... your stuff here ...
       # See Redcarpet::Render::Base documentation for more information:
       # http://rdoc.info/github/tanoku/redcarpet/master/Redcarpet/Render/Base
@@ -46,10 +54,10 @@ Or extend it for yourself:
     your_roff_output = markdown.render(your_markdown_input)
 
 ------------------------------------------------------------------------------
-Specification
+Document Format
 ------------------------------------------------------------------------------
 
-Redman introduces the following additions to the core [Markdown] language:
+md2man introduces the following additions to the core [Markdown] language:
 
   * If a paragraph's first or subsequent lines are uniformly indented by two
     spaces, then it is considered to be a "tagged paragraph" and its body is
@@ -117,7 +125,7 @@ Redman introduces the following additions to the core [Markdown] language:
 Limitations
 ------------------------------------------------------------------------------
 
-At present, Redman does not translate the following [Redcarpet2] node types:
+At present, md2man does not translate the following [Redcarpet2] node types:
 
   * `block_html`
   * `strikethrough`
