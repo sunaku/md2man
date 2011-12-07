@@ -60,4 +60,4 @@ require 'binman'
 BinMan.help
 
 require 'md2man'
-puts Md2man::ENGINE.render(ARGF.read)
+puts Md2Man::ENGINE.render(ARGF.read)

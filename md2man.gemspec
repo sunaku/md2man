@@ -5,7 +5,7 @@ require "binman/gemspec"
 
 Gem::Specification.new do |s|
   s.name        = "md2man"
-  s.version     = Md2man::VERSION
+  s.version     = Md2Man::VERSION
   s.authors,
   s.email       = File.read('LICENSE').scan(/Copyright \d+ (.+) <(.+?)>/).transpose
   s.homepage    = "http://github.com/sunaku/md2man"

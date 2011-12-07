@@ -37,19 +37,19 @@ Library Usage
 Use the default renderer:
 
     require 'md2man'
-    your_roff_output = Md2man::ENGINE.render(your_markdown_input)
+    your_roff_output = Md2Man::ENGINE.render(your_markdown_input)
 
 Build your own renderer:
 
     require 'md2man'
-    engine = Redcarpet::Markdown.new(Md2man::Engine, your_options_hash)
+    engine = Redcarpet::Markdown.new(Md2Man::Engine, your_options_hash)
     your_roff_output = engine.render(your_markdown_input)
 
 Define your own renderer:
 
     require 'md2man'
 
-    class YourManpageRenderer < Md2man::Engine
+    class YourManpageRenderer < Md2Man::Engine
       # ... your stuff here ...
     end
 
@@ -61,7 +61,7 @@ Mix-in your own renderer:
     require 'md2man'
 
     class YourManpageRenderer < Redcarpet::Render::Base
-      include Md2man::Roff
+      include Md2Man::Roff
       # ... your stuff here ...
     end
 

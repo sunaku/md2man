@@ -1,13 +1,13 @@
 require 'redcarpet'
 require 'md2man/roff'
 
-module Md2man
+module Md2Man
   class Engine < Redcarpet::Render::Base
     include Roff
   end
 
   ENGINE = Redcarpet::Markdown.new(
-    Md2man::Engine,
+    Md2Man::Engine,
     :tables => true,
     :autolink => true,
     :superscript => true,
