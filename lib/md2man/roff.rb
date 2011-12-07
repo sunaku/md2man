@@ -28,16 +28,16 @@ module Roff
   # block-level processing
   #---------------------------------------------------------------------------
 
-  TAGGED_PARAGRAPH = /^\s*$|^  (?=\S)/
+  PARAGRAPH_INDENT = /^\s*$|^  (?=\S)/
 
   def paragraph text
     head, *body = text.lines.to_a
+    head_indented = head =~ PARAGRAPH_INDENT
+    body_indented = !body.empty? && body.all? {|s| s =~ PARAGRAPH_INDENT }
 
-    if head =~ TAGGED_PARAGRAPH || !body.empty? &&
-       body.all? {|s| s =~ TAGGED_PARAGRAPH }
-    then
-      macro = :TP
-      text.gsub! TAGGED_PARAGRAPH, ''
+    if head_indented || body_indented
+      macro = if head_indented && body_indented then :IP else :TP end
+      text.gsub! PARAGRAPH_INDENT, ''
     else
       macro = :PP
       text.chomp!

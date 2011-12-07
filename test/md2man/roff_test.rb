@@ -79,7 +79,24 @@ describe Md2Man::Roff do
     OUTPUT
   end
 
-  it 'renders tagged paragraphs with uniformly two-space indented headings' do
+  it 'renders indented paragraphs that are uniformly two-space indented' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |  just some paragraph
+      |  spanning
+      |  multiple
+      |  lines
+      |  but within 4-space indent
+    INPUT
+      |.IP
+      |just some paragraph
+      |spanning
+      |multiple
+      |lines
+      |but within 4\\-space indent
+    OUTPUT
+  end
+
+  it 'renders tagged, indented, and normal paragraphs' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |This is a
       |normal paragraph.
@@ -90,8 +107,9 @@ describe Md2Man::Roff do
       |  This is another
       |tagged paragraph.
       |
-      |  This is yet another
-      |  tagged paragraph.
+      |  This is an
+      |  indented
+      |  paragraph.
       |
       |This
       | is another
@@ -107,9 +125,10 @@ describe Md2Man::Roff do
       |.TP
       |This is another
       |tagged paragraph.
-      |.TP
-      |This is yet another
-      |tagged paragraph.
+      |.IP
+      |This is an
+      |indented
+      |paragraph.
       |.PP
       |This
       | is another

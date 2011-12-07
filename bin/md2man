@@ -23,11 +23,15 @@ If *FILE* is not given, then the standard input stream is read in its place.
 
 ### Document Format
 
-This program introduces the following additions to markdown(7):
+This program attaches the following additional semantics to markdown(7):
 
-* If a paragraph's first or subsequent lines are uniformly indented by two
-  spaces, then it is considered to be a "tagged paragraph" and its body is
-  unindented before being emitted under a `.TP` macro in the roff(7) output.
+  * Paragraphs whose lines are all uniformly indented by two spaces are
+    considered to be "indented paragraphs".  They are unindented accordingly
+    before emission as `.IP` in the roff(7) output.
+
+  * Paragraphs whose subsequent lines (all except the first) are uniformly
+    indented by two spaces are considered to be a "tagged paragraphs".  They
+    are unindented accordingly before emission as `.TP` in the roff(7) output.
 
 ### Markdown Extensions
 

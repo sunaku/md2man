@@ -72,69 +72,15 @@ Mix-in your own renderer:
 Document Format
 ------------------------------------------------------------------------------
 
-md2man introduces the following additions to the core [Markdown] language:
+md2man attaches the following additional semantics to its [Markdown] input:
 
-  * If a paragraph's first or subsequent lines are uniformly indented by two
-    spaces, then it is considered to be a "tagged paragraph" and its body is
-    unindented before being emitted under a `.TP` macro in the [Roff] output.
+  * Paragraphs whose lines are all uniformly indented by two spaces are
+    considered to be "indented paragraphs".  They are unindented accordingly
+    before emission as `.IP` in the [Roff] output.
 
-    For example, the following [Markdown] input:
-
-        This is a
-        normal paragraph.
-
-        This is a
-          tagged paragraph.
-
-          This is another
-        tagged paragraph.
-
-          This is yet another
-          tagged paragraph.
-
-        This
-         is another
-          normal
-           paragraph.
-
-    Yields the following [Roff] output:
-
-        .PP
-        This is a
-        normal paragraph.
-        .TP
-        This is a
-        tagged paragraph.
-        .TP
-        This is another
-        tagged paragraph.
-        .TP
-        This is yet another
-        tagged paragraph.
-        .PP
-        This
-         is another
-          normal
-           paragraph.
-
-    Which appears like the following:
-
-      >This is a
-      >normal paragraph.
-      >
-      >>This is a
-      >>tagged paragraph.
-      >
-      >>This is another
-      >>tagged paragraph.
-      >
-      >>This is yet another
-      >>tagged paragraph.
-      >
-      >This
-      > is another
-      >  normal
-      >   paragraph.
+  * Paragraphs whose subsequent lines (all except the first) are uniformly
+    indented by two spaces are considered to be a "tagged paragraphs".  They
+    are unindented accordingly before emission as `.TP` in the [Roff] output.
 
 ------------------------------------------------------------------------------
 Limitations
