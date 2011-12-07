@@ -74,6 +74,9 @@ Document Format
 
 md2man attaches the following additional semantics to its [Markdown] input:
 
+  * There can be at most one top-level heading (H1).  It is emitted as `.TH`
+    in the [Roff] output, specifying the UNIX man page's header and footer.
+
   * Paragraphs whose lines are all uniformly indented by two spaces are
     considered to be "indented paragraphs".  They are unindented accordingly
     before emission as `.IP` in the [Roff] output.

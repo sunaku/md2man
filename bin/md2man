@@ -25,6 +25,9 @@ If *FILE* is not given, then the standard input stream is read in its place.
 
 This program attaches the following additional semantics to markdown(7):
 
+  * There can be at most one top-level heading (H1).  It is emitted as `.TH`
+    in the roff(7) output, specifying the UNIX man page's header and footer.
+
   * Paragraphs whose lines are all uniformly indented by two spaces are
     considered to be "indented paragraphs".  They are unindented accordingly
     before emission as `.IP` in the roff(7) output.
