@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors,
   s.email       = File.read('LICENSE').scan(/Copyright \d+ (.+) <(.+?)>/).transpose
   s.homepage    = "http://github.com/sunaku/md2man"
-  s.summary     = "UNIX man pages using Redcarpet2"
+  s.summary     = "write UNIX man pages in Markdown"
   s.description = nil
 
   s.files         = `git ls-files`.split("\n")
