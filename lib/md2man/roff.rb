@@ -51,7 +51,7 @@ module Roff
   end
 
   def block_quote quote
-    "\n.RS\n#{quote.sub(/\n\.PP\n/, '').chomp}\n.RE\n"
+    "\n.RS\n#{remove_leading_pp(quote).chomp}\n.RE\n"
   end
 
   def block_html html
@@ -93,7 +93,7 @@ module Roff
         "\\(bu 2"
       end
 
-    ".IP #{designator}\n#{text.sub(/\A\n\.PP\n/, '').lstrip.chomp}\n"
+    ".IP #{designator}\n#{remove_leading_pp(text).lstrip.chomp}\n"
   end
 
   def table header, body
@@ -202,6 +202,10 @@ module Roff
   end
 
 private
+
+  def remove_leading_pp text
+    text.sub(/\A\n\.PP\n/, '')
+  end
 
   TABLE_COL_DELIM = ' '
   TABLE_ROW_DELIM = "\n"
