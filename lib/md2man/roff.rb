@@ -505,7 +505,7 @@ private
     '&clubs;'    => 0x2663,
     '&hearts;'   => 0x2665,
     '&diams;'    => 0x2666,
-  }.freeze
+  }
 
   # see groff_char(7) and "Special Characters" in groff(7)
   UNICODE_TO_GLYPH = {
@@ -849,7 +849,7 @@ private
     0x2713  => "\\[OK]",
     0x27e8  => "\\[la]",
     0x27e9  => "\\[ra]",
-  }.freeze
+  }
 
 end
 end
