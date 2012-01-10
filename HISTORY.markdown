@@ -1,4 +1,22 @@
 ------------------------------------------------------------------------------
+Version 1.0.2 (2012-01-09)
+------------------------------------------------------------------------------
+
+External changes:
+
+* Blockquote's leading paragraph regexp was not anchored.
+
+* Added example input file from the Linux Man Page Howto.
+
+Internal changes:
+
+* Upgraded to Binman 3 for better interoperability with Bundler.
+
+* Freezing internal constants prevents monkeypatching.
+
+* Forgot to change project slogan in the gem package.
+
+------------------------------------------------------------------------------
 Version 1.0.1 (2011-12-06)
 ------------------------------------------------------------------------------
 
