@@ -32,6 +32,7 @@ As a Git clone:
     git clone git://github.com/sunaku/md2man
     cd md2man
     bundle install
+    bundle exec rake install
 
 ------------------------------------------------------------------------------
 Command Usage
