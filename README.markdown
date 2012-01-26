@@ -23,16 +23,15 @@ Try converting [this example Markdown file][example] into a UNIX man page:
 Installation
 ------------------------------------------------------------------------------
 
-As a Ruby gem:
-
     gem install md2man
 
-As a Git clone:
+### Development
 
     git clone git://github.com/sunaku/md2man
     cd md2man
-    bundle install
-    bundle exec rake install
+    bundle install --binstubs=bundle_bin
+    bundle_bin/md2man --help  # run it directly
+    bundle exec rake -T       # packaging tasks
 
 ------------------------------------------------------------------------------
 Command Usage
