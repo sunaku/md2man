@@ -1,4 +1,4 @@
-md2man - write UNIX man pages in Markdown
+md2man - markdown to manpage
 ==============================================================================
 
 md2man is a Ruby library and command-line program that converts [Markdown]

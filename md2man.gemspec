@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors,
   s.email         = File.read('LICENSE').scan(/Copyright \d+ (.+) <(.+?)>/).transpose
   s.homepage      = "http://github.com/sunaku/md2man"
-  s.summary       = "write UNIX man pages in Markdown"
-  s.description   = nil
+  s.summary       = "Markdown to manpage."
+  s.description   = "Write UNIX man pages in Markdown."
 
   s.files         = `git ls-files`.split("\n") + Dir["man/**/*"]
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
