@@ -1,5 +1,9 @@
+require 'md2man/document'
+
 module Md2Man
 module Roff
+
+  include Document
 
   #---------------------------------------------------------------------------
   # document-level processing
@@ -12,13 +16,10 @@ module Roff
   end
 
   def postprocess document
-    document.strip.
+    super.strip.
 
     # ensure that spaces after URLs appear properly
     gsub(/(?<=^\.[UM]E) \s/, "\n").
-
-    # encode references to other man pages as "hyperlinks"
-    gsub(/(\S+)(\([1-9nol]\)[[:punct:]]?\s*)/, "\n.BR \\1 \\2\n").
 
     # squeeze blank lines to prevent double-spaced output
     gsub(/^\n/, '')
@@ -129,6 +130,10 @@ module Roff
   #---------------------------------------------------------------------------
   # span-level processing
   #---------------------------------------------------------------------------
+
+  def reference page, section, addendum
+    "\n.BR #{page} (#{section})#{addendum}\n"
+  end
 
   def linebreak
     "\n.br\n"
