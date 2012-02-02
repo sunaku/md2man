@@ -15,7 +15,7 @@ Demonstration
 
 Try converting [this example Markdown file][example] into a UNIX man page:
 
-    md2man EXAMPLE.markdown | man -l -
+    md2man EXAMPLE.markdown > EXAMPLE.man && man ./EXAMPLE.man
 
 ![Obligatory screenshot of md2man(1) in action!](http://ompldr.org/vYnFvbw)
 
