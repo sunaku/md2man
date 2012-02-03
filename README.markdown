@@ -34,16 +34,14 @@ Installation
     bundle exec rake -T       # packaging tasks
 
 ------------------------------------------------------------------------------
-Command Usage
+Usage
 ------------------------------------------------------------------------------
 
-Read the manual page:
+### At the command line
 
     md2man --help
 
-------------------------------------------------------------------------------
-Library Usage
-------------------------------------------------------------------------------
+### In your Ruby scripts
 
 Use the default renderer:
 
@@ -80,7 +78,7 @@ Mix-in your own renderer:
     your_roff_output = engine.render(your_markdown_input)
 
 ------------------------------------------------------------------------------
-Document Format
+Document format
 ------------------------------------------------------------------------------
 
 md2man attaches the following additional semantics to its [Markdown] input:
@@ -97,7 +95,7 @@ md2man attaches the following additional semantics to its [Markdown] input:
     are unindented accordingly before emission as `.TP` in the [Roff] output.
 
 ------------------------------------------------------------------------------
-Limitations
+Known issues
 ------------------------------------------------------------------------------
 
 At present, md2man does not translate the following [Redcarpet2] node types:
