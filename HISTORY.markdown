@@ -1,13 +1,11 @@
-------------------------------------------------------------------------------
-Version 1.1.0 (2012-02-02)
-------------------------------------------------------------------------------
+## Version 1.1.0 (2012-02-02)
 
-Improvements:
+Minor:
 
   * Add `Md2Man::Document` module for programmatic processing of
     cross-references to other UNIX manual pages within Redcarpet.
 
-Housekeeping:
+Other:
 
   * README: not all systems support `man -l` option.
 
@@ -19,17 +17,15 @@ Housekeeping:
 
   * README: simplify project slogan to be more memorable.
 
-------------------------------------------------------------------------------
-Version 1.0.2 (2012-01-09)
-------------------------------------------------------------------------------
+## Version 1.0.2 (2012-01-09)
 
-Corrections:
+Patch:
 
   * Blockquote's leading paragraph regexp was not anchored.
 
   * Freezing internal constants prevents monkey patching.
 
-Housekeeping:
+Other:
 
   * Upgraded to Binman 3 for better interoperability with Bundler.
 
@@ -37,11 +33,9 @@ Housekeeping:
 
   * Forgot to change project slogan in the gem package.
 
-------------------------------------------------------------------------------
-Version 1.0.1 (2011-12-06)
-------------------------------------------------------------------------------
+## Version 1.0.1 (2011-12-06)
 
-Divergences:
+Major:
 
   * Renamed the project from "redcarpet-manpage" to "md2man".
 
@@ -52,7 +46,7 @@ Divergences:
   * Tagged paragraphs no longer require the first line to begin with italic or
     bold styling.  All that matters is that the subsequent lines are indented.
 
-Improvements:
+Minor:
 
   * Added md2man(1) executable for command-line usage.
 
@@ -64,12 +58,10 @@ Improvements:
 
   * Improved README with some new and revised documentation.
 
-Housekeeping:
+Other:
 
   * Rewrote entire Markdown to Roff conversion from scratch while doing TDD.
 
-------------------------------------------------------------------------------
-Version 0.0.1 (2011-10-13)
-------------------------------------------------------------------------------
+## Version 0.0.1 (2011-10-13)
 
 First release! Happy birthday! Woohoo! :-)

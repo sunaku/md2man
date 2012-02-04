@@ -1,29 +1,25 @@
 #!/usr/bin/env ruby
-=begin
+=begin =======================================================================
 
-MD2MAN 1 "2012-02-02" "1.1.0"
-=============================
+# MD2MAN 1 "2012-02-02" "1.1.0"
 
-NAME
-----
+## NAME
 
 md2man - convert markdown(7) into roff(7)
 
-SYNOPSIS
---------
+## SYNOPSIS
 
 `md2man` [*OPTION*]... [*FILE*]
 
-DESCRIPTION
------------
+## DESCRIPTION
 
 [md2man] converts markdown(7) input from the given *FILE* into roff(7) using
-[Redcarpet2] and then prints the result to the standard output stream.  If
+[Redcarpet] and then prints the result to the standard output stream.  If
 *FILE* is not given, then the standard input stream is read in its place.
 
-### Document Format
+### Document format
 
-The following additional semantics are attached to markdown(7):
+The following additional semantics are applied to the markdown(7) input:
 
   * There can be at most one top-level heading (H1).  It is emitted as `.TH`
     in the roff(7) output, specifying the UNIX man page's header and footer.
@@ -36,9 +32,9 @@ The following additional semantics are attached to markdown(7):
     indented by two spaces are considered to be a "tagged paragraphs".  They
     are unindented accordingly before emission as `.TP` in the roff(7) output.
 
-### Markdown Extensions
+### Markdown extensions
 
-The following [Redcarpet2] extensions for markdown(7) are enabled:
+The following [Redcarpet] extensions for markdown(7) are enabled:
 
 * tables
 * autolink
@@ -47,19 +43,17 @@ The following [Redcarpet2] extensions for markdown(7) are enabled:
 * no_intra_emphasis
 * fenced_code_blocks
 
-OPTIONS
--------
+## OPTIONS
 
 `-h`, `--help`
-  Display this help manual using man(1).
+  Show this help manual.
 
-SEE ALSO
---------
+## SEE ALSO
 
 markdown(7), roff(7)
 
 [md2man]: https://github.com/sunaku/md2man
-[Redcarpet2]: https://github.com/tanoku/redcarpet
+[Redcarpet]: https://github.com/tanoku/redcarpet
 
 =end =========================================================================
 
