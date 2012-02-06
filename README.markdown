@@ -1,7 +1,7 @@
 # md2man - markdown to manpage
 
 md2man is a Ruby library and command-line program that converts [Markdown]
-documents into UNIX man pages (really [Roff] documents) using [Redcarpet].
+documents into UNIX manual pages (really [Roff] documents) using [Redcarpet].
 
 ## Features
 
@@ -15,7 +15,7 @@ documents into UNIX man pages (really [Roff] documents) using [Redcarpet].
 
 ### Demonstration
 
-Try converting [this example Markdown file][example] into a UNIX man page:
+Try converting [this example Markdown file][example] into a UNIX manual page:
 
     md2man EXAMPLE.markdown > EXAMPLE.1
     man EXAMPLE.1
@@ -52,7 +52,7 @@ It issues a warning when it encounters these instead.  Patches are welcome!
 
     md2man --help
 
-### In your Ruby scripts
+### Inside a Ruby script
 
 Use the default renderer:
 
@@ -90,10 +90,8 @@ Mix-in your own renderer:
 
 ### Document format
 
-md2man applies the following additional semantics to its [Markdown] input:
-
-  * There can be at most one top-level heading (H1).  It is emitted as `.TH`
-    in the [Roff] output, specifying the UNIX man page's header and footer.
+md2man extends [Markdown] syntax in the following ways, as provisioned in the
+`Md2Man::Document` module and defined in its derivative `Md2Man::Roff` module:
 
   * Paragraphs whose lines are all uniformly indented by two spaces are
     considered to be "indented paragraphs".  They are unindented accordingly
@@ -102,6 +100,11 @@ md2man applies the following additional semantics to its [Markdown] input:
   * Paragraphs whose subsequent lines (all except the first) are uniformly
     indented by two spaces are considered to be a "tagged paragraphs".  They
     are unindented accordingly before emission as `.TP` in the [Roff] output.
+
+md2man extends [Markdown] semantics in the following ways:
+
+  * There can be at most one top-level heading (H1).  It is emitted as `.TH`
+    in the [Roff] output, defining the UNIX manual page's header and footer.
 
 ## License
 

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email         = File.read('LICENSE').scan(/Copyright \d+ (.+) <(.+?)>/).transpose
   s.homepage      = 'http://github.com/sunaku/md2man'
   s.summary       = 'markdown to manpage'
-  s.description   = 'Converts markdown documents into UNIX man pages (roff).'
+  s.description   = 'Converts markdown documents into UNIX manual pages.'
 
   s.files         = `git ls-files`.split("\n") + Dir['man/**/*']
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

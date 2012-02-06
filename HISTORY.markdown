@@ -1,3 +1,19 @@
+## Version 1.2.0 (2012-02-06)
+
+Minor:
+
+  * The `Md2Man::Document` module now handles paragraph() nodes and dispatches
+    their content accordingly to hook methods for indented, tagged, and normal
+    paragraphs.  A Redcarpet markdown parser need only include that module and
+    implement those hook methods in order to benefit from md2man's extensions
+    to markdown syntax programmatically.
+
+Other:
+
+  * README: mention features; revise markdown; cleanup.
+
+  * LICENSE: @tanoku created initial Manpage renderer.
+
 ## Version 1.1.0 (2012-02-02)
 
 Minor:

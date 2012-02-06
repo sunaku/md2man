@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 =begin =======================================================================
 
-# MD2MAN 1 "2012-02-02" "1.1.0"
+# MD2MAN 1 2012-02-06 1.2.0
 
 ## NAME
 
@@ -19,10 +19,8 @@ md2man - convert markdown(7) into roff(7)
 
 ### Document format
 
-The following additional semantics are applied to the markdown(7) input:
-
-  * There can be at most one top-level heading (H1).  It is emitted as `.TH`
-    in the roff(7) output, specifying the UNIX man page's header and footer.
+md2man extends markdown(7) syntax in the following ways, as provisioned in the
+`Md2Man::Document` module and defined in its derivative `Md2Man::Roff` module:
 
   * Paragraphs whose lines are all uniformly indented by two spaces are
     considered to be "indented paragraphs".  They are unindented accordingly
@@ -32,16 +30,21 @@ The following additional semantics are applied to the markdown(7) input:
     indented by two spaces are considered to be a "tagged paragraphs".  They
     are unindented accordingly before emission as `.TP` in the roff(7) output.
 
+md2man extends markdown(7) semantics in the following ways:
+
+  * There can be at most one top-level heading (H1).  It is emitted as `.TH`
+    in the roff(7) output to define the UNIX manual page's header and footer.
+
 ### Markdown extensions
 
-The following [Redcarpet] extensions for markdown(7) are enabled:
+The following [Redcarpet] extensions are enabled while processing markdown(7):
 
-* tables
-* autolink
-* superscript
-* strikethrough
-* no_intra_emphasis
-* fenced_code_blocks
+  * tables
+  * autolink
+  * superscript
+  * strikethrough
+  * no_intra_emphasis
+  * fenced_code_blocks
 
 ## OPTIONS
 
