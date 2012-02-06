@@ -29,22 +29,16 @@ module Roff
   # block-level processing
   #---------------------------------------------------------------------------
 
-  PARAGRAPH_INDENT = /^\s*$|^  (?=\S)/
+  def indented_paragraph text
+    "\n.IP\n#{text}\n"
+  end
 
-  def paragraph text
-    head, *body = text.lines.to_a
-    head_indented = head =~ PARAGRAPH_INDENT
-    body_indented = !body.empty? && body.all? {|s| s =~ PARAGRAPH_INDENT }
+  def tagged_paragraph text
+    "\n.TP\n#{text}\n"
+  end
 
-    if head_indented || body_indented
-      macro = if head_indented && body_indented then :IP else :TP end
-      text.gsub! PARAGRAPH_INDENT, ''
-    else
-      macro = :PP
-      text.chomp!
-    end
-
-    "\n.#{macro}\n#{text}\n"
+  def normal_paragraph text
+    "\n.PP\n#{text}\n"
   end
 
   def block_code code, language
