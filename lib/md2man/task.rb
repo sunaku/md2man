@@ -13,7 +13,7 @@ module Md2Man
 
       @markdown_files = Dir['man/*.{md,markdown}']
       @man_pages      = @markdown_files.map do |path|
-        path.gsub(/\.(md|markdown)$/,'.1')
+        path.gsub(/\.(md|markdown)$/,'')
       end
 
       define
