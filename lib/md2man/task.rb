@@ -33,6 +33,14 @@ module Md2Man
           end
         end
 
+        desc "Renders and previews a man-page in man/"
+        task :page, :name do |t,args|
+          man_page = File.join('man',args.name)
+
+          Rake::Task[man_page].invoke
+          sh 'man', man_page
+        end
+
         desc "Renders man-pages from markdown files in man/"
         task :pages => @man_pages
       end
