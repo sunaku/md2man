@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_runtime_dependency 'binman', '~> 3'
-  s.add_runtime_dependency 'redcarpet', '>= 2.1.0', '< 3'
-  s.add_development_dependency 'minitest', '>= 2.7.0', '< 3'
+  s.add_runtime_dependency 'redcarpet', '~> 2.1'
+  s.add_development_dependency 'minitest', '~> 2.7'
   s.add_development_dependency 'rake', '>= 0.9.2.2', '< 1'
 end
