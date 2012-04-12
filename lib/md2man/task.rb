@@ -37,6 +37,10 @@ module Md2Man
         task :page, :name do |t,args|
           man_page = File.join('man',args.name)
 
+          unless @man_pages.include?(man_page)
+            fail "Could not find man-page: #{args.name.dump}"
+          end
+
           Rake::Task[man_page].invoke
           sh 'man', man_page
         end
