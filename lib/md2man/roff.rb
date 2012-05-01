@@ -19,7 +19,7 @@ module Roff
     super.strip.
 
     # ensure that spaces after URLs appear properly
-    gsub(/(?<=^\.[UM]E) \s/, "\n").
+    gsub(/(^\.[UM]E) \s/, "\\1\n").
 
     # squeeze blank lines to prevent double-spaced output
     gsub(/^\n/, '')
