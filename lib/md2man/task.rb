@@ -20,31 +20,19 @@ module Md2Man
     end
 
     def define
+      @man_pages.zip(@markdown_files).each do |man_page,markdown_file|
+        # define file tasks for each man-page and markdown source file
+        file(man_page => markdown_file) do
+          File.open(man_page,'w') do |output|
+            input = File.read(markdown_file)
+            roff  = engine.render(input)
+
+            output.write(roff)
+          end
+        end
+      end
+
       namespace :man do
-        @man_pages.zip(@markdown_files).each do |man_page,markdown_file|
-          # define file tasks for each man-page and markdown source file
-          file(man_page => markdown_file) do
-            File.open(man_page,'w') do |output|
-              input = File.read(markdown_file)
-              roff  = engine.render(input)
-
-              output.write(roff)
-            end
-          end
-        end
-
-        desc "Renders and previews a man-page in man/"
-        task :page, :name do |t,args|
-          man_page = File.join('man',args.name)
-
-          unless @man_pages.include?(man_page)
-            fail "Could not find man-page: #{args.name.dump}"
-          end
-
-          Rake::Task[man_page].invoke
-          sh 'man', man_page
-        end
-
         desc "Renders man-pages from markdown files in man/"
         task :pages => @man_pages
       end
