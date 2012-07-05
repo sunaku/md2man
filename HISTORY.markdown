@@ -1,3 +1,12 @@
+## Version 1.2.1 (2012-07-05)
+
+* GH-4: ruby 1.8.7 lacks negative lookbehind regexps.
+  Thanks to Postmodern for reporting this issue.
+
+* GH-1: use `~>` for gem version constraints.
+  See http://docs.rubygems.org/read/chapter/16
+  Thanks to Postmodern for this contribution.
+
 ## Version 1.2.0 (2012-02-06)
 
 Minor:
