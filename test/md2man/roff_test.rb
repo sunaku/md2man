@@ -155,14 +155,14 @@ describe Md2Man::Roff do
   it 'renders emphasis' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |just *some paragraph*
-      | spanning
+      | sp*ann*ing
       |  multiple
       |   *lines*
       |but within 4-*space* indent
     INPUT
       |.PP
       |just \\fIsome paragraph\\fP
-      | spanning
+      | sp\\fIann\\fPing
       |  multiple
       |   \\fIlines\\fP
       |but within 4\\-\\fIspace\\fP indent
@@ -172,14 +172,14 @@ describe Md2Man::Roff do
   it 'renders double emphasis' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |just **some paragraph**
-      | spanning
+      | sp**ann**ing
       |  multiple
       |   **lines**
       |but within 4-**space** indent
     INPUT
       |.PP
       |just \\fBsome paragraph\\fP
-      | spanning
+      | sp\\fBann\\fPing
       |  multiple
       |   \\fBlines\\fP
       |but within 4\\-\\fBspace\\fP indent
@@ -189,14 +189,14 @@ describe Md2Man::Roff do
   it 'renders triple emphasis' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |just ***some paragraph***
-      | spanning
+      | sp***ann***ing
       |  multiple
       |   ***lines***
       |but within 4-***space*** indent
     INPUT
       |.PP
       |just \\s+2\\fBsome paragraph\\fP\\s-2
-      | spanning
+      | sp\\s+2\\fBann\\fP\\s-2ing
       |  multiple
       |   \\s+2\\fBlines\\fP\\s-2
       |but within 4\\-\\s+2\\fBspace\\fP\\s-2 indent

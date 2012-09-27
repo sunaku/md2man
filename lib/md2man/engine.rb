@@ -12,7 +12,7 @@ module Md2Man
     :autolink => true,
     :superscript => true,
     :strikethrough => true,
-    :no_intra_emphasis => true,
+    :no_intra_emphasis => false,
     :fenced_code_blocks => true
   )
 end
