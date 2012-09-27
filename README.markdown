@@ -112,6 +112,6 @@ Released under the ISC license.  See the LICENSE file for details.
 
 [Roff]: http://troff.org
 [Markdown]: http://daringfireball.net/projects/markdown/
-[Redcarpet]: https://github.com/tanoku/redcarpet
+[Redcarpet]: https://github.com/vmg/redcarpet
 [example]: https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown
 [tables]: http://michelf.com/projects/php-markdown/extra/#table

@@ -56,7 +56,7 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
 markdown(7), roff(7)
 
 [md2man]: https://github.com/sunaku/md2man
-[Redcarpet]: https://github.com/tanoku/redcarpet
+[Redcarpet]: https://github.com/vmg/redcarpet
 
 =end =========================================================================
 
