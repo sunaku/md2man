@@ -1,11 +1,23 @@
+## Version 1.3.0 (2012-09-27)
+
+Minor:
+
+  * Intra-word emphasis is now enabled *by default* in `Md2Man::ENGINE`.
+    To not be affected by this change, you may still construct your own
+    Redcarpet::Markdown engine with your own set of processing options.
+
 ## Version 1.2.1 (2012-07-05)
 
-* GH-4: ruby 1.8.7 lacks negative lookbehind regexps.
-  Thanks to Postmodern for reporting this issue.
+Patch:
 
-* GH-1: use `~>` for gem version constraints.
-  See http://docs.rubygems.org/read/chapter/16
-  Thanks to Postmodern for this contribution.
+  * GH-4: ruby 1.8.7 lacks negative lookbehind regexps.
+    Thanks to Postmodern for reporting this issue.
+
+Other:
+
+  * GH-1: use `~>` for gem version constraints.
+    See http://docs.rubygems.org/read/chapter/16
+    Thanks to Postmodern for this contribution.
 
 ## Version 1.2.0 (2012-02-06)
 
