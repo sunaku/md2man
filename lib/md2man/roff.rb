@@ -42,11 +42,11 @@ module Roff
   end
 
   def block_code code, language
-    block_quote "\n.nf\n.PP\n#{code.chomp}\n.fi\n"
+    block_quote "\n.nf\n#{code.chomp}\n.fi\n"
   end
 
   def block_quote quote
-    "\n.RS\n#{remove_leading_pp(quote).chomp}\n.RE\n"
+    "\n.PP\n.RS\n#{remove_leading_pp(quote).chomp}\n.RE\n"
   end
 
   def block_html html

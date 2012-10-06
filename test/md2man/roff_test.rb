@@ -268,6 +268,28 @@ describe Md2Man::Roff do
       |>   lines
       |>but within 4-space indent
     INPUT
+      |.PP
+      |.RS
+      |just some paragraph
+      |spanning
+      | multiple
+      |  lines
+      |but within 4\\-space indent
+      |.RE
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |some paragraph above
+      |
+      |>just some paragraph
+      |> spanning
+      |>  multiple
+      |>   lines
+      |>but within 4-space indent
+    INPUT
+      |.PP
+      |some paragraph above
+      |.PP
       |.RS
       |just some paragraph
       |spanning
@@ -282,9 +304,9 @@ describe Md2Man::Roff do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |    single preformatted line
     INPUT
+      |.PP
       |.RS
       |.nf
-      |.PP
       |single preformatted line
       |.fi
       |.RE
@@ -297,9 +319,9 @@ describe Md2Man::Roff do
       |    >  lines
       |    with 4-space indent
     INPUT
+      |.PP
       |.RS
       |.nf
-      |.PP
       |just some *paragraph*
       | spanning
       |  **multiple**
@@ -316,9 +338,9 @@ describe Md2Man::Roff do
     INPUT
       |.PP
       |normal paragraph line
+      |.PP
       |.RS
       |.nf
-      |.PP
       |single preformatted line
       |.fi
       |.RE
@@ -505,6 +527,7 @@ describe Md2Man::Roff do
       |>
       |>bar
     INPUT
+      |.PP
       |.RS
       |foo
       |.ti 0
