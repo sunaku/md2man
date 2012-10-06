@@ -272,6 +272,7 @@ describe Md2Man::Roff do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |    single preformatted line
     INPUT
+      |.PP
       |.nf
       |single preformatted line
       |.fi
@@ -284,12 +285,26 @@ describe Md2Man::Roff do
       |    >  lines
       |    with 4-space indent
     INPUT
+      |.PP
       |.nf
       |just some *paragraph*
       | spanning
       |  **multiple**
       |>  lines
       |with 4-space indent
+      |.fi
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |normal paragraph line
+      |
+      |    single preformatted line
+    INPUT
+      |.PP
+      |normal paragraph line
+      |.PP
+      |.nf
+      |single preformatted line
       |.fi
     OUTPUT
   end

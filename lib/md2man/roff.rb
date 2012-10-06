@@ -42,7 +42,7 @@ module Roff
   end
 
   def block_code code, language
-    "\n.nf\n#{code.chomp}\n.fi\n"
+    "\n.PP\n.nf\n#{code.chomp}\n.fi\n"
   end
 
   def block_quote quote
