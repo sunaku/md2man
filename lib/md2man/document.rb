@@ -19,7 +19,7 @@ module Document
 
     if head_indented || body_indented
       text = text.gsub(PARAGRAPH_INDENT, '')
-      if head_indented && body_indented
+      if head_indented && (body_indented || body.empty?)
         indented_paragraph text
       else
         tagged_paragraph text

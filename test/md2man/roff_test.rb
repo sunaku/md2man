@@ -69,6 +69,11 @@ describe Md2Man::Roff do
       |  multiple
       |  lines
       |  but within 4-space indent
+      |
+      |  and a single line following
+      |
+      |  and multiple
+      |  lines following
     INPUT
       |.TP
       |just some paragraph
@@ -76,6 +81,11 @@ describe Md2Man::Roff do
       |multiple
       |lines
       |but within 4\\-space indent
+      |.IP
+      |and a single line following
+      |.IP
+      |and multiple
+      |lines following
     OUTPUT
   end
 
