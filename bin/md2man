@@ -53,7 +53,7 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
 
 ## SEE ALSO
 
-markdown(7), roff(7)
+md2man-html(1)
 
 [md2man]: https://github.com/sunaku/md2man
 [Redcarpet]: https://github.com/vmg/redcarpet

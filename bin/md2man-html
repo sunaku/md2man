@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+=begin =======================================================================
+
+# MD2MAN-HTML 1 2012-09-27 1.3.0
+
+## NAME
+
+md2man-html - convert md2man(1) flavored markdown(7) into HTML
+
+## SYNOPSIS
+
+`md2man-html` [*OPTION*]... [*FILE*]
+
+## DESCRIPTION
+
+This program converts the markdown(7) input from the given *FILE* into HTML
+and then prints the result to stdout.  stdin is read if *FILE* is not given.
+
+See md2man(1) for details about the document format and Markdown extensions.
+
+## OPTIONS
+
+`-h`, `--help`
+  Show this help manual.
+
+## SEE ALSO
+
+md2man(1)
+
+=end =========================================================================
+
+require 'binman'
+BinMan.help
+
+require 'md2man/html/engine'
+puts Md2Man::HTML::ENGINE.render(ARGF.read)
