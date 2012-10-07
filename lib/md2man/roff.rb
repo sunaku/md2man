@@ -12,7 +12,7 @@ module Roff
   def preprocess document
     @ordered_list_id = 0
     @table_cells = {}
-    document
+    super
   end
 
   def postprocess document

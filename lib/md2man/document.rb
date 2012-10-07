@@ -1,6 +1,10 @@
 module Md2Man
 module Document
 
+  def preprocess document
+    document
+  end
+
   def postprocess document
     # encode references to other manual pages
     document.gsub(/(\S+)\(([1-9nol])\)([[:punct:]]?\s*)/){ reference $1,$2,$3 }
