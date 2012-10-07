@@ -28,7 +28,7 @@ module HTML
 
   def reference page, section, addendum
     url = reference_url(page, section)
-    "<a href=#{url.inspect}>#{page}(#{section})</a>#{addendum}"
+    %{<a class="manpage-reference" href="#{url}">#{page}(#{section})</a>#{addendum}}
   end
 
   # You can override this in a derived class to compute URLs as you like!
