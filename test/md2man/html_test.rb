@@ -55,11 +55,19 @@ describe Md2Man::HTML do
     OUTPUT
   end
 
-  it 'renders references to other man pages as hyperlinks' do
+  it 'renders references to other man pages as hyperlinks in middle of line' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |convert them from markdown(7) into roff(7), using
     INPUT
       |<p>convert them from <a href="markdown.7.html">markdown(7)</a> into <a href="roff.7.html">roff(7)</a>, using</p>
+    OUTPUT
+  end
+
+  it 'renders references to other man pages as hyperlinks at beginning of line' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |markdown(1) into roff(2)
+    INPUT
+      |<p><a href="markdown.1.html">markdown(1)</a> into <a href="roff.2.html">roff(2)</a></p>
     OUTPUT
   end
 end
