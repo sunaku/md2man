@@ -156,7 +156,7 @@ module Roff
   def codespan code
     # NOTE: this double font sequence gives us the best of both worlds:
     # man(1) shows it in bold and `groff -Thtml` shows it in monospace
-    "\\fB\\fC#{code}\\fR"
+    "\\fB\\fC#{super}\\fR"
   end
 
   def link link, title, content

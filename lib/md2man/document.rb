@@ -49,6 +49,10 @@ module Document
     warn "md2man/document: normal_paragraph not implemented: #{text.inspect}"
   end
 
+  def codespan code
+    decode_references code, true
+  end
+
 protected
 
   def encode object

@@ -652,4 +652,13 @@ describe Md2Man::Roff do
       |.RE
     OUTPUT
   end
+
+  it 'does not render references inside code spans' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |this is a code span `containing markdown(7), roff(7), and` much more!
+    INPUT
+      |.PP
+      |this is a code span \\fB\\fCcontaining markdown(7), roff(7), and\\fR much more!
+    OUTPUT
+  end
 end
