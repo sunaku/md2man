@@ -2,19 +2,16 @@ module Md2Man
 module Document
 
   def preprocess document
-    document
+    @references = {}
+    encode_references document
   end
 
   def postprocess document
-    # encode references to other manual pages
-    document.gsub(/(\S+)\(([1-9nol])\)([[:punct:]]?\s*)/) do |match|
-      captures = $~.captures
-      if $` !~ /.*^\.nf\b/m || $' =~ /^\.fi\b/
-        reference(*captures)
-      else
-        match
-      end
-    end
+    decode_references document
+  end
+
+  def block_code code, language
+    decode_references code, true
   end
 
   def reference page, section, addendum
@@ -50,6 +47,25 @@ module Document
 
   def normal_paragraph text
     warn "md2man/document: normal_paragraph not implemented: #{text.inspect}"
+  end
+
+private
+
+  def encode_references text
+    text.gsub(/(\S+)\(([1-9nol])\)([[:punct:]]?[^\n\S]*)/) do
+      match = $~
+      key = "[#{match.object_id}]"
+      @references[key] = match
+      key
+    end
+  end
+
+  def decode_references text, verbatim=false
+    @references.select do |key, match|
+      replacement = verbatim ? match.to_s : reference(*match.captures)
+      text.sub! key, replacement
+    end.each_key {|key| @references.delete key }
+    text
   end
 
 end
