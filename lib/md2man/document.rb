@@ -7,7 +7,14 @@ module Document
 
   def postprocess document
     # encode references to other manual pages
-    document.gsub(/(\S+)\(([1-9nol])\)([[:punct:]]?\s*)/){ reference $1,$2,$3 }
+    document.gsub(/(\S+)\(([1-9nol])\)([[:punct:]]?\s*)/) do |match|
+      captures = $~.captures
+      if $` !~ /.*^\.nf\b/m || $' =~ /^\.fi\b/
+        reference(*captures)
+      else
+        match
+      end
+    end
   end
 
   def reference page, section, addendum

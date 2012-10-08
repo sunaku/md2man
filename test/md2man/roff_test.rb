@@ -635,4 +635,21 @@ describe Md2Man::Roff do
       |using
     OUTPUT
   end
+
+  it 'does not render references inside code blocks' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    this is a code block
+      |    containing markdown(7),
+      |    roff(7), and much more!
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |this is a code block
+      |containing markdown(7),
+      |roff(7), and much more!
+      |.fi
+      |.RE
+    OUTPUT
+  end
 end
