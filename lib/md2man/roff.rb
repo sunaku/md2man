@@ -223,7 +223,7 @@ private
   end
 
   def encode_table_cell cell
-    key = cell.object_id.to_s
+    key = encode(cell)
     @table_cells[key] = cell
     key + TABLE_CELL_DELIM
   end

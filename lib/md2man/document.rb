@@ -49,12 +49,18 @@ module Document
     warn "md2man/document: normal_paragraph not implemented: #{text.inspect}"
   end
 
+protected
+
+  def encode object
+    "\0#{object.object_id}\0"
+  end
+
 private
 
   def encode_references text
     text.gsub(/(\S+)\(([1-9nol])\)([[:punct:]]?[^\n\S]*)/) do
       match = $~
-      key = "[#{match.object_id}]"
+      key = encode(match)
       @references[key] = match
       key
     end
