@@ -23,8 +23,20 @@ module HTML
   end
 
   #---------------------------------------------------------------------------
+  # block-level processing
+  #---------------------------------------------------------------------------
+
+  def block_code code, language
+    "<pre>#{codespan(super)}</pre>"
+  end
+
+  #---------------------------------------------------------------------------
   # span-level processing
   #---------------------------------------------------------------------------
+
+  def codespan code
+    "<code>#{super}</code>"
+  end
 
   def reference page, section, addendum
     url = reference_url(page, section)

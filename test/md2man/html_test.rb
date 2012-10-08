@@ -70,4 +70,25 @@ describe Md2Man::HTML do
       |<p><a class="manpage-reference" href="markdown.1.html">markdown(1)</a> into <a class="manpage-reference" href="roff.2.html">roff(2)</a></p>
     OUTPUT
   end
+
+  it 'does not render references inside code blocks' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    this is a code block
+      |    containing markdown(7),
+      |    roff(7), and much more!
+    INPUT
+      |<pre><code>this is a code block
+      |containing markdown(7),
+      |roff(7), and much more!
+      |</code></pre>
+    OUTPUT
+  end
+
+  it 'does not render references inside code spans' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |this is a code span `containing markdown(7), roff(7), and` much more!
+    INPUT
+      |<p>this is a code span <code>containing markdown(7), roff(7), and</code> much more!</p>
+    OUTPUT
+  end
 end
