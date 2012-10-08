@@ -1,6 +1,10 @@
 module Md2Man
 module Document
 
+  #---------------------------------------------------------------------------
+  # document-level processing
+  #---------------------------------------------------------------------------
+
   def preprocess document
     @references = {}
     encode_references document
@@ -10,16 +14,34 @@ module Document
     decode_references document
   end
 
+  #---------------------------------------------------------------------------
+  # block-level processing
+  #---------------------------------------------------------------------------
+
+  # This method blocks Redcarpet's default behavior, which cannot be accessed
+  # using super() due to the limitation of how Redcarpet is implemented in C.
+  # See https://github.com/vmg/redcarpet/issues/51 for the complete details.
+  #
+  # You MUST override this method in derived classes and call super() therein:
+  #
+  #   def block_code code, language
+  #     code = super
+  #     # now do something with code
+  #   end
+  #
   def block_code code, language
     decode_references code, true
   end
 
-  def reference page, section, addendum
-    warn "md2man/document: reference not implemented: #{page}(#{section})"
-  end
-
   PARAGRAPH_INDENT = /^\s*$|^  (?=\S)/
 
+  # This method blocks Redcarpet's default behavior, which cannot be accessed
+  # using super() due to the limitation of how Redcarpet is implemented in C.
+  # See https://github.com/vmg/redcarpet/issues/51 for the complete details.
+  #
+  # We don't call super() here deliberately: to replace paragraph nodes with
+  # normal_paragraph, tagged_paragraph, or indented_paragraph as appropriate.
+  #
   def paragraph text
     head, *body = text.lines.to_a
     head_indented = head =~ PARAGRAPH_INDENT
@@ -49,8 +71,27 @@ module Document
     warn "md2man/document: normal_paragraph not implemented: #{text.inspect}"
   end
 
+  #---------------------------------------------------------------------------
+  # span-level processing
+  #---------------------------------------------------------------------------
+
+  # This method blocks Redcarpet's default behavior, which cannot be accessed
+  # using super() due to the limitation of how Redcarpet is implemented in C.
+  # See https://github.com/vmg/redcarpet/issues/51 for the complete details.
+  #
+  # You MUST override this method in derived classes and call super() therein.
+  #
+  #   def codespan code
+  #     code = super
+  #     # now do something with code
+  #   end
+  #
   def codespan code
     decode_references code, true
+  end
+
+  def reference page, section, addendum
+    warn "md2man/document: reference not implemented: #{page}(#{section})"
   end
 
 protected
