@@ -1,3 +1,4 @@
+require 'cgi'
 require 'md2man/document'
 
 module Md2Man
@@ -35,7 +36,7 @@ module HTML
   #---------------------------------------------------------------------------
 
   def codespan code
-    "<code>#{super}</code>"
+    "<code>#{CGI.escapeHTML(super)}</code>"
   end
 
   def reference page, section, addendum
