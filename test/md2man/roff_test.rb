@@ -661,4 +661,29 @@ describe Md2Man::Roff do
       |this is a code span \\fB\\fCcontaining markdown(7), roff(7), and\\fR much more!
     OUTPUT
   end
+
+  it 'renders references to manual pages present on my linux box' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |man(1)
+      |man-pages(7)
+      |ld.so(8)
+      |ld-linux.so(8)
+      |ld-linux(8)
+      |aio.h(0p)
+      |vi(1p)
+      |vfork(3p)
+      |exit(3tcl)
+    INPUT
+      |.PP
+      |.BR man (1)
+      |.BR man-pages (7)
+      |.BR ld.so (8)
+      |.BR ld-linux.so (8)
+      |.BR ld-linux (8)
+      |.BR aio.h (0p)
+      |.BR vi (1p)
+      |.BR vfork (3p)
+      |.BR exit (3tcl)
+    OUTPUT
+  end
 end

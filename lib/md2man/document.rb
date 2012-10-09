@@ -103,7 +103,9 @@ protected
 private
 
   def encode_references text
-    text.gsub(/(\S+)\(([1-9nol])\)([[:punct:]]?[^\n\S]*)/) do
+    # the [^\n\S] captures all non-newline whitespace
+    # basically, it's meant to be \s but excluding \n
+    text.gsub(/([\w\-\.]+)\((\w+)\)(\S*[^\n\S]*)/) do
       match = $~
       key = encode(match)
       @references[key] = match
