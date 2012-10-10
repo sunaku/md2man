@@ -1,3 +1,31 @@
+## Version 1.3.1 (2012-10-09)
+
+Patch:
+
+  * roff: do not render references inside code blocks.
+
+  * roff: do not render references inside code spans.
+
+  * roff: fix single-line indented paragraph detection.
+
+  * roff: also indent block\_code just like block\_quote.
+
+  * roff: add paragraph above block\_quote for spacing.
+
+  * roff: render code blocks as paragraphs for spacing.
+
+    Otherwise there's not enough space between the previous paragraph and
+    the code block: it appears on the next line and appears ugly in man(1).
+
+  * document: make reference regexp match more manpages.
+
+Other:
+
+  * document: stronger digest encoding using NUL bytes.
+
+  * document: super() can't reach Redcarpet's renderer classes.
+    See https://github.com/vmg/redcarpet/issues/51 for details.
+
 ## Version 1.3.0 (2012-09-27)
 
 Minor:

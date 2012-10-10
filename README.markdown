@@ -18,9 +18,10 @@ documents into UNIX manual pages (really [Roff] documents) using [Redcarpet].
 Try converting [this example Markdown file][example] into a UNIX manual page:
 
     md2man EXAMPLE.markdown > EXAMPLE.1
-    man EXAMPLE.1
+    man -l EXAMPLE.1
 
-![Obligatory screenshot of md2man(1) in action!](http://ompldr.org/vYnFvbw)
+![Obligatory screenshot of md2man(1) in action!](
+https://raw.github.com/sunaku/md2man/master/EXAMPLE.png)
 
 ### Limitations
 
@@ -42,9 +43,9 @@ It issues a warning when it encounters these instead.  Patches are welcome!
 
     git clone git://github.com/sunaku/md2man
     cd md2man
-    bundle install --binstubs=bundle_bin
-    bundle_bin/md2man --help  # run it directly
-    bundle exec rake -T       # packaging tasks
+    bundle install
+    bundle exec md2man --help  # run it directly
+    bundle exec rake -T        # packaging tasks
 
 ## Usage
 
