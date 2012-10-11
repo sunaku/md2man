@@ -347,6 +347,31 @@ describe Md2Man::Roff do
     OUTPUT
   end
 
+  it 'escapes backslashes inside code blocks' do
+    # NOTE: we have to escape backslashes in the INPUT to
+    #       prevent Ruby from interpreting them as escapes
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    _______      _______
+      |     ___  /___________ /__
+      |      _  __/ __ \\  __/ /_/
+      |      / /_/ /_/ / / / ,\\
+      |      \\__/\\____/_/ /_/|_\\
+      |                 >>>------>
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |_______      _______
+      | ___  /___________ /__
+      |  _  __/ __ \\\\  __/ /_/
+      |  / /_/ /_/ / / / ,\\\\
+      |  \\\\__/\\\\____/_/ /_/|_\\\\
+      |             >>>------>
+      |.fi
+      |.RE
+    OUTPUT
+  end
+
   it 'renders code spans' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |here is `some code` for you

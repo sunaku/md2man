@@ -42,7 +42,8 @@ module Roff
   end
 
   def block_code code, language
-    block_quote "\n.nf\n#{super.chomp}\n.fi\n"
+    code = super.chomp.gsub(/\\/, '\&\&')
+    block_quote "\n.nf\n#{code}\n.fi\n"
   end
 
   def block_quote quote
