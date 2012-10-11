@@ -42,8 +42,8 @@ module Roff
   end
 
   def block_code code, language
-    code = super.chomp.gsub(/\\/, '\&\&')
-    block_quote "\n.nf\n#{code}\n.fi\n"
+    code = escape_backslashes(super)
+    block_quote "\n.nf\n#{code.chomp}\n.fi\n"
   end
 
   def block_quote quote
@@ -155,9 +155,10 @@ module Roff
   end
 
   def codespan code
+    code = escape_backslashes(super)
     # NOTE: this double font sequence gives us the best of both worlds:
     # man(1) shows it in bold and `groff -Thtml` shows it in monospace
-    "\\fB\\fC#{super}\\fR"
+    "\\fB\\fC#{code}\\fR"
   end
 
   def link link, title, content
@@ -202,6 +203,10 @@ module Roff
   end
 
 private
+
+  def escape_backslashes text
+    text.gsub(/\\/, '\&\&')
+  end
 
   def remove_leading_pp text
     text.sub(/\A\n\.PP\n/, '')

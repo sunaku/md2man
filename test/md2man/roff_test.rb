@@ -381,6 +381,17 @@ describe Md2Man::Roff do
     OUTPUT
   end
 
+  it 'escapes backslashes inside code spans' do
+    # NOTE: we have to escape backslashes in the INPUT to
+    #       prevent Ruby from interpreting them as escapes
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |here is `so\\m\\e \\c\\ode` for you
+    INPUT
+      |.PP
+      |here is \\fB\\fCso\\\\m\\\\e \\\\c\\\\ode\\fR for you
+    OUTPUT
+  end
+
   it 'renders hyperlinks' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |Send [me](mailto:foo@bar.baz), e-mail.
