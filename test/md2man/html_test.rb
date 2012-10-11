@@ -91,4 +91,25 @@ describe Md2Man::HTML do
       |<p>this is a code span <code>containing markdown(7), roff(7), and</code> much more!</p>
     OUTPUT
   end
+
+  it 'escapes backslashes inside code blocks' do
+    # NOTE: we have to escape backslashes in the INPUT to
+    #       prevent Ruby from interpreting them as escapes
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    _______      _______
+      |     ___  /___________ /__
+      |      _  __/ __ \\  __/ /_/
+      |      / /_/ /_/ / / / ,\\
+      |      \\__/\\____/_/ /_/|_\\
+      |                 >>>------>
+    INPUT
+      |<pre><code>_______      _______
+      | ___  /___________ /__
+      |  _  __/ __ \\  __/ /_/
+      |  / /_/ /_/ / / / ,\\
+      |  \\__/\\____/_/ /_/|_\\
+      |             &gt;&gt;&gt;------&gt;
+      |</code></pre>
+    OUTPUT
+  end
 end
