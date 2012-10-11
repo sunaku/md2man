@@ -104,8 +104,9 @@ md2man extends [Markdown] syntax in the following ways, as provisioned in the
 
 md2man extends [Markdown] semantics in the following ways:
 
-  * There can be at most one top-level heading (H1).  It is emitted as `.TH`
-    in the [Roff] output, defining the UNIX manual page's header and footer.
+  * The first top-level heading (H1) found in the document is emitted as `.TH`
+    in the roff(7) output to define the UNIX manual page's header and footer.
+    Any subsequent top-level headings (H1) are treated as second-level (H2).
 
 ## License
 

@@ -12,6 +12,7 @@ module Roff
   def preprocess document
     @ordered_list_id = 0
     @table_cells = {}
+    @h1_seen = false
     super
   end
 
@@ -57,7 +58,13 @@ module Roff
   def header text, level
     macro =
       case level
-      when 1 then :TH
+      when 1
+        if @h1_seen
+          :SH
+        else
+          @h1_seen = true
+          :TH
+        end
       when 2 then :SH
       else :SS
       end

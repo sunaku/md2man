@@ -229,6 +229,30 @@ describe Md2Man::Roff do
     OUTPUT
   end
 
+  it 'renders non-first top-level headings as 2nd-level headings' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |just some h1 heading
+      |====================
+      |
+      |yet another h1 heading
+      |======================
+    INPUT
+      |.TH just some h1 heading
+      |.SH yet another h1 heading
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |BINMAN 1 "2011-11-05" "1.1.0" "Ruby User Manuals"
+      |=================================================
+      |
+      |DUPMAN 1 "2011-11-05" "1.1.0" "Ruby User Manuals"
+      |=================================================
+    INPUT
+      |.TH BINMAN 1 "2011\\-11\\-05" "1.1.0" "Ruby User Manuals"
+      |.SH DUPMAN 1 "2011\\-11\\-05" "1.1.0" "Ruby User Manuals"
+    OUTPUT
+  end
+
   it 'renders 2nd-level headings' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |just some h2 heading
