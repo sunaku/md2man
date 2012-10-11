@@ -1,5 +1,5 @@
 require 'md2man'
-require 'rake'
+require 'rake/tasklib'
 
 module Md2Man
   class Task < Rake::TaskLib
