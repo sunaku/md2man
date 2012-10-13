@@ -1,3 +1,11 @@
+## Version 1.3.2 (2012-10-13)
+
+Patch:
+
+  * roff: escape backslashes inside codespan nodes too
+
+  * roff: escape backslashes inside block\_code nodes
+
 ## Version 1.3.1 (2012-10-09)
 
 Patch:
