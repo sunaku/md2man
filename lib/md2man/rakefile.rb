@@ -37,7 +37,7 @@ file 'man/index.html' => webs do |t|
     dir_webs.each do |web|
       page = web.pathmap('%n').sub(/\.(.+)$/, '(\1)')
       link = %{<a href="#{subdir}/#{web.pathmap('%f')}">#{page}</a>}
-      desc = File.read(web).scan(%r{^<h2>NAME</h2>(.+?)^<h2>}m).flatten.first.
+      desc = File.read(web).scan(%r{<h2.*?>NAME</h2>(.+?)<h2}m).flatten.first.
              to_s.split(/\s+-\s+/, 2).last.to_s.gsub(/<.+?>/, '') # strip HTML
       output << "<dl><dt>#{link}</dt><dd>#{desc}</dd></dl>"
     end
