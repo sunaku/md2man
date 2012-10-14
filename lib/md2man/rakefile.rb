@@ -1,33 +1,42 @@
 require 'rake'
 
+# build man pages before building ruby gem using bundler
+%w[build install release].each {|t| task t => :md2man }
+
+#-----------------------------------------------------------------------------
+desc 'Build manual pages from Markdown files in man/.'
+task :md2man => ['md2man:man', 'md2man:web']
+#-----------------------------------------------------------------------------
+
 mkds = FileList['man/man*/*.{markdown,mkd,md}']
 mans = mkds.pathmap('%X')
 webs = mans.pathmap('%p.html')
 
-desc 'Build manual pages from Markdown files in man/.'
-task :md2man => ['md2man:man', 'md2man:web']
-
-define_render_task = lambda do |src, dst, render|
+render_file_task = lambda do |src, dst, renderer|
   directory dir = dst.pathmap('%d')
   file dst => [dir, src] do
     input = File.read(src)
-    output = render.call(input)
+    output = renderer.call(input)
     File.open(dst, 'w') {|f| f << output }
   end
 end
 
+#-----------------------------------------------------------------------------
 desc 'Build UNIX manual pages from Markdown files in man/.'
 task 'md2man:man' => mans
+#-----------------------------------------------------------------------------
 
 mkds.zip(mans).each do |src, dst|
-  define_render_task.call src, dst, lambda {|input|
+  render_file_task.call src, dst, lambda {|input|
     require 'md2man/engine'
     Md2Man::ENGINE.render(input)
   }
 end
 
+#-----------------------------------------------------------------------------
 desc 'Build HTML manual pages from Markdown files in man/.'
 task 'md2man:web' => 'man/index.html'
+#-----------------------------------------------------------------------------
 
 file 'man/index.html' => webs do |t|
   output = []
@@ -35,8 +44,8 @@ file 'man/index.html' => webs do |t|
     subdir = dir.pathmap('%f')
     output << %{<h2 id="#{subdir}">#{subdir}</h2>}
     dir_webs.each do |web|
-      page = web.pathmap('%n').sub(/\.(.+)$/, '(\1)')
-      link = %{<a href="#{subdir}/#{web.pathmap('%f')}">#{page}</a>}
+      title = web.pathmap('%n').sub(/\.(.+)$/, '(\1)')
+      link = %{<a href="#{subdir}/#{web.pathmap('%f')}">#{title}</a>}
       info = File.read(web).scan(%r{<h2.*?>NAME</h2>(.+?)<h2}m).flatten.first.
              to_s.split(/\s+-\s+/, 2).last.to_s.gsub(/<.+?>/, '') # strip HTML
       output << "<dl><dt>#{link}</dt><dd>#{info}</dd></dl>"
@@ -49,7 +58,7 @@ file 'man/index.html' => webs do |t|
 end
 
 mkds.zip(webs).each do |src, dst|
-  define_render_task.call src, dst, lambda {|input|
+  render_file_task.call src, dst, lambda {|input|
     require 'md2man/html/engine'
     output = Md2Man::HTML::ENGINE.render(input)
     navbar = '<div class="manpath-navigation">' + [
@@ -60,6 +69,3 @@ mkds.zip(webs).each do |src, dst|
     [navbar, output, navbar].join('<hr/>')
   }
 end
-
-# build man pages before building ruby gem using bundler
-%w[build install release].each {|t| task t => :md2man }
