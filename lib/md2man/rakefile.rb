@@ -31,14 +31,18 @@ task 'md2man:web' => 'man/index.html'
 
 file 'man/index.html' => webs do |t|
   output = []
-  webs.group_by {|web| web.pathmap('%-1d') }.each do |dir, dir_webs|
-    output << "<h2>#{dir}</h2>"
+  dirs = webs.group_by {|web| web.pathmap('%d') }.each do |dir, dir_webs|
+    subdir = dir.pathmap('%f')
+    output << %{<h2 id="#{subdir}">#{subdir}</h2>}
     dir_webs.each do |web|
       page = web.pathmap('%n').sub(/\.(.+)$/, '(\1)')
-      link = %{<a href="#{dir}/#{web.pathmap('%f')}">#{page}</a>}
+      link = %{<a href="#{subdir}/#{web.pathmap('%f')}">#{page}</a>}
       desc = File.read(web).scan(%r{^<h2>NAME</h2>(.+?)^<h2>}m).flatten.first.
              to_s.split(/\s+-\s+/, 2).last.to_s.gsub(/<.+?>/, '') # strip HTML
       output << "<dl><dt>#{link}</dt><dd>#{desc}</dd></dl>"
+    end
+    File.open("#{dir}/index.html", 'w') do |f|
+      f << %{<meta http-equiv="refresh" content="0;url=../index.html##{subdir}"/>}
     end
   end
   File.open(t.name, 'w') {|f| f.puts output }
