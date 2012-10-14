@@ -51,7 +51,13 @@ end
 mkds.zip(webs).each do |src, dst|
   define_render_task.call src, dst, lambda {|input|
     require 'md2man/html/engine'
-    Md2Man::HTML::ENGINE.render(input)
+    output = Md2Man::HTML::ENGINE.render(input)
+    navbar = '<div class="manpath-navigation">' + [
+      %{<a href="../index.html">#{dst.pathmap('%1d')}</a>},
+      %{<a href="index.html">#{dst.pathmap('%-1d')}</a>},
+      %{<a href="">#{dst.pathmap('%n')}</a>},
+    ].join(' &rarr; ') + '</div>'
+    [navbar, output, navbar].join('<hr/>')
   }
 end
 
