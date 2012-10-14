@@ -1,5 +1,6 @@
-module Md2Man
-module Document
+require 'md2man'
+
+module Md2Man::Document
 
   #---------------------------------------------------------------------------
   # document-level processing
@@ -121,5 +122,4 @@ private
     text
   end
 
-end
 end

@@ -1,11 +1,10 @@
 require 'redcarpet'
 require 'md2man/html'
 
-module Md2Man
-module HTML
+module Md2Man::HTML
 
   class Engine < Redcarpet::Render::HTML
-    include HTML
+    include Md2Man::HTML
   end
 
   ENGINE = Redcarpet::Markdown.new(Engine,
@@ -17,5 +16,4 @@ module HTML
     :fenced_code_blocks => true
   )
 
-end
 end

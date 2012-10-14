@@ -1,10 +1,9 @@
 require 'cgi'
 require 'md2man/document'
 
-module Md2Man
-module HTML
+module Md2Man::HTML
 
-  include Document
+  include Md2Man::Document
 
   #---------------------------------------------------------------------------
   # block-level processing
@@ -51,5 +50,4 @@ module HTML
     "../man#{section}/#{page}.#{section}.html"
   end
 
-end
 end

@@ -63,5 +63,5 @@ md2man-html(1), md2man-rake(1)
 require 'binman'
 BinMan.help
 
-require 'md2man'
-puts Md2Man::ENGINE.render(ARGF.read)
+require 'md2man/roff/engine'
+puts Md2Man::Roff::ENGINE.render(ARGF.read)

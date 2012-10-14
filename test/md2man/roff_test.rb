@@ -7,11 +7,11 @@
 # man 7 groff
 
 require 'test_helper'
-require 'md2man/engine'
+require 'md2man/roff/engine'
 
 describe 'roff engine' do
   before do
-    @markdown = Md2Man::ENGINE
+    @markdown = Md2Man::Roff::ENGINE
   end
 
   SPACE = 0x20.chr

@@ -30,8 +30,8 @@ task 'md2man:man' => mans
 
 mkds.zip(mans).each do |src, dst|
   render_file_task.call src, dst, lambda {|input|
-    require 'md2man/engine'
-    Md2Man::ENGINE.render(input)
+    require 'md2man/roff/engine'
+    Md2Man::Roff::ENGINE.render(input)
   }
 end
 

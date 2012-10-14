@@ -1,9 +1,8 @@
 require 'md2man/document'
 
-module Md2Man
-module Roff
+module Md2Man::Roff
 
-  include Document
+  include Md2Man::Document
 
   #---------------------------------------------------------------------------
   # document-level processing
@@ -863,5 +862,4 @@ private
     0x27e9  => "\\[ra]",
   }
 
-end
 end
