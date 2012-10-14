@@ -59,7 +59,7 @@ describe Md2Man::HTML do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |convert them from markdown(7) into roff(7), using
     INPUT
-      |<p>convert them from <a class="manpage-reference" href="markdown.7.html">markdown(7)</a> into <a class="manpage-reference" href="roff.7.html">roff(7)</a>, using</p>
+      |<p>convert them from <a class="manpage-reference" href="../man7/markdown.7.html">markdown(7)</a> into <a class="manpage-reference" href="../man7/roff.7.html">roff(7)</a>, using</p>
     OUTPUT
   end
 
@@ -67,7 +67,7 @@ describe Md2Man::HTML do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |markdown(1) into roff(2)
     INPUT
-      |<p><a class="manpage-reference" href="markdown.1.html">markdown(1)</a> into <a class="manpage-reference" href="roff.2.html">roff(2)</a></p>
+      |<p><a class="manpage-reference" href="../man1/markdown.1.html">markdown(1)</a> into <a class="manpage-reference" href="../man2/roff.2.html">roff(2)</a></p>
     OUTPUT
   end
 

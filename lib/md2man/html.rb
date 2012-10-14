@@ -46,7 +46,7 @@ module HTML
 
   # You can override this in a derived class to compute URLs as you like!
   def reference_url page, section
-    "#{page}.#{section}.html"
+    "../man#{section}/#{page}.#{section}.html"
   end
 
 end

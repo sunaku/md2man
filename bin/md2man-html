@@ -23,11 +23,12 @@ See md2man(1) for details about the document format and Markdown extensions.
 ### Cross linking
 
 References to other manual pages are converted into hyperlinks that have
-class="manpage-reference" and href="${page}.${section}.html" attributes.
+class="manpage-reference" and href="../man${section}/${page}.${section}.html"
+attributes.
 
 For example, the markdown(7) reference would be converted into HTML as:
 
-    <a class="manpage-reference" href="markdown.7.html">markdown(7)</a>
+    <a class="manpage-reference" href="../man7/markdown.7.html">markdown(7)</a>
 
 ## OPTIONS
 
