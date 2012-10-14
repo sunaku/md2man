@@ -1,3 +1,25 @@
+## Version 1.4.0 (2012-10-14)
+
+Minor:
+
+  * roff: emit non-first H1 headings as H2 headings
+
+  * html: add `Md2Man::HTML::Engine` class for HTML manual page generation
+
+  * html: add md2man-html(1) bin script for command line access to the above
+
+  * html: add ID attributes on all headings for easy permalinking
+
+  * rake: add `md2man/rakefile` to process markdown files in man/
+
+    This library provides a `rake md2man` task that builds UNIX and HTML
+    manual pages from Markdown files (with ".markdown", ".mkd", or ".md"
+    extension) inside your `man/man*/` directories.  It also provides
+    sub-tasks to build *only* UNIX or HTML manual pages separately.
+
+    It also hooks into Bundler's gem packaging tasks to automatically build
+    your manual pages for packaging into a gem.  See the README for details.
+
 ## Version 1.3.2 (2012-10-13)
 
 Patch:
