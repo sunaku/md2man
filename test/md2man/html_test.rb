@@ -1,13 +1,9 @@
 require 'test_helper'
 require 'md2man/html/engine'
 
-describe Md2Man::HTML do
+describe 'html engine' do
   before do
-    @markdown = Redcarpet::Markdown.new(
-      Md2Man::HTML::Engine,
-      :tables => true,
-      :autolink => true,
-    )
+    @markdown = Redcarpet::Markdown.new(Md2Man::HTML::Engine)
   end
 
   def heredoc document

@@ -9,7 +9,7 @@
 require 'test_helper'
 require 'md2man/engine'
 
-describe Md2Man::Roff do
+describe 'roff engine' do
   before do
     @markdown = Redcarpet::Markdown.new(
       Md2Man::Engine,
