@@ -8,7 +8,7 @@ desc 'Build manual pages from Markdown files in man/.'
 task :md2man => ['md2man:man', 'md2man:web']
 #-----------------------------------------------------------------------------
 
-mkds = FileList['man/man*/*.{markdown,mkd,md}']
+mkds = FileList['man/**/*.{markdown,mkd,md}']
 mans = mkds.pathmap('%X')
 webs = mans.pathmap('%p.html')
 
