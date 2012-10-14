@@ -23,12 +23,14 @@ module HTML
     "<dl><dd>#{text}</dd></dl>"
   end
 
-  #---------------------------------------------------------------------------
-  # block-level processing
-  #---------------------------------------------------------------------------
-
   def block_code code, language
     "<pre>#{codespan(super)}</pre>"
+  end
+
+  def header text, level
+    id = text.gsub(/<.+?>/, '-').        # strip all HTML tags
+      gsub(/\W+/, '-').gsub(/^-|-$/, '') # fold non-word chars
+    %{<h#{level} id="#{id}">#{text}</h#{level}>}
   end
 
   #---------------------------------------------------------------------------

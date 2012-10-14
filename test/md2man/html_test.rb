@@ -108,4 +108,20 @@ describe 'html engine' do
       |</code></pre>
     OUTPUT
   end
+
+  it 'adds ID attributes on headings for permalinking' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |# foo *BAR*
+      |## bar BAZ
+      |### --BAZ-QUX--
+      |#### qux (MOZ)
+      |##### {m}oz END
+    INPUT
+<h1 id="foo-BAR">foo <em>BAR</em></h1>\
+<h2 id="bar-BAZ">bar BAZ</h2>\
+<h3 id="BAZ-QUX">--BAZ-QUX--</h3>\
+<h4 id="qux-MOZ">qux (MOZ)</h4>\
+<h5 id="m-oz-END">{m}oz END</h5>
+    OUTPUT
+  end
 end
