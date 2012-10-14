@@ -27,7 +27,22 @@ mkds.zip(mans).each do |src, dst|
 end
 
 desc 'Build HTML manual pages from Markdown files in man/.'
-task 'md2man:web' => webs
+task 'md2man:web' => 'man/index.html'
+
+file 'man/index.html' => webs do |t|
+  output = []
+  webs.group_by {|web| web.pathmap('%-1d') }.each do |dir, dir_webs|
+    output << "<h2>#{dir}</h2>"
+    dir_webs.each do |web|
+      page = web.pathmap('%n').sub(/\.(.+)$/, '(\1)')
+      link = %{<a href="#{dir}/#{web.pathmap('%f')}">#{page}</a>}
+      desc = File.read(web).scan(%r{^<h2>NAME</h2>(.+?)^<h2>}m).flatten.first.
+             to_s.split(/\s+-\s+/, 2).last.to_s.gsub(/<.+?>/, '') # strip HTML
+      output << "<dl><dt>#{link}</dt><dd>#{desc}</dd></dl>"
+    end
+  end
+  File.open(t.name, 'w') {|f| f.puts output }
+end
 
 mkds.zip(webs).each do |src, dst|
   define_render_task.call src, dst, lambda {|input|
