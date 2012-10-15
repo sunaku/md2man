@@ -29,7 +29,7 @@ module Md2Man
       @options = OPTIONS.dup
       @options.merge!(options[:options]) if options[:options]
 
-      @web = options.fetch(:web,true)
+      @html = options.fetch(:html,true)
 
       @markdown_files = FileList[FILES]
       @man_page_files = @markdown_files.pathmap('%X')
@@ -56,31 +56,31 @@ module Md2Man
         end
       end
 
-      define_web if @web
+      define_html if @html
     end
 
-    # Defines the md2man:web tasks.
-    def define_web
+    # Defines the md2man:html tasks.
+    def define_html
       require 'md2man/html/engine'
 
-      @web_files = @man_page_files.pathmap('%p.html')
+      @html_files = @man_page_files.pathmap('%p.html')
 
-      task :md2man => 'md2man:web'
+      task :md2man => 'md2man:html'
 
       desc 'Build HTML manual pages from Markdown files in man/.'
-      task 'md2man:web' => 'man/index.html'
+      task 'md2man:html' => 'man/index.html'
 
-      file 'man/index.html' => @web_files do |t|
+      file 'man/index.html' => @html_files do |t|
         output = []
 
-        dirs = @web_files.group_by { |path| path.pathmap('%d') }.each do |dir, dir_webs|
+        dirs = @html_files.group_by { |path| path.pathmap('%d') }.each do |dir, dir_htmls|
           subdir = dir.pathmap('%f')
           output << %{<h2 id="#{subdir}">#{subdir}</h2>}
 
-          dir_webs.each do |web|
-            title = web.pathmap('%n').sub(/\.(.+)$/, '(\1)')
-            link = %{<a href="#{subdir}/#{web.pathmap('%f')}">#{title}</a>}
-            info = File.read(web).scan(%r{<h2.*?>NAME</h2>(.+?)<h2}m).flatten.first.
+          dir_htmls.each do |html|
+            title = html.pathmap('%n').sub(/\.(.+)$/, '(\1)')
+            link = %{<a href="#{subdir}/#{html.pathmap('%f')}">#{title}</a>}
+            info = File.read(html).scan(%r{<h2.*?>NAME</h2>(.+?)<h2}m).flatten.first.
               to_s.split(/\s+-\s+/, 2).last.to_s.gsub(/<.+?>/, '') # strip HTML
             output << "<dl><dt>#{link}</dt><dd>#{info}</dd></dl>"
           end
@@ -93,7 +93,7 @@ module Md2Man
         File.open(t.name, 'w') { |f| f.puts output }
       end
 
-      @markdown_files.zip(@web_files).each do |source, dest|
+      @markdown_files.zip(@html_files).each do |source, dest|
         render(source,dest) do |input|
           output = Md2Man::HTML::ENGINE.render(input)
           navbar = '<div class="manpath-navigation">' + [
