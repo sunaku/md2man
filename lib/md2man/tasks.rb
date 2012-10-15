@@ -44,15 +44,15 @@ module Md2Man
       # build man pages before building ruby gem using bundler
       task :build => 'md2man'
 
-      desc 'Build manual pages from Markdown files in man/.'
+      desc 'Build manual pages from Markdown files in man/'
       task :md2man => 'md2man:man'
 
-      desc 'Build UNIX manual pages from Markdown files in man/.'
+      desc 'Build UNIX manual pages from Markdown files in man/'
       task 'md2man:man' => @man_page_files
 
       @markdown_files.zip(@man_page_files).each do |source,dest|
         render(source,dest) do |input|
-          Md2Man::ENGINE.render(input)
+          markdown_engine.render(input)
         end
       end
 
@@ -67,7 +67,7 @@ module Md2Man
 
       task :md2man => 'md2man:html'
 
-      desc 'Build HTML manual pages from Markdown files in man/.'
+      desc 'Build HTML manual pages from Markdown files in man/'
       task 'md2man:html' => 'man/index.html'
 
       file 'man/index.html' => @html_files do |t|
@@ -95,7 +95,7 @@ module Md2Man
 
       @markdown_files.zip(@html_files).each do |source, dest|
         render(source,dest) do |input|
-          output = Md2Man::HTML::ENGINE.render(input)
+          output = html_engine.render(input)
           navbar = '<div class="manpath-navigation">' + [
             %{<a href="../index.html">#{dest.pathmap('%1d')}</a>},
             %{<a href="index.html">#{dest.pathmap('%-1d')}</a>},
