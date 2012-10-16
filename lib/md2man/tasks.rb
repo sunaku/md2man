@@ -41,9 +41,6 @@ module Md2Man
 
     # Defines the md2man tasks.
     def define
-      # build man pages before building ruby gem using bundler
-      task :build => 'md2man'
-
       desc 'Build manual pages from Markdown files in man/'
       task :md2man => 'md2man:man'
 
