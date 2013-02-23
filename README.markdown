@@ -47,7 +47,7 @@ It issues a warning when it encounters these instead.  Patches are welcome!
     bundle exec md2man --help  # run it directly
     bundle exec rake -T        # packaging tasks
 
-## Usage
+## Usage (for [roff] output)
 
 ### At the command line
 
@@ -58,11 +58,13 @@ It issues a warning when it encounters these instead.  Patches are welcome!
 Use the default renderer:
 
     require 'md2man'
+
     your_roff_output = Md2Man::ENGINE.render(your_markdown_input)
 
 Build your own renderer:
 
     require 'md2man'
+
     engine = Redcarpet::Markdown.new(Md2Man::Engine, your_options_hash)
     your_roff_output = engine.render(your_markdown_input)
 
@@ -88,6 +90,50 @@ Mix-in your own renderer:
 
     engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
     your_roff_output = engine.render(your_markdown_input)
+
+## Usage (for HTML output)
+
+### At the command line
+
+    md2man-html --help
+
+### Inside a Ruby script
+
+Use the default renderer:
+
+    require 'md2man/html/engine'
+
+    your_html_output = Md2Man::HTML::ENGINE.render(your_markdown_input)
+
+Build your own renderer:
+
+    require 'md2man/html/engine'
+
+    engine = Redcarpet::Markdown.new(Md2Man::HTML::Engine, your_options_hash)
+    your_html_output = engine.render(your_markdown_input)
+
+Define your own renderer:
+
+    require 'md2man/html/engine'
+
+    class YourManpageRenderer < Md2Man::HTML::Engine
+      # ... your stuff here ...
+    end
+
+    engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+    your_html_output = engine.render(your_markdown_input)
+
+Mix-in your own renderer:
+
+    require 'md2man/html'
+
+    class YourManpageRenderer < Redcarpet::Render::Base
+      include Md2Man::HTML
+      # ... your stuff here ...
+    end
+
+    engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+    your_html_output = engine.render(your_markdown_input)
 
 ### Document format
 
