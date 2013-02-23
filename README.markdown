@@ -47,13 +47,34 @@ It issues a warning when it encounters these instead.  Patches are welcome!
     bundle exec md2man --help  # run it directly
     bundle exec rake -T        # packaging tasks
 
-## Usage (for [roff] output)
+## Usage
 
-### At the command line
+### Document format
+
+md2man extends [Markdown] syntax in the following ways, as provisioned in the
+`Md2Man::Document` module and defined in its derivative `Md2Man::Roff` module:
+
+  * Paragraphs whose lines are all uniformly indented by two spaces are
+    considered to be "indented paragraphs".  They are unindented accordingly
+    before emission as `.IP` in the [roff] output.
+
+  * Paragraphs whose subsequent lines (all except the first) are uniformly
+    indented by two spaces are considered to be a "tagged paragraphs".  They
+    are unindented accordingly before emission as `.TP` in the [roff] output.
+
+md2man extends [Markdown] semantics in the following ways:
+
+  * The first top-level heading (H1) found in the document is emitted as `.TH`
+    in the roff(7) output to define the UNIX manual page's header and footer.
+    Any subsequent top-level headings (H1) are treated as second-level (H2).
+
+### For [roff] output
+
+#### At the command line
 
     md2man --help
 
-### Inside a Ruby script
+#### Inside a Ruby script
 
 Use the default renderer:
 
@@ -91,13 +112,34 @@ Mix-in your own renderer:
     engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
     your_roff_output = engine.render(your_markdown_input)
 
-## Usage (for HTML output)
+#### Pre-building man pages
 
-### At the command line
+Add the following lines to your gemspec:
+
+    s.files += Dir['man/man?/*.?']
+    s.add_development_dependency 'md2man', '~> 1.4'
+
+Add the following line to your Rakefile:
+
+    require 'md2man/rakefile'
+
+You now have a `rake md2man` task that builds manual pages from Markdown files
+(with ".markdown", ".mkd", or ".md" extension) inside `man/man*/` directories.
+There are also sub-tasks to build manual pages individually as [roff] or HTML.
+
+If you're using Bundler, this task also hooks into Bundler's gem packaging
+tasks and ensures that your manual pages are built for packaging into a gem:
+
+    bundle exec rake build
+    gem spec pkg/*.gem | fgrep man/man
+
+### For HTML output
+
+#### At the command line
 
     md2man-html --help
 
-### Inside a Ruby script
+#### Inside a Ruby script
 
 Use the default renderer:
 
@@ -134,46 +176,6 @@ Mix-in your own renderer:
 
     engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
     your_html_output = engine.render(your_markdown_input)
-
-### Document format
-
-md2man extends [Markdown] syntax in the following ways, as provisioned in the
-`Md2Man::Document` module and defined in its derivative `Md2Man::Roff` module:
-
-  * Paragraphs whose lines are all uniformly indented by two spaces are
-    considered to be "indented paragraphs".  They are unindented accordingly
-    before emission as `.IP` in the [roff] output.
-
-  * Paragraphs whose subsequent lines (all except the first) are uniformly
-    indented by two spaces are considered to be a "tagged paragraphs".  They
-    are unindented accordingly before emission as `.TP` in the [roff] output.
-
-md2man extends [Markdown] semantics in the following ways:
-
-  * The first top-level heading (H1) found in the document is emitted as `.TH`
-    in the roff(7) output to define the UNIX manual page's header and footer.
-    Any subsequent top-level headings (H1) are treated as second-level (H2).
-
-### Pre-building man pages
-
-Add the following lines to your gemspec:
-
-    s.files += Dir['man/man?/*.?']
-    s.add_development_dependency 'md2man', '~> 1.4'
-
-Add the following line to your Rakefile:
-
-    require 'md2man/rakefile'
-
-You now have a `rake md2man` task that builds manual pages from Markdown files
-(with ".markdown", ".mkd", or ".md" extension) inside `man/man*/` directories.
-There are also sub-tasks to build manual pages individually as [roff] or HTML.
-
-If you're using Bundler, this task also hooks into Bundler's gem packaging
-tasks and ensures that your manual pages are built for packaging into a gem:
-
-    bundle exec rake build
-    gem spec pkg/*.gem | fgrep man/man
 
 ## License
 
