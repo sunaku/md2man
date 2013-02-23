@@ -1,7 +1,9 @@
 require 'rake'
 
 # build man pages before building ruby gem using bundler
-%w[build install release].each {|t| task t => :md2man }
+if defined? Bundler::GemHelper
+  %w[build install release].each {|t| task t => :md2man }
+end
 
 #-----------------------------------------------------------------------------
 desc 'Build manual pages from Markdown files in man/.'
