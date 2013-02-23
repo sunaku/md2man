@@ -1,3 +1,31 @@
+## Version 1.4.1 (2013-02-23)
+
+Patch:
+
+  * rakefile: arbitrary directory structure under man/
+
+    https://github.com/sunaku/md2man/pull/3#issuecomment-9429077
+
+    Thanks to Postmodern for raising this issue.
+
+  * hook into 'build' task only if using Bundler tasks
+
+    https://github.com/sunaku/md2man/pull/7#issuecomment-9467621
+
+    Thanks to Postmodern for raising this issue.
+
+  * GH-8: Redcarpet requires Ruby 1.9 and so must we
+
+    https://github.com/sunaku/md2man/issues/8#issuecomment-9509240
+
+    Thanks to Postmodern for raising this issue.
+
+Other:
+
+  * README: add md2man-html(1) and Md2Man::HTML usage
+
+  * LICENSE: use GitHub profile URLs instead of e-mail
+
 ## Version 1.4.0 (2012-10-14)
 
 Minor:
