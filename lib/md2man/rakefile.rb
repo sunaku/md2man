@@ -48,7 +48,7 @@ wrap_html_template = lambda do |title, content|
   <meta charset="utf-8" />
   <title>#{title}</title>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <link rel="stylesheet" media="screen" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
   <style type="text/css">
     @media all {
       .manpage h1 {
@@ -79,6 +79,11 @@ wrap_html_template = lambda do |title, content|
         display: none;
       }
 
+      /* improve readability of revealed hyperlink URLs */
+      a:after {
+        font-family: monospace;
+      }
+
       /* internal links and manual page cross-references */
       a[href^='#'], a[href^='../man'] {
         color: inherit;
@@ -86,10 +91,9 @@ wrap_html_template = lambda do |title, content|
         text-decoration: none;
       }
 
-      /* reveal destination URL for external hyperlinks */
-      a[href]:not([href^='#']):not([href^='../man']):after {
-        content: ' ' attr(href);
-        font-family: monospace;
+      /* undo bootstrap's revealing of those hyperlinks */
+      a[href^='#']:after, a[href^='../man']:after {
+        content: none;
       }
     }
   </style>
