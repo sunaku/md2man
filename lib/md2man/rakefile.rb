@@ -48,6 +48,26 @@ wrap_html_template = lambda do |title, content|
   <meta charset="utf-8" />
   <title>#{title}</title>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" media="screen" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+  <style type="text/css">
+    .manpage {
+      font-family: monospace;
+      max-width: 78ex;
+    }
+    .manpage h1 {
+      font-weight: normal;
+      font-size: smaller;
+      text-align: right;
+      margin-top: -5em;
+    }
+    .manpage h2,
+    .manpage h3,
+    .manpage h4,
+    .manpage h5,
+    .manpage h6 {
+      margin-top: 1em;
+    }
+  </style>
 </head>
 <body>#{content}</body>
 </html>
@@ -64,7 +84,7 @@ parse_manpage_info = lambda do |html_file_body|
 end
 
 file 'man/index.html' => webs do |t|
-  buffer = []
+  buffer = ['<div class="container-fluid">']
   webs.group_by {|web| web.pathmap('%d') }.each do |dir, dir_webs|
     subdir = dir.sub('man/', '')
     buffer << %{<h2 id="#{subdir}">#{subdir}</h2>}
@@ -73,14 +93,14 @@ file 'man/index.html' => webs do |t|
       name = parse_manpage_name.call(web)
       info = parse_manpage_info.call(File.read(web))
       link = %{<a href="#{subdir}/#{web.pathmap('%f')}">#{name}</a>}
-      buffer << "<dl><dt>#{link}</dt><dd>#{info}</dd></dl>"
+      buffer << %{<dl class="dl-horizontal"><dt>#{link}</dt><dd>#{info}</dd></dl>}
     end
   end
+  buffer << '</div>'
+  content = buffer.join
 
   title = t.name.pathmap('%X')
-  content = buffer.join(?\n)
   output = wrap_html_template.call(title, content)
-
   File.open(t.name, 'w') {|f| f << output }
 end
 
@@ -95,15 +115,23 @@ mkds.zip(webs).each do |src, dst|
 
     subdir = dst.pathmap('%d').sub('man/', '')
     ascend = '../' * subdir.count('/').next
-    navbar = [
-      '<div class="manpath-navigation">',
-        %{<a href="#{ascend}index.html##{subdir}">#{subdir}</a>},
-        ' &rarr; ',
-        %{<a href="">#{name}</a>},
+    content = [
+      '<div class="navbar">',
+        '<div class="navbar-inner">',
+          '<span class="brand">',
+            %{<a href="#{ascend}index.html##{subdir}">#{subdir}</a>},
+            '/',
+            dst.pathmap('%n'),
+          '</span>',
+        '</div>',
+      '</div>',
+      '<div class="container-fluid">',
+        '<div class="manpage">',
+          output,
+        '</div>',
       '</div>',
     ].join
 
-    content = [navbar, output, navbar].join('<hr/>')
     wrap_html_template.call title, content
   }
 end
