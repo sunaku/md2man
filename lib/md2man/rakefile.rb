@@ -40,22 +40,48 @@ desc 'Build HTML manual pages from Markdown files in man/.'
 task 'md2man:web' => 'man/index.html'
 #-----------------------------------------------------------------------------
 
+wrap_html_template = lambda do |title, content|
+<<WRAP_HTML_TEMPLATE
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>#{title}</title>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>#{content}</body>
+</html>
+WRAP_HTML_TEMPLATE
+end
+
+parse_manpage_name = lambda do |html_file_name|
+  html_file_name.pathmap('%n').sub(/\.(.+)$/, '(\1)')
+end
+
+parse_manpage_info = lambda do |html_file_body|
+  html_file_body.scan(%r{<h2.*?>NAME</h2>(.+?)<h2}m).flatten.first.
+  to_s.split(/\s+-\s+/, 2).last.to_s.gsub(/<.+?>/, '') # strip HTML
+end
+
 file 'man/index.html' => webs do |t|
-  output = []
+  buffer = []
   webs.group_by {|web| web.pathmap('%d') }.each do |dir, dir_webs|
     subdir = dir.sub('man/', '')
-    output << %{<h2 id="#{subdir}">#{subdir}</h2>}
+    buffer << %{<h2 id="#{subdir}">#{subdir}</h2>}
 
     dir_webs.each do |web|
-      title = web.pathmap('%n').sub(/\.(.+)$/, '(\1)')
-      link = %{<a href="#{subdir}/#{web.pathmap('%f')}">#{title}</a>}
-      info = File.read(web).scan(%r{<h2.*?>NAME</h2>(.+?)<h2}m).flatten.first.
-             to_s.split(/\s+-\s+/, 2).last.to_s.gsub(/<.+?>/, '') # strip HTML
-      output << "<dl><dt>#{link}</dt><dd>#{info}</dd></dl>"
+      name = parse_manpage_name.call(web)
+      info = parse_manpage_info.call(File.read(web))
+      link = %{<a href="#{subdir}/#{web.pathmap('%f')}">#{name}</a>}
+      buffer << "<dl><dt>#{link}</dt><dd>#{info}</dd></dl>"
     end
   end
 
-  File.open(t.name, 'w') {|f| f.puts output }
+  title = t.name.pathmap('%X')
+  content = buffer.join(?\n)
+  output = wrap_html_template.call(title, content)
+
+  File.open(t.name, 'w') {|f| f << output }
 end
 
 mkds.zip(webs).each do |src, dst|
@@ -63,16 +89,21 @@ mkds.zip(webs).each do |src, dst|
     require 'md2man/html/engine'
     output = Md2Man::HTML::ENGINE.render(input)
 
+    name = parse_manpage_name.call(dst)
+    info = parse_manpage_info.call(output)
+    title = [name, info].join(' &mdash; ')
+
     subdir = dst.pathmap('%d').sub('man/', '')
     ascend = '../' * subdir.count('/').next
     navbar = [
       '<div class="manpath-navigation">',
         %{<a href="#{ascend}index.html##{subdir}">#{subdir}</a>},
         ' &rarr; ',
-        %{<a href="">#{dst.pathmap('%n')}</a>},
+        %{<a href="">#{name}</a>},
       '</div>',
     ].join
 
-    [navbar, output, navbar].join('<hr/>')
+    content = [navbar, output, navbar].join('<hr/>')
+    wrap_html_template.call title, content
   }
 end
