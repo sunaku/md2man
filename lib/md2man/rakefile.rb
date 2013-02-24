@@ -42,9 +42,10 @@ task 'md2man:web' => 'man/index.html'
 
 file 'man/index.html' => webs do |t|
   output = []
-  dirs = webs.group_by {|web| web.pathmap('%d') }.each do |dir, dir_webs|
-    subdir = dir.pathmap('%f')
+  webs.group_by {|web| web.pathmap('%d') }.each do |dir, dir_webs|
+    subdir = dir.sub('man/', '')
     output << %{<h2 id="#{subdir}">#{subdir}</h2>}
+
     dir_webs.each do |web|
       title = web.pathmap('%n').sub(/\.(.+)$/, '(\1)')
       link = %{<a href="#{subdir}/#{web.pathmap('%f')}">#{title}</a>}
@@ -52,10 +53,8 @@ file 'man/index.html' => webs do |t|
              to_s.split(/\s+-\s+/, 2).last.to_s.gsub(/<.+?>/, '') # strip HTML
       output << "<dl><dt>#{link}</dt><dd>#{info}</dd></dl>"
     end
-    File.open("#{dir}/index.html", 'w') do |f|
-      f << %{<meta http-equiv="refresh" content="0;url=../index.html##{subdir}"/>}
-    end
   end
+
   File.open(t.name, 'w') {|f| f.puts output }
 end
 
@@ -63,11 +62,17 @@ mkds.zip(webs).each do |src, dst|
   render_file_task.call src, dst, lambda {|input|
     require 'md2man/html/engine'
     output = Md2Man::HTML::ENGINE.render(input)
-    navbar = '<div class="manpath-navigation">' + [
-      %{<a href="../index.html">#{dst.pathmap('%1d')}</a>},
-      %{<a href="index.html">#{dst.pathmap('%-1d')}</a>},
-      %{<a href="">#{dst.pathmap('%n')}</a>},
-    ].join(' &rarr; ') + '</div>'
+
+    subdir = dst.pathmap('%d').sub('man/', '')
+    ascend = '../' * subdir.count('/').next
+    navbar = [
+      '<div class="manpath-navigation">',
+        %{<a href="#{ascend}index.html##{subdir}">#{subdir}</a>},
+        ' &rarr; ',
+        %{<a href="">#{dst.pathmap('%n')}</a>},
+      '</div>',
+    ].join
+
     [navbar, output, navbar].join('<hr/>')
   }
 end
