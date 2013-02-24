@@ -50,22 +50,47 @@ wrap_html_template = lambda do |title, content|
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <link rel="stylesheet" media="screen" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
   <style type="text/css">
-    .manpage {
-      font-family: monospace;
-      max-width: 78ex;
+    @media all {
+      .manpage h1 {
+        font-weight: normal;
+        font-size: smaller;
+        text-align: right;
+      }
+      .manpage h2,
+      .manpage h3,
+      .manpage h4,
+      .manpage h5,
+      .manpage h6 {
+        margin-top: 1em;
+      }
     }
-    .manpage h1 {
-      font-weight: normal;
-      font-size: smaller;
-      text-align: right;
-      margin-top: -5em;
+    @media screen {
+      .manpage {
+        font-family: monospace;
+        max-width: 78ex;
+      }
+      .manpage h1 {
+        margin-top: -5em;
+      }
     }
-    .manpage h2,
-    .manpage h3,
-    .manpage h4,
-    .manpage h5,
-    .manpage h6 {
-      margin-top: 1em;
+
+    @media print {
+      .navbar {
+        display: none;
+      }
+
+      /* internal links and manual page cross-references */
+      a[href^='#'], a[href^='../man'] {
+        color: inherit;
+        font-weight: bolder;
+        text-decoration: none;
+      }
+
+      /* reveal destination URL for external hyperlinks */
+      a[href]:not([href^='#']):not([href^='../man']):after {
+        content: ' ' attr(href);
+        font-family: monospace;
+      }
     }
   </style>
 </head>
