@@ -1,3 +1,21 @@
+## Version 1.4.2 (2013-02-24)
+
+Patch:
+
+  * The `md2man:web` task from `md2man/rakefile` now:
+
+    * emits valid HTML5 with helpful HTML page titles
+
+    * uses Twitter Bootstrap styling for HTML man pages
+
+    * emits only ONE index page for all HTML man pages
+
+Other:
+
+  * README: better organize the subsections of "Usage"
+
+  * include md2man rake tasks in developer's rakefile
+
 ## Version 1.4.1 (2013-02-23)
 
 Patch:

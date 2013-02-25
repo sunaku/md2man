@@ -45,7 +45,7 @@ It issues a warning when it encounters these instead.  Patches are welcome!
     cd md2man
     bundle install
     bundle exec md2man --help  # run it directly
-    bundle exec rake -T        # packaging tasks
+    bundle exec rake --tasks   # packaging tasks
 
 ## Usage
 
