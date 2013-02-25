@@ -63,6 +63,12 @@ wrap_html_template = lambda do |title, content|
       .manpage h6 {
         margin-top: 1em;
       }
+
+      /* deactivate external manual page cross-references */
+      a.manpage-reference:not([href]) {
+        color: inherit;
+        text-decoration: none;
+      }
     }
     @media screen {
       .manpage {
@@ -136,7 +142,11 @@ end
 mkds.zip(webs).each do |src, dst|
   render_file_task.call src, dst, lambda {|input|
     require 'md2man/html/engine'
-    output = Md2Man::HTML::ENGINE.render(input)
+    output = Md2Man::HTML::ENGINE.render(input).
+      # deactivate external manual page cross-references
+      gsub(/(?<=<a class="manpage-reference") href="\.\.(.+?)"/) do
+        $& if webs.include? 'man' + $1
+      end
 
     name = parse_manpage_name.call(dst)
     info = parse_manpage_info.call(output)
