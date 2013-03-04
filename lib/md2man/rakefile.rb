@@ -121,7 +121,7 @@ end
 
 file 'man/index.html' => webs do |t|
   buffer = ['<div class="container-fluid">']
-  webs.group_by {|web| web.pathmap('%d') }.each do |dir, dir_webs|
+  webs.sort.group_by {|web| web.pathmap('%d') }.each do |dir, dir_webs|
     subdir = dir.sub('man/', '')
     buffer << %{<h2 id="#{subdir}">#{subdir}</h2>}
 
