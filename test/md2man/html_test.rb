@@ -3,7 +3,7 @@ require 'md2man/html/engine'
 
 describe 'html engine' do
   before do
-    @markdown = Redcarpet::Markdown.new(Md2Man::HTML::Engine)
+    @markdown = Md2Man::HTML::ENGINE
   end
 
   def heredoc document

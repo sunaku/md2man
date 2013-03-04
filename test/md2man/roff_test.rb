@@ -11,11 +11,7 @@ require 'md2man/engine'
 
 describe 'roff engine' do
   before do
-    @markdown = Redcarpet::Markdown.new(
-      Md2Man::Engine,
-      :tables => true,
-      :autolink => true,
-    )
+    @markdown = Md2Man::ENGINE
   end
 
   SPACE = 0x20.chr
