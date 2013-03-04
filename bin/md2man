@@ -44,7 +44,6 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
   * autolink
   * superscript
   * strikethrough
-  * no\_intra\_emphasis
   * fenced\_code\_blocks
 
 ## OPTIONS
