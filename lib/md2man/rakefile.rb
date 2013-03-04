@@ -128,7 +128,7 @@ file 'man/index.html' => webs do |t|
     dir_webs.each do |web|
       name = parse_manpage_name.call(web)
       info = parse_manpage_info.call(File.read(web))
-      link = %{<a href="#{subdir}/#{web.pathmap('%f')}">#{name}</a>}
+      link = %{<a href="../#{web}">#{name}</a>}
       buffer << %{<dl class="dl-horizontal"><dt>#{link}</dt><dd>#{info}</dd></dl>}
     end
   end
@@ -154,12 +154,12 @@ mkds.zip(webs).each do |src, dst|
     title = [name, info].compact.join(' &mdash; ')
 
     subdir = dst.pathmap('%d').sub('man/', '')
-    ascend = '../' * subdir.count('/').next
+    ascent = '../' * (dst.count('/') - 1)
     content = [
       '<div class="navbar">',
         '<div class="navbar-inner">',
           '<span class="brand">',
-            %{<a href="#{ascend}index.html##{subdir}">#{subdir}</a>},
+            %{<a href="#{ascent}index.html##{subdir}">#{subdir}</a>},
             '/',
             dst.pathmap('%n'),
           '</span>',
