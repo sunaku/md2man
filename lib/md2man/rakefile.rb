@@ -114,8 +114,9 @@ parse_manpage_name = lambda do |html_file_name|
 end
 
 parse_manpage_info = lambda do |html_file_body|
-  html_file_body.scan(%r{<h2.*?>NAME</h2>(.+?)<h2}m).flatten.first.
-  to_s.split(/\s+-\s+/, 2).last.to_s.gsub(/<.+?>/, '') # strip HTML
+  if html_file_body =~ %r{<h2.*?>NAME</h2>(.+?)<h2}m
+    $1.split(/\s+-\s+/, 2).last.gsub(/<.+?>/, '') # strip HTML
+  end
 end
 
 file 'man/index.html' => webs do |t|
@@ -150,7 +151,7 @@ mkds.zip(webs).each do |src, dst|
 
     name = parse_manpage_name.call(dst)
     info = parse_manpage_info.call(output)
-    title = [name, info].join(' &mdash; ')
+    title = [name, info].compact.join(' &mdash; ')
 
     subdir = dst.pathmap('%d').sub('man/', '')
     ascend = '../' * subdir.count('/').next
