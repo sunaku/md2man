@@ -42,7 +42,7 @@ module Md2Man::Roff
   end
 
   def block_code code, language
-    code = escape_backslashes(super)
+    code = escape_backslashes(code)
     block_quote "\n.nf\n#{code.chomp}\n.fi\n"
   end
 
@@ -132,8 +132,8 @@ module Md2Man::Roff
   # span-level processing
   #---------------------------------------------------------------------------
 
-  def reference page, section, addendum
-    "\n.BR #{page} (#{section})#{addendum}\n"
+  def reference input_match, output_match
+    "\n.BR #{input_match[:page]} (#{input_match[:section]})#{output_match[:addendum]}\n"
   end
 
   def linebreak
@@ -161,7 +161,7 @@ module Md2Man::Roff
   end
 
   def codespan code
-    code = escape_backslashes(super)
+    code = escape_backslashes(code)
     # NOTE: this double font sequence gives us the best of both worlds:
     # man(1) shows it in bold and `groff -Thtml` shows it in monospace
     "\\fB\\fC#{code}\\fR"

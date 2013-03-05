@@ -22,10 +22,6 @@ module Md2Man::HTML
     "<dl><dd>#{text}</dd></dl>"
   end
 
-  def block_code code, language
-    "<pre>#{codespan(super)}</pre>"
-  end
-
   def header text, level
     id = text.gsub(/<.+?>/, '-').        # strip all HTML tags
       gsub(/\W+/, '-').gsub(/^-|-$/, '') # fold non-word chars
@@ -36,13 +32,13 @@ module Md2Man::HTML
   # span-level processing
   #---------------------------------------------------------------------------
 
-  def codespan code
-    "<code>#{CGI.escapeHTML(super)}</code>"
-  end
-
-  def reference page, section, addendum
-    url = reference_url(page, section)
-    %{<a class="manpage-reference" href="#{url}">#{page}(#{section})</a>#{addendum}}
+  def reference input_match, output_match
+    if output_match.pre_match =~ /<[^>]*\z/
+      input_match.to_s
+    else
+      url = reference_url(input_match[:page], input_match[:section])
+      %{<a class="manpage-reference" href="#{url}">#{input_match}</a>}
+    end + output_match[:addendum].to_s
   end
 
   # You can override this in a derived class to compute URLs as you like!

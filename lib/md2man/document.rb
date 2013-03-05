@@ -19,21 +19,6 @@ module Md2Man::Document
   # block-level processing
   #---------------------------------------------------------------------------
 
-  # This method blocks Redcarpet's default behavior, which cannot be accessed
-  # using super() due to the limitation of how Redcarpet is implemented in C.
-  # See https://github.com/vmg/redcarpet/issues/51 for the complete details.
-  #
-  # You MUST override this method in derived classes and call super() therein:
-  #
-  #   def block_code code, language
-  #     code = super
-  #     # now do something with code
-  #   end
-  #
-  def block_code code, language
-    decode_references code, true
-  end
-
   PARAGRAPH_INDENT = /^\s*$|^  (?=\S)/
 
   # This method blocks Redcarpet's default behavior, which cannot be accessed
@@ -76,23 +61,8 @@ module Md2Man::Document
   # span-level processing
   #---------------------------------------------------------------------------
 
-  # This method blocks Redcarpet's default behavior, which cannot be accessed
-  # using super() due to the limitation of how Redcarpet is implemented in C.
-  # See https://github.com/vmg/redcarpet/issues/51 for the complete details.
-  #
-  # You MUST override this method in derived classes and call super() therein.
-  #
-  #   def codespan code
-  #     code = super
-  #     # now do something with code
-  #   end
-  #
-  def codespan code
-    decode_references code, true
-  end
-
-  def reference page, section, addendum
-    warn "md2man/document: reference not implemented: #{page}(#{section})"
+  def reference input_match, output_match
+    warn "md2man/document: reference not implemented: #{input_match}"
   end
 
 protected
@@ -106,7 +76,7 @@ private
   def encode_references text
     # the [^\n\S] captures all non-newline whitespace
     # basically, it's meant to be \s but excluding \n
-    text.gsub(/([\w\-\.]+)\((\w+)\)(\S*[^\n\S]*)/) do
+    text.gsub(/(?<page>[\w\-\.]+)\((?<section>\w+)\)/) do
       match = $~
       key = encode(match)
       @references[key] = match
@@ -114,11 +84,12 @@ private
     end
   end
 
-  def decode_references text, verbatim=false
-    @references.select do |key, match|
-      replacement = verbatim ? match.to_s : reference(*match.captures)
-      text.sub! key, replacement
-    end.each_key {|key| @references.delete key }
+  def decode_references text
+    @references.delete_if do |key, match|
+      text.sub! /#{Regexp.escape key}(?<addendum>\S*[^\n\S]*)/ do
+        reference match, $~
+      end
+    end
     text
   end
 

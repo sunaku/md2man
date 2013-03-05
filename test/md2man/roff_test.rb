@@ -679,6 +679,26 @@ describe 'roff engine' do
     OUTPUT
   end
 
+  it 'does not break surrounding Markdown while processing references' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |For example, the `printf(3)` cross reference would be emitted as this HTML:
+      |
+      |    <a class="manpage-reference" href="../man3/printf.3.html">printf(3)</a>
+    INPUT
+      |.PP
+      |For example, the \\fB\\fC
+      |.BR printf (3)\\fR#{SPACE}
+      |cross reference would be emitted as this HTML:
+      |.PP
+      |.RS
+      |.nf
+      |<a class="manpage-reference" href="../man3/printf.3.html">
+      |.BR printf (3)</a>
+      |.fi
+      |.RE
+    OUTPUT
+  end
+
   it 'renders references to other man pages as hyperlinks' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |convert them from markdown(7) into roff(7), using
@@ -692,7 +712,7 @@ describe 'roff engine' do
     OUTPUT
   end
 
-  it 'does not render references inside code blocks' do
+  it 'renders references inside code blocks' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |    this is a code block
       |    containing markdown(7),
@@ -702,19 +722,38 @@ describe 'roff engine' do
       |.RS
       |.nf
       |this is a code block
-      |containing markdown(7),
-      |roff(7), and much more!
+      |containing#{SPACE}
+      |.BR markdown (7),
+      |.BR roff (7),#{SPACE}
+      |and much more!
       |.fi
       |.RE
     OUTPUT
   end
 
-  it 'does not render references inside code spans' do
+  it 'renders references inside code spans' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |this is a code span `containing markdown(7), roff(7), and` much more!
     INPUT
       |.PP
-      |this is a code span \\fB\\fCcontaining markdown(7), roff(7), and\\fR much more!
+      |this is a code span \\fB\\fCcontaining#{SPACE}
+      |.BR markdown (7),#{SPACE}
+      |.BR roff (7),#{SPACE}
+      |and\\fR much more!
+    OUTPUT
+  end
+
+  it 'renders references inside image descriptions' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |![Obligatory screenshot of md2man(1) in action!](
+      |https://raw.github.com/sunaku/md2man/master/EXAMPLE.png)
+    INPUT
+      |.PP
+      |[Obligatory screenshot of#{SPACE}
+      |.BR md2man (1)#{SPACE}
+      |in action!](
+      |.UR https://raw.github.com/sunaku/md2man/master/EXAMPLE.png
+      |.UE )
     OUTPUT
   end
 

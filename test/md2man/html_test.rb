@@ -51,6 +51,19 @@ describe 'html engine' do
     OUTPUT
   end
 
+  it 'does not break surrounding Markdown while processing references' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |For example, the `printf(3)` cross reference would be emitted as this HTML:
+      |
+      |    <a class="manpage-reference" href="../man3/printf.3.html">printf(3)</a>
+    INPUT
+      |<p>For example, the <code><a class="manpage-reference" href="../man3/printf.3.html">printf(3)</a></code> cross reference would be emitted as this HTML:</p>
+      |<pre><code>&lt;a class=&quot;manpage-reference&quot; href=&quot;../man3/printf.3.html&quot;&gt;<a class="manpage-reference" href="../man3/printf.3.html">printf(3)</a>&lt;/a&gt;
+      |</code></pre>
+      |
+    OUTPUT
+  end
+
   it 'renders references to other man pages as hyperlinks in middle of line' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |convert them from markdown(7) into roff(7), using
@@ -67,24 +80,34 @@ describe 'html engine' do
     OUTPUT
   end
 
-  it 'does not render references inside code blocks' do
+  it 'renders references inside code blocks' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |    this is a code block
       |    containing markdown(7),
       |    roff(7), and much more!
     INPUT
       |<pre><code>this is a code block
-      |containing markdown(7),
-      |roff(7), and much more!
+      |containing <a class=\"manpage-reference\" href=\"../man7/markdown.7.html\">markdown(7)</a>,
+      |<a class=\"manpage-reference\" href=\"../man7/roff.7.html\">roff(7)</a>, and much more!
       |</code></pre>
+      |
     OUTPUT
   end
 
-  it 'does not render references inside code spans' do
+  it 'renders references inside code spans' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |this is a code span `containing markdown(7), roff(7), and` much more!
     INPUT
-      |<p>this is a code span <code>containing markdown(7), roff(7), and</code> much more!</p>
+      |<p>this is a code span <code>containing <a class="manpage-reference" href="../man7/markdown.7.html">markdown(7)</a>, <a class="manpage-reference" href="../man7/roff.7.html">roff(7)</a>, and</code> much more!</p>
+    OUTPUT
+  end
+
+  it 'does not render references inside image descriptions' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |![Obligatory screenshot of md2man(1) in action!](
+      |https://raw.github.com/sunaku/md2man/master/EXAMPLE.png)
+    INPUT
+      |<p><img src="https://raw.github.com/sunaku/md2man/master/EXAMPLE.png" alt="Obligatory screenshot of md2man(1) in action!"></p>
     OUTPUT
   end
 
@@ -106,6 +129,7 @@ describe 'html engine' do
       |  \\__/\\____/_/ /_/|_\\
       |             &gt;&gt;&gt;------&gt;
       |</code></pre>
+      |
     OUTPUT
   end
 
