@@ -745,12 +745,12 @@ describe 'roff engine' do
 
   it 'renders references inside image descriptions' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
-      |![Obligatory screenshot of md2man(1) in action!](
+      |![Obligatory screenshot of md2man-roff(1) in action!](
       |https://raw.github.com/sunaku/md2man/master/EXAMPLE.png)
     INPUT
       |.PP
       |[Obligatory screenshot of#{SPACE}
-      |.BR md2man (1)#{SPACE}
+      |.BR md2man-roff (1)#{SPACE}
       |in action!](
       |.UR https://raw.github.com/sunaku/md2man/master/EXAMPLE.png
       |.UE )

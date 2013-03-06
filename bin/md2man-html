@@ -5,7 +5,7 @@
 
 ## NAME
 
-md2man-html - convert md2man(1) flavored markdown(7) into HTML
+md2man-html - convert md2man(5) flavored markdown(7) into HTML
 
 ## SYNOPSIS
 
@@ -13,22 +13,19 @@ md2man-html - convert md2man(1) flavored markdown(7) into HTML
 
 ## DESCRIPTION
 
-This program converts the markdown(7) input from the given *FILE* into HTML
-and then prints the result to stdout.  stdin is read if *FILE* is not given.
+This program converts md2man(5) flavored markdown(7) input from the given
+*FILE* into HTML and then prints the result to the standard output stream.
+If *FILE* is not given, then the standard input stream is read in its place.
 
-### Document format
+### Cross references
 
-See md2man(1) for details about the document format and Markdown extensions.
-
-### Cross linking
-
-References to other manual pages are converted into hyperlinks that have
-class="manpage-reference" and href="../man${section}/${page}.${section}.html"
+Cross references to manual pages are emitted as HTML hyperlinks that have
+`class="manpage-reference"` and `href="../man$SECTION/$PAGE.$SECTION.html"`
 attributes.
 
-For example, the markdown(7) reference would be converted into HTML as:
+For example, the `printf(3)` cross reference would be emitted as this HTML:
 
-    <a class="manpage-reference" href="../man7/markdown.7.html">markdown(7)</a>
+    <a class="manpage-reference" href="../man3/printf.3.html">printf(3)</a>
 
 ## OPTIONS
 
@@ -37,7 +34,7 @@ For example, the markdown(7) reference would be converted into HTML as:
 
 ## SEE ALSO
 
-md2man(1)
+md2man-roff(1), md2man-rake(1), md2man(5)
 
 =end =========================================================================
 

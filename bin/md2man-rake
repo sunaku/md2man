@@ -42,7 +42,7 @@ Run `rake --help` to see more options.
 
 ## SEE ALSO
 
-rake(1), md2man(1), markdown(7)
+rake(1), md2man-roff(1), md2man-html(1), md2man(5)
 
 =end =========================================================================
 

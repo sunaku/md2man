@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+=begin =======================================================================
+
+# MD2MAN-ROFF 1 2013-03-10 1.6.0
+
+## NAME
+
+md2man-roff - convert md2man(5) flavored markdown(7) into roff(7)
+
+## SYNOPSIS
+
+`md2man-roff` [*OPTION*]... [*FILE*]
+
+## DESCRIPTION
+
+This program converts md2man(5) flavored markdown(7) input from the given
+*FILE* into roff(7) and then prints the result to the standard output stream.
+If *FILE* is not given, then the standard input stream is read in its place.
+
+### Limitations
+
+This program does not convert the following [Redcarpet] nodes into roff(7):
+
+  * `block_html`
+  * `strikethrough`
+  * `superscript`
+  * `image`
+  * `raw_html`
+
+It issues a warning when it encounters these instead.  Patches are welcome!
+
+## OPTIONS
+
+`-h`, `--help`
+  Show this help manual.
+
+## SEE ALSO
+
+md2man-html(1), md2man-rake(1), md2man(5)
+
+[Redcarpet]: https://github.com/vmg/redcarpet
+
+=end =========================================================================
+
+require 'binman'
+BinMan.help
+
+require 'md2man/roff/engine'
+puts Md2Man::Roff::ENGINE.render(ARGF.read)

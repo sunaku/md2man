@@ -104,10 +104,10 @@ describe 'html engine' do
 
   it 'does not render references inside image descriptions' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
-      |![Obligatory screenshot of md2man(1) in action!](
+      |![Obligatory screenshot of md2man-roff(1) in action!](
       |https://raw.github.com/sunaku/md2man/master/EXAMPLE.png)
     INPUT
-      |<p><img src="https://raw.github.com/sunaku/md2man/master/EXAMPLE.png" alt="Obligatory screenshot of md2man(1) in action!"></p>
+      |<p><img src="https://raw.github.com/sunaku/md2man/master/EXAMPLE.png" alt="Obligatory screenshot of md2man-roff(1) in action!"></p>
     OUTPUT
   end
 

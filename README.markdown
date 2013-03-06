@@ -1,7 +1,7 @@
 # md2man - markdown to manpage
 
-md2man is a Ruby library and command-line program that converts [Markdown]
-documents into UNIX manual pages (both [roff] and HTML) using [Redcarpet].
+md2man is a Ruby library and a set of command-line programs that convert
+[Markdown] into UNIX manual pages (both [roff] and HTML) using [Redcarpet].
 
 ## Features
 
@@ -11,29 +11,22 @@ documents into UNIX manual pages (both [roff] and HTML) using [Redcarpet].
 
   * Supports markdown extensions such as [PHP Markdown Extra tables][tables].
 
-  * Usable from the command line as a filter in a UNIX pipeline.
+  * Usable from the command line as a filter in a UNIX command pipeline.
 
 ### Demonstration
 
 Try converting [this example Markdown file][example] into a UNIX manual page:
 
-    md2man EXAMPLE.markdown > EXAMPLE.1
+    md2man-roff EXAMPLE.markdown > EXAMPLE.1
     man -l EXAMPLE.1
 
 ![Obligatory screenshot of md2man(1) in action!](
 https://raw.github.com/sunaku/md2man/master/EXAMPLE.png)
 
-### Limitations
+Also try converting [that example Markdown file][example] into a web page:
 
-At present, md2man does not translate the following [Redcarpet] node types:
-
-  * `block_html`
-  * `strikethrough`
-  * `superscript`
-  * `image`
-  * `raw_html`
-
-It issues a warning when it encounters these instead.  Patches are welcome!
+    md2man-html EXAMPLE.markdown > EXAMPLE.html
+    open EXAMPLE.html
 
 ## Installation
 
@@ -44,35 +37,17 @@ It issues a warning when it encounters these instead.  Patches are welcome!
     git clone git://github.com/sunaku/md2man
     cd md2man
     bundle install
-    bundle exec md2man --help  # run it directly
-    bundle exec rake --tasks   # packaging tasks
+    bundle exec rake --tasks        # packaging tasks
+    bundle exec md2man-roff --help  # run it directly
+    bundle exec md2man-html --help  # run it directly
 
 ## Usage
-
-### Document format
-
-md2man extends [Markdown] syntax in the following ways, as provisioned in the
-`Md2Man::Document` module and defined in its derivative `Md2Man::Roff` module:
-
-  * Paragraphs whose lines are all uniformly indented by two spaces are
-    considered to be "indented paragraphs".  They are unindented accordingly
-    before emission as `.IP` in the [roff] output.
-
-  * Paragraphs whose subsequent lines (all except the first) are uniformly
-    indented by two spaces are considered to be a "tagged paragraphs".  They
-    are unindented accordingly before emission as `.TP` in the [roff] output.
-
-md2man extends [Markdown] semantics in the following ways:
-
-  * The first top-level heading (H1) found in the document is emitted as `.TH`
-    in the roff(7) output to define the UNIX manual page's header and footer.
-    Any subsequent top-level headings (H1) are treated as second-level (H2).
 
 ### For [roff] output
 
 #### At the command line
 
-    md2man --help
+    md2man-roff --help
 
 #### Inside a Ruby script
 
