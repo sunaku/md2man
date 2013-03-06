@@ -37,7 +37,7 @@ module Md2Man::HTML
       input_match.to_s
     else
       url = reference_url(input_match[:page], input_match[:section])
-      %{<a class="manpage-reference" href="#{url}">#{input_match}</a>}
+      %{<a class="md2man-xref" href="#{url}">#{input_match}</a>}
     end + output_match[:addendum].to_s
   end
 

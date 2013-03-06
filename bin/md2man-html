@@ -20,12 +20,12 @@ If *FILE* is not given, then the standard input stream is read in its place.
 ### Cross references
 
 Cross references to manual pages are emitted as HTML hyperlinks that have
-`class="manpage-reference"` and `href="../man$SECTION/$PAGE.$SECTION.html"`
+`class="md2man-xref"` and `href="../man$SECTION/$PAGE.$SECTION.html"`
 attributes.
 
 For example, the `printf(3)` cross reference would be emitted as this HTML:
 
-    <a class="manpage-reference" href="../man3/printf.3.html">printf(3)</a>
+    <a class="md2man-xref" href="../man3/printf.3.html">printf(3)</a>
 
 ## OPTIONS
 

@@ -683,7 +683,7 @@ describe 'roff engine' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |For example, the `printf(3)` cross reference would be emitted as this HTML:
       |
-      |    <a class="manpage-reference" href="../man3/printf.3.html">printf(3)</a>
+      |    <a class="md2man-xref" href="../man3/printf.3.html">printf(3)</a>
     INPUT
       |.PP
       |For example, the \\fB\\fC
@@ -692,7 +692,7 @@ describe 'roff engine' do
       |.PP
       |.RS
       |.nf
-      |<a class="manpage-reference" href="../man3/printf.3.html">
+      |<a class="md2man-xref" href="../man3/printf.3.html">
       |.BR printf (3)</a>
       |.fi
       |.RE

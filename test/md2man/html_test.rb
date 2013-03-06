@@ -55,10 +55,10 @@ describe 'html engine' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |For example, the `printf(3)` cross reference would be emitted as this HTML:
       |
-      |    <a class="manpage-reference" href="../man3/printf.3.html">printf(3)</a>
+      |    <a class="md2man-xref" href="../man3/printf.3.html">printf(3)</a>
     INPUT
-      |<p>For example, the <code><a class="manpage-reference" href="../man3/printf.3.html">printf(3)</a></code> cross reference would be emitted as this HTML:</p>
-      |<pre><code>&lt;a class=&quot;manpage-reference&quot; href=&quot;../man3/printf.3.html&quot;&gt;<a class="manpage-reference" href="../man3/printf.3.html">printf(3)</a>&lt;/a&gt;
+      |<p>For example, the <code><a class="md2man-xref" href="../man3/printf.3.html">printf(3)</a></code> cross reference would be emitted as this HTML:</p>
+      |<pre><code>&lt;a class=&quot;md2man-xref&quot; href=&quot;../man3/printf.3.html&quot;&gt;<a class="md2man-xref" href="../man3/printf.3.html">printf(3)</a>&lt;/a&gt;
       |</code></pre>
       |
     OUTPUT
@@ -68,7 +68,7 @@ describe 'html engine' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |convert them from markdown(7) into roff(7), using
     INPUT
-      |<p>convert them from <a class="manpage-reference" href="../man7/markdown.7.html">markdown(7)</a> into <a class="manpage-reference" href="../man7/roff.7.html">roff(7)</a>, using</p>
+      |<p>convert them from <a class="md2man-xref" href="../man7/markdown.7.html">markdown(7)</a> into <a class="md2man-xref" href="../man7/roff.7.html">roff(7)</a>, using</p>
     OUTPUT
   end
 
@@ -76,7 +76,7 @@ describe 'html engine' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |markdown(1) into roff(2)
     INPUT
-      |<p><a class="manpage-reference" href="../man1/markdown.1.html">markdown(1)</a> into <a class="manpage-reference" href="../man2/roff.2.html">roff(2)</a></p>
+      |<p><a class="md2man-xref" href="../man1/markdown.1.html">markdown(1)</a> into <a class="md2man-xref" href="../man2/roff.2.html">roff(2)</a></p>
     OUTPUT
   end
 
@@ -87,8 +87,8 @@ describe 'html engine' do
       |    roff(7), and much more!
     INPUT
       |<pre><code>this is a code block
-      |containing <a class=\"manpage-reference\" href=\"../man7/markdown.7.html\">markdown(7)</a>,
-      |<a class=\"manpage-reference\" href=\"../man7/roff.7.html\">roff(7)</a>, and much more!
+      |containing <a class=\"md2man-xref\" href=\"../man7/markdown.7.html\">markdown(7)</a>,
+      |<a class=\"md2man-xref\" href=\"../man7/roff.7.html\">roff(7)</a>, and much more!
       |</code></pre>
       |
     OUTPUT
@@ -98,7 +98,7 @@ describe 'html engine' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |this is a code span `containing markdown(7), roff(7), and` much more!
     INPUT
-      |<p>this is a code span <code>containing <a class="manpage-reference" href="../man7/markdown.7.html">markdown(7)</a>, <a class="manpage-reference" href="../man7/roff.7.html">roff(7)</a>, and</code> much more!</p>
+      |<p>this is a code span <code>containing <a class="md2man-xref" href="../man7/markdown.7.html">markdown(7)</a>, <a class="md2man-xref" href="../man7/roff.7.html">roff(7)</a>, and</code> much more!</p>
     OUTPUT
   end
 

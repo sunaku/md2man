@@ -1,17 +1,17 @@
 @import url('http://twitter.github.com/bootstrap/assets/css/bootstrap.css');
 
 @media all {
-  .manpage h1,
-  .manpage h2,
-  .manpage h3,
-  .manpage h4,
-  .manpage h5,
-  .manpage h6 {
+  .md2man h1,
+  .md2man h2,
+  .md2man h3,
+  .md2man h4,
+  .md2man h5,
+  .md2man h6 {
     margin-top: 1em;
   }
 
   /* deactivate external manual page cross-references */
-  a.manpage-reference:not([href]) {
+  a.md2man-xref:not([href]) {
     color: inherit;
     text-decoration: none;
   }
@@ -25,7 +25,7 @@
     margin: auto;
   }
 
-  .manpage > h1:first-child {
+  .md2man > h1:first-child {
     margin-top: -5em;
     font-weight: normal;
     font-size: smaller;
