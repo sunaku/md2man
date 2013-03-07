@@ -52,11 +52,7 @@ wrap_html_template = lambda do |title, content|
   <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
   <style type="text/css">
     @media all {
-      .manpage h1 {
-        font-weight: normal;
-        font-size: smaller;
-        text-align: right;
-      }
+      .manpage h1,
       .manpage h2,
       .manpage h3,
       .manpage h4,
@@ -76,8 +72,12 @@ wrap_html_template = lambda do |title, content|
         font-family: monospace;
         max-width: 78ex;
       }
-      .manpage h1 {
+
+      .manpage > h1:first-child {
         margin-top: -5em;
+        font-weight: normal;
+        font-size: smaller;
+        text-align: right;
       }
     }
 
