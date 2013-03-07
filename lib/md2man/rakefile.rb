@@ -115,7 +115,7 @@ parse_manpage_name = lambda do |html_file_name|
 end
 
 parse_manpage_info = lambda do |html_file_body|
-  if html_file_body =~ %r{<h2.*?>NAME</h2>(.+?)<h2}m
+  if html_file_body =~ %r{</h2>(.+?)<h2}m
     $1.split(/\s+-\s+/, 2).last.gsub(/<.+?>/, '') # strip HTML
   end
 end
