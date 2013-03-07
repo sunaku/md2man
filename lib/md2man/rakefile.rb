@@ -46,6 +46,7 @@ wrap_html_template = lambda do |title, content|
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="generator" content="md2man #{Md2Man::VERSION} https://github.com/sunaku/md2man" />
   <title>#{title}</title>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
