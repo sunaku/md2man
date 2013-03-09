@@ -122,14 +122,12 @@ end
 
 file 'man/index.html' => webs do |t|
   buffer = ['<div class="container-fluid">']
-  webs.sort.group_by {|web| web.pathmap('%d') }.each do |dir, dir_webs|
-    subdir = dir.sub('man/', '')
+  webs.sort.group_by {|web| web.pathmap('%d').sub('man/', '') }.each do |subdir, dir_webs|
     buffer << %{<h2 id="#{subdir}">#{subdir}</h2>}
-
     dir_webs.each do |web|
       name = parse_manpage_name.call(web)
       info = parse_manpage_info.call(File.read(web))
-      link = %{<a href="../#{web}">#{name}</a>}
+      link = %{<a href="#{web.sub('man/', '')}">#{name}</a>}
       buffer << %{<dl class="dl-horizontal"><dt>#{link}</dt><dd>#{info}</dd></dl>}
     end
   end
