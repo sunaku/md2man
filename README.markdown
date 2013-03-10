@@ -112,27 +112,6 @@ Mix-in your own renderer:
     engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
     your_roff_output = engine.render(your_markdown_input)
 
-#### Pre-building man pages
-
-Add the following lines to your gemspec:
-
-    s.files += Dir['man/man?/*.?']
-    s.add_development_dependency 'md2man', '~> 1.4'
-
-Add the following line to your Rakefile:
-
-    require 'md2man/rakefile'
-
-You now have a `rake md2man` task that builds manual pages from Markdown files
-(with ".markdown", ".mkd", or ".md" extension) inside `man/man*/` directories.
-There are also sub-tasks to build manual pages individually as [roff] or HTML.
-
-If you're using Bundler, this task also hooks into Bundler's gem packaging
-tasks and ensures that your manual pages are built for packaging into a gem:
-
-    bundle exec rake build
-    gem spec pkg/*.gem | fgrep man/man
-
 ### For HTML output
 
 #### At the command line
@@ -176,6 +155,34 @@ Mix-in your own renderer:
 
     engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
     your_html_output = engine.render(your_markdown_input)
+
+### Building man pages
+
+#### At the command line
+
+    md2man-rake --help
+
+#### Inside a Ruby script
+
+Add this snippet to your gemspec file:
+
+    s.files += Dir['man/man?/*.?']            # UNIX man pages
+    s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
+    s.add_development_dependency 'md2man', '~> 1.4'
+
+Add this line to your Rakefile:
+
+    require 'md2man/rakefile'
+
+You now have a `rake md2man` task that builds manual pages from Markdown files
+(with ".markdown", ".mkd", or ".md" extension) inside `man/man*/` directories.
+There are also sub-tasks to build manual pages individually as [roff] or HTML.
+
+If you're using Bundler, this task also hooks into Bundler's gem packaging
+tasks and ensures that your manual pages are built for packaging into a gem:
+
+    bundle exec rake build
+    gem spec pkg/*.gem | fgrep man/
 
 ## License
 
