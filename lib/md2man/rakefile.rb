@@ -37,10 +37,10 @@ end
 
 #-----------------------------------------------------------------------------
 desc 'Build HTML manual pages from Markdown files in man/.'
-task 'md2man:web' => 'man/index.html'
+task 'md2man:web' => ['man/index.html', 'man/style.css']
 #-----------------------------------------------------------------------------
 
-wrap_html_template = lambda do |title, content|
+wrap_html_template = lambda do |title, content, ascent|
 <<WRAP_HTML_TEMPLATE
 <!DOCTYPE html>
 <html>
@@ -48,62 +48,8 @@ wrap_html_template = lambda do |title, content|
   <meta charset="utf-8" />
   <meta name="generator" content="md2man #{Md2Man::VERSION} https://github.com/sunaku/md2man" />
   <title>#{title}</title>
+  <link rel="stylesheet" href="#{ascent}style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
-  <style type="text/css">
-    @media all {
-      .manpage h1,
-      .manpage h2,
-      .manpage h3,
-      .manpage h4,
-      .manpage h5,
-      .manpage h6 {
-        margin-top: 1em;
-      }
-
-      /* deactivate external manual page cross-references */
-      a.manpage-reference:not([href]) {
-        color: inherit;
-        text-decoration: none;
-      }
-    }
-    @media screen {
-      .manpage {
-        font-family: monospace;
-        max-width: 78ex;
-      }
-
-      .manpage > h1:first-child {
-        margin-top: -5em;
-        font-weight: normal;
-        font-size: smaller;
-        text-align: right;
-      }
-    }
-
-    @media print {
-      .navbar {
-        display: none;
-      }
-
-      /* improve readability of revealed hyperlink URLs */
-      a:after {
-        font-family: monospace;
-      }
-
-      /* internal links and manual page cross-references */
-      a[href^='#'], a[href^='../man'] {
-        color: inherit;
-        font-weight: bolder;
-        text-decoration: none;
-      }
-
-      /* undo bootstrap's revealing of those hyperlinks */
-      a[href^='#']:after, a[href^='../man']:after {
-        content: none;
-      }
-    }
-  </style>
 </head>
 <body>#{content}</body>
 </html>
@@ -135,8 +81,12 @@ file 'man/index.html' => webs do |t|
   content = buffer.join
 
   title = t.name.pathmap('%X')
-  output = wrap_html_template.call(title, content)
+  output = wrap_html_template.call(title, content, nil)
   File.open(t.name, 'w') {|f| f << output }
+end
+
+file 'man/style.css' => __FILE__.pathmap('%X/style.css') do |t|
+  cp t.prerequisites.first, t.name if t.needed?
 end
 
 mkds.zip(webs).each do |src, dst|
@@ -171,6 +121,6 @@ mkds.zip(webs).each do |src, dst|
       '</div>',
     ].join
 
-    wrap_html_template.call title, content
+    wrap_html_template.call title, content, ascent
   }
 end

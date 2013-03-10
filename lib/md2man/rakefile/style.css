@@ -1,0 +1,55 @@
+@import url('http://twitter.github.com/bootstrap/assets/css/bootstrap.css');
+
+@media all {
+  .manpage h1,
+  .manpage h2,
+  .manpage h3,
+  .manpage h4,
+  .manpage h5,
+  .manpage h6 {
+    margin-top: 1em;
+  }
+
+  /* deactivate external manual page cross-references */
+  a.manpage-reference:not([href]) {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@media screen {
+  .manpage {
+    font-family: monospace;
+    max-width: 78ex;
+  }
+
+  .manpage > h1:first-child {
+    margin-top: -5em;
+    font-weight: normal;
+    font-size: smaller;
+    text-align: right;
+  }
+}
+
+@media print {
+  .navbar {
+    display: none;
+  }
+
+  /* improve readability of revealed hyperlink URLs */
+  a:after {
+    font-family: monospace;
+  }
+
+  /* internal links and manual page cross-references */
+  a[href^='#'], a[href^='../man'] {
+    color: inherit;
+    font-weight: bolder;
+    text-decoration: none;
+  }
+
+  /* undo bootstrap's revealing of those hyperlinks */
+  a[href^='#']:after, a[href^='../man']:after {
+    content: none;
+  }
+}
