@@ -11,10 +11,13 @@ Gem::Specification.new do |s|
   s.summary       = 'markdown to manpage'
   s.description   = 'Converts markdown documents into UNIX manual pages.'
 
-  s.files         = `git ls-files`.split("\n") + Dir['man/man?/*.?']
+  s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
+
+  s.files += Dir['man/man?/*.?']            # UNIX man pages
+  s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
 
   s.required_ruby_version = '>= 1.9.1'
   s.add_runtime_dependency 'binman', '~> 3.0'
