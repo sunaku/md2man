@@ -1,12 +1,12 @@
 @import url('http://twitter.github.com/bootstrap/assets/css/bootstrap.css');
 
 @media all {
-  .md2man h1,
-  .md2man h2,
-  .md2man h3,
-  .md2man h4,
-  .md2man h5,
-  .md2man h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-top: 1em;
   }
 
@@ -25,7 +25,7 @@
     margin: auto;
   }
 
-  .md2man > h1:first-child {
+  h1:first-child {
     margin-top: -5em;
     font-weight: normal;
     font-size: smaller;
@@ -34,7 +34,7 @@
 }
 
 @media print {
-  .navbar {
+  .navbar:first-child {
     display: none;
   }
 

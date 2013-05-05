@@ -116,9 +116,7 @@ mkds.zip(webs).each do |src, dst|
         '</div>',
       '</div>',
       '<div class="container-fluid">',
-        '<div class="md2man">',
-          output,
-        '</div>',
+        output,
       '</div>',
     ].join
 
