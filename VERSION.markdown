@@ -1,3 +1,13 @@
+## Version 1.6.1 (2013-05-04)
+
+Patch:
+
+  * Replace multi-column CSS with single centered body.
+
+Other:
+
+  * Fix manpage xrefs in README and VERSION documents.
+
 ## Version 1.6.0 (2013-03-10)
 
 Minor:
