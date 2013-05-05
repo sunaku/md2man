@@ -47,6 +47,8 @@ Also try converting [that example Markdown file][example] into a web page:
 
 #### At the command line
 
+See md2man-roff(1) manual:
+
     md2man-roff --help
 
 #### Inside a Ruby script
@@ -91,6 +93,8 @@ Mix-in your own renderer:
 
 #### At the command line
 
+See md2man-html(1) manual:
+
     md2man-html --help
 
 #### Inside a Ruby script
@@ -134,6 +138,8 @@ Mix-in your own renderer:
 ### Building man pages
 
 #### At the command line
+
+See md2man-rake(1) manual:
 
     md2man-rake --help
 
