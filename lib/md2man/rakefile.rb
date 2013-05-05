@@ -41,6 +41,7 @@ task 'md2man:web' => ['man/index.html', 'man/style.css']
 #-----------------------------------------------------------------------------
 
 wrap_html_template = lambda do |title, content, ascent|
+require 'md2man/version'
 <<WRAP_HTML_TEMPLATE
 <!DOCTYPE html>
 <html>
