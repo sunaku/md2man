@@ -20,7 +20,7 @@
 @media screen {
   body {
     font-family: monospace;
-    max-width: 78ex;
+    max-width: 83ex; /* allots 78ex width for manpage */
     margin: auto;
   }
 
