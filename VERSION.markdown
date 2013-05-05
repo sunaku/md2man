@@ -1,3 +1,13 @@
+## Version 1.6.2 (2013-05-05)
+
+Patch:
+
+  * Fix "uninitialized constant Md2Man::VERSION" error in `md2man/rakefile`.
+
+  * HTML manual page CSS: justify the lines of text just like man(1) does.
+
+  * HTML manual page CSS: resize body to allot 78ex width for manpage text.
+
 ## Version 1.6.1 (2013-05-04)
 
 Patch:
