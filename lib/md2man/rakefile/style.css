@@ -19,24 +19,6 @@
 
 @media screen {
   body {
-            column-count: auto;
-       -moz-column-count: auto;
-    -webkit-column-count: auto;
-
-            column-width: 78ex;
-       -moz-column-width: 78ex;
-    -webkit-column-width: 78ex;
-
-            column-gap:   none;
-       -moz-column-gap:   none;
-    -webkit-column-gap:   none;
-
-            column-rule:  thin solid Gainsboro;
-       -moz-column-rule:  thin solid Gainsboro;
-    -webkit-column-rule:  thin solid Gainsboro;
-  }
-
-  .manpage {
     font-family: monospace;
     max-width: 78ex;
     margin: auto;
