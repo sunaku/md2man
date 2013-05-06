@@ -1,3 +1,39 @@
+## Version 2.0.0 (2013-05-05)
+
+This release renames md2man executables and libraries to highlight the fact
+that md2man provides two processing pathways: one for Roff and one for HTML.
+
+Major:
+
+  * Rename md2man(1) executable to md2man-roff(1).
+
+  * Rename `Md2Man::Engine` to `Md2Man::Roff::Engine`.
+
+  * Rename "manpage-reference" CSS class to "md2man-xref" in HTML output.
+
+  * The `Md2Man::Document#reference()` method now takes only two parameters:
+
+    * `input_match` - MatchData object for the reference in Markdown input
+      containing the following named capture groups:
+
+      * `:page` - name of the manual page
+
+      * `:section` - section number of the manual page
+
+    * `output_match` - MatchData object for the reference in output document
+      containing the following named capture groups:
+
+      * `:addendum` - non-space characters immediately after the reference in
+        the output document
+
+Patch:
+
+  * Prevent cross-references from being expanded inside HTML tags.
+
+Other:
+
+  * Add md2man(5) manual page detailing md2man's markdown file format.
+
 ## Version 1.6.2 (2013-05-05)
 
 Patch:
