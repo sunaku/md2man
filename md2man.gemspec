@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.version       = Md2Man::VERSION
   s.authors,
   s.email         = File.read('LICENSE').scan(/Copyright \d+ (.+) <(.+?)>/).transpose
+  s.license       = 'ISC'
   s.homepage      = 'http://github.com/sunaku/md2man'
   s.summary       = 'markdown to manpage'
   s.description   = 'Converts markdown documents into UNIX manual pages.'
