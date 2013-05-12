@@ -67,7 +67,9 @@ parse_manpage_info = lambda do |html_file_body|
   end
 end
 
-file 'man/index.html' => webs do |t|
+directory 'man'
+
+file 'man/index.html' => ['man'] + webs do |t|
   buffer = ['<div class="container-fluid">']
   webs.sort.group_by {|web| web.pathmap('%d').sub('man/', '') }.each do |subdir, dir_webs|
     buffer << %{<h2 id="#{subdir}">#{subdir}</h2>}
@@ -86,8 +88,8 @@ file 'man/index.html' => webs do |t|
   File.open(t.name, 'w') {|f| f << output }
 end
 
-file 'man/style.css' => __FILE__.pathmap('%X/style.css') do |t|
-  cp t.prerequisites.first, t.name if t.needed?
+file 'man/style.css' => ['man', __FILE__.pathmap('%X/style.css')] do |t|
+  cp t.prerequisites.last, t.name if t.needed?
 end
 
 mkds.zip(webs).each do |src, dst|
