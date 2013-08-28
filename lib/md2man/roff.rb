@@ -178,9 +178,9 @@ module Md2Man::Roff
 
   def autolink link, link_type
     if link_type == :email
-      "\n.MT #{link.chomp}\n.ME "
+      "\n.ie d MT \\{\\\n.MT #{link.chomp}\n.ME\n.\\}\n.el #{link.chomp} "
     else
-      "\n.UR #{link.chomp}\n.UE "
+      "\n.ie d UR \\{\\\n.UR #{link.chomp}\n.UE\n.\\}\n.el #{link.chomp} "
     end
   end
 
