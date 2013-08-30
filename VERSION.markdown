@@ -1,3 +1,21 @@
+## Version 2.0.1 (2013-08-29)
+
+Patch:
+
+  * Use a proper CDN to access Bootstrap 2.3.2 styling in HTML output.
+
+  * Ensure that man/ directory exists for the `md2man:web` Rake task.
+
+  * Specify license in gemspec file to fix warning when building gem.
+
+    Thanks to Bastien Dejean for contributing this patch.
+
+Other:
+
+  * Upgrade dependent gems by running `bundle update`.
+
+  * minitest 4.7.5 provides spec library via autorun.
+
 ## Version 2.0.0 (2013-05-05)
 
 This release renames md2man executables and libraries to highlight the fact
