@@ -177,11 +177,13 @@ module Md2Man::Roff
   end
 
   def autolink link, link_type
-    if link_type == :email
-      "\n.ie d MT \\{\\\n.MT #{link.chomp}\n.ME\n.\\}\n.el #{link.chomp} "
-    else
-      "\n.ie d UR \\{\\\n.UR #{link.chomp}\n.UE\n.\\}\n.el #{link.chomp} "
-    end
+    head, tail = (link_type == :email) ? %w[MT ME] : %w[UR UE]
+    addr = link.chomp
+
+    # try to use link formatting macro or fall back to just plain text
+    # https://www.gnu.org/software/groff/manual/html_node/if_002delse.html
+    "\n.ie d #{head} \\{\\\n.#{head} #{addr.inspect}\n.#{tail}\n\\}\n.el \\\n\\{\\\n<#{addr}>\\}\n"
+    #"\n.ie d #{head} \\{\\\n.#{head} #{addr.inspect}\n.#{tail}\n\\}\n.el <#{addr}>"
   end
 
   def image link, title, alt_text
