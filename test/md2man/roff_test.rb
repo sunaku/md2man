@@ -142,6 +142,7 @@ describe 'roff engine' do
       |   paragraph.
     OUTPUT
   end
+
   it 'escapes hyphens in normal text' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |pre-process
@@ -155,6 +156,36 @@ describe 'roff engine' do
     INPUT
       |.PP
       |1\\-5
+    OUTPUT
+  end
+
+  it 'escapes single quotes at the beginning of lines in normal text' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |'
+    INPUT
+      |.PP
+      |\\'
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |''
+    INPUT
+      |.PP
+      |\\''
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |'''
+    INPUT
+      |.PP
+      |\\'''
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |'hello' world qu'o'tes
+    INPUT
+      |.PP
+      |\\'hello' world qu'o'tes
     OUTPUT
   end
 
