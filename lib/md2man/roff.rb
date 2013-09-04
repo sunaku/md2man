@@ -197,9 +197,17 @@ module Md2Man::Roff
   #---------------------------------------------------------------------------
 
   def normal_text text
-    # inhibit line-beginning control characters (period and single-quote)
-    # by prefixing a non-printable, zero-width glyph (backslash-ampersand)
-    text.gsub('\\', '\\\\e').gsub('-', '\\-').gsub(/^(?=[.'])/, '\\\\&') if text
+    if text then text.
+      # escape backslashes so that they appear in the printable output
+      gsub('\\', '\\\\e').
+
+      # inhibit soft-hyphens so that they appear in the printable output
+      gsub('-', '\\-').
+
+      # inhibit line-beginning control characters (period and single-quote)
+      # by prefixing a non-printable, zero-width glyph (backslash-ampersand)
+      gsub(/^(?=[.'])/, '\\\\&')
+    end
   end
 
   def entity text
