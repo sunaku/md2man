@@ -197,7 +197,7 @@ module Md2Man::Roff
   #---------------------------------------------------------------------------
 
   def normal_text text
-    text.gsub('-', '\\-') if text
+    text.gsub('-', '\\-').gsub(/^(?=')/, '\\') if text
   end
 
   def entity text
