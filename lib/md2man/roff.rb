@@ -199,7 +199,7 @@ module Md2Man::Roff
   def normal_text text
     # inhibit line-beginning control characters (period and single-quote)
     # by prefixing a non-printable, zero-width glyph (backslash-ampersand)
-    text.gsub('-', '\\-').gsub(/^(?=[.'])/, '\\\\&') if text
+    text.gsub('\\', '\\\\e').gsub('-', '\\-').gsub(/^(?=[.'])/, '\\\\&') if text
   end
 
   def entity text
