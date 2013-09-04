@@ -148,14 +148,14 @@ describe 'roff engine' do
       |c:\\drive
     INPUT
       |.PP
-      |c:\\edrive
+      |c:\\[rs]drive
     OUTPUT
 
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |c:\\drive\\walk\\\\\\car
     INPUT
       |.PP
-      |c:\\edrive\\ewalk\\e\\ecar
+      |c:\\[rs]drive\\[rs]walk\\[rs]\\[rs]car
     OUTPUT
   end
 
