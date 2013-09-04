@@ -143,6 +143,22 @@ describe 'roff engine' do
     OUTPUT
   end
 
+  it 'escapes backslashes in normal text' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |c:\\drive
+    INPUT
+      |.PP
+      |c:\\edrive
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |c:\\drive\\walk\\\\\\car
+    INPUT
+      |.PP
+      |c:\\edrive\\ewalk\\e\\ecar
+    OUTPUT
+  end
+
   it 'escapes hyphens in normal text' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |pre-process
