@@ -199,7 +199,7 @@ module Md2Man::Roff
   def normal_text text
     if text then text.
       # escape backslashes so that they appear in the printable output
-      gsub('\\', '\\\\e').
+      gsub('\\', '\\[rs]').
 
       # inhibit soft-hyphens so that they appear in the printable output
       gsub('-', '\\-').
