@@ -1,4 +1,5 @@
 require 'cgi'
+require 'shellwords'
 require 'md2man/document'
 
 module Md2Man::HTML
@@ -23,6 +24,7 @@ module Md2Man::HTML
   end
 
   def header text, level
+    @h1_argv ||= Shellwords.split(text) if level == 1
     id = text.gsub(/<.+?>/, '-').        # strip all HTML tags
       gsub(/\W+/, '-').gsub(/^-|-$/, '') # fold non-word chars
     %{<h#{level} id="#{id}">#{text}</h#{level}>}

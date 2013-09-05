@@ -31,6 +31,18 @@
     font-size: smaller;
     text-align: right;
   }
+
+  h1:first-child::nth-word(2) {
+    color: red;
+  }
+
+  h1:first-child::nth-word(2):before {
+    content: '(';
+  }
+
+  h1:first-child::nth-word(2):after {
+    content: ')';
+  }
 }
 
 @media print {

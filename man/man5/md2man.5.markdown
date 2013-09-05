@@ -73,6 +73,35 @@ The first top-level heading (H1) found in the input is considered to be the
 `.TH` directive in roff(7), which defines the UNIX manual page's header and
 footer.  Any subsequent top-level headings are treated as second-level (H2).
 
+#### First top-level heading
+
+    # manpage-name manpage-section center-footer left-footer center-header
+
+manpage-name
+  The name of the command or function.
+
+manpage-section
+  The section number of the manual. (1 for commands, etc.)
+
+center-footer
+  The date the man page was last modified. Some systems do not display footers
+  when you use the man command interactively, only when printing the pages.
+
+left-footer
+  Bottom left footer.  See below.
+
+center-header
+  The main page (center) heading.  See below.
+
+Use quotes if any of these fields contains embedded blanks. Use "CS-701" as
+the left-footer for the man pages you write for this course. The main page
+(center) heading gives the place or organization where the software being
+documented originated; we'll use "Queens College."
+
+Here is an example:
+
+    # mycommand 1 "December 2001" "CS-701" "Queens College"
+
 ### Extensions
 
 md2man enables the following [Redcarpet] extensions while reading markdown(7):
