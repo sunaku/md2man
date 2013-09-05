@@ -142,6 +142,23 @@ describe 'roff engine' do
       |   paragraph.
     OUTPUT
   end
+
+  it 'escapes backslashes in normal text' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |c:\\drive
+    INPUT
+      |.PP
+      |c:\\[rs]drive
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |c:\\drive\\walk\\\\\\car
+    INPUT
+      |.PP
+      |c:\\[rs]drive\\[rs]walk\\[rs]\\[rs]car
+    OUTPUT
+  end
+
   it 'escapes hyphens in normal text' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |pre-process
@@ -155,6 +172,66 @@ describe 'roff engine' do
     INPUT
       |.PP
       |1\\-5
+    OUTPUT
+  end
+
+  it 'inhibits periods at the beginning of lines in normal text' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |.
+    INPUT
+      |.PP
+      |\\&.
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |..
+    INPUT
+      |.PP
+      |\\&..
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |...
+    INPUT
+      |.PP
+      |\\&...
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |.hello. world qu.o.tes
+    INPUT
+      |.PP
+      |\\&.hello. world qu.o.tes
+    OUTPUT
+  end
+
+  it 'inhibits single quotes at the beginning of lines in normal text' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |'
+    INPUT
+      |.PP
+      |\\&'
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |''
+    INPUT
+      |.PP
+      |\\&''
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |'''
+    INPUT
+      |.PP
+      |\\&'''
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |'hello' world qu'o'tes
+    INPUT
+      |.PP
+      |\\&'hello' world qu'o'tes
     OUTPUT
   end
 
