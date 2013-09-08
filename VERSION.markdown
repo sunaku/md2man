@@ -1,3 +1,27 @@
+## Version 2.0.2 (2013-09-08)
+
+Patch:
+
+  * GH-14: escape single quotes at beginning of lines
+
+    See the "CONTROL CHARACTERS" section in the groff(7) manual for details.
+
+    Thanks to Nick Fagerlund for reporting this bug.
+
+  * inhibit periods at line beginnings with \& escape
+
+  * escape text line backslashes as "\e" per groff(7)
+
+  * better documentation for escaping in normal_text()
+
+  * it's better to escape backslashes as \[rs] than \e
+
+    See "Single-Character Escapes" section in groff(7).
+
+Other:
+
+  * switch from double-quoted strings to single quotes
+
 ## Version 2.0.1 (2013-08-29)
 
 Patch:
