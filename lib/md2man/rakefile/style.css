@@ -21,7 +21,7 @@
   body {
     font-family: monospace;
     text-align: justify;
-    max-width: 83ex; /* allots 78ex width for manpage */
+    max-width: 83ch; /* 80 chars, +3 for Bootstrap CSS */
     margin: auto;
   }
 
