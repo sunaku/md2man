@@ -1,0 +1,45 @@
+.TH MD2MAN\-HTML 1 2014\-01\-16 2.0.3
+.SH NAME
+.PP
+md2man\-html \- convert 
+.BR md2man (5) 
+flavored 
+.BR markdown (7) 
+into HTML
+.SH SYNOPSIS
+.PP
+\fB\fCmd2man-html\fR [\fIOPTION\fP]... [\fIFILE\fP]
+.SH DESCRIPTION
+.PP
+This program converts 
+.BR md2man (5) 
+flavored 
+.BR markdown (7) 
+input from the given
+\fIFILE\fP into HTML and then prints the result to the standard output stream.
+If \fIFILE\fP is not given, then the standard input stream is read in its place.
+.SS Cross references
+.PP
+Cross references to manual pages are emitted as HTML hyperlinks that have
+\fB\fCclass="md2man-xref"\fR and \fB\fChref="../man$SECTION/$PAGE.$SECTION.html"\fR
+attributes.
+.PP
+For example, the \fB\fC
+.BR printf (3)\fR 
+cross reference would be emitted as this HTML:
+.PP
+.RS
+.nf
+<a class="md2man-xref" href="../man3/printf.3.html">
+.BR printf (3)</a>
+.fi
+.RE
+.SH OPTIONS
+.TP
+\fB\fC-h\fR, \fB\fC--help\fR
+Show this help manual.
+.SH SEE ALSO
+.PP
+.BR md2man-roff (1), 
+.BR md2man-rake (1), 
+.BR md2man (5)

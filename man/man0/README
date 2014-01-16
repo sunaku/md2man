@@ -1,0 +1,259 @@
+.TH md2man \- markdown to manpage
+.PP
+md2man is a Ruby library and a set of command\-line programs that convert
+Markdown
+.UR http://daringfireball.net/projects/markdown/
+.UE
+into UNIX manual pages (both roff
+.UR http://troff.org
+.UE
+and HTML) using Redcarpet
+.UR https://github.com/vmg/redcarpet
+.UE \&.
+.SH Features
+.RS
+.IP \(bu 2
+Formats tagged and indented paragraphs (see "document format" below).
+.IP \(bu 2
+Translates all HTML4 and XHTML1 entities into native roff
+.UR http://troff.org
+.UE
+equivalents.
+.IP \(bu 2
+Supports markdown extensions such as PHP Markdown Extra tables
+.UR http://michelf.com/projects/php-markdown/extra/#table
+.UE \&.
+.IP \(bu 2
+Usable from the command line as a filter in a UNIX command pipeline.
+.RE
+.SS Demonstration
+.PP
+Try converting this example Markdown file
+.UR https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown
+.UE
+into a UNIX manual page:
+.PP
+.RS
+.nf
+md2man-roff EXAMPLE.markdown > EXAMPLE.1
+man -l EXAMPLE.1
+.fi
+.RE
+.PP
+[Obligatory screenshot of 
+.BR md2man (1) 
+in action!](
+.UR https://raw.github.com/sunaku/md2man/master/EXAMPLE.png
+.UE )
+.PP
+Also try converting that example Markdown file
+.UR https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown
+.UE
+into a web page:
+.PP
+.RS
+.nf
+md2man-html EXAMPLE.markdown > EXAMPLE.html
+open EXAMPLE.html
+.fi
+.RE
+.SH Installation
+.PP
+.RS
+.nf
+gem install md2man
+.fi
+.RE
+.SS Development
+.PP
+.RS
+.nf
+git clone git://github.com/sunaku/md2man
+cd md2man
+bundle install
+bundle exec rake --tasks        # packaging tasks
+bundle exec md2man-roff --help  # run it directly
+bundle exec md2man-html --help  # run it directly
+.fi
+.RE
+.SH Usage
+.SS For roff
+.UR http://troff.org
+.UE
+output
+.SS At the command line
+.PP
+See 
+.BR md2man-roff (1) 
+manual:
+.PP
+.RS
+.nf
+md2man-roff --help
+.fi
+.RE
+.SS Inside a Ruby script
+.PP
+Use the default renderer:
+.PP
+.RS
+.nf
+require 'md2man/roff/engine'
+your_roff_output = Md2Man::Roff::
+.BR ENGINE.render (your_markdown_input)
+.fi
+.RE
+.PP
+Build your own renderer:
+.PP
+.RS
+.nf
+require 'md2man/roff/engine'
+engine = Redcarpet::Markdown.new(Md2Man::Roff::Engine, your_options_hash)
+your_roff_output = 
+.BR engine.render (your_markdown_input)
+.fi
+.RE
+.PP
+Define your own renderer:
+.PP
+.RS
+.nf
+require 'md2man/roff/engine'
+class YourManpageRenderer < Md2Man::Roff::Engine
+  # ... your stuff here ...
+end
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_roff_output = 
+.BR engine.render (your_markdown_input)
+.fi
+.RE
+.PP
+Mix\-in your own renderer:
+.PP
+.RS
+.nf
+require 'md2man/roff'
+class YourManpageRenderer < Redcarpet::Render::Base
+  include Md2Man::Roff
+  # ... your stuff here ...
+end
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_roff_output = 
+.BR engine.render (your_markdown_input)
+.fi
+.RE
+.SS For HTML output
+.SS At the command line
+.PP
+See 
+.BR md2man-html (1) 
+manual:
+.PP
+.RS
+.nf
+md2man-html --help
+.fi
+.RE
+.SS Inside a Ruby script
+.PP
+Use the default renderer:
+.PP
+.RS
+.nf
+require 'md2man/html/engine'
+your_html_output = Md2Man::HTML::
+.BR ENGINE.render (your_markdown_input)
+.fi
+.RE
+.PP
+Build your own renderer:
+.PP
+.RS
+.nf
+require 'md2man/html/engine'
+engine = Redcarpet::Markdown.new(Md2Man::HTML::Engine, your_options_hash)
+your_html_output = 
+.BR engine.render (your_markdown_input)
+.fi
+.RE
+.PP
+Define your own renderer:
+.PP
+.RS
+.nf
+require 'md2man/html/engine'
+class YourManpageRenderer < Md2Man::HTML::Engine
+  # ... your stuff here ...
+end
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_html_output = 
+.BR engine.render (your_markdown_input)
+.fi
+.RE
+.PP
+Mix\-in your own renderer:
+.PP
+.RS
+.nf
+require 'md2man/html'
+class YourManpageRenderer < Redcarpet::Render::Base
+  include Md2Man::HTML
+  # ... your stuff here ...
+end
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_html_output = 
+.BR engine.render (your_markdown_input)
+.fi
+.RE
+.SS Building man pages
+.SS At the command line
+.PP
+See 
+.BR md2man-rake (1) 
+manual:
+.PP
+.RS
+.nf
+md2man-rake --help
+.fi
+.RE
+.SS Inside a Ruby script
+.PP
+Add this snippet to your gemspec file:
+.PP
+.RS
+.nf
+s.files += Dir['man/man?/*.?']            # UNIX man pages
+s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
+s.add_development_dependency 'md2man', '~> 2.0'
+.fi
+.RE
+.PP
+Add this line to your Rakefile:
+.PP
+.RS
+.nf
+require 'md2man/rakefile'
+.fi
+.RE
+.PP
+You now have a \fB\fCrake md2man\fR task that builds manual pages from Markdown files
+(with ".markdown", ".mkd", or ".md" extension) inside \fB\fCman/man*/\fR directories.
+There are also sub\-tasks to build manual pages individually as roff
+.UR http://troff.org
+.UE
+or HTML.
+.PP
+If you're using Bundler, this task also hooks into Bundler's gem packaging
+tasks and ensures that your manual pages are built for packaging into a gem:
+.PP
+.RS
+.nf
+bundle exec rake build
+gem spec pkg/*.gem | fgrep man/
+.fi
+.RE
+.SH License
+.PP
+Released under the ISC license.  See the LICENSE file for details.

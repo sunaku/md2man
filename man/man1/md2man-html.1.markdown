@@ -1,0 +1,34 @@
+# MD2MAN-HTML 1 2014-01-16 2.0.3
+
+## NAME
+
+md2man-html - convert md2man(5) flavored markdown(7) into HTML
+
+## SYNOPSIS
+
+`md2man-html` [*OPTION*]... [*FILE*]
+
+## DESCRIPTION
+
+This program converts md2man(5) flavored markdown(7) input from the given
+*FILE* into HTML and then prints the result to the standard output stream.
+If *FILE* is not given, then the standard input stream is read in its place.
+
+### Cross references
+
+Cross references to manual pages are emitted as HTML hyperlinks that have
+`class="md2man-xref"` and `href="../man$SECTION/$PAGE.$SECTION.html"`
+attributes.
+
+For example, the `printf(3)` cross reference would be emitted as this HTML:
+
+    <a class="md2man-xref" href="../man3/printf.3.html">printf(3)</a>
+
+## OPTIONS
+
+`-h`, `--help`
+  Show this help manual.
+
+## SEE ALSO
+
+md2man-roff(1), md2man-rake(1), md2man(5)

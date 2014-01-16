@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="md2man 2.0.3 https://github.com/sunaku/md2man" />
+  <title>README</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/README</span></div></div><div class="container-fluid"><h1 id="md2man-markdown-to-manpage">md2man - markdown to manpage</h1><p>md2man is a Ruby library and a set of command-line programs that convert
+<a href="http://daringfireball.net/projects/markdown/">Markdown</a> into UNIX manual pages (both <a href="http://troff.org">roff</a> and HTML) using <a href="https://github.com/vmg/redcarpet">Redcarpet</a>.</p><h2 id="Features">Features</h2>
+<ul>
+<li><p>Formats tagged and indented paragraphs (see &quot;document format&quot; below).</p></li>
+<li><p>Translates all HTML4 and XHTML1 entities into native <a href="http://troff.org">roff</a> equivalents.</p></li>
+<li><p>Supports markdown extensions such as <a href="http://michelf.com/projects/php-markdown/extra/#table">PHP Markdown Extra tables</a>.</p></li>
+<li><p>Usable from the command line as a filter in a UNIX command pipeline.</p></li>
+</ul>
+<h3 id="Demonstration">Demonstration</h3><p>Try converting <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">this example Markdown file</a> into a UNIX manual page:</p>
+<pre><code>md2man-roff EXAMPLE.markdown &gt; EXAMPLE.1
+man -l EXAMPLE.1
+</code></pre>
+<p><img src="https://raw.github.com/sunaku/md2man/master/EXAMPLE.png" alt="Obligatory screenshot of md2man(1) in action!"></p><p>Also try converting <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">that example Markdown file</a> into a web page:</p>
+<pre><code>md2man-html EXAMPLE.markdown &gt; EXAMPLE.html
+open EXAMPLE.html
+</code></pre>
+<h2 id="Installation">Installation</h2>
+<pre><code>gem install md2man
+</code></pre>
+<h3 id="Development">Development</h3>
+<pre><code>git clone git://github.com/sunaku/md2man
+cd md2man
+bundle install
+bundle exec rake --tasks        # packaging tasks
+bundle exec md2man-roff --help  # run it directly
+bundle exec md2man-html --help  # run it directly
+</code></pre>
+<h2 id="Usage">Usage</h2><h3 id="For-roff-output">For <a href="http://troff.org">roff</a> output</h3><h4 id="At-the-command-line">At the command line</h4><p>See <a class="md2man-xref" href="../man1/md2man-roff.1.html">md2man-roff(1)</a> manual:</p>
+<pre><code>md2man-roff --help
+</code></pre>
+<h4 id="Inside-a-Ruby-script">Inside a Ruby script</h4><p>Use the default renderer:</p>
+<pre><code>require &#39;md2man/roff/engine&#39;
+
+your_roff_output = Md2Man::Roff::<a class="md2man-xref">ENGINE.render(your_markdown_input)</a>
+</code></pre>
+<p>Build your own renderer:</p>
+<pre><code>require &#39;md2man/roff/engine&#39;
+
+engine = Redcarpet::Markdown.new(Md2Man::Roff::Engine, your_options_hash)
+your_roff_output = <a class="md2man-xref">engine.render(your_markdown_input)</a>
+</code></pre>
+<p>Define your own renderer:</p>
+<pre><code>require &#39;md2man/roff/engine&#39;
+
+class YourManpageRenderer &lt; Md2Man::Roff::Engine
+  # ... your stuff here ...
+end
+
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_roff_output = <a class="md2man-xref">engine.render(your_markdown_input)</a>
+</code></pre>
+<p>Mix-in your own renderer:</p>
+<pre><code>require &#39;md2man/roff&#39;
+
+class YourManpageRenderer &lt; Redcarpet::Render::Base
+  include Md2Man::Roff
+  # ... your stuff here ...
+end
+
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_roff_output = <a class="md2man-xref">engine.render(your_markdown_input)</a>
+</code></pre>
+<h3 id="For-HTML-output">For HTML output</h3><h4 id="At-the-command-line">At the command line</h4><p>See <a class="md2man-xref" href="../man1/md2man-html.1.html">md2man-html(1)</a> manual:</p>
+<pre><code>md2man-html --help
+</code></pre>
+<h4 id="Inside-a-Ruby-script">Inside a Ruby script</h4><p>Use the default renderer:</p>
+<pre><code>require &#39;md2man/html/engine&#39;
+
+your_html_output = Md2Man::HTML::<a class="md2man-xref">ENGINE.render(your_markdown_input)</a>
+</code></pre>
+<p>Build your own renderer:</p>
+<pre><code>require &#39;md2man/html/engine&#39;
+
+engine = Redcarpet::Markdown.new(Md2Man::HTML::Engine, your_options_hash)
+your_html_output = <a class="md2man-xref">engine.render(your_markdown_input)</a>
+</code></pre>
+<p>Define your own renderer:</p>
+<pre><code>require &#39;md2man/html/engine&#39;
+
+class YourManpageRenderer &lt; Md2Man::HTML::Engine
+  # ... your stuff here ...
+end
+
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_html_output = <a class="md2man-xref">engine.render(your_markdown_input)</a>
+</code></pre>
+<p>Mix-in your own renderer:</p>
+<pre><code>require &#39;md2man/html&#39;
+
+class YourManpageRenderer &lt; Redcarpet::Render::Base
+  include Md2Man::HTML
+  # ... your stuff here ...
+end
+
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_html_output = <a class="md2man-xref">engine.render(your_markdown_input)</a>
+</code></pre>
+<h3 id="Building-man-pages">Building man pages</h3><h4 id="At-the-command-line">At the command line</h4><p>See <a class="md2man-xref" href="../man1/md2man-rake.1.html">md2man-rake(1)</a> manual:</p>
+<pre><code>md2man-rake --help
+</code></pre>
+<h4 id="Inside-a-Ruby-script">Inside a Ruby script</h4><p>Add this snippet to your gemspec file:</p>
+<pre><code>s.files += Dir[&#39;man/man?/*.?&#39;]            # UNIX man pages
+s.files += Dir[&#39;man/**/*.{html,css,js}&#39;]  # HTML man pages
+s.add_development_dependency &#39;md2man&#39;, &#39;~&gt; 2.0&#39;
+</code></pre>
+<p>Add this line to your Rakefile:</p>
+<pre><code>require &#39;md2man/rakefile&#39;
+</code></pre>
+<p>You now have a <code>rake md2man</code> task that builds manual pages from Markdown files
+(with &quot;.markdown&quot;, &quot;.mkd&quot;, or &quot;.md&quot; extension) inside <code>man/man*/</code> directories.
+There are also sub-tasks to build manual pages individually as <a href="http://troff.org">roff</a> or HTML.</p><p>If you&#39;re using Bundler, this task also hooks into Bundler&#39;s gem packaging
+tasks and ensures that your manual pages are built for packaging into a gem:</p>
+<pre><code>bundle exec rake build
+gem spec pkg/*.gem | fgrep man/
+</code></pre>
+<h2 id="License">License</h2><p>Released under the ISC license.  See the LICENSE file for details.</p></div></body>
+</html>

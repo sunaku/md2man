@@ -1,0 +1,116 @@
+.TH MD2MAN 5 2014\-01\-16 2.0.3
+.SH NAME
+.PP
+md2man \- manual page flavoring for the 
+.BR markdown (7) 
+file format
+.SH DESCRIPTION
+.PP
+md2man
+.UR https://github.com/sunaku/md2man
+.UE
+makes the 
+.BR markdown (7) 
+file format friendly for writing UNIX manual
+pages by extending its syntax, semantics, and assumed processing extensions.
+.SS Syntax
+.PP
+md2man extends 
+.BR markdown (7) 
+syntax by defining three kinds of paragraphs.
+.PP
+.RS
+.nf
+This is a
+normal
+paragraph.
+This is a
+  tagged
+  paragraph.
+  This is an
+  indented
+  paragraph.
+This
+ is another
+  normal
+   paragraph.
+.fi
+.RE
+.SS Normal paragraphs
+.PP
+Paragraphs whose lines are all indented by exactly zero or one additional
+spaces are considered to be "normal paragraphs".  For example:
+.PP
+.RS
+.nf
+This is a
+normal
+paragraph.
+This
+ is another
+  normal
+   paragraph.
+.fi
+.RE
+.SS Tagged paragraphs
+.PP
+Paragraphs whose first line is indented by less than two additional spaces and
+whose subsequent lines are uniformly indented by exactly two additional spaces
+are considered to be "tagged paragraphs".  For example:
+.PP
+.RS
+.nf
+This is a
+  tagged
+  paragraph.
+.fi
+.RE
+.SS Indented paragraphs
+.PP
+Paragraphs whose lines are all uniformly indented by exactly two additional
+spaces are considered to be "indented paragraphs".  For example:
+.PP
+.RS
+.nf
+  This is an
+  indented
+  paragraph.
+.fi
+.RE
+.SS Semantics
+.PP
+md2man extends 
+.BR markdown (7) 
+semantics by treating top\-level headings specially.
+.SS Top\-level headings
+.PP
+The first top\-level heading (H1) found in the input is considered to be the
+\fB\fC.TH\fR directive in 
+.BR roff (7), 
+which defines the UNIX manual page's header and
+footer.  Any subsequent top\-level headings are treated as second\-level (H2).
+.SS Extensions
+.PP
+md2man enables the following Redcarpet
+.UR https://github.com/vmg/redcarpet
+.UE
+extensions while reading 
+.BR markdown (7):
+.RS
+.IP \(bu 2
+tables
+.IP \(bu 2
+autolink
+.IP \(bu 2
+superscript
+.IP \(bu 2
+strikethrough
+.IP \(bu 2
+fenced_code_blocks
+.RE
+.SH SEE ALSO
+.PP
+.BR markdown (7), 
+.BR md2man-roff (1), 
+.BR md2man-html (1), 
+.BR md2man-rake (1)

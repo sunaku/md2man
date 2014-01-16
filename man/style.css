@@ -1,0 +1,57 @@
+@import url('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css');
+
+@media all {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 1em;
+  }
+
+  /* deactivate external manual page cross-references */
+  a.md2man-xref:not([href]) {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@media screen {
+  body {
+    font-family: monospace;
+    text-align: justify;
+    max-width: 83ch; /* 80 chars, +3 for Bootstrap CSS */
+    margin: auto;
+  }
+
+  h1:first-child {
+    margin-top: -5em;
+    font-weight: normal;
+    font-size: smaller;
+    text-align: right;
+  }
+}
+
+@media print {
+  .navbar:first-child {
+    display: none;
+  }
+
+  /* improve readability of revealed hyperlink URLs */
+  a:after {
+    font-family: monospace;
+  }
+
+  /* internal links and manual page cross-references */
+  a[href^='#'], a[href^='../man'] {
+    color: inherit;
+    font-weight: bolder;
+    text-decoration: none;
+  }
+
+  /* undo bootstrap's revealing of those hyperlinks */
+  a[href^='#']:after, a[href^='../man']:after {
+    content: none;
+  }
+}

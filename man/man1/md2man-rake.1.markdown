@@ -1,0 +1,42 @@
+# MD2MAN-RAKE 1 2014-01-16 2.0.3
+
+## NAME
+
+md2man-rake - run rake(1) tasks from md2man(1)
+
+## SYNOPSIS
+
+`md2man-rake` [*OPTION*]... [*TASK*]...
+
+## DESCRIPTION
+
+This program lets you run rake(1) tasks provided by md2man(1) without having
+to create a special file named `Rakefile` that contains the following snippet:
+
+    require 'md2man/rakefile'
+
+If no *TASK* is specified, then the `md2man` task is run by default.
+
+## TASKS
+
+`md2man`
+  Runs the `md2man:man` and `md2man:web` tasks, in that order.
+
+`md2man:man`
+  Builds UNIX manual pages from `*.markdown`, `*.mkd`, and `*.md` files
+  found in or beneath the `man/` subdirectory in your working directory.
+
+`md2man:web`
+  Builds HTML manual pages from `*.markdown`, `*.mkd`, and `*.md` files
+  found in or beneath the `man/` subdirectory in your working directory.
+
+## OPTIONS
+
+`-h`, `--help`
+  Show this help manual.
+
+Run `rake --help` to see more options.
+
+## SEE ALSO
+
+rake(1), md2man-roff(1), md2man-html(1), md2man(5)

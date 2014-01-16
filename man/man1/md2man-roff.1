@@ -1,0 +1,53 @@
+.TH MD2MAN\-ROFF 1 2014\-01\-16 2.0.3
+.SH NAME
+.PP
+md2man\-roff \- convert 
+.BR md2man (5) 
+flavored 
+.BR markdown (7) 
+into 
+.BR roff (7)
+.SH SYNOPSIS
+.PP
+\fB\fCmd2man-roff\fR [\fIOPTION\fP]... [\fIFILE\fP]
+.SH DESCRIPTION
+.PP
+This program converts 
+.BR md2man (5) 
+flavored 
+.BR markdown (7) 
+input from the given
+\fIFILE\fP into 
+.BR roff (7) 
+and then prints the result to the standard output stream.
+If \fIFILE\fP is not given, then the standard input stream is read in its place.
+.SS Limitations
+.PP
+This program does not convert the following Redcarpet
+.UR https://github.com/vmg/redcarpet
+.UE
+nodes into 
+.BR roff (7):
+.RS
+.IP \(bu 2
+\fB\fCblock_html\fR
+.IP \(bu 2
+\fB\fCstrikethrough\fR
+.IP \(bu 2
+\fB\fCsuperscript\fR
+.IP \(bu 2
+\fB\fCimage\fR
+.IP \(bu 2
+\fB\fCraw_html\fR
+.RE
+.PP
+It issues a warning when it encounters these instead.  Patches are welcome!
+.SH OPTIONS
+.TP
+\fB\fC-h\fR, \fB\fC--help\fR
+Show this help manual.
+.SH SEE ALSO
+.PP
+.BR md2man-html (1), 
+.BR md2man-rake (1), 
+.BR md2man (5)
