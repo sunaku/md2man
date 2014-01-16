@@ -1,3 +1,11 @@
+## Version 2.0.3 (2014-01-16)
+
+### Patch:
+
+  * Use CSS3 `-ch` suffix for accurate 80-character width in HTML output.
+
+    http://www.w3.org/TR/css3-values/#font-relative-lengths
+
 ## Version 2.0.2 (2013-09-08)
 
 Patch:
