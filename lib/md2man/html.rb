@@ -22,7 +22,7 @@ module Md2Man::HTML
     "<dl><dd>#{text}</dd></dl>"
   end
 
-  def header text, level
+  def header text, level, _=nil
     id = text.gsub(/<.+?>/, '-').        # strip all HTML tags
       gsub(/\W+/, '-').gsub(/^-|-$/, '') # fold non-word chars
     %{<h#{level} id="#{id}">#{text}</h#{level}>}
