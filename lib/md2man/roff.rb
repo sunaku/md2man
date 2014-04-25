@@ -42,7 +42,7 @@ module Md2Man::Roff
   end
 
   def block_code code, language
-    code = escape_backslashes(code)
+    code = escape_macro escape_backslashes(code)
     block_quote "\n.nf\n#{code.chomp}\n.fi\n"
   end
 
@@ -219,6 +219,10 @@ module Md2Man::Roff
   end
 
 private
+
+  def escape_macro text
+    text.gsub(/^\./, '\\\\&.')
+  end
 
   def escape_backslashes text
     text.gsub(/\\/, '\&\&')
