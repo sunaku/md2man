@@ -54,7 +54,7 @@ module Md2Man::Roff
     warn "md2man/roff: block_html not implemented: #{html.inspect}"
   end
 
-  def header text, level, _=nil
+  def header text, level, anchor
     macro =
       case level
       when 1

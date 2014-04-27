@@ -35,7 +35,7 @@ module Md2Man::HTML
   # see "Title line" in man-pages(7) or "Top-level headings" in md2man(5)
   HEADER_PARTS = %w[ title section date source manual ].freeze
 
-  def header text, level, _=nil
+  def header text, level, anchor
     if level == 1 and not @h1_seen
       @h1_seen = true
       text = HEADER_PARTS.zip(Shellwords.split(text)).map do |part, value|
@@ -46,9 +46,9 @@ module Md2Man::HTML
     id = text.gsub(/<.+?>/, '-').        # strip all HTML tags
       gsub(/\W+/, '-').gsub(/^-|-$/, '') # fold non-word chars
     [
-      %{<h#{level} id="#{id}">},
+      %{<h#{level} id="#{anchor}">},
         text,
-        %{<a name="#{id}" href="##{id}" class="md2man-permalink">},
+        %{<a name="#{anchor}" href="##{anchor}" class="md2man-permalink">},
         '</a>',
       "</h#{level}>",
     ].join

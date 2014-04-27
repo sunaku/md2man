@@ -7,7 +7,8 @@ module Md2Man::HTML
     include Md2Man::HTML
   end
 
-  ENGINE = Redcarpet::Markdown.new(Engine,
+  ENGINE = Redcarpet::Markdown.new(
+    Engine.new(:with_toc_data => true),
     :tables => true,
     :autolink => true,
     :superscript => true,
