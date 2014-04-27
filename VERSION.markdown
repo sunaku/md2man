@@ -16,7 +16,7 @@ Patch:
 
     Thanks to Nick Fagerlund for reporting this bug.
 
-  * inhibit periods at line beginnings with \& escape
+  * escape periods at line beginnings with \& escape
 
   * escape text line backslashes as "\e" per groff(7)
 

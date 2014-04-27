@@ -42,7 +42,7 @@ module Md2Man::Roff
   end
 
   def block_code code, language
-    code = escape_backslashes(code)
+    code = escape(code, true)
     block_quote "\n.nf\n#{code.chomp}\n.fi\n"
   end
 
@@ -54,7 +54,7 @@ module Md2Man::Roff
     warn "md2man/roff: block_html not implemented: #{html.inspect}"
   end
 
-  def header text, level
+  def header text, level, _=nil
     macro =
       case level
       when 1
@@ -161,7 +161,7 @@ module Md2Man::Roff
   end
 
   def codespan code
-    code = escape_backslashes(code)
+    code = escape(code, true)
     # NOTE: this double font sequence gives us the best of both worlds:
     # man(1) shows it in bold and `groff -Thtml` shows it in monospace
     "\\fB\\fC#{code}\\fR"
@@ -197,17 +197,7 @@ module Md2Man::Roff
   #---------------------------------------------------------------------------
 
   def normal_text text
-    if text then text.
-      # escape backslashes so that they appear in the printable output
-      gsub('\\', '\\[rs]').
-
-      # inhibit soft-hyphens so that they appear in the printable output
-      gsub('-', '\\-').
-
-      # inhibit line-beginning control characters (period and single-quote)
-      # by prefixing a non-printable, zero-width glyph (backslash-ampersand)
-      gsub(/^(?=[.'])/, '\\\\&')
-    end
+    escape text, false if text
   end
 
   def entity text
@@ -220,8 +210,18 @@ module Md2Man::Roff
 
 private
 
-  def escape_backslashes text
-    text.gsub(/\\/, '\&\&')
+  def escape text, literally
+    if text then text.
+      # escape backslashes so that they appear in the printable output
+      gsub('\\', literally ? '\&\&' : '\\[rs]').
+
+      # escape soft-hyphens so that they appear in the printable output
+      gsub('-', '\\-').
+
+      # escape line-beginning control characters (period and single quote)
+      # by prefixing a non-printable, zero-width glyph (backslash ampersand)
+      gsub(/^(?=[.'])/, '\\\\&')
+    end
   end
 
   def remove_leading_pp text

@@ -175,7 +175,7 @@ describe 'roff engine' do
     OUTPUT
   end
 
-  it 'inhibits periods at the beginning of lines in normal text' do
+  it 'escapes periods at the beginning of lines in normal text' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |.
     INPUT
@@ -205,7 +205,7 @@ describe 'roff engine' do
     OUTPUT
   end
 
-  it 'inhibits single quotes at the beginning of lines in normal text' do
+  it 'escapes single quotes at the beginning of lines in normal text' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |'
     INPUT
@@ -232,6 +232,98 @@ describe 'roff engine' do
     INPUT
       |.PP
       |\\&'hello' world qu'o'tes
+    OUTPUT
+  end
+
+  it 'escapes periods at the beginning of lines in code blocks' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    .
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |\\&.
+      |.fi
+      |.RE
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    ..
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |\\&..
+      |.fi
+      |.RE
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    ...
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |\\&...
+      |.fi
+      |.RE
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    .hello. world qu.o.tes
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |\\&.hello. world qu.o.tes
+      |.fi
+      |.RE
+    OUTPUT
+  end
+
+  it 'escapes single quotes at the beginning of lines in code blocks' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    '
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |\\&'
+      |.fi
+      |.RE
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    ''
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |\\&''
+      |.fi
+      |.RE
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    '''
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |\\&'''
+      |.fi
+      |.RE
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    'hello' world qu'o'tes
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |\\&'hello' world qu'o'tes
+      |.fi
+      |.RE
     OUTPUT
   end
 
@@ -423,7 +515,7 @@ describe 'roff engine' do
       | spanning
       |  **multiple**
       |>  lines
-      |with 4-space indent
+      |with 4\\-space indent
       |.fi
       |.RE
     OUTPUT
@@ -463,7 +555,7 @@ describe 'roff engine' do
       |  _  __/ __ \\\\  __/ /_/
       |  / /_/ /_/ / / / ,\\\\
       |  \\\\__/\\\\____/_/ /_/|_\\\\
-      |             >>>------>
+      |             >>>\\-\\-\\-\\-\\-\\->
       |.fi
       |.RE
     OUTPUT
@@ -769,7 +861,7 @@ describe 'roff engine' do
       |.PP
       |.RS
       |.nf
-      |<a class="md2man-xref" href="../man3/printf.3.html">
+      |<a class="md2man\\-xref" href="../man3/printf.3.html">
       |.BR printf (3)</a>
       |.fi
       |.RE
