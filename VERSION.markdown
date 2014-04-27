@@ -1,3 +1,18 @@
+## Version 2.0.4 (2014-04-26)
+
+### Patch:
+
+  * GH-16: Redcarpet 3.1 added a third parameter to its `header()` method.
+    This raised an ArgumentError on "wrong number of arguments (3 for 2)".
+
+    Thanks to zimbatm for contributing this patch.
+
+  * GH-17 and GH-18: Escape periods, quotes, and hyphens in code blocks.
+    This fixes a bug where lines beginning with periods or single quotes
+    did not appear when md2man-roff(1) output was rendered using man(1).
+
+    Thanks to zimbatm for reporting this bug and suggesting how to fix it.
+
 ## Version 2.0.3 (2014-01-16)
 
 ### Patch:
