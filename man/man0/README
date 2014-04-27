@@ -35,8 +35,8 @@ into a UNIX manual page:
 .PP
 .RS
 .nf
-md2man-roff EXAMPLE.markdown > EXAMPLE.1
-man -l EXAMPLE.1
+md2man\-roff EXAMPLE.markdown > EXAMPLE.1
+man \-l EXAMPLE.1
 .fi
 .RE
 .PP
@@ -53,7 +53,7 @@ into a web page:
 .PP
 .RS
 .nf
-md2man-html EXAMPLE.markdown > EXAMPLE.html
+md2man\-html EXAMPLE.markdown > EXAMPLE.html
 open EXAMPLE.html
 .fi
 .RE
@@ -71,9 +71,9 @@ gem install md2man
 git clone git://github.com/sunaku/md2man
 cd md2man
 bundle install
-bundle exec rake --tasks        # packaging tasks
-bundle exec md2man-roff --help  # run it directly
-bundle exec md2man-html --help  # run it directly
+bundle exec rake \-\-tasks        # packaging tasks
+bundle exec md2man\-roff \-\-help  # run it directly
+bundle exec md2man\-html \-\-help  # run it directly
 .fi
 .RE
 .SH Usage
@@ -89,7 +89,7 @@ manual:
 .PP
 .RS
 .nf
-md2man-roff --help
+md2man\-roff \-\-help
 .fi
 .RE
 .SS Inside a Ruby script
@@ -152,7 +152,7 @@ manual:
 .PP
 .RS
 .nf
-md2man-html --help
+md2man\-html \-\-help
 .fi
 .RE
 .SS Inside a Ruby script
@@ -215,7 +215,7 @@ manual:
 .PP
 .RS
 .nf
-md2man-rake --help
+md2man\-rake \-\-help
 .fi
 .RE
 .SS Inside a Ruby script

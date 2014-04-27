@@ -1,8 +1,26 @@
+.SH Version 2.0.4 (2014\-04\-26)
+.SS Patch:
+.RS
+.IP \(bu 2
+GH\-16: Redcarpet 3.1 added a third parameter to its \fB\fCheader()\fR method.
+This raised an ArgumentError on "wrong number of arguments (3 for 2)".
+.PP
+Thanks to zimbatm for contributing this patch.
+.IP \(bu 2
+GH\-17 and GH\-18: Escape periods, quotes, and hyphens in code blocks.
+This fixes a bug where lines beginning with periods or single quotes
+did not appear when 
+.BR md2man-roff (1) 
+output was rendered using 
+.BR man (1).
+.PP
+Thanks to zimbatm for reporting this bug and suggesting how to fix it.
+.RE
 .SH Version 2.0.3 (2014\-01\-16)
 .SS Patch:
 .RS
 .IP \(bu 2
-Use CSS3 \fB\fC-ch\fR suffix for accurate 80\-character width in HTML output.
+Use CSS3 \fB\fC\-ch\fR suffix for accurate 80\-character width in HTML output.
 .TP
 .UR http://www.w3.org/TR/css3-values/#font-relative-lengths
 .UE
@@ -20,7 +38,7 @@ manual for details.
 .PP
 Thanks to Nick Fagerlund for reporting this bug.
 .IP \(bu 2
-inhibit periods at line beginnings with & escape
+escape periods at line beginnings with & escape
 .IP \(bu 2
 escape text line backslashes as "\[rs]e" per 
 .BR groff (7)
@@ -394,7 +412,7 @@ cross\-references to other UNIX manual pages within Redcarpet.
 Other:
 .RS
 .IP \(bu 2
-README: not all systems support \fB\fCman -l\fR option.
+README: not all systems support \fB\fCman \-l\fR option.
 .IP \(bu 2
 gemspec: upgrade to redcarpet 2.1.0.
 .IP \(bu 2

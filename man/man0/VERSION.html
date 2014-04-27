@@ -2,19 +2,27 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 2.0.3 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 2.0.4 https://github.com/sunaku/md2man" />
   <title>VERSION</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="Version-2-0-3-2014-01-16">Version 2.0.3 (2014-01-16)</h2><h3 id="Patch">Patch:</h3>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="Version-2-0-4-2014-04-26">Version 2.0.4 (2014-04-26)</h2><h3 id="Patch">Patch:</h3>
+<ul>
+<li><p>GH-16: Redcarpet 3.1 added a third parameter to its <code>header()</code> method.
+This raised an ArgumentError on &quot;wrong number of arguments (3 for 2)&quot;.</p><p>Thanks to zimbatm for contributing this patch.</p></li>
+<li><p>GH-17 and GH-18: Escape periods, quotes, and hyphens in code blocks.
+This fixes a bug where lines beginning with periods or single quotes
+did not appear when <a class="md2man-xref" href="../man1/md2man-roff.1.html">md2man-roff(1)</a> output was rendered using <a class="md2man-xref">man(1)</a>.</p><p>Thanks to zimbatm for reporting this bug and suggesting how to fix it.</p></li>
+</ul>
+<h2 id="Version-2-0-3-2014-01-16">Version 2.0.3 (2014-01-16)</h2><h3 id="Patch">Patch:</h3>
 <ul>
 <li><p>Use CSS3 <code>-ch</code> suffix for accurate 80-character width in HTML output.</p><p><a href="http://www.w3.org/TR/css3-values/#font-relative-lengths">http://www.w3.org/TR/css3-values/#font-relative-lengths</a></p></li>
 </ul>
 <h2 id="Version-2-0-2-2013-09-08">Version 2.0.2 (2013-09-08)</h2><p>Patch:</p>
 <ul>
 <li><p>GH-14: escape single quotes at beginning of lines</p><p>See the &quot;CONTROL CHARACTERS&quot; section in the <a class="md2man-xref">groff(7)</a> manual for details.</p><p>Thanks to Nick Fagerlund for reporting this bug.</p></li>
-<li><p>inhibit periods at line beginnings with &amp; escape</p></li>
+<li><p>escape periods at line beginnings with &amp; escape</p></li>
 <li><p>escape text line backslashes as &quot;\e&quot; per <a class="md2man-xref">groff(7)</a></p></li>
 <li><p>better documentation for escaping in normal_text()</p></li>
 <li><p>it&#39;s better to escape backslashes as [rs] than \e</p><p>See &quot;Single-Character Escapes&quot; section in <a class="md2man-xref">groff(7)</a>.</p></li>
