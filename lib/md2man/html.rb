@@ -25,7 +25,13 @@ module Md2Man::HTML
   def header text, level, _=nil
     id = text.gsub(/<.+?>/, '-').        # strip all HTML tags
       gsub(/\W+/, '-').gsub(/^-|-$/, '') # fold non-word chars
-    %{<h#{level} id="#{id}">#{text}</h#{level}>}
+    [
+      %{<h#{level} id="#{id}">},
+        text,
+        %{<a name="#{id}" href="##{id}" class="md2man-permalink">},
+        '</a>',
+      "</h#{level}>",
+    ].join
   end
 
   #---------------------------------------------------------------------------
