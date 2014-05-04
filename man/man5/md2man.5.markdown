@@ -1,4 +1,4 @@
-# MD2MAN 5 2014-04-26 2.0.4
+# MD2MAN 5 2014-05-04 2.1.0
 
 ## NAME
 
@@ -69,9 +69,27 @@ md2man extends markdown(7) semantics by treating top-level headings specially.
 
 #### Top-level headings
 
-The first top-level heading (H1) found in the input is considered to be the
-`.TH` directive in roff(7), which defines the UNIX manual page's header and
-footer.  Any subsequent top-level headings are treated as second-level (H2).
+The first top-level `<h1>` heading found in the input is considered to be the
+`.TH` directive in roff(7), as described under "Title line" in man-pages(7):
+
+>     .TH title section date source manual
+>
+> title
+>   The title of the man page, written in all caps (e.g., `MAN-PAGES`).
+>
+> section
+>   The section number in which the man page should be placed (e.g., `7`).
+>
+> date
+>   The date of the last revision, written in the form YYYY-MM-DD.
+>
+> source
+>   The source of the command, function, or system call (e.g., `Linux`).
+>
+> manual
+>   The title of the manual (e.g., `Linux Programmer's Manual`).
+
+Any subsequent top-level headings are treated as second-level `<h2>` headings.
 
 ### Extensions
 
@@ -85,7 +103,7 @@ md2man enables the following [Redcarpet] extensions while reading markdown(7):
 
 ## SEE ALSO
 
-markdown(7), md2man-roff(1), md2man-html(1), md2man-rake(1)
+markdown(7), man-pages(7), md2man-roff(1), md2man-html(1), md2man-rake(1)
 
 [md2man]: https://github.com/sunaku/md2man
 [Redcarpet]: https://github.com/vmg/redcarpet

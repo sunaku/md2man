@@ -1,4 +1,4 @@
-.TH MD2MAN\-HTML 1 2014\-04\-26 2.0.4
+.TH MD2MAN\-HTML 1 2014\-05\-04 2.1.0
 .SH NAME
 .PP
 md2man\-html \- convert 
@@ -18,6 +18,24 @@ flavored
 input from the given
 \fIFILE\fP into HTML and then prints the result to the standard output stream.
 If \fIFILE\fP is not given, then the standard input stream is read in its place.
+.SS Top\-level headings
+.PP
+Each component of the \fB\fC\&.TH\fR directive in 
+.BR roff (7), 
+described under "Top\-level
+headings" in 
+.BR md2man (5), 
+is wrapped in stylable \fB\fC<span>\fR elements as follows:
+.PP
+.RS
+.nf
+<span class="md2man\-title">...</span>
+<span class="md2man\-section">...</span>
+<span class="md2man\-date">...</span>
+<span class="md2man\-source">...</span>
+<span class="md2man\-manual">...</span>
+.fi
+.RE
 .SS Cross references
 .PP
 Cross references to manual pages are emitted as HTML hyperlinks that have

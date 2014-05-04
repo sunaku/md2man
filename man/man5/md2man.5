@@ -1,4 +1,4 @@
-.TH MD2MAN 5 2014\-04\-26 2.0.4
+.TH MD2MAN 5 2014\-05\-04 2.1.0
 .SH NAME
 .PP
 md2man \- manual page flavoring for the 
@@ -84,11 +84,36 @@ md2man extends
 semantics by treating top\-level headings specially.
 .SS Top\-level headings
 .PP
-The first top\-level heading (H1) found in the input is considered to be the
+The first top\-level \fB\fC<h1>\fR heading found in the input is considered to be the
 \fB\fC\&.TH\fR directive in 
 .BR roff (7), 
-which defines the UNIX manual page's header and
-footer.  Any subsequent top\-level headings are treated as second\-level (H2).
+as described under "Title line" in 
+.BR man-pages (7):
+.PP
+.RS
+.RS
+.nf
+\&.TH title section date source manual
+.fi
+.RE
+.TP
+title
+The title of the man page, written in all caps (e.g., \fB\fCMAN\-PAGES\fR).
+.TP
+section
+The section number in which the man page should be placed (e.g., \fB\fC7\fR).
+.TP
+date
+The date of the last revision, written in the form YYYY\-MM\-DD.
+.TP
+source
+The source of the command, function, or system call (e.g., \fB\fCLinux\fR).
+.TP
+manual
+The title of the manual (e.g., \fB\fCLinux Programmer's Manual\fR).
+.RE
+.PP
+Any subsequent top\-level headings are treated as second\-level \fB\fC<h2>\fR headings.
 .SS Extensions
 .PP
 md2man enables the following Redcarpet
@@ -111,6 +136,7 @@ fenced_code_blocks
 .SH SEE ALSO
 .PP
 .BR markdown (7), 
+.BR man-pages (7), 
 .BR md2man-roff (1), 
 .BR md2man-html (1), 
 .BR md2man-rake (1)

@@ -1,4 +1,4 @@
-# MD2MAN-HTML 1 2014-04-26 2.0.4
+# MD2MAN-HTML 1 2014-05-04 2.1.0
 
 ## NAME
 
@@ -13,6 +13,17 @@ md2man-html - convert md2man(5) flavored markdown(7) into HTML
 This program converts md2man(5) flavored markdown(7) input from the given
 *FILE* into HTML and then prints the result to the standard output stream.
 If *FILE* is not given, then the standard input stream is read in its place.
+
+### Top-level headings
+
+Each component of the `.TH` directive in roff(7), described under "Top-level
+headings" in md2man(5), is wrapped in stylable `<span>` elements as follows:
+
+    <span class="md2man-title">...</span>
+    <span class="md2man-section">...</span>
+    <span class="md2man-date">...</span>
+    <span class="md2man-source">...</span>
+    <span class="md2man-manual">...</span>
 
 ### Cross references
 

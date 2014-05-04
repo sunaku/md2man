@@ -2,13 +2,13 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 2.0.4 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 2.1.0 https://github.com/sunaku/md2man" />
   <title>md2man(5) &mdash; manual page flavoring for the markdown(7) file format</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man5">man5</a>/md2man.5</span></div></div><div class="container-fluid"><h1 id="MD2MAN-5-2014-04-26-2-0-4">MD2MAN 5 2014-04-26 2.0.4</h1><h2 id="NAME">NAME</h2><p>md2man - manual page flavoring for the <a class="md2man-xref">markdown(7)</a> file format</p><h2 id="DESCRIPTION">DESCRIPTION</h2><p><a href="https://github.com/sunaku/md2man">md2man</a> makes the <a class="md2man-xref">markdown(7)</a> file format friendly for writing UNIX manual
-pages by extending its syntax, semantics, and assumed processing extensions.</p><h3 id="Syntax">Syntax</h3><p>md2man extends <a class="md2man-xref">markdown(7)</a> syntax by defining three kinds of paragraphs.</p>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man5">man5</a>/md2man.5</span></div></div><div class="container-fluid"><h1 id="MD2MAN-5-2014-05-04-2-1-0"><span class="md2man-title">MD2MAN</span> <span class="md2man-section">5</span> <span class="md2man-date">2014-05-04</span> <span class="md2man-source">2.1.0</span><a name="MD2MAN-5-2014-05-04-2-1-0" href="#MD2MAN-5-2014-05-04-2-1-0" class="md2man-permalink"></a></h1><h2 id="NAME">NAME<a name="NAME" href="#NAME" class="md2man-permalink"></a></h2><p>md2man - manual page flavoring for the <a class="md2man-xref">markdown(7)</a> file format</p><h2 id="DESCRIPTION">DESCRIPTION<a name="DESCRIPTION" href="#DESCRIPTION" class="md2man-permalink"></a></h2><p><a href="https://github.com/sunaku/md2man">md2man</a> makes the <a class="md2man-xref">markdown(7)</a> file format friendly for writing UNIX manual
+pages by extending its syntax, semantics, and assumed processing extensions.</p><h3 id="Syntax">Syntax<a name="Syntax" href="#Syntax" class="md2man-permalink"></a></h3><p>md2man extends <a class="md2man-xref">markdown(7)</a> syntax by defining three kinds of paragraphs.</p>
 <pre><code>This is a
 normal
 paragraph.
@@ -26,7 +26,7 @@ This
   normal
    paragraph.
 </code></pre>
-<h4 id="Normal-paragraphs">Normal paragraphs</h4><p>Paragraphs whose lines are all indented by exactly zero or one additional
+<h4 id="Normal-paragraphs">Normal paragraphs<a name="Normal-paragraphs" href="#Normal-paragraphs" class="md2man-permalink"></a></h4><p>Paragraphs whose lines are all indented by exactly zero or one additional
 spaces are considered to be &quot;normal paragraphs&quot;.  For example:</p>
 <pre><code>This is a
 normal
@@ -37,22 +37,26 @@ This
   normal
    paragraph.
 </code></pre>
-<h4 id="Tagged-paragraphs">Tagged paragraphs</h4><p>Paragraphs whose first line is indented by less than two additional spaces and
+<h4 id="Tagged-paragraphs">Tagged paragraphs<a name="Tagged-paragraphs" href="#Tagged-paragraphs" class="md2man-permalink"></a></h4><p>Paragraphs whose first line is indented by less than two additional spaces and
 whose subsequent lines are uniformly indented by exactly two additional spaces
 are considered to be &quot;tagged paragraphs&quot;.  For example:</p>
 <pre><code>This is a
   tagged
   paragraph.
 </code></pre>
-<h4 id="Indented-paragraphs">Indented paragraphs</h4><p>Paragraphs whose lines are all uniformly indented by exactly two additional
+<h4 id="Indented-paragraphs">Indented paragraphs<a name="Indented-paragraphs" href="#Indented-paragraphs" class="md2man-permalink"></a></h4><p>Paragraphs whose lines are all uniformly indented by exactly two additional
 spaces are considered to be &quot;indented paragraphs&quot;.  For example:</p>
 <pre><code>  This is an
   indented
   paragraph.
 </code></pre>
-<h3 id="Semantics">Semantics</h3><p>md2man extends <a class="md2man-xref">markdown(7)</a> semantics by treating top-level headings specially.</p><h4 id="Top-level-headings">Top-level headings</h4><p>The first top-level heading (H1) found in the input is considered to be the
-<code>.TH</code> directive in <a class="md2man-xref">roff(7)</a>, which defines the UNIX manual page&#39;s header and
-footer.  Any subsequent top-level headings are treated as second-level (H2).</p><h3 id="Extensions">Extensions</h3><p>md2man enables the following <a href="https://github.com/vmg/redcarpet">Redcarpet</a> extensions while reading <a class="md2man-xref">markdown(7)</a>:</p>
+<h3 id="Semantics">Semantics<a name="Semantics" href="#Semantics" class="md2man-permalink"></a></h3><p>md2man extends <a class="md2man-xref">markdown(7)</a> semantics by treating top-level headings specially.</p><h4 id="Top-level-headings">Top-level headings<a name="Top-level-headings" href="#Top-level-headings" class="md2man-permalink"></a></h4><p>The first top-level <code>&lt;h1&gt;</code> heading found in the input is considered to be the
+<code>.TH</code> directive in <a class="md2man-xref">roff(7)</a>, as described under &quot;Title line&quot; in <a class="md2man-xref">man-pages(7)</a>:</p>
+<blockquote>
+<pre><code>.TH title section date source manual
+</code></pre>
+<dl><dt>title</dt><dd>The title of the man page, written in all caps (e.g., <code>MAN-PAGES</code>).</dd></dl><dl><dt>section</dt><dd>The section number in which the man page should be placed (e.g., <code>7</code>).</dd></dl><dl><dt>date</dt><dd>The date of the last revision, written in the form YYYY-MM-DD.</dd></dl><dl><dt>source</dt><dd>The source of the command, function, or system call (e.g., <code>Linux</code>).</dd></dl><dl><dt>manual</dt><dd>The title of the manual (e.g., <code>Linux Programmer&#39;s Manual</code>).</dd></dl></blockquote>
+<p>Any subsequent top-level headings are treated as second-level <code>&lt;h2&gt;</code> headings.</p><h3 id="Extensions">Extensions<a name="Extensions" href="#Extensions" class="md2man-permalink"></a></h3><p>md2man enables the following <a href="https://github.com/vmg/redcarpet">Redcarpet</a> extensions while reading <a class="md2man-xref">markdown(7)</a>:</p>
 <ul>
 <li>tables</li>
 <li>autolink</li>
@@ -60,5 +64,5 @@ footer.  Any subsequent top-level headings are treated as second-level (H2).</p>
 <li>strikethrough</li>
 <li>fenced_code_blocks</li>
 </ul>
-<h2 id="SEE-ALSO">SEE ALSO</h2><p><a class="md2man-xref">markdown(7)</a>, <a class="md2man-xref" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>, <a class="md2man-xref" href="../man1/md2man-html.1.html">md2man-html(1)</a>, <a class="md2man-xref" href="../man1/md2man-rake.1.html">md2man-rake(1)</a></p></div></body>
+<h2 id="SEE-ALSO">SEE ALSO<a name="SEE-ALSO" href="#SEE-ALSO" class="md2man-permalink"></a></h2><p><a class="md2man-xref">markdown(7)</a>, <a class="md2man-xref">man-pages(7)</a>, <a class="md2man-xref" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>, <a class="md2man-xref" href="../man1/md2man-html.1.html">md2man-html(1)</a>, <a class="md2man-xref" href="../man1/md2man-rake.1.html">md2man-rake(1)</a></p></div></body>
 </html>
