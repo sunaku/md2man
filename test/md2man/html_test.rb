@@ -141,7 +141,7 @@ describe 'html engine' do
       |#### qux (MOZ)
       |##### {m}oz END
     INPUT
-<h1 id="foo-BAR">foo <em>BAR</em><a name="foo-BAR" href="#foo-BAR" class="md2man-permalink"></a></h1>\
+<h1 id="foo-BAR"><span class=\"md2man-title\">foo</span> <span class=\"md2man-section\"><em>BAR</em></span><a name="foo-BAR" href="#foo-BAR" class="md2man-permalink"></a></h1>\
 <h2 id="bar-BAZ">bar BAZ<a name="bar-BAZ" href="#bar-BAZ" class="md2man-permalink"></a></h2>\
 <h3 id="BAZ-QUX">--BAZ-QUX--<a name="BAZ-QUX" href="#BAZ-QUX" class="md2man-permalink"></a></h3>\
 <h4 id="qux-MOZ">qux (MOZ)<a name="qux-MOZ" href="#qux-MOZ" class="md2man-permalink"></a></h4>\
