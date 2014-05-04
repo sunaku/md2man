@@ -1,9 +1,19 @@
 require 'cgi'
+require 'shellwords'
 require 'md2man/document'
 
 module Md2Man::HTML
 
   include Md2Man::Document
+
+  #---------------------------------------------------------------------------
+  # document-level processing
+  #---------------------------------------------------------------------------
+
+  def preprocess document
+    @h1_seen = false
+    super
+  end
 
   #---------------------------------------------------------------------------
   # block-level processing
@@ -22,10 +32,26 @@ module Md2Man::HTML
     "<dl><dd>#{text}</dd></dl>"
   end
 
+  # see "Title line" in man-pages(7) or "Top-level headings" in md2man(5)
+  HEADER_PARTS = %w[ title section date source manual ].freeze
+
   def header text, level, _=nil
+    if level == 1 and not @h1_seen
+      @h1_seen = true
+      text = HEADER_PARTS.zip(Shellwords.split(text)).map do |part, value|
+        %{<span class="md2man-#{part}">#{value}</span>} if value
+      end.compact.join(' ')
+    end
+
     id = text.gsub(/<.+?>/, '-').        # strip all HTML tags
       gsub(/\W+/, '-').gsub(/^-|-$/, '') # fold non-word chars
-    %{<h#{level} id="#{id}">#{text}</h#{level}>}
+    [
+      %{<h#{level} id="#{id}">},
+        text,
+        %{<a name="#{id}" href="##{id}" class="md2man-permalink">},
+        '</a>',
+      "</h#{level}>",
+    ].join
   end
 
   #---------------------------------------------------------------------------

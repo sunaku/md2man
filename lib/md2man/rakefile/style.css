@@ -31,6 +31,20 @@
     font-size: smaller;
     text-align: right;
   }
+
+  h1:first-child > a.md2man-permalink {
+    display: none;
+  }
+
+  a.md2man-permalink:after {
+    padding-left: 0.25em;
+    content: '\2665'; /* &hearts; */
+    opacity: 0.125;
+  }
+
+  a.md2man-permalink:hover:after {
+    opacity: initial;
+  }
 }
 
 @media print {
