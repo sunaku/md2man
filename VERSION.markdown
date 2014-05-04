@@ -1,3 +1,30 @@
+## Version 2.1.0 (2014-05-04)
+
+### Minor:
+
+  * md2man-html(1) now adds anchors and permalinks to all headings.  This
+    makes it easy for readers to bookmark and share direct links to specific
+    sections of your HTML manual pages.
+
+  * md2man-html(1) now wraps individual components of the special `.TH`
+    top-level heading in HTML `<span>` elements with stylable CSS classes:
+
+        <span class="md2man-title">...</span>
+        <span class="md2man-section">...</span>
+        <span class="md2man-date">...</span>
+        <span class="md2man-source">...</span>
+        <span class="md2man-manual">...</span>
+
+    Thanks to Nick Fagerlund for requesting this feature in [GH-15](
+    https://github.com/sunaku/md2man/issues/15 ).
+
+### Other:
+
+  * md2man(5) now documents the special `.TH` format of top-level headings.
+
+    Thanks to Nick Fagerlund for requesting this documentation in [GH-15](
+    https://github.com/sunaku/md2man/issues/15 ).
+
 ## Version 2.0.4 (2014-04-26)
 
 ### Patch:
