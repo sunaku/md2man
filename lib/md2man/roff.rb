@@ -211,17 +211,17 @@ module Md2Man::Roff
 private
 
   def escape text, literally
-    if text then text.
-      # escape backslashes so that they appear in the printable output
-      gsub('\\', literally ? '\&\&' : '\\[rs]').
+    text.
 
-      # escape soft-hyphens so that they appear in the printable output
-      gsub('-', '\\-').
+    # escape backslashes so that they appear in the printable output
+    gsub('\\', literally ? '\&\&' : '\\[rs]').
 
-      # escape line-beginning control characters (period and single quote)
-      # by prefixing a non-printable, zero-width glyph (backslash ampersand)
-      gsub(/^(?=[.'])/, '\\\\&')
-    end
+    # escape soft-hyphens so that they appear in the printable output
+    gsub('-', '\\-').
+
+    # escape line-beginning control characters (period and single quote)
+    # by prefixing a non-printable, zero-width glyph (backslash ampersand)
+    gsub(/^(?=[.'])/, '\\\\&')
   end
 
   def remove_leading_pp text
