@@ -3,6 +3,11 @@
 md2man is a Ruby library and a set of command-line programs that convert
 [Markdown] into UNIX manual pages (both [roff] and HTML) using [Redcarpet].
 
+* Package: <https://rubygems.org/gems/md2man>
+* Manuals: <https://sunaku.github.io/md2man>
+* Sources: <https://github.com/sunaku/md2man>
+* Support: <https://github.com/sunaku/md2man/issues>
+
 ## Features
 
   * Formats tagged and indented paragraphs (see "document format" below).
@@ -20,8 +25,7 @@ Try converting [this example Markdown file][example] into a UNIX manual page:
     md2man-roff EXAMPLE.markdown > EXAMPLE.1
     man -l EXAMPLE.1
 
-![Obligatory screenshot of md2man(1) in action!](
-https://raw.github.com/sunaku/md2man/master/EXAMPLE.png)
+![Obligatory screenshot of md2man(1) in action!](EXAMPLE.png)
 
 Also try converting [that example Markdown file][example] into a web page:
 
