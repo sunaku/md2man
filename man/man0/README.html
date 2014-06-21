@@ -2,13 +2,20 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 2.1.0 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 2.1.1 https://github.com/sunaku/md2man" />
   <title>README</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/README</span></div></div><div class="container-fluid"><h1 id="md2man-markdown-to-manpage"><span class="md2man-title">md2man</span> <span class="md2man-section">-</span> <span class="md2man-date">markdown</span> <span class="md2man-source">to</span> <span class="md2man-manual">manpage</span><a name="md2man-markdown-to-manpage" href="#md2man-markdown-to-manpage" class="md2man-permalink"></a></h1><p>md2man is a Ruby library and a set of command-line programs that convert
-<a href="http://daringfireball.net/projects/markdown/">Markdown</a> into UNIX manual pages (both <a href="http://troff.org">roff</a> and HTML) using <a href="https://github.com/vmg/redcarpet">Redcarpet</a>.</p><h2 id="Features">Features<a name="Features" href="#Features" class="md2man-permalink"></a></h2>
+<a href="http://daringfireball.net/projects/markdown/">Markdown</a> into UNIX manual pages (both <a href="http://troff.org">roff</a> and HTML) using <a href="https://github.com/vmg/redcarpet">Redcarpet</a>.</p>
+<ul>
+<li>Package: <a href="https://rubygems.org/gems/md2man">https://rubygems.org/gems/md2man</a></li>
+<li>Manuals: <a href="https://sunaku.github.io/md2man">https://sunaku.github.io/md2man</a></li>
+<li>Sources: <a href="https://github.com/sunaku/md2man">https://github.com/sunaku/md2man</a></li>
+<li>Support: <a href="https://github.com/sunaku/md2man/issues">https://github.com/sunaku/md2man/issues</a></li>
+</ul>
+<h2 id="Features">Features<a name="Features" href="#Features" class="md2man-permalink"></a></h2>
 <ul>
 <li><p>Formats tagged and indented paragraphs (see &quot;document format&quot; below).</p></li>
 <li><p>Translates all HTML4 and XHTML1 entities into native <a href="http://troff.org">roff</a> equivalents.</p></li>
@@ -19,7 +26,7 @@
 <pre><code>md2man-roff EXAMPLE.markdown &gt; EXAMPLE.1
 man -l EXAMPLE.1
 </code></pre>
-<p><img src="https://raw.github.com/sunaku/md2man/master/EXAMPLE.png" alt="Obligatory screenshot of md2man(1) in action!"></p><p>Also try converting <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">that example Markdown file</a> into a web page:</p>
+<p><img src="EXAMPLE.png" alt="Obligatory screenshot of md2man(1) in action!"></p><p>Also try converting <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">that example Markdown file</a> into a web page:</p>
 <pre><code>md2man-html EXAMPLE.markdown &gt; EXAMPLE.html
 open EXAMPLE.html
 </code></pre>

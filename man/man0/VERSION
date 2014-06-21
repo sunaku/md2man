@@ -1,3 +1,22 @@
+.SH Version 2.1.1 (2014\-06\-21)
+.SS Patch:
+.RS
+.IP \(bu 2
+Bootstrap CSS failed to load for HTML manuals served under HTTPS.
+See 
+.UR https://github.com/sunaku/readably/pull/3
+.UE
+for the details.
+.IP \(bu 2
+Drop redundant nil check in \fB\fCMd2Man::Roff::Engine.escape()\fR\&.
+.RE
+.SS Other:
+.RS
+.IP \(bu 2
+GitHub now supports relative links from the README.
+.IP \(bu 2
+README: add links to package, manuals, and GitHub.
+.RE
 .SH Version 2.1.0 (2014\-05\-04)
 .SS Minor:
 .RS

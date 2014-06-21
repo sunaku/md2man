@@ -10,6 +10,24 @@ into UNIX manual pages (both roff
 and HTML) using Redcarpet
 .UR https://github.com/vmg/redcarpet
 .UE \&.
+.RS
+.IP \(bu 2
+Package: 
+.UR https://rubygems.org/gems/md2man
+.UE
+.IP \(bu 2
+Manuals: 
+.UR https://sunaku.github.io/md2man
+.UE
+.IP \(bu 2
+Sources: 
+.UR https://github.com/sunaku/md2man
+.UE
+.IP \(bu 2
+Support: 
+.UR https://github.com/sunaku/md2man/issues
+.UE
+.RE
 .SH Features
 .RS
 .IP \(bu 2
@@ -42,9 +60,7 @@ man \-l EXAMPLE.1
 .PP
 [Obligatory screenshot of 
 .BR md2man (1) 
-in action!](
-.UR https://raw.github.com/sunaku/md2man/master/EXAMPLE.png
-.UE )
+in action!](EXAMPLE.png)
 .PP
 Also try converting that example Markdown file
 .UR https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown
