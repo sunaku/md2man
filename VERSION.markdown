@@ -1,3 +1,18 @@
+## Version 2.1.1 (2014-06-21)
+
+### Patch:
+
+  * Bootstrap CSS failed to load for HTML manuals served under HTTPS.
+    See <https://github.com/sunaku/readably/pull/3> for the details.
+
+  * Drop redundant nil check in `Md2Man::Roff::Engine.escape()`.
+
+### Other:
+
+  * GitHub now supports relative links from the README.
+
+  * README: add links to package, manuals, and GitHub.
+
 ## Version 2.1.0 (2014-05-04)
 
 ### Minor:
