@@ -25,8 +25,7 @@ Try converting [this example Markdown file][example] into a UNIX manual page:
     md2man-roff EXAMPLE.markdown > EXAMPLE.1
     man -l EXAMPLE.1
 
-![Obligatory screenshot of md2man(1) in action!](
-https://raw.github.com/sunaku/md2man/master/EXAMPLE.png)
+![Obligatory screenshot of md2man(1) in action!](EXAMPLE.png)
 
 Also try converting [that example Markdown file][example] into a web page:
 
