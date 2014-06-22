@@ -36,14 +36,19 @@
     display: none;
   }
 
-  a.md2man-permalink:after {
-    padding-left: 0.25em;
-    content: '\2665'; /* &hearts; */
-    opacity: 0.125;
+  a.md2man-permalink {
+    float: left;
+    margin-left: -1em;
+    opacity: 0.25;
   }
 
-  a.md2man-permalink:hover:after {
-    opacity: initial;
+  a.md2man-permalink:before {
+    content: '\2665'; /* &hearts; */
+  }
+
+  a.md2man-permalink:hover,
+  *:target > a.md2man-permalink {
+    opacity: initial
   }
 }
 

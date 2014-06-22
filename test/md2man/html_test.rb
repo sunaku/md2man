@@ -141,11 +141,11 @@ describe 'html engine' do
       |#### qux (MOZ)
       |##### {m}oz END
     INPUT
-<h1 id="foo-bar"><span class=\"md2man-title\">foo</span> <span class=\"md2man-section\"><em>BAR</em></span><a name="foo-bar" href="#foo-bar" class="md2man-permalink"></a></h1>\
-<h2 id="bar-baz">bar BAZ<a name="bar-baz" href="#bar-baz" class="md2man-permalink"></a></h2>\
-<h3 id="baz-qux">--BAZ-QUX--<a name="baz-qux" href="#baz-qux" class="md2man-permalink"></a></h3>\
-<h4 id="qux-moz">qux (MOZ)<a name="qux-moz" href="#qux-moz" class="md2man-permalink"></a></h4>\
-<h5 id="m-oz-end">{m}oz END<a name="m-oz-end" href="#m-oz-end" class="md2man-permalink"></a></h5>
+<h1 id="foo-bar"><a name="foo-bar" href="#foo-bar" class="md2man-permalink"></a><span class=\"md2man-title\">foo</span> <span class=\"md2man-section\"><em>BAR</em></span></h1>\
+<h2 id="bar-baz"><a name="bar-baz" href="#bar-baz" class="md2man-permalink"></a>bar BAZ</h2>\
+<h3 id="baz-qux"><a name="baz-qux" href="#baz-qux" class="md2man-permalink"></a>--BAZ-QUX--</h3>\
+<h4 id="qux-moz"><a name="qux-moz" href="#qux-moz" class="md2man-permalink"></a>qux (MOZ)</h4>\
+<h5 id="m-oz-end"><a name="m-oz-end" href="#m-oz-end" class="md2man-permalink"></a>{m}oz END</h5>
     OUTPUT
   end
 end

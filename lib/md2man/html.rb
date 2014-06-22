@@ -48,9 +48,8 @@ module Md2Man::HTML
 
     [
       %{<h#{level} id="#{id}">},
+        %{<a name="#{id}" href="##{id}" class="md2man-permalink"></a>},
         text,
-        %{<a name="#{id}" href="##{id}" class="md2man-permalink">},
-        '</a>',
       "</h#{level}>",
     ].join
   end
