@@ -43,8 +43,9 @@ module Md2Man::HTML
       end.compact.join(' ')
     end
 
-    id = text.gsub(/<.+?>/, '-').        # strip all HTML tags
-      gsub(/\W+/, '-').gsub(/^-|-$/, '') # fold non-word chars
+    # strip all HTML tags, squeeze all non-word characters, and lowercase it
+    id = text.gsub(/<.+?>/, '-').gsub(/\W+/, '-').gsub(/^-|-$/, '').downcase
+
     [
       %{<h#{level} id="#{id}">},
         text,
