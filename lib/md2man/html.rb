@@ -12,6 +12,7 @@ module Md2Man::HTML
 
   def preprocess document
     @h1_seen = false
+    @seen_count_by_id = Hash.new {|h,k| h[k] = 0 }
     super
   end
 
@@ -45,6 +46,10 @@ module Md2Man::HTML
 
     # strip all HTML tags, squeeze all non-word characters, and lowercase it
     id = text.gsub(/<.+?>/, '-').gsub(/\W+/, '-').gsub(/^-|-$/, '').downcase
+
+    # make duplicate anchors unique by appending numerical suffixes to them
+    count = @seen_count_by_id[id] += 1
+    id += "-#{count - 1}" if count > 1
 
     [
       %{<h#{level} id="#{id}">},
