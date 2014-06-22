@@ -55,10 +55,10 @@ describe 'html engine' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |For example, the `printf(3)` cross reference would be emitted as this HTML:
       |
-      |    <a class="md2man-xref" href="../man3/printf.3.html">printf(3)</a>
+      |    <a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a>
     INPUT
-      |<p>For example, the <code><a class="md2man-xref" href="../man3/printf.3.html">printf(3)</a></code> cross reference would be emitted as this HTML:</p>
-      |<pre><code>&lt;a class=&quot;md2man-xref&quot; href=&quot;../man3/printf.3.html&quot;&gt;<a class="md2man-xref" href="../man3/printf.3.html">printf(3)</a>&lt;/a&gt;
+      |<p>For example, the <code><a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a></code> cross reference would be emitted as this HTML:</p>
+      |<pre><code>&lt;a class=&quot;md2man-reference&quot; href=&quot;../man3/printf.3.html&quot;&gt;<a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a>&lt;/a&gt;
       |</code></pre>
       |
     OUTPUT
@@ -68,7 +68,7 @@ describe 'html engine' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |convert them from markdown(7) into roff(7), using
     INPUT
-      |<p>convert them from <a class="md2man-xref" href="../man7/markdown.7.html">markdown(7)</a> into <a class="md2man-xref" href="../man7/roff.7.html">roff(7)</a>, using</p>
+      |<p>convert them from <a class="md2man-reference" href="../man7/markdown.7.html">markdown(7)</a> into <a class="md2man-reference" href="../man7/roff.7.html">roff(7)</a>, using</p>
     OUTPUT
   end
 
@@ -76,7 +76,7 @@ describe 'html engine' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |markdown(1) into roff(2)
     INPUT
-      |<p><a class="md2man-xref" href="../man1/markdown.1.html">markdown(1)</a> into <a class="md2man-xref" href="../man2/roff.2.html">roff(2)</a></p>
+      |<p><a class="md2man-reference" href="../man1/markdown.1.html">markdown(1)</a> into <a class="md2man-reference" href="../man2/roff.2.html">roff(2)</a></p>
     OUTPUT
   end
 
@@ -87,8 +87,8 @@ describe 'html engine' do
       |    roff(7), and much more!
     INPUT
       |<pre><code>this is a code block
-      |containing <a class=\"md2man-xref\" href=\"../man7/markdown.7.html\">markdown(7)</a>,
-      |<a class=\"md2man-xref\" href=\"../man7/roff.7.html\">roff(7)</a>, and much more!
+      |containing <a class=\"md2man-reference\" href=\"../man7/markdown.7.html\">markdown(7)</a>,
+      |<a class=\"md2man-reference\" href=\"../man7/roff.7.html\">roff(7)</a>, and much more!
       |</code></pre>
       |
     OUTPUT
@@ -98,7 +98,7 @@ describe 'html engine' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |this is a code span `containing markdown(7), roff(7), and` much more!
     INPUT
-      |<p>this is a code span <code>containing <a class="md2man-xref" href="../man7/markdown.7.html">markdown(7)</a>, <a class="md2man-xref" href="../man7/roff.7.html">roff(7)</a>, and</code> much more!</p>
+      |<p>this is a code span <code>containing <a class="md2man-reference" href="../man7/markdown.7.html">markdown(7)</a>, <a class="md2man-reference" href="../man7/roff.7.html">roff(7)</a>, and</code> much more!</p>
     OUTPUT
   end
 
@@ -140,12 +140,20 @@ describe 'html engine' do
       |### --BAZ-QUX--
       |#### qux (MOZ)
       |##### {m}oz END
+      |# bar BAZ
+      |## bar *BAZ*
+      |### bar **BAZ**
+      |#### -bar--BAZ---
     INPUT
-<h1 id="foo-BAR"><span class=\"md2man-title\">foo</span> <span class=\"md2man-section\"><em>BAR</em></span><a name="foo-BAR" href="#foo-BAR" class="md2man-permalink"></a></h1>\
-<h2 id="bar-BAZ">bar BAZ<a name="bar-BAZ" href="#bar-BAZ" class="md2man-permalink"></a></h2>\
-<h3 id="BAZ-QUX">--BAZ-QUX--<a name="BAZ-QUX" href="#BAZ-QUX" class="md2man-permalink"></a></h3>\
-<h4 id="qux-MOZ">qux (MOZ)<a name="qux-MOZ" href="#qux-MOZ" class="md2man-permalink"></a></h4>\
-<h5 id="m-oz-END">{m}oz END<a name="m-oz-END" href="#m-oz-END" class="md2man-permalink"></a></h5>
+<h1 id="foo-bar"><a name="foo-bar" href="#foo-bar" class="md2man-permalink" title="permalink"></a><span class=\"md2man-title\">foo</span> <span class=\"md2man-section\"><em>BAR</em></span></h1>\
+<h2 id="bar-baz"><a name="bar-baz" href="#bar-baz" class="md2man-permalink" title="permalink"></a>bar BAZ</h2>\
+<h3 id="baz-qux"><a name="baz-qux" href="#baz-qux" class="md2man-permalink" title="permalink"></a>--BAZ-QUX--</h3>\
+<h4 id="qux-moz"><a name="qux-moz" href="#qux-moz" class="md2man-permalink" title="permalink"></a>qux (MOZ)</h4>\
+<h5 id="m-oz-end"><a name="m-oz-end" href="#m-oz-end" class="md2man-permalink" title="permalink"></a>{m}oz END</h5>\
+<h1 id="bar-baz-1"><a name="bar-baz-1" href="#bar-baz-1" class="md2man-permalink" title="permalink"></a>bar BAZ</h1>\
+<h2 id="bar-baz-2"><a name="bar-baz-2" href="#bar-baz-2" class="md2man-permalink" title="permalink"></a>bar <em>BAZ</em></h2>\
+<h3 id="bar-baz-3"><a name="bar-baz-3" href="#bar-baz-3" class="md2man-permalink" title="permalink"></a>bar <strong>BAZ</strong></h3>\
+<h4 id="bar-baz-4"><a name="bar-baz-4" href="#bar-baz-4" class="md2man-permalink" title="permalink"></a>-bar--BAZ---</h4>
     OUTPUT
   end
 end

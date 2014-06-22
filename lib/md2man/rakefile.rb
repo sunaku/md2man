@@ -97,7 +97,7 @@ mkds.zip(webs).each do |src, dst|
     require 'md2man/html/engine'
     output = Md2Man::HTML::ENGINE.render(input).
       # deactivate external manual page cross-references
-      gsub(/(?<=<a class="md2man-xref") href="\.\.(.+?)"/) do
+      gsub(/(?<=<a class="md2man-reference") href="\.\.(.+?)"/) do
         $& if webs.include? 'man' + $1
       end
 

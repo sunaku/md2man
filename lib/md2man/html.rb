@@ -12,6 +12,7 @@ module Md2Man::HTML
 
   def preprocess document
     @h1_seen = false
+    @seen_count_by_id = Hash.new {|h,k| h[k] = 0 }
     super
   end
 
@@ -43,13 +44,17 @@ module Md2Man::HTML
       end.compact.join(' ')
     end
 
-    id = text.gsub(/<.+?>/, '-').        # strip all HTML tags
-      gsub(/\W+/, '-').gsub(/^-|-$/, '') # fold non-word chars
+    # strip all HTML tags, squeeze all non-word characters, and lowercase it
+    id = text.gsub(/<.+?>/, '-').gsub(/\W+/, '-').gsub(/^-|-$/, '').downcase
+
+    # make duplicate anchors unique by appending numerical suffixes to them
+    count = @seen_count_by_id[id] += 1
+    id += "-#{count - 1}" if count > 1
+
     [
       %{<h#{level} id="#{id}">},
+        %{<a name="#{id}" href="##{id}" class="md2man-permalink" title="permalink"></a>},
         text,
-        %{<a name="#{id}" href="##{id}" class="md2man-permalink">},
-        '</a>',
       "</h#{level}>",
     ].join
   end
@@ -63,7 +68,7 @@ module Md2Man::HTML
       input_match.to_s
     else
       url = reference_url(input_match[:page], input_match[:section])
-      %{<a class="md2man-xref" href="#{url}">#{input_match}</a>}
+      %{<a class="md2man-reference" href="#{url}">#{input_match}</a>}
     end + output_match[:addendum].to_s
   end
 
