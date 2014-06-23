@@ -1,4 +1,4 @@
-# MD2MAN-HTML 1 2014-06-21 2.1.1
+# MD2MAN-HTML 1 2014-06-22 3.0.0
 
 ## NAME
 
@@ -25,15 +25,37 @@ headings" in md2man(5), is wrapped in stylable `<span>` elements as follows:
     <span class="md2man-source">...</span>
     <span class="md2man-manual">...</span>
 
+### Heading permalinks
+
+Self-referencing hyperlinks (for permanent linking) are added to headings by
+converting their labels into URI fragments that are unique (using a counter),
+lowercase, and squeezed and stripped of HTML tags and non-word characters.
+
+For example, a heading labeled `Ver<s>iON 3(2</s>!4)))` would be emitted as:
+
+    <h2 id="ver-ion-3-2-4"><a name="ver-ion-3-2-4" href="#ver-ion-3-2-4"
+    class="md2man-permalink" title="permalink"></a>Ver<s>iON 3(2</s>!4)))</h2>
+
+For example, multiple headings labeled `Hello, world!` would be emitted as:
+
+    <h2 id="hello-world"><a name="hello-world" href="#hello-world"
+    class="md2man-permalink" title="permalink"></a>Hello, world!</h2>
+
+    <h2 id="hello-world-1"><a name="hello-world-1" href="#hello-world-1"
+    class="md2man-permalink" title="permalink"></a>Hello, world!</h2>
+
+    <h2 id="hello-world-2"><a name="hello-world-2" href="#hello-world-2"
+    class="md2man-permalink" title="permalink"></a>Hello, world!</h2>
+
 ### Cross references
 
 Cross references to manual pages are emitted as HTML hyperlinks that have
-`class="md2man-xref"` and `href="../man$SECTION/$PAGE.$SECTION.html"`
+`class="md2man-reference"` and `href="../man$SECTION/$PAGE.$SECTION.html"`
 attributes.
 
 For example, the `printf(3)` cross reference would be emitted as this HTML:
 
-    <a class="md2man-xref" href="../man3/printf.3.html">printf(3)</a>
+    <a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a>
 
 ## OPTIONS
 

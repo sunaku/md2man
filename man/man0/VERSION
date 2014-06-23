@@ -1,3 +1,28 @@
+.SH Version 3.0.0 (2014\-06\-22)
+.PP
+This release changes 
+.BR md2man-html (1) 
+heading permalinks to follow GitHub style:
+unique, lowercase, and squeezed and stripped of HTML tags and non\-word chars.
+In addition, it renames the \fB\fCmd2man\-xref\fR CSS class to \fB\fCmd2man\-reference\fR\&.
+.PP
+Please make sure to update any existing bookmarks and/or hyperlinks you may
+have for jumping to specific locations in your HTML manuals after upgrading.
+.SS Major:
+.RS
+.IP \(bu 2
+Make permalink anchors on headings fully lowercase in 
+.BR md2man-html (1).
+.IP \(bu 2
+Put permalinks on left & indicate target permalink in 
+.BR md2man-html (1).
+.IP \(bu 2
+Make permalink anchors unique by appending a count in 
+.BR md2man-html (1).
+.IP \(bu 2
+Rename \fB\fCmd2man\-xref\fR CSS class to \fB\fCmd2man\-reference\fR in 
+.BR md2man-html (1).
+.RE
 .SH Version 2.1.1 (2014\-06\-21)
 .SS Patch:
 .RS

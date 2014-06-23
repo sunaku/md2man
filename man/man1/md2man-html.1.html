@@ -2,25 +2,41 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 2.1.1 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 3.0.0 https://github.com/sunaku/md2man" />
   <title>md2man-html(1) &mdash; convert md2man(5) flavored markdown(7) into HTML</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man1">man1</a>/md2man-html.1</span></div></div><div class="container-fluid"><h1 id="MD2MAN-HTML-1-2014-06-21-2-1-1"><span class="md2man-title">MD2MAN-HTML</span> <span class="md2man-section">1</span> <span class="md2man-date">2014-06-21</span> <span class="md2man-source">2.1.1</span><a name="MD2MAN-HTML-1-2014-06-21-2-1-1" href="#MD2MAN-HTML-1-2014-06-21-2-1-1" class="md2man-permalink"></a></h1><h2 id="NAME">NAME<a name="NAME" href="#NAME" class="md2man-permalink"></a></h2><p>md2man-html - convert <a class="md2man-xref" href="../man5/md2man.5.html">md2man(5)</a> flavored <a class="md2man-xref">markdown(7)</a> into HTML</p><h2 id="SYNOPSIS">SYNOPSIS<a name="SYNOPSIS" href="#SYNOPSIS" class="md2man-permalink"></a></h2><p><code>md2man-html</code> [<em>OPTION</em>]... [<em>FILE</em>]</p><h2 id="DESCRIPTION">DESCRIPTION<a name="DESCRIPTION" href="#DESCRIPTION" class="md2man-permalink"></a></h2><p>This program converts <a class="md2man-xref" href="../man5/md2man.5.html">md2man(5)</a> flavored <a class="md2man-xref">markdown(7)</a> input from the given
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man1">man1</a>/md2man-html.1</span></div></div><div class="container-fluid"><h1 id="md2man-html-1-2014-06-22-3-0-0"><a name="md2man-html-1-2014-06-22-3-0-0" href="#md2man-html-1-2014-06-22-3-0-0" class="md2man-permalink" title="permalink"></a><span class="md2man-title">MD2MAN-HTML</span> <span class="md2man-section">1</span> <span class="md2man-date">2014-06-22</span> <span class="md2man-source">3.0.0</span></h1><h2 id="name"><a name="name" href="#name" class="md2man-permalink" title="permalink"></a>NAME</h2><p>md2man-html - convert <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> flavored <a class="md2man-reference">markdown(7)</a> into HTML</p><h2 id="synopsis"><a name="synopsis" href="#synopsis" class="md2man-permalink" title="permalink"></a>SYNOPSIS</h2><p><code>md2man-html</code> [<em>OPTION</em>]... [<em>FILE</em>]</p><h2 id="description"><a name="description" href="#description" class="md2man-permalink" title="permalink"></a>DESCRIPTION</h2><p>This program converts <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> flavored <a class="md2man-reference">markdown(7)</a> input from the given
 <em>FILE</em> into HTML and then prints the result to the standard output stream.
-If <em>FILE</em> is not given, then the standard input stream is read in its place.</p><h3 id="Top-level-headings">Top-level headings<a name="Top-level-headings" href="#Top-level-headings" class="md2man-permalink"></a></h3><p>Each component of the <code>.TH</code> directive in <a class="md2man-xref">roff(7)</a>, described under &quot;Top-level
-headings&quot; in <a class="md2man-xref" href="../man5/md2man.5.html">md2man(5)</a>, is wrapped in stylable <code>&lt;span&gt;</code> elements as follows:</p>
+If <em>FILE</em> is not given, then the standard input stream is read in its place.</p><h3 id="top-level-headings"><a name="top-level-headings" href="#top-level-headings" class="md2man-permalink" title="permalink"></a>Top-level headings</h3><p>Each component of the <code>.TH</code> directive in <a class="md2man-reference">roff(7)</a>, described under &quot;Top-level
+headings&quot; in <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a>, is wrapped in stylable <code>&lt;span&gt;</code> elements as follows:</p>
 <pre><code>&lt;span class=&quot;md2man-title&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;md2man-section&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;md2man-date&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;md2man-source&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;md2man-manual&quot;&gt;...&lt;/span&gt;
 </code></pre>
-<h3 id="Cross-references">Cross references<a name="Cross-references" href="#Cross-references" class="md2man-permalink"></a></h3><p>Cross references to manual pages are emitted as HTML hyperlinks that have
-<code>class=&quot;md2man-xref&quot;</code> and <code>href=&quot;../man$SECTION/$PAGE.$SECTION.html&quot;</code>
-attributes.</p><p>For example, the <code><a class="md2man-xref">printf(3)</a></code> cross reference would be emitted as this HTML:</p>
-<pre><code>&lt;a class=&quot;md2man-xref&quot; href=&quot;../man3/printf.3.html&quot;&gt;<a class="md2man-xref">printf(3)</a>&lt;/a&gt;
+<h3 id="heading-permalinks"><a name="heading-permalinks" href="#heading-permalinks" class="md2man-permalink" title="permalink"></a>Heading permalinks</h3><p>Self-referencing hyperlinks (for permanent linking) are added to headings by
+converting their labels into URI fragments that are unique (using a counter),
+lowercase, and squeezed and stripped of HTML tags and non-word characters.</p><p>For example, a heading labeled <code>Ver&lt;s&gt;iON 3(2&lt;/s&gt;!4)))</code> would be emitted as:</p>
+<pre><code>&lt;h2 id=&quot;ver-ion-3-2-4&quot;&gt;&lt;a name=&quot;ver-ion-3-2-4&quot; href=&quot;#ver-ion-3-2-4&quot;
+class=&quot;md2man-permalink&quot; title=&quot;permalink&quot;&gt;&lt;/a&gt;Ver&lt;s&gt;iON 3(2&lt;/s&gt;!4)))&lt;/h2&gt;
 </code></pre>
-<h2 id="OPTIONS">OPTIONS<a name="OPTIONS" href="#OPTIONS" class="md2man-permalink"></a></h2><dl><dt><code>-h</code>, <code>--help</code></dt><dd>Show this help manual.</dd></dl><h2 id="SEE-ALSO">SEE ALSO<a name="SEE-ALSO" href="#SEE-ALSO" class="md2man-permalink"></a></h2><p><a class="md2man-xref" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>, <a class="md2man-xref" href="../man1/md2man-rake.1.html">md2man-rake(1)</a>, <a class="md2man-xref" href="../man5/md2man.5.html">md2man(5)</a></p></div></body>
+<p>For example, multiple headings labeled <code>Hello, world!</code> would be emitted as:</p>
+<pre><code>&lt;h2 id=&quot;hello-world&quot;&gt;&lt;a name=&quot;hello-world&quot; href=&quot;#hello-world&quot;
+class=&quot;md2man-permalink&quot; title=&quot;permalink&quot;&gt;&lt;/a&gt;Hello, world!&lt;/h2&gt;
+
+&lt;h2 id=&quot;hello-world-1&quot;&gt;&lt;a name=&quot;hello-world-1&quot; href=&quot;#hello-world-1&quot;
+class=&quot;md2man-permalink&quot; title=&quot;permalink&quot;&gt;&lt;/a&gt;Hello, world!&lt;/h2&gt;
+
+&lt;h2 id=&quot;hello-world-2&quot;&gt;&lt;a name=&quot;hello-world-2&quot; href=&quot;#hello-world-2&quot;
+class=&quot;md2man-permalink&quot; title=&quot;permalink&quot;&gt;&lt;/a&gt;Hello, world!&lt;/h2&gt;
+</code></pre>
+<h3 id="cross-references"><a name="cross-references" href="#cross-references" class="md2man-permalink" title="permalink"></a>Cross references</h3><p>Cross references to manual pages are emitted as HTML hyperlinks that have
+<code>class=&quot;md2man-reference&quot;</code> and <code>href=&quot;../man$SECTION/$PAGE.$SECTION.html&quot;</code>
+attributes.</p><p>For example, the <code><a class="md2man-reference">printf(3)</a></code> cross reference would be emitted as this HTML:</p>
+<pre><code>&lt;a class=&quot;md2man-reference&quot; href=&quot;../man3/printf.3.html&quot;&gt;<a class="md2man-reference">printf(3)</a>&lt;/a&gt;
+</code></pre>
+<h2 id="options"><a name="options" href="#options" class="md2man-permalink" title="permalink"></a>OPTIONS</h2><dl><dt><code>-h</code>, <code>--help</code></dt><dd>Show this help manual.</dd></dl><h2 id="see-also"><a name="see-also" href="#see-also" class="md2man-permalink" title="permalink"></a>SEE ALSO</h2><p><a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>, <a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a>, <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a></p></div></body>
 </html>
