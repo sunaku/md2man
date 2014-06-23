@@ -11,7 +11,7 @@
   }
 
   /* deactivate external manual page cross-references */
-  a.md2man-xref:not([href]) {
+  a.md2man-reference:not([href]) {
     color: inherit;
     text-decoration: none;
   }
