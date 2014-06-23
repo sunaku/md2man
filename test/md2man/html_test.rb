@@ -145,15 +145,15 @@ describe 'html engine' do
       |### bar **BAZ**
       |#### -bar--BAZ---
     INPUT
-<h1 id="foo-bar"><a name="foo-bar" href="#foo-bar" class="md2man-permalink"></a><span class=\"md2man-title\">foo</span> <span class=\"md2man-section\"><em>BAR</em></span></h1>\
-<h2 id="bar-baz"><a name="bar-baz" href="#bar-baz" class="md2man-permalink"></a>bar BAZ</h2>\
-<h3 id="baz-qux"><a name="baz-qux" href="#baz-qux" class="md2man-permalink"></a>--BAZ-QUX--</h3>\
-<h4 id="qux-moz"><a name="qux-moz" href="#qux-moz" class="md2man-permalink"></a>qux (MOZ)</h4>\
-<h5 id="m-oz-end"><a name="m-oz-end" href="#m-oz-end" class="md2man-permalink"></a>{m}oz END</h5>\
-<h1 id="bar-baz-1"><a name="bar-baz-1" href="#bar-baz-1" class="md2man-permalink"></a>bar BAZ</h1>\
-<h2 id="bar-baz-2"><a name="bar-baz-2" href="#bar-baz-2" class="md2man-permalink"></a>bar <em>BAZ</em></h2>\
-<h3 id="bar-baz-3"><a name="bar-baz-3" href="#bar-baz-3" class="md2man-permalink"></a>bar <strong>BAZ</strong></h3>\
-<h4 id="bar-baz-4"><a name="bar-baz-4" href="#bar-baz-4" class="md2man-permalink"></a>-bar--BAZ---</h4>
+<h1 id="foo-bar"><a name="foo-bar" href="#foo-bar" class="md2man-permalink" title="permalink"></a><span class=\"md2man-title\">foo</span> <span class=\"md2man-section\"><em>BAR</em></span></h1>\
+<h2 id="bar-baz"><a name="bar-baz" href="#bar-baz" class="md2man-permalink" title="permalink"></a>bar BAZ</h2>\
+<h3 id="baz-qux"><a name="baz-qux" href="#baz-qux" class="md2man-permalink" title="permalink"></a>--BAZ-QUX--</h3>\
+<h4 id="qux-moz"><a name="qux-moz" href="#qux-moz" class="md2man-permalink" title="permalink"></a>qux (MOZ)</h4>\
+<h5 id="m-oz-end"><a name="m-oz-end" href="#m-oz-end" class="md2man-permalink" title="permalink"></a>{m}oz END</h5>\
+<h1 id="bar-baz-1"><a name="bar-baz-1" href="#bar-baz-1" class="md2man-permalink" title="permalink"></a>bar BAZ</h1>\
+<h2 id="bar-baz-2"><a name="bar-baz-2" href="#bar-baz-2" class="md2man-permalink" title="permalink"></a>bar <em>BAZ</em></h2>\
+<h3 id="bar-baz-3"><a name="bar-baz-3" href="#bar-baz-3" class="md2man-permalink" title="permalink"></a>bar <strong>BAZ</strong></h3>\
+<h4 id="bar-baz-4"><a name="bar-baz-4" href="#bar-baz-4" class="md2man-permalink" title="permalink"></a>-bar--BAZ---</h4>
     OUTPUT
   end
 end
