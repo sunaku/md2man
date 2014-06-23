@@ -1,3 +1,22 @@
+## Version 3.0.0 (2014-06-22)
+
+This release changes md2man-html(1) heading permalinks to follow GitHub style:
+unique, lowercase, and squeezed and stripped of HTML tags and non-word chars.
+In addition, it renames the `md2man-xref` CSS class to `md2man-reference`.
+
+Please make sure to update any existing bookmarks and/or hyperlinks you may
+have for jumping to specific locations in your HTML manuals after upgrading.
+
+### Major:
+
+  * Make permalink anchors on headings fully lowercase in md2man-html(1).
+
+  * Put permalinks on left & indicate target permalink in md2man-html(1).
+
+  * Make permalink anchors unique by appending a count in md2man-html(1).
+
+  * Rename `md2man-xref` CSS class to `md2man-reference` in md2man-html(1).
+
 ## Version 2.1.1 (2014-06-21)
 
 ### Patch:
