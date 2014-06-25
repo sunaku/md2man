@@ -12,12 +12,8 @@ and HTML) using Redcarpet
 .UE \&.
 .RS
 .IP \(bu 2
-Package: 
-.UR https://rubygems.org/gems/md2man
-.UE
-.IP \(bu 2
 Manuals: 
-.UR https://sunaku.github.io/md2man
+.UR https://sunaku.github.io/md2man/man
 .UE
 .IP \(bu 2
 Sources: 
@@ -26,6 +22,10 @@ Sources:
 .IP \(bu 2
 Support: 
 .UR https://github.com/sunaku/md2man/issues
+.UE
+.IP \(bu 2
+Package: 
+.UR https://rubygems.org/gems/md2man
 .UE
 .RE
 .SH Features
