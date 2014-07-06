@@ -177,11 +177,7 @@ module Md2Man::Roff
   end
 
   def autolink link, link_type
-    if link_type == :email
-      "\n.MT #{link.chomp}\n.ME "
-    else
-      "\n.UR #{link.chomp}\n.UE "
-    end
+    "\n\\[la]#{link.chomp}\\[ra]"
   end
 
   def image link, title, alt_text

@@ -587,8 +587,7 @@ describe 'roff engine' do
     INPUT
       |.PP
       |Send me
-      |.MT foo@bar.baz
-      |.ME , e\\-mail.
+      |\\[la]foo@bar.baz\\[ra], e\\-mail.
     OUTPUT
 
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
@@ -596,8 +595,7 @@ describe 'roff engine' do
     INPUT
       |.PP
       |Take me
-      |.UR http://myself
-      |.UE , somewhere.
+      |\\[la]http://myself\\[ra], somewhere.
     OUTPUT
 
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
@@ -605,9 +603,7 @@ describe 'roff engine' do
     INPUT
       |.PP
       |Mail me#{SPACE}
-      |.MT foo@bar.baz
-      |.ME
-      |now.
+      |\\[la]foo@bar.baz\\[ra] now.
     OUTPUT
 
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
@@ -615,9 +611,7 @@ describe 'roff engine' do
     INPUT
       |.PP
       |Take me#{SPACE}
-      |.UR http://www.somewhere
-      |.UE
-      |now.
+      |\\[la]http://www.somewhere\\[ra] now.
     OUTPUT
   end
 
@@ -921,8 +915,7 @@ describe 'roff engine' do
       |[Obligatory screenshot of#{SPACE}
       |.BR md2man-roff (1)#{SPACE}
       |in action!](
-      |.UR https://raw.github.com/sunaku/md2man/master/EXAMPLE.png
-      |.UE )
+      |\\[la]https://raw.github.com/sunaku/md2man/master/EXAMPLE.png\\[ra])
     OUTPUT
   end
 
