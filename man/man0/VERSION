@@ -1,3 +1,33 @@
+.SH Version 3.0.1 (2014\-07\-16)
+.PP
+This release restores Mac OS X support and fixes a permalink generation bug.
+.SS Patch:
+.RS
+.IP \(bu 2
+GH\-13: 
+.BR man (1) 
+on Mac OS X could not display URLs.
+.PP
+The version of groff on Mac OS X is too old: it lacks the an\-ext.tmac
+macro package that defines styles for email addresses and general URLs.
+.PP
+.RS
+.nf
+$ groff \-\-version
+\&...
+GNU grops (groff) version 1.19.2
+GNU troff (groff) version 1.19.2
+.fi
+.RE
+.PP
+This patch drops those URL macros in favor of simpler angled brackets.
+.PP
+Thanks to Sorin Ionescu for reporting this issue in GH\-13:
+\[la]https://github.com/sunaku/md2man/issues/13\[ra]
+.IP \(bu 2
+.BR md2man-html (1): 
+cross references were escaped in heading permalink IDs.
+.RE
 .SH Version 3.0.0 (2014\-06\-22)
 .PP
 This release changes 
@@ -29,9 +59,7 @@ Rename \fB\fCmd2man\-xref\fR CSS class to \fB\fCmd2man\-reference\fR in
 .IP \(bu 2
 Bootstrap CSS failed to load for HTML manuals served under HTTPS.
 See 
-.UR https://github.com/sunaku/readably/pull/3
-.UE
-for the details.
+\[la]https://github.com/sunaku/readably/pull/3\[ra] for the details.
 .IP \(bu 2
 Drop redundant nil check in \fB\fCMd2Man::Roff::Engine.escape()\fR\&.
 .RE
@@ -66,8 +94,7 @@ top\-level heading in HTML \fB\fC<span>\fR elements with stylable CSS classes:
 .RE
 .PP
 Thanks to Nick Fagerlund for requesting this feature in GH\-15
-.UR https://github.com/sunaku/md2man/issues/15
-.UE \&.
+\[la]https://github.com/sunaku/md2man/issues/15\[ra]\&.
 .RE
 .SS Other:
 .RS
@@ -76,8 +103,7 @@ Thanks to Nick Fagerlund for requesting this feature in GH\-15
 now documents the special \fB\fC\&.TH\fR format of top\-level headings.
 .PP
 Thanks to Nick Fagerlund for requesting this documentation in GH\-15
-.UR https://github.com/sunaku/md2man/issues/15
-.UE \&.
+\[la]https://github.com/sunaku/md2man/issues/15\[ra]\&.
 .RE
 .SH Version 2.0.4 (2014\-04\-26)
 .SS Patch:
@@ -103,8 +129,7 @@ Thanks to zimbatm for reporting this bug and suggesting how to fix it.
 .IP \(bu 2
 Use CSS3 \fB\fC\-ch\fR suffix for accurate 80\-character width in HTML output.
 .TP
-.UR http://www.w3.org/TR/css3-values/#font-relative-lengths
-.UE
+\[la]http://www.w3.org/TR/css3-values/#font-relative-lengths\[ra]
 .RE
 .SH Version 2.0.2 (2013\-09\-08)
 .PP
@@ -337,22 +362,19 @@ Patch:
 .IP \(bu 2
 rakefile: arbitrary directory structure under man/
 .TP
-.UR https://github.com/sunaku/md2man/pull/3#issuecomment-9429077
-.UE
+\[la]https://github.com/sunaku/md2man/pull/3#issuecomment-9429077\[ra]
 .PP
 Thanks to Postmodern for raising this issue.
 .IP \(bu 2
 hook into 'build' task only if using Bundler tasks
 .TP
-.UR https://github.com/sunaku/md2man/pull/7#issuecomment-9467621
-.UE
+\[la]https://github.com/sunaku/md2man/pull/7#issuecomment-9467621\[ra]
 .PP
 Thanks to Postmodern for raising this issue.
 .IP \(bu 2
 GH\-8: Redcarpet requires Ruby 1.9 and so must we
 .TP
-.UR https://github.com/sunaku/md2man/issues/8#issuecomment-9509240
-.UE
+\[la]https://github.com/sunaku/md2man/issues/8#issuecomment-9509240\[ra]
 .PP
 Thanks to Postmodern for raising this issue.
 .RE
@@ -431,9 +453,7 @@ document: stronger digest encoding using NUL bytes.
 .IP \(bu 2
 document: super() can't reach Redcarpet's renderer classes.
 See 
-.UR https://github.com/vmg/redcarpet/issues/51
-.UE
-for details.
+\[la]https://github.com/vmg/redcarpet/issues/51\[ra] for details.
 .RE
 .SH Version 1.3.0 (2012\-09\-27)
 .PP
@@ -458,8 +478,7 @@ Other:
 .IP \(bu 2
 GH\-1: use \fB\fC~>\fR for gem version constraints.
 See 
-.UR http://docs.rubygems.org/read/chapter/16
-.UE
+\[la]http://docs.rubygems.org/read/chapter/16\[ra]
 Thanks to Postmodern for this contribution.
 .RE
 .SH Version 1.2.0 (2012\-02\-06)
