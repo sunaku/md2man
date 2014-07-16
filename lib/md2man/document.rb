@@ -74,8 +74,6 @@ protected
 private
 
   def encode_references text
-    # the [^\n\S] captures all non-newline whitespace
-    # basically, it's meant to be \s but excluding \n
     text.gsub(/(?<page>[\w\-\.]+)\((?<section>\w+)\)/) do
       match = $~
       key = encode(match)
@@ -86,7 +84,9 @@ private
 
   def decode_references text
     @references.delete_if do |key, match|
-      text.sub! /#{Regexp.escape key}(?<addendum>\S*[^\n\S]*)/ do
+      # the [^\S\n] captures all non-newline whitespace
+      # basically, it's meant to be \s but excluding \n
+      text.sub! /#{Regexp.escape key}(?<addendum>\S*[^\S\n]*)/ do
         reference match, $~
       end
     end
