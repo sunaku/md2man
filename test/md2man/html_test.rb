@@ -133,7 +133,7 @@ describe 'html engine' do
     OUTPUT
   end
 
-  it 'adds ID attributes on headings for permalinking' do
+  it 'adds permalinks to headings' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |# foo *BAR*
       |## bar BAZ
@@ -154,6 +154,20 @@ describe 'html engine' do
 <h2 id="bar-baz-2"><a name="bar-baz-2" href="#bar-baz-2" class="md2man-permalink" title="permalink"></a>bar <em>BAZ</em></h2>\
 <h3 id="bar-baz-3"><a name="bar-baz-3" href="#bar-baz-3" class="md2man-permalink" title="permalink"></a>bar <strong>BAZ</strong></h3>\
 <h4 id="bar-baz-4"><a name="bar-baz-4" href="#bar-baz-4" class="md2man-permalink" title="permalink"></a>-bar--BAZ---</h4>
+    OUTPUT
+  end
+
+  it 'adds permalinks to headings that contain man page references' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |## here is-a-reference(3) to another man page
+      |
+      |here is a paragraph containing is-a-reference(3) again
+      |
+      |here is another paragraph containing is-a-reference(3) yet again
+    INPUT
+<h2 id="here-is-a-reference-3-to-another-man-page"><a name="here-is-a-reference-3-to-another-man-page" href="#here-is-a-reference-3-to-another-man-page" class="md2man-permalink" title="permalink"></a>here <a class="md2man-reference" href="../man3/is-a-reference.3.html">is-a-reference(3)</a> to another man page</h2>\
+<p>here is a paragraph containing <a class="md2man-reference" href="../man3/is-a-reference.3.html">is-a-reference(3)</a> again</p>\
+<p>here is another paragraph containing <a class="md2man-reference" href="../man3/is-a-reference.3.html">is-a-reference(3)</a> yet again</p>
     OUTPUT
   end
 end

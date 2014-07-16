@@ -44,6 +44,9 @@ module Md2Man::HTML
       end.compact.join(' ')
     end
 
+    # decode here, since we will emit this heading below as raw HTML anyway
+    text = decode_references(text)
+
     # strip all HTML tags, squeeze all non-word characters, and lowercase it
     id = text.gsub(/<.+?>/, '-').gsub(/\W+/, '-').gsub(/^-|-$/, '').downcase
 
