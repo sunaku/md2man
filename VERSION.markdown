@@ -1,3 +1,26 @@
+## Version 3.0.1 (2014-07-16)
+
+This release restores Mac OS X support and fixes a permalink generation bug.
+
+### Patch:
+
+  * GH-13: man(1) on Mac OS X could not display URLs.
+
+    The version of groff on Mac OS X is too old: it lacks the an-ext.tmac
+    macro package that defines styles for email addresses and general URLs.
+
+        $ groff --version
+        ...
+        GNU grops (groff) version 1.19.2
+        GNU troff (groff) version 1.19.2
+
+    This patch drops those URL macros in favor of simpler angled brackets.
+
+    Thanks to Sorin Ionescu for reporting this issue in GH-13:
+    https://github.com/sunaku/md2man/issues/13
+
+  * md2man-html(1): cross references were escaped in heading permalink IDs.
+
 ## Version 3.0.0 (2014-06-22)
 
 This release changes md2man-html(1) heading permalinks to follow GitHub style:
