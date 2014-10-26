@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
 
   s.required_ruby_version = '>= 1.9.1'
-  s.add_runtime_dependency 'binman', '~> 3.0'
+  s.add_runtime_dependency 'binman', '~> 4.0'
   s.add_runtime_dependency 'redcarpet', '~> 3.0'
   s.add_development_dependency 'minitest', '~> 5.0'
   s.add_development_dependency 'rake', '~> 10.1'
