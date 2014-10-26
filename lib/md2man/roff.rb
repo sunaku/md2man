@@ -42,7 +42,7 @@ module Md2Man::Roff
   end
 
   def block_code code, language
-    code = escape(code, true)
+    code = escape(super, true)
     block_quote "\n.nf\n#{code.chomp}\n.fi\n"
   end
 
@@ -161,7 +161,7 @@ module Md2Man::Roff
   end
 
   def codespan code
-    code = escape(code, true)
+    code = escape(super, true)
     # NOTE: this double font sequence gives us the best of both worlds:
     # man(1) shows it in bold and `groff -Thtml` shows it in monospace
     "\\fB\\fC#{code}\\fR"

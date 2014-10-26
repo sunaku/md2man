@@ -57,8 +57,7 @@ describe 'html engine' do
       |
       |    <a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a>
     INPUT
-      |<p>For example, the <code><a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a></code> cross reference would be emitted as this HTML:</p>
-      |<pre><code>&lt;a class=&quot;md2man-reference&quot; href=&quot;../man3/printf.3.html&quot;&gt;<a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a>&lt;/a&gt;
+      |<p>For example, the <code>printf(3)</code> cross reference would be emitted as this HTML:</p><pre><code>&lt;a class=&quot;md2man-reference&quot; href=&quot;../man3/printf.3.html&quot;&gt;printf(3)&lt;/a&gt;
       |</code></pre>
       |
     OUTPUT
@@ -80,25 +79,25 @@ describe 'html engine' do
     OUTPUT
   end
 
-  it 'renders references inside code blocks' do
+  it 'does not render references inside code blocks' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |    this is a code block
       |    containing markdown(7),
       |    roff(7), and much more!
     INPUT
       |<pre><code>this is a code block
-      |containing <a class=\"md2man-reference\" href=\"../man7/markdown.7.html\">markdown(7)</a>,
-      |<a class=\"md2man-reference\" href=\"../man7/roff.7.html\">roff(7)</a>, and much more!
+      |containing markdown(7),
+      |roff(7), and much more!
       |</code></pre>
       |
     OUTPUT
   end
 
-  it 'renders references inside code spans' do
+  it 'does not render references inside code spans' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |this is a code span `containing markdown(7), roff(7), and` much more!
     INPUT
-      |<p>this is a code span <code>containing <a class="md2man-reference" href="../man7/markdown.7.html">markdown(7)</a>, <a class="md2man-reference" href="../man7/roff.7.html">roff(7)</a>, and</code> much more!</p>
+      |<p>this is a code span <code>containing markdown(7), roff(7), and</code> much more!</p>
     OUTPUT
   end
 
@@ -168,6 +167,26 @@ describe 'html engine' do
 <h2 id="here-is-a-reference-3-to-another-man-page"><a name="here-is-a-reference-3-to-another-man-page" href="#here-is-a-reference-3-to-another-man-page" class="md2man-permalink" title="permalink"></a>here <a class="md2man-reference" href="../man3/is-a-reference.3.html">is-a-reference(3)</a> to another man page</h2>\
 <p>here is a paragraph containing <a class="md2man-reference" href="../man3/is-a-reference.3.html">is-a-reference(3)</a> again</p>\
 <p>here is another paragraph containing <a class="md2man-reference" href="../man3/is-a-reference.3.html">is-a-reference(3)</a> yet again</p>
+    OUTPUT
+  end
+
+  it 'https://github.com/sunaku/md2man/issues/19' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |### Macros
+      |
+      |    #define PIPES_GET_LAST(CHAIN)
+      |    #define PIPES_GET_IN(CHAIN)
+      |    #define PIPES_GET_OUT(CHAIN)
+      |    #define PIPES_GET_ERR(CHAIN)
+      |
+      |### `PIPES_GET_LAST(CHAIN)`
+    INPUT
+      |<h3 id="macros"><a name="macros" href="#macros" class="md2man-permalink" title="permalink"></a>Macros</h3><pre><code>#define PIPES_GET_LAST(CHAIN)
+      |#define PIPES_GET_IN(CHAIN)
+      |#define PIPES_GET_OUT(CHAIN)
+      |#define PIPES_GET_ERR(CHAIN)
+      |</code></pre>
+      |<h3 id="pipes_get_last-chain"><a name="pipes_get_last-chain" href="#pipes_get_last-chain" class="md2man-permalink" title="permalink"></a><code>PIPES_GET_LAST(CHAIN)</code></h3>
     OUTPUT
   end
 end
