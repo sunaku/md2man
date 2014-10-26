@@ -2,12 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 3.0.1 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 3.0.2 https://github.com/sunaku/md2man" />
   <title>VERSION</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-3-0-1-2014-07-16"><a name="version-3-0-1-2014-07-16" href="#version-3-0-1-2014-07-16" class="md2man-permalink" title="permalink"></a>Version 3.0.1 (2014-07-16)</h2><p>This release restores Mac OS X support and fixes a permalink generation bug.</p><h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-3-0-2-2014-10-26"><a name="version-3-0-2-2014-10-26" href="#version-3-0-2-2014-10-26" class="md2man-permalink" title="permalink"></a>Version 3.0.2 (2014-10-26)</h2><h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<ul>
+<li>Update bootstrap 2.3.2 CDN URL; previous one died.</li>
+</ul>
+<h2 id="version-3-0-1-2014-07-16"><a name="version-3-0-1-2014-07-16" href="#version-3-0-1-2014-07-16" class="md2man-permalink" title="permalink"></a>Version 3.0.1 (2014-07-16)</h2><p>This release restores Mac OS X support and fixes a permalink generation bug.</p><h3 id="patch-1"><a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li><p>GH-13: <a class="md2man-reference">man(1)</a> on Mac OS X could not display URLs.</p><p>The version of groff on Mac OS X is too old: it lacks the an-ext.tmac
 macro package that defines styles for email addresses and general URLs.</p>
@@ -30,7 +34,7 @@ have for jumping to specific locations in your HTML manuals after upgrading.</p>
 <li><p>Make permalink anchors unique by appending a count in <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>.</p></li>
 <li><p>Rename <code>md2man-xref</code> CSS class to <code>md2man-reference</code> in <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>.</p></li>
 </ul>
-<h2 id="version-2-1-1-2014-06-21"><a name="version-2-1-1-2014-06-21" href="#version-2-1-1-2014-06-21" class="md2man-permalink" title="permalink"></a>Version 2.1.1 (2014-06-21)</h2><h3 id="patch-1"><a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<h2 id="version-2-1-1-2014-06-21"><a name="version-2-1-1-2014-06-21" href="#version-2-1-1-2014-06-21" class="md2man-permalink" title="permalink"></a>Version 2.1.1 (2014-06-21)</h2><h3 id="patch-2"><a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li><p>Bootstrap CSS failed to load for HTML manuals served under HTTPS.
 See <a href="https://github.com/sunaku/readably/pull/3">https://github.com/sunaku/readably/pull/3</a> for the details.</p></li>
@@ -60,7 +64,7 @@ top-level heading in HTML <code>&lt;span&gt;</code> elements with stylable CSS c
 <ul>
 <li><p><a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> now documents the special <code>.TH</code> format of top-level headings.</p><p>Thanks to Nick Fagerlund for requesting this documentation in <a href="https://github.com/sunaku/md2man/issues/15">GH-15</a>.</p></li>
 </ul>
-<h2 id="version-2-0-4-2014-04-26"><a name="version-2-0-4-2014-04-26" href="#version-2-0-4-2014-04-26" class="md2man-permalink" title="permalink"></a>Version 2.0.4 (2014-04-26)</h2><h3 id="patch-2"><a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<h2 id="version-2-0-4-2014-04-26"><a name="version-2-0-4-2014-04-26" href="#version-2-0-4-2014-04-26" class="md2man-permalink" title="permalink"></a>Version 2.0.4 (2014-04-26)</h2><h3 id="patch-3"><a name="patch-3" href="#patch-3" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li><p>GH-16: Redcarpet 3.1 added a third parameter to its <code>header()</code> method.
 This raised an ArgumentError on &quot;wrong number of arguments (3 for 2)&quot;.</p><p>Thanks to zimbatm for contributing this patch.</p></li>
@@ -68,7 +72,7 @@ This raised an ArgumentError on &quot;wrong number of arguments (3 for 2)&quot;.
 This fixes a bug where lines beginning with periods or single quotes
 did not appear when <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a> output was rendered using <a class="md2man-reference">man(1)</a>.</p><p>Thanks to zimbatm for reporting this bug and suggesting how to fix it.</p></li>
 </ul>
-<h2 id="version-2-0-3-2014-01-16"><a name="version-2-0-3-2014-01-16" href="#version-2-0-3-2014-01-16" class="md2man-permalink" title="permalink"></a>Version 2.0.3 (2014-01-16)</h2><h3 id="patch-3"><a name="patch-3" href="#patch-3" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<h2 id="version-2-0-3-2014-01-16"><a name="version-2-0-3-2014-01-16" href="#version-2-0-3-2014-01-16" class="md2man-permalink" title="permalink"></a>Version 2.0.3 (2014-01-16)</h2><h3 id="patch-4"><a name="patch-4" href="#patch-4" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li><p>Use CSS3 <code>-ch</code> suffix for accurate 80-character width in HTML output.</p><p><a href="http://www.w3.org/TR/css3-values/#font-relative-lengths">http://www.w3.org/TR/css3-values/#font-relative-lengths</a></p></li>
 </ul>
