@@ -1,3 +1,9 @@
+## Version 3.0.2 (2014-10-26)
+
+### Patch:
+
+  * Update bootstrap 2.3.2 CDN URL; previous one died.
+
 ## Version 3.0.1 (2014-07-16)
 
 This release restores Mac OS X support and fixes a permalink generation bug.
