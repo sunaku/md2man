@@ -849,14 +849,11 @@ describe 'roff engine' do
       |    <a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a>
     INPUT
       |.PP
-      |For example, the \\fB\\fC
-      |.BR printf (3)\\fR#{SPACE}
-      |cross reference would be emitted as this HTML:
+      |For example, the \\fB\\fCprintf(3)\\fR cross reference would be emitted as this HTML:
       |.PP
       |.RS
       |.nf
-      |<a class="md2man\\-reference" href="../man3/printf.3.html">
-      |.BR printf (3)</a>
+      |<a class="md2man\\-reference" href="../man3/printf.3.html">printf(3)</a>
       |.fi
       |.RE
     OUTPUT
@@ -875,7 +872,7 @@ describe 'roff engine' do
     OUTPUT
   end
 
-  it 'renders references inside code blocks' do
+  it 'does not render references inside code blocks' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |    this is a code block
       |    containing markdown(7),
@@ -885,24 +882,19 @@ describe 'roff engine' do
       |.RS
       |.nf
       |this is a code block
-      |containing#{SPACE}
-      |.BR markdown (7),
-      |.BR roff (7),#{SPACE}
-      |and much more!
+      |containing markdown(7),
+      |roff(7), and much more!
       |.fi
       |.RE
     OUTPUT
   end
 
-  it 'renders references inside code spans' do
+  it 'does not render references inside code spans' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |this is a code span `containing markdown(7), roff(7), and` much more!
     INPUT
       |.PP
-      |this is a code span \\fB\\fCcontaining#{SPACE}
-      |.BR markdown (7),#{SPACE}
-      |.BR roff (7),#{SPACE}
-      |and\\fR much more!
+      |this is a code span \\fB\\fCcontaining markdown(7), roff(7), and\\fR much more!
     OUTPUT
   end
 
@@ -943,4 +935,30 @@ describe 'roff engine' do
       |.BR exit (3tcl)
     OUTPUT
   end
+
+  it 'https://github.com/sunaku/md2man/issues/19' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |### Macros
+      |
+      |    #define PIPES_GET_LAST(CHAIN)
+      |    #define PIPES_GET_IN(CHAIN)
+      |    #define PIPES_GET_OUT(CHAIN)
+      |    #define PIPES_GET_ERR(CHAIN)
+      |
+      |### `PIPES_GET_LAST(CHAIN)`
+    INPUT
+      |.SS Macros
+      |.PP
+      |.RS
+      |.nf
+      |#define PIPES_GET_LAST(CHAIN)
+      |#define PIPES_GET_IN(CHAIN)
+      |#define PIPES_GET_OUT(CHAIN)
+      |#define PIPES_GET_ERR(CHAIN)
+      |.fi
+      |.RE
+      |.SS \\fB\\fCPIPES_GET_LAST(CHAIN)\\fR
+    OUTPUT
+  end
+
 end

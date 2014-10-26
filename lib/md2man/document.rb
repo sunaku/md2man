@@ -57,9 +57,17 @@ module Md2Man::Document
     warn "md2man/document: normal_paragraph not implemented: #{text.inspect}"
   end
 
+  def block_code code, language
+    decode_references code, true
+  end
+
   #---------------------------------------------------------------------------
   # span-level processing
   #---------------------------------------------------------------------------
+
+  def codespan code
+    decode_references code, true
+  end
 
   def reference input_match, output_match
     warn "md2man/document: reference not implemented: #{input_match}"
@@ -82,12 +90,17 @@ private
     end
   end
 
-  def decode_references text
-    @references.delete_if do |key, match|
+  def decode_references text, restore_original=false
+    @references.delete_if do |key, input_match|
       # the [^\S\n] captures all non-newline whitespace
       # basically, it's meant to be \s but excluding \n
       text.sub! /#{Regexp.escape key}(?<addendum>\S*[^\S\n]*)/ do
-        reference match, $~
+        output_match = $~
+        if restore_original
+          input_match.to_s + output_match[:addendum]
+        else
+          reference input_match, output_match
+        end
       end
     end
     text

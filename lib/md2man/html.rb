@@ -62,9 +62,17 @@ module Md2Man::HTML
     ].join
   end
 
+  def block_code code, language
+    "<pre><code>#{CGI.escape_html super}</code></pre>\n"
+  end
+
   #---------------------------------------------------------------------------
   # span-level processing
   #---------------------------------------------------------------------------
+
+  def codespan code
+    "<code>#{CGI.escape_html super}</code>"
+  end
 
   def reference input_match, output_match
     if output_match.pre_match =~ /<[^>]*\z/
