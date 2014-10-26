@@ -1,3 +1,19 @@
+## Version 4.0.0 (2014-10-26)
+
+### Major:
+
+  * Cross references are no longer expanded inside code spans and code blocks.
+
+    Thanks to Mathias Panzenböck for reporting this issue in GH-19:
+    https://github.com/sunaku/md2man/issues/19
+
+  * The `Md2Man::Document` module now defines the following methods.  If you
+    redefine/override these methods in deriving classes, make sure that you
+    call `super()` therein to trigger these methods' original implementation!
+
+    * `Md2Man::Document#block_code(code, language)`
+    * `Md2Man::Document#codespan(code)`
+
 ## Version 3.0.2 (2014-10-26)
 
 ### Patch:

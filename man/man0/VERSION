@@ -1,3 +1,22 @@
+.SH Version 4.0.0 (2014\-10\-26)
+.SS Major:
+.RS
+.IP \(bu 2
+Cross references are no longer expanded inside code spans and code blocks.
+.PP
+Thanks to Mathias Panzenböck for reporting this issue in GH\-19:
+\[la]https://github.com/sunaku/md2man/issues/19\[ra]
+.IP \(bu 2
+The \fB\fCMd2Man::Document\fR module now defines the following methods.  If you
+redefine/override these methods in deriving classes, make sure that you
+call \fB\fCsuper()\fR therein to trigger these methods' original implementation!
+.RS
+.IP \(bu 2
+\fB\fCMd2Man::Document#block_code(code, language)\fR
+.IP \(bu 2
+\fB\fCMd2Man::Document#codespan(code)\fR
+.RE
+.RE
 .SH Version 3.0.2 (2014\-10\-26)
 .SS Patch:
 .RS

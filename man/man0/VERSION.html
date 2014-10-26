@@ -2,20 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 3.0.2 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 4.0.0 https://github.com/sunaku/md2man" />
   <title>VERSION</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-3-0-2-2014-10-26"><a name="version-3-0-2-2014-10-26" href="#version-3-0-2-2014-10-26" class="md2man-permalink" title="permalink"></a>Version 3.0.2 (2014-10-26)</h2><h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-4-0-0-2014-10-26"><a name="version-4-0-0-2014-10-26" href="#version-4-0-0-2014-10-26" class="md2man-permalink" title="permalink"></a>Version 4.0.0 (2014-10-26)</h2><h3 id="major"><a name="major" href="#major" class="md2man-permalink" title="permalink"></a>Major:</h3>
+<ul>
+<li><p>Cross references are no longer expanded inside code spans and code blocks.</p><p>Thanks to Mathias Panzenböck for reporting this issue in GH-19:
+<a href="https://github.com/sunaku/md2man/issues/19">https://github.com/sunaku/md2man/issues/19</a></p></li>
+<li><p>The <code>Md2Man::Document</code> module now defines the following methods.  If you
+redefine/override these methods in deriving classes, make sure that you
+call <code>super()</code> therein to trigger these methods&#39; original implementation!</p>
+<ul>
+<li><code>Md2Man::Document#block_code(code, language)</code></li>
+<li><code>Md2Man::Document#codespan(code)</code></li>
+</ul></li>
+</ul>
+<h2 id="version-3-0-2-2014-10-26"><a name="version-3-0-2-2014-10-26" href="#version-3-0-2-2014-10-26" class="md2man-permalink" title="permalink"></a>Version 3.0.2 (2014-10-26)</h2><h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li>Update bootstrap 2.3.2 CDN URL; previous one died.</li>
 </ul>
 <h2 id="version-3-0-1-2014-07-16"><a name="version-3-0-1-2014-07-16" href="#version-3-0-1-2014-07-16" class="md2man-permalink" title="permalink"></a>Version 3.0.1 (2014-07-16)</h2><p>This release restores Mac OS X support and fixes a permalink generation bug.</p><h3 id="patch-1"><a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li><p>GH-13: <a class="md2man-reference">man(1)</a> on Mac OS X could not display URLs.</p><p>The version of groff on Mac OS X is too old: it lacks the an-ext.tmac
-macro package that defines styles for email addresses and general URLs.</p>
-<pre><code>$ groff --version
+macro package that defines styles for email addresses and general URLs.</p><pre><code>$ groff --version
 ...
 GNU grops (groff) version 1.19.2
 GNU troff (groff) version 1.19.2
@@ -27,7 +38,7 @@ GNU troff (groff) version 1.19.2
 <h2 id="version-3-0-0-2014-06-22"><a name="version-3-0-0-2014-06-22" href="#version-3-0-0-2014-06-22" class="md2man-permalink" title="permalink"></a>Version 3.0.0 (2014-06-22)</h2><p>This release changes <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a> heading permalinks to follow GitHub style:
 unique, lowercase, and squeezed and stripped of HTML tags and non-word chars.
 In addition, it renames the <code>md2man-xref</code> CSS class to <code>md2man-reference</code>.</p><p>Please make sure to update any existing bookmarks and/or hyperlinks you may
-have for jumping to specific locations in your HTML manuals after upgrading.</p><h3 id="major"><a name="major" href="#major" class="md2man-permalink" title="permalink"></a>Major:</h3>
+have for jumping to specific locations in your HTML manuals after upgrading.</p><h3 id="major-1"><a name="major-1" href="#major-1" class="md2man-permalink" title="permalink"></a>Major:</h3>
 <ul>
 <li><p>Make permalink anchors on headings fully lowercase in <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>.</p></li>
 <li><p>Put permalinks on left &amp; indicate target permalink in <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>.</p></li>
@@ -51,8 +62,7 @@ See <a href="https://github.com/sunaku/readably/pull/3">https://github.com/sunak
 makes it easy for readers to bookmark and share direct links to specific
 sections of your HTML manual pages.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a> now wraps individual components of the special <code>.TH</code>
-top-level heading in HTML <code>&lt;span&gt;</code> elements with stylable CSS classes:</p>
-<pre><code>&lt;span class=&quot;md2man-title&quot;&gt;...&lt;/span&gt;
+top-level heading in HTML <code>&lt;span&gt;</code> elements with stylable CSS classes:</p><pre><code>&lt;span class=&quot;md2man-title&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;md2man-section&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;md2man-date&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;md2man-source&quot;&gt;...&lt;/span&gt;

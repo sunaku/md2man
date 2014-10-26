@@ -97,8 +97,7 @@ Use the default renderer:
 .RS
 .nf
 require 'md2man/roff/engine'
-your_roff_output = Md2Man::Roff::
-.BR ENGINE.render (your_markdown_input)
+your_roff_output = Md2Man::Roff::ENGINE.render(your_markdown_input)
 .fi
 .RE
 .PP
@@ -108,8 +107,7 @@ Build your own renderer:
 .nf
 require 'md2man/roff/engine'
 engine = Redcarpet::Markdown.new(Md2Man::Roff::Engine, your_options_hash)
-your_roff_output = 
-.BR engine.render (your_markdown_input)
+your_roff_output = engine.render(your_markdown_input)
 .fi
 .RE
 .PP
@@ -122,8 +120,7 @@ class YourManpageRenderer < Md2Man::Roff::Engine
   # ... your stuff here ...
 end
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-your_roff_output = 
-.BR engine.render (your_markdown_input)
+your_roff_output = engine.render(your_markdown_input)
 .fi
 .RE
 .PP
@@ -137,8 +134,7 @@ class YourManpageRenderer < Redcarpet::Render::Base
   # ... your stuff here ...
 end
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-your_roff_output = 
-.BR engine.render (your_markdown_input)
+your_roff_output = engine.render(your_markdown_input)
 .fi
 .RE
 .SS For HTML output
@@ -160,8 +156,7 @@ Use the default renderer:
 .RS
 .nf
 require 'md2man/html/engine'
-your_html_output = Md2Man::HTML::
-.BR ENGINE.render (your_markdown_input)
+your_html_output = Md2Man::HTML::ENGINE.render(your_markdown_input)
 .fi
 .RE
 .PP
@@ -171,8 +166,7 @@ Build your own renderer:
 .nf
 require 'md2man/html/engine'
 engine = Redcarpet::Markdown.new(Md2Man::HTML::Engine, your_options_hash)
-your_html_output = 
-.BR engine.render (your_markdown_input)
+your_html_output = engine.render(your_markdown_input)
 .fi
 .RE
 .PP
@@ -185,8 +179,7 @@ class YourManpageRenderer < Md2Man::HTML::Engine
   # ... your stuff here ...
 end
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-your_html_output = 
-.BR engine.render (your_markdown_input)
+your_html_output = engine.render(your_markdown_input)
 .fi
 .RE
 .PP
@@ -200,8 +193,7 @@ class YourManpageRenderer < Redcarpet::Render::Base
   # ... your stuff here ...
 end
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-your_html_output = 
-.BR engine.render (your_markdown_input)
+your_html_output = engine.render(your_markdown_input)
 .fi
 .RE
 .SS Building man pages
@@ -224,7 +216,7 @@ Add this snippet to your gemspec file:
 .nf
 s.files += Dir['man/man?/*.?']            # UNIX man pages
 s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
-s.add_development_dependency 'md2man', '~> 3.0'
+s.add_development_dependency 'md2man', '~> 4.0'
 .fi
 .RE
 .PP

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 3.0.2 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 4.0.0 https://github.com/sunaku/md2man" />
   <title>README</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -22,51 +22,42 @@
 <li><p>Supports markdown extensions such as <a href="http://michelf.com/projects/php-markdown/extra/#table">PHP Markdown Extra tables</a>.</p></li>
 <li><p>Usable from the command line as a filter in a UNIX command pipeline.</p></li>
 </ul>
-<h3 id="demonstration"><a name="demonstration" href="#demonstration" class="md2man-permalink" title="permalink"></a>Demonstration</h3><p>Try converting <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">this example Markdown file</a> into a UNIX manual page:</p>
-<pre><code>md2man-roff EXAMPLE.markdown &gt; EXAMPLE.1
+<h3 id="demonstration"><a name="demonstration" href="#demonstration" class="md2man-permalink" title="permalink"></a>Demonstration</h3><p>Try converting <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">this example Markdown file</a> into a UNIX manual page:</p><pre><code>md2man-roff EXAMPLE.markdown &gt; EXAMPLE.1
 man -l EXAMPLE.1
 </code></pre>
-<p><img src="EXAMPLE.png" alt="Obligatory screenshot of md2man(1) in action!"></p><p>Also try converting <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">that example Markdown file</a> into a web page:</p>
-<pre><code>md2man-html EXAMPLE.markdown &gt; EXAMPLE.html
+<p><img src="EXAMPLE.png" alt="Obligatory screenshot of md2man(1) in action!"></p><p>Also try converting <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">that example Markdown file</a> into a web page:</p><pre><code>md2man-html EXAMPLE.markdown &gt; EXAMPLE.html
 open EXAMPLE.html
 </code></pre>
-<h2 id="installation"><a name="installation" href="#installation" class="md2man-permalink" title="permalink"></a>Installation</h2>
-<pre><code>gem install md2man
+<h2 id="installation"><a name="installation" href="#installation" class="md2man-permalink" title="permalink"></a>Installation</h2><pre><code>gem install md2man
 </code></pre>
-<h3 id="development"><a name="development" href="#development" class="md2man-permalink" title="permalink"></a>Development</h3>
-<pre><code>git clone git://github.com/sunaku/md2man
+<h3 id="development"><a name="development" href="#development" class="md2man-permalink" title="permalink"></a>Development</h3><pre><code>git clone git://github.com/sunaku/md2man
 cd md2man
 bundle install
 bundle exec rake --tasks        # packaging tasks
 bundle exec md2man-roff --help  # run it directly
 bundle exec md2man-html --help  # run it directly
 </code></pre>
-<h2 id="usage"><a name="usage" href="#usage" class="md2man-permalink" title="permalink"></a>Usage</h2><h3 id="for-roff-output"><a name="for-roff-output" href="#for-roff-output" class="md2man-permalink" title="permalink"></a>For <a href="http://troff.org">roff</a> output</h3><h4 id="at-the-command-line"><a name="at-the-command-line" href="#at-the-command-line" class="md2man-permalink" title="permalink"></a>At the command line</h4><p>See <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a> manual:</p>
-<pre><code>md2man-roff --help
+<h2 id="usage"><a name="usage" href="#usage" class="md2man-permalink" title="permalink"></a>Usage</h2><h3 id="for-roff-output"><a name="for-roff-output" href="#for-roff-output" class="md2man-permalink" title="permalink"></a>For <a href="http://troff.org">roff</a> output</h3><h4 id="at-the-command-line"><a name="at-the-command-line" href="#at-the-command-line" class="md2man-permalink" title="permalink"></a>At the command line</h4><p>See <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a> manual:</p><pre><code>md2man-roff --help
 </code></pre>
-<h4 id="inside-a-ruby-script"><a name="inside-a-ruby-script" href="#inside-a-ruby-script" class="md2man-permalink" title="permalink"></a>Inside a Ruby script</h4><p>Use the default renderer:</p>
-<pre><code>require &#39;md2man/roff/engine&#39;
+<h4 id="inside-a-ruby-script"><a name="inside-a-ruby-script" href="#inside-a-ruby-script" class="md2man-permalink" title="permalink"></a>Inside a Ruby script</h4><p>Use the default renderer:</p><pre><code>require &#39;md2man/roff/engine&#39;
 
-your_roff_output = Md2Man::Roff::<a class="md2man-reference">ENGINE.render(your_markdown_input)</a>
+your_roff_output = Md2Man::Roff::ENGINE.render(your_markdown_input)
 </code></pre>
-<p>Build your own renderer:</p>
-<pre><code>require &#39;md2man/roff/engine&#39;
+<p>Build your own renderer:</p><pre><code>require &#39;md2man/roff/engine&#39;
 
 engine = Redcarpet::Markdown.new(Md2Man::Roff::Engine, your_options_hash)
-your_roff_output = <a class="md2man-reference">engine.render(your_markdown_input)</a>
+your_roff_output = engine.render(your_markdown_input)
 </code></pre>
-<p>Define your own renderer:</p>
-<pre><code>require &#39;md2man/roff/engine&#39;
+<p>Define your own renderer:</p><pre><code>require &#39;md2man/roff/engine&#39;
 
 class YourManpageRenderer &lt; Md2Man::Roff::Engine
   # ... your stuff here ...
 end
 
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-your_roff_output = <a class="md2man-reference">engine.render(your_markdown_input)</a>
+your_roff_output = engine.render(your_markdown_input)
 </code></pre>
-<p>Mix-in your own renderer:</p>
-<pre><code>require &#39;md2man/roff&#39;
+<p>Mix-in your own renderer:</p><pre><code>require &#39;md2man/roff&#39;
 
 class YourManpageRenderer &lt; Redcarpet::Render::Base
   include Md2Man::Roff
@@ -74,34 +65,29 @@ class YourManpageRenderer &lt; Redcarpet::Render::Base
 end
 
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-your_roff_output = <a class="md2man-reference">engine.render(your_markdown_input)</a>
+your_roff_output = engine.render(your_markdown_input)
 </code></pre>
-<h3 id="for-html-output"><a name="for-html-output" href="#for-html-output" class="md2man-permalink" title="permalink"></a>For HTML output</h3><h4 id="at-the-command-line-1"><a name="at-the-command-line-1" href="#at-the-command-line-1" class="md2man-permalink" title="permalink"></a>At the command line</h4><p>See <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a> manual:</p>
-<pre><code>md2man-html --help
+<h3 id="for-html-output"><a name="for-html-output" href="#for-html-output" class="md2man-permalink" title="permalink"></a>For HTML output</h3><h4 id="at-the-command-line-1"><a name="at-the-command-line-1" href="#at-the-command-line-1" class="md2man-permalink" title="permalink"></a>At the command line</h4><p>See <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a> manual:</p><pre><code>md2man-html --help
 </code></pre>
-<h4 id="inside-a-ruby-script-1"><a name="inside-a-ruby-script-1" href="#inside-a-ruby-script-1" class="md2man-permalink" title="permalink"></a>Inside a Ruby script</h4><p>Use the default renderer:</p>
-<pre><code>require &#39;md2man/html/engine&#39;
+<h4 id="inside-a-ruby-script-1"><a name="inside-a-ruby-script-1" href="#inside-a-ruby-script-1" class="md2man-permalink" title="permalink"></a>Inside a Ruby script</h4><p>Use the default renderer:</p><pre><code>require &#39;md2man/html/engine&#39;
 
-your_html_output = Md2Man::HTML::<a class="md2man-reference">ENGINE.render(your_markdown_input)</a>
+your_html_output = Md2Man::HTML::ENGINE.render(your_markdown_input)
 </code></pre>
-<p>Build your own renderer:</p>
-<pre><code>require &#39;md2man/html/engine&#39;
+<p>Build your own renderer:</p><pre><code>require &#39;md2man/html/engine&#39;
 
 engine = Redcarpet::Markdown.new(Md2Man::HTML::Engine, your_options_hash)
-your_html_output = <a class="md2man-reference">engine.render(your_markdown_input)</a>
+your_html_output = engine.render(your_markdown_input)
 </code></pre>
-<p>Define your own renderer:</p>
-<pre><code>require &#39;md2man/html/engine&#39;
+<p>Define your own renderer:</p><pre><code>require &#39;md2man/html/engine&#39;
 
 class YourManpageRenderer &lt; Md2Man::HTML::Engine
   # ... your stuff here ...
 end
 
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-your_html_output = <a class="md2man-reference">engine.render(your_markdown_input)</a>
+your_html_output = engine.render(your_markdown_input)
 </code></pre>
-<p>Mix-in your own renderer:</p>
-<pre><code>require &#39;md2man/html&#39;
+<p>Mix-in your own renderer:</p><pre><code>require &#39;md2man/html&#39;
 
 class YourManpageRenderer &lt; Redcarpet::Render::Base
   include Md2Man::HTML
@@ -109,24 +95,20 @@ class YourManpageRenderer &lt; Redcarpet::Render::Base
 end
 
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-your_html_output = <a class="md2man-reference">engine.render(your_markdown_input)</a>
+your_html_output = engine.render(your_markdown_input)
 </code></pre>
-<h3 id="building-man-pages"><a name="building-man-pages" href="#building-man-pages" class="md2man-permalink" title="permalink"></a>Building man pages</h3><h4 id="at-the-command-line-2"><a name="at-the-command-line-2" href="#at-the-command-line-2" class="md2man-permalink" title="permalink"></a>At the command line</h4><p>See <a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a> manual:</p>
-<pre><code>md2man-rake --help
+<h3 id="building-man-pages"><a name="building-man-pages" href="#building-man-pages" class="md2man-permalink" title="permalink"></a>Building man pages</h3><h4 id="at-the-command-line-2"><a name="at-the-command-line-2" href="#at-the-command-line-2" class="md2man-permalink" title="permalink"></a>At the command line</h4><p>See <a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a> manual:</p><pre><code>md2man-rake --help
 </code></pre>
-<h4 id="inside-a-ruby-script-2"><a name="inside-a-ruby-script-2" href="#inside-a-ruby-script-2" class="md2man-permalink" title="permalink"></a>Inside a Ruby script</h4><p>Add this snippet to your gemspec file:</p>
-<pre><code>s.files += Dir[&#39;man/man?/*.?&#39;]            # UNIX man pages
+<h4 id="inside-a-ruby-script-2"><a name="inside-a-ruby-script-2" href="#inside-a-ruby-script-2" class="md2man-permalink" title="permalink"></a>Inside a Ruby script</h4><p>Add this snippet to your gemspec file:</p><pre><code>s.files += Dir[&#39;man/man?/*.?&#39;]            # UNIX man pages
 s.files += Dir[&#39;man/**/*.{html,css,js}&#39;]  # HTML man pages
-s.add_development_dependency &#39;md2man&#39;, &#39;~&gt; 3.0&#39;
+s.add_development_dependency &#39;md2man&#39;, &#39;~&gt; 4.0&#39;
 </code></pre>
-<p>Add this line to your Rakefile:</p>
-<pre><code>require &#39;md2man/rakefile&#39;
+<p>Add this line to your Rakefile:</p><pre><code>require &#39;md2man/rakefile&#39;
 </code></pre>
 <p>You now have a <code>rake md2man</code> task that builds manual pages from Markdown files
 (with &quot;.markdown&quot;, &quot;.mkd&quot;, or &quot;.md&quot; extension) inside <code>man/man*/</code> directories.
 There are also sub-tasks to build manual pages individually as <a href="http://troff.org">roff</a> or HTML.</p><p>If you&#39;re using Bundler, this task also hooks into Bundler&#39;s gem packaging
-tasks and ensures that your manual pages are built for packaging into a gem:</p>
-<pre><code>bundle exec rake build
+tasks and ensures that your manual pages are built for packaging into a gem:</p><pre><code>bundle exec rake build
 gem spec pkg/*.gem | fgrep man/
 </code></pre>
 <h2 id="license"><a name="license" href="#license" class="md2man-permalink" title="permalink"></a>License</h2><p>Released under the ISC license.  See the LICENSE file for details.</p></div></body>

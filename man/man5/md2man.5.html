@@ -2,14 +2,13 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 3.0.2 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 4.0.0 https://github.com/sunaku/md2man" />
   <title>md2man(5) &mdash; manual page flavoring for the markdown(7) file format</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man5">man5</a>/md2man.5</span></div></div><div class="container-fluid"><h1 id="md2man-5-2014-10-26-3-0-2"><a name="md2man-5-2014-10-26-3-0-2" href="#md2man-5-2014-10-26-3-0-2" class="md2man-permalink" title="permalink"></a><span class="md2man-title">MD2MAN</span> <span class="md2man-section">5</span> <span class="md2man-date">2014-10-26</span> <span class="md2man-source">3.0.2</span></h1><h2 id="name"><a name="name" href="#name" class="md2man-permalink" title="permalink"></a>NAME</h2><p>md2man - manual page flavoring for the <a class="md2man-reference">markdown(7)</a> file format</p><h2 id="description"><a name="description" href="#description" class="md2man-permalink" title="permalink"></a>DESCRIPTION</h2><p><a href="https://github.com/sunaku/md2man">md2man</a> makes the <a class="md2man-reference">markdown(7)</a> file format friendly for writing UNIX manual
-pages by extending its syntax, semantics, and assumed processing extensions.</p><h3 id="syntax"><a name="syntax" href="#syntax" class="md2man-permalink" title="permalink"></a>Syntax</h3><p>md2man extends <a class="md2man-reference">markdown(7)</a> syntax by defining three kinds of paragraphs.</p>
-<pre><code>This is a
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man5">man5</a>/md2man.5</span></div></div><div class="container-fluid"><h1 id="md2man-5-2014-10-26-4-0-0"><a name="md2man-5-2014-10-26-4-0-0" href="#md2man-5-2014-10-26-4-0-0" class="md2man-permalink" title="permalink"></a><span class="md2man-title">MD2MAN</span> <span class="md2man-section">5</span> <span class="md2man-date">2014-10-26</span> <span class="md2man-source">4.0.0</span></h1><h2 id="name"><a name="name" href="#name" class="md2man-permalink" title="permalink"></a>NAME</h2><p>md2man - manual page flavoring for the <a class="md2man-reference">markdown(7)</a> file format</p><h2 id="description"><a name="description" href="#description" class="md2man-permalink" title="permalink"></a>DESCRIPTION</h2><p><a href="https://github.com/sunaku/md2man">md2man</a> makes the <a class="md2man-reference">markdown(7)</a> file format friendly for writing UNIX manual
+pages by extending its syntax, semantics, and assumed processing extensions.</p><h3 id="syntax"><a name="syntax" href="#syntax" class="md2man-permalink" title="permalink"></a>Syntax</h3><p>md2man extends <a class="md2man-reference">markdown(7)</a> syntax by defining three kinds of paragraphs.</p><pre><code>This is a
 normal
 paragraph.
 
@@ -27,8 +26,7 @@ This
    paragraph.
 </code></pre>
 <h4 id="normal-paragraphs"><a name="normal-paragraphs" href="#normal-paragraphs" class="md2man-permalink" title="permalink"></a>Normal paragraphs</h4><p>Paragraphs whose lines are all indented by exactly zero or one additional
-spaces are considered to be &quot;normal paragraphs&quot;.  For example:</p>
-<pre><code>This is a
+spaces are considered to be &quot;normal paragraphs&quot;.  For example:</p><pre><code>This is a
 normal
 paragraph.
 
@@ -39,14 +37,12 @@ This
 </code></pre>
 <h4 id="tagged-paragraphs"><a name="tagged-paragraphs" href="#tagged-paragraphs" class="md2man-permalink" title="permalink"></a>Tagged paragraphs</h4><p>Paragraphs whose first line is indented by less than two additional spaces and
 whose subsequent lines are uniformly indented by exactly two additional spaces
-are considered to be &quot;tagged paragraphs&quot;.  For example:</p>
-<pre><code>This is a
+are considered to be &quot;tagged paragraphs&quot;.  For example:</p><pre><code>This is a
   tagged
   paragraph.
 </code></pre>
 <h4 id="indented-paragraphs"><a name="indented-paragraphs" href="#indented-paragraphs" class="md2man-permalink" title="permalink"></a>Indented paragraphs</h4><p>Paragraphs whose lines are all uniformly indented by exactly two additional
-spaces are considered to be &quot;indented paragraphs&quot;.  For example:</p>
-<pre><code>  This is an
+spaces are considered to be &quot;indented paragraphs&quot;.  For example:</p><pre><code>  This is an
   indented
   paragraph.
 </code></pre>

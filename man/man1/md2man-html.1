@@ -1,4 +1,4 @@
-.TH MD2MAN\-HTML 1 2014\-10\-26 3.0.2
+.TH MD2MAN\-HTML 1 2014\-10\-26 4.0.0
 .SH NAME
 .PP
 md2man\-html \- convert 
@@ -69,14 +69,11 @@ Cross references to manual pages are emitted as HTML hyperlinks that have
 \fB\fCclass="md2man\-reference"\fR and \fB\fChref="../man$SECTION/$PAGE.$SECTION.html"\fR
 attributes.
 .PP
-For example, the \fB\fC
-.BR printf (3)\fR 
-cross reference would be emitted as this HTML:
+For example, the \fB\fCprintf(3)\fR cross reference would be emitted as this HTML:
 .PP
 .RS
 .nf
-<a class="md2man\-reference" href="../man3/printf.3.html">
-.BR printf (3)</a>
+<a class="md2man\-reference" href="../man3/printf.3.html">printf(3)</a>
 .fi
 .RE
 .SH OPTIONS
