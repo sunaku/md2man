@@ -36,19 +36,19 @@ lowercase, and squeezed and stripped of HTML tags and non-word characters.
 
 For example, a heading labeled `Ver<s>iON 3(2</s>!4)))` would be emitted as:
 
-    <h2 id="ver-ion-3-2-4"><a name="ver-ion-3-2-4" href="#ver-ion-3-2-4"
-    class="md2man-permalink" title="permalink"></a>Ver<s>iON 3(2</s>!4)))</h2>
+    <h2 id="ver-ion-3-2-4">Ver<s>iON 3(2</s>!4)))<a name="ver-ion-3-2-4"
+    href="#ver-ion-3-2-4" class="md2man-permalink" title="permalink"></a></h2>
 
 For example, multiple headings labeled `Hello, world!` would be emitted as:
 
-    <h2 id="hello-world"><a name="hello-world" href="#hello-world"
-    class="md2man-permalink" title="permalink"></a>Hello, world!</h2>
+    <h2 id="hello-world">Hello, world!<a name="hello-world"
+    href="#hello-world" class="md2man-permalink" title="permalink"></a></h2>
 
-    <h2 id="hello-world-1"><a name="hello-world-1" href="#hello-world-1"
-    class="md2man-permalink" title="permalink"></a>Hello, world!</h2>
+    <h2 id="hello-world-1">Hello, world!<a name="hello-world-1"
+    href="#hello-world-1" class="md2man-permalink" title="permalink"></a></h2>
 
-    <h2 id="hello-world-2"><a name="hello-world-2" href="#hello-world-2"
-    class="md2man-permalink" title="permalink"></a>Hello, world!</h2>
+    <h2 id="hello-world-2">Hello, world!<a name="hello-world-2"
+    href="#hello-world-2" class="md2man-permalink" title="permalink"></a></h2>
 
 ### Cross references
 

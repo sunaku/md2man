@@ -144,15 +144,15 @@ describe 'html engine' do
       |### bar **BAZ**
       |#### -bar--BAZ---
     INPUT
-<h1 id="foo-bar"><a name="foo-bar" href="#foo-bar" class="md2man-permalink" title="permalink"></a><span class=\"md2man-title\">foo</span> <span class=\"md2man-section\"><em>BAR</em></span></h1>\
-<h2 id="bar-baz"><a name="bar-baz" href="#bar-baz" class="md2man-permalink" title="permalink"></a>bar BAZ</h2>\
-<h3 id="baz-qux"><a name="baz-qux" href="#baz-qux" class="md2man-permalink" title="permalink"></a>--BAZ-QUX--</h3>\
-<h4 id="qux-moz"><a name="qux-moz" href="#qux-moz" class="md2man-permalink" title="permalink"></a>qux (MOZ)</h4>\
-<h5 id="m-oz-end"><a name="m-oz-end" href="#m-oz-end" class="md2man-permalink" title="permalink"></a>{m}oz END</h5>\
-<h1 id="bar-baz-1"><a name="bar-baz-1" href="#bar-baz-1" class="md2man-permalink" title="permalink"></a>bar BAZ</h1>\
-<h2 id="bar-baz-2"><a name="bar-baz-2" href="#bar-baz-2" class="md2man-permalink" title="permalink"></a>bar <em>BAZ</em></h2>\
-<h3 id="bar-baz-3"><a name="bar-baz-3" href="#bar-baz-3" class="md2man-permalink" title="permalink"></a>bar <strong>BAZ</strong></h3>\
-<h4 id="bar-baz-4"><a name="bar-baz-4" href="#bar-baz-4" class="md2man-permalink" title="permalink"></a>-bar--BAZ---</h4>
+<h1 id="foo-bar"><span class=\"md2man-title\">foo</span> <span class=\"md2man-section\"><em>BAR</em></span><a name="foo-bar" href="#foo-bar" class="md2man-permalink" title="permalink"></a></h1>\
+<h2 id="bar-baz">bar BAZ<a name="bar-baz" href="#bar-baz" class="md2man-permalink" title="permalink"></a></h2>\
+<h3 id="baz-qux">--BAZ-QUX--<a name="baz-qux" href="#baz-qux" class="md2man-permalink" title="permalink"></a></h3>\
+<h4 id="qux-moz">qux (MOZ)<a name="qux-moz" href="#qux-moz" class="md2man-permalink" title="permalink"></a></h4>\
+<h5 id="m-oz-end">{m}oz END<a name="m-oz-end" href="#m-oz-end" class="md2man-permalink" title="permalink"></a></h5>\
+<h1 id="bar-baz-1">bar BAZ<a name="bar-baz-1" href="#bar-baz-1" class="md2man-permalink" title="permalink"></a></h1>\
+<h2 id="bar-baz-2">bar <em>BAZ</em><a name="bar-baz-2" href="#bar-baz-2" class="md2man-permalink" title="permalink"></a></h2>\
+<h3 id="bar-baz-3">bar <strong>BAZ</strong><a name="bar-baz-3" href="#bar-baz-3" class="md2man-permalink" title="permalink"></a></h3>\
+<h4 id="bar-baz-4">-bar--BAZ---<a name="bar-baz-4" href="#bar-baz-4" class="md2man-permalink" title="permalink"></a></h4>
     OUTPUT
   end
 
@@ -164,7 +164,7 @@ describe 'html engine' do
       |
       |here is another paragraph containing is-a-reference(3) yet again
     INPUT
-<h2 id="here-is-a-reference-3-to-another-man-page"><a name="here-is-a-reference-3-to-another-man-page" href="#here-is-a-reference-3-to-another-man-page" class="md2man-permalink" title="permalink"></a>here <a class="md2man-reference" href="../man3/is-a-reference.3.html">is-a-reference(3)</a> to another man page</h2>\
+<h2 id="here-is-a-reference-3-to-another-man-page">here <a class="md2man-reference" href="../man3/is-a-reference.3.html">is-a-reference(3)</a> to another man page<a name="here-is-a-reference-3-to-another-man-page" href="#here-is-a-reference-3-to-another-man-page" class="md2man-permalink" title="permalink"></a></h2>\
 <p>here is a paragraph containing <a class="md2man-reference" href="../man3/is-a-reference.3.html">is-a-reference(3)</a> again</p>\
 <p>here is another paragraph containing <a class="md2man-reference" href="../man3/is-a-reference.3.html">is-a-reference(3)</a> yet again</p>
     OUTPUT
@@ -181,12 +181,12 @@ describe 'html engine' do
       |
       |### `PIPES_GET_LAST(CHAIN)`
     INPUT
-      |<h3 id="macros"><a name="macros" href="#macros" class="md2man-permalink" title="permalink"></a>Macros</h3><pre><code>#define PIPES_GET_LAST(CHAIN)
+      |<h3 id="macros">Macros<a name="macros" href="#macros" class="md2man-permalink" title="permalink"></a></h3><pre><code>#define PIPES_GET_LAST(CHAIN)
       |#define PIPES_GET_IN(CHAIN)
       |#define PIPES_GET_OUT(CHAIN)
       |#define PIPES_GET_ERR(CHAIN)
       |</code></pre>
-      |<h3 id="pipes_get_last-chain"><a name="pipes_get_last-chain" href="#pipes_get_last-chain" class="md2man-permalink" title="permalink"></a><code>PIPES_GET_LAST(CHAIN)</code></h3>
+      |<h3 id="pipes_get_last-chain"><code>PIPES_GET_LAST(CHAIN)</code><a name="pipes_get_last-chain" href="#pipes_get_last-chain" class="md2man-permalink" title="permalink"></a></h3>
     OUTPUT
   end
 end
