@@ -49,7 +49,11 @@
 
   a.md2man-permalink:hover,
   *:target > a.md2man-permalink {
-    opacity: initial
+    opacity: inherit;
+  }
+
+  *:target > a.md2man-permalink {
+    color: red;
   }
 }
 
