@@ -44,7 +44,7 @@
   }
 
   a.md2man-permalink:before {
-    content: '\2665'; /* &hearts; */
+    content: '\2605'; /* &starf; */
   }
 
   a.md2man-permalink:hover,
