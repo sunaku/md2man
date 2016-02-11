@@ -40,15 +40,20 @@
     float: left;
     margin-left: -1em;
     opacity: 0.25;
+    font-size: xx-large;
   }
 
   a.md2man-permalink:before {
-    content: '\2665'; /* &hearts; */
+    content: '\2605'; /* &starf; */
   }
 
   a.md2man-permalink:hover,
   *:target > a.md2man-permalink {
-    opacity: initial
+    opacity: inherit;
+  }
+
+  *:target > a.md2man-permalink {
+    color: red;
   }
 }
 

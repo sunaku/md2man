@@ -1,3 +1,13 @@
+.SH Version 4.0.1 (2016\-02\-10)
+.SS Other:
+.RS
+.IP \(bu 2
+Make all permalinks appear in the same size.
+.IP \(bu 2
+Change permalink symbols from hearts to stars.
+.IP \(bu 2
+Indicate target heading with a red permalink.
+.RE
 .SH Version 4.0.0 (2014\-10\-26)
 .SS Major:
 .RS
