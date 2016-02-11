@@ -1,3 +1,13 @@
+## Version 4.0.1 (2016-02-10)
+
+### Other:
+
+  * Make all permalinks appear in the same size.
+
+  * Change permalink symbols from hearts to stars.
+
+  * Indicate target heading with a red permalink.
+
 ## Version 4.0.0 (2014-10-26)
 
 ### Major:
