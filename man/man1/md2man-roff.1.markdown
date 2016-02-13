@@ -28,8 +28,8 @@ It issues a warning when it encounters these instead.  Patches are welcome!
 
 ## OPTIONS
 
-`-h`, `--help`
-  Show this help manual.
+`-h` [*PATTERN*], `--help` [*PATTERN*]
+  Show this help manual and search for *PATTERN* regular expression therein.
 
 ## SEE ALSO
 
