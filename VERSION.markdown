@@ -1,3 +1,16 @@
+## Version 5.0.1 (2016-02-13)
+
+### Major:
+
+  * `md2man-html` now puts permalinks _after_ heading text to avoid unsightly
+    gaps at the beginning of each heading in text-mode browsers like w3m(1).
+
+  * Upgrade to binman version 5.x.x, which is also a major version bump.
+
+### Other:
+
+  * README: use fenced code blocks to get syntax highlighting on GitHub.
+
 ## Version 4.0.1 (2016-02-10)
 
 ### Other:

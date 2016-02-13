@@ -45,7 +45,7 @@ gem install md2man
 ### Development
 
 ```sh
-git clone git://github.com/sunaku/md2man
+git clone https://github.com/sunaku/md2man
 cd md2man
 bundle install
 bundle exec rake --tasks        # packaging tasks
@@ -184,7 +184,7 @@ Add this snippet to your gemspec file:
 ```ruby
 s.files += Dir['man/man?/*.?']            # UNIX man pages
 s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
-s.add_development_dependency 'md2man', '~> 4.0'
+s.add_development_dependency 'md2man', '~> 5.0'
 ```
 
 Add this line to your Rakefile:
