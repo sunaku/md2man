@@ -1,3 +1,18 @@
+.SH Version 5.0.1 (2016\-02\-13)
+.SS Major:
+.RS
+.IP \(bu 2
+\fB\fCmd2man\-html\fR now puts permalinks \fIafter\fP heading text to avoid unsightly
+gaps at the beginning of each heading in text\-mode browsers like 
+.BR w3m (1).
+.IP \(bu 2
+Upgrade to binman version 5.x.x, which is also a major version bump.
+.RE
+.SS Other:
+.RS
+.IP \(bu 2
+README: use fenced code blocks to get syntax highlighting on GitHub.
+.RE
 .SH Version 4.0.1 (2016\-02\-10)
 .SS Other:
 .RS

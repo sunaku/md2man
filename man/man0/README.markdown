@@ -22,28 +22,36 @@ md2man is a Ruby library and a set of command-line programs that convert
 
 Try converting [this example Markdown file][example] into a UNIX manual page:
 
-    md2man-roff EXAMPLE.markdown > EXAMPLE.1
-    man -l EXAMPLE.1
+```sh
+md2man-roff EXAMPLE.markdown > EXAMPLE.1
+man -l EXAMPLE.1
+```
 
 ![Obligatory screenshot of md2man(1) in action!](EXAMPLE.png)
 
 Also try converting [that example Markdown file][example] into a web page:
 
-    md2man-html EXAMPLE.markdown > EXAMPLE.html
-    open EXAMPLE.html
+```sh
+md2man-html EXAMPLE.markdown > EXAMPLE.html
+open EXAMPLE.html
+```
 
 ## Installation
 
-    gem install md2man
+```sh
+gem install md2man
+```
 
 ### Development
 
-    git clone git://github.com/sunaku/md2man
-    cd md2man
-    bundle install
-    bundle exec rake --tasks        # packaging tasks
-    bundle exec md2man-roff --help  # run it directly
-    bundle exec md2man-html --help  # run it directly
+```sh
+git clone https://github.com/sunaku/md2man
+cd md2man
+bundle install
+bundle exec rake --tasks        # packaging tasks
+bundle exec md2man-roff --help  # run it directly
+bundle exec md2man-html --help  # run it directly
+```
 
 ## Usage
 
@@ -53,45 +61,55 @@ Also try converting [that example Markdown file][example] into a web page:
 
 See md2man-roff(1) manual:
 
-    md2man-roff --help
+```sh
+md2man-roff --help
+```
 
 #### Inside a Ruby script
 
 Use the default renderer:
 
-    require 'md2man/roff/engine'
+```ruby
+require 'md2man/roff/engine'
 
-    your_roff_output = Md2Man::Roff::ENGINE.render(your_markdown_input)
+your_roff_output = Md2Man::Roff::ENGINE.render(your_markdown_input)
+```
 
 Build your own renderer:
 
-    require 'md2man/roff/engine'
+```ruby
+require 'md2man/roff/engine'
 
-    engine = Redcarpet::Markdown.new(Md2Man::Roff::Engine, your_options_hash)
-    your_roff_output = engine.render(your_markdown_input)
+engine = Redcarpet::Markdown.new(Md2Man::Roff::Engine, your_options_hash)
+your_roff_output = engine.render(your_markdown_input)
+```
 
 Define your own renderer:
 
-    require 'md2man/roff/engine'
+```ruby
+require 'md2man/roff/engine'
 
-    class YourManpageRenderer < Md2Man::Roff::Engine
-      # ... your stuff here ...
-    end
+class YourManpageRenderer < Md2Man::Roff::Engine
+  # ... your stuff here ...
+end
 
-    engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-    your_roff_output = engine.render(your_markdown_input)
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_roff_output = engine.render(your_markdown_input)
+```
 
 Mix-in your own renderer:
 
-    require 'md2man/roff'
+```ruby
+require 'md2man/roff'
 
-    class YourManpageRenderer < Redcarpet::Render::Base
-      include Md2Man::Roff
-      # ... your stuff here ...
-    end
+class YourManpageRenderer < Redcarpet::Render::Base
+  include Md2Man::Roff
+  # ... your stuff here ...
+end
 
-    engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-    your_roff_output = engine.render(your_markdown_input)
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_roff_output = engine.render(your_markdown_input)
+```
 
 ### For HTML output
 
@@ -99,45 +117,55 @@ Mix-in your own renderer:
 
 See md2man-html(1) manual:
 
-    md2man-html --help
+```sh
+md2man-html --help
+```
 
 #### Inside a Ruby script
 
 Use the default renderer:
 
-    require 'md2man/html/engine'
+```ruby
+require 'md2man/html/engine'
 
-    your_html_output = Md2Man::HTML::ENGINE.render(your_markdown_input)
+your_html_output = Md2Man::HTML::ENGINE.render(your_markdown_input)
+```
 
 Build your own renderer:
 
-    require 'md2man/html/engine'
+```ruby
+require 'md2man/html/engine'
 
-    engine = Redcarpet::Markdown.new(Md2Man::HTML::Engine, your_options_hash)
-    your_html_output = engine.render(your_markdown_input)
+engine = Redcarpet::Markdown.new(Md2Man::HTML::Engine, your_options_hash)
+your_html_output = engine.render(your_markdown_input)
+```
 
 Define your own renderer:
 
-    require 'md2man/html/engine'
+```ruby
+require 'md2man/html/engine'
 
-    class YourManpageRenderer < Md2Man::HTML::Engine
-      # ... your stuff here ...
-    end
+class YourManpageRenderer < Md2Man::HTML::Engine
+  # ... your stuff here ...
+end
 
-    engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-    your_html_output = engine.render(your_markdown_input)
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_html_output = engine.render(your_markdown_input)
+```
 
 Mix-in your own renderer:
 
-    require 'md2man/html'
+```ruby
+require 'md2man/html'
 
-    class YourManpageRenderer < Redcarpet::Render::Base
-      include Md2Man::HTML
-      # ... your stuff here ...
-    end
+class YourManpageRenderer < Redcarpet::Render::Base
+  include Md2Man::HTML
+  # ... your stuff here ...
+end
 
-    engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
-    your_html_output = engine.render(your_markdown_input)
+engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
+your_html_output = engine.render(your_markdown_input)
+```
 
 ### Building man pages
 
@@ -145,19 +173,25 @@ Mix-in your own renderer:
 
 See md2man-rake(1) manual:
 
-    md2man-rake --help
+```sh
+md2man-rake --help
+```
 
 #### Inside a Ruby script
 
 Add this snippet to your gemspec file:
 
-    s.files += Dir['man/man?/*.?']            # UNIX man pages
-    s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
-    s.add_development_dependency 'md2man', '~> 4.0'
+```ruby
+s.files += Dir['man/man?/*.?']            # UNIX man pages
+s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
+s.add_development_dependency 'md2man', '~> 5.0'
+```
 
 Add this line to your Rakefile:
 
-    require 'md2man/rakefile'
+```ruby
+require 'md2man/rakefile'
+```
 
 You now have a `rake md2man` task that builds manual pages from Markdown files
 (with ".markdown", ".mkd", or ".md" extension) inside `man/man*/` directories.
@@ -166,8 +200,10 @@ There are also sub-tasks to build manual pages individually as [roff] or HTML.
 If you're using Bundler, this task also hooks into Bundler's gem packaging
 tasks and ensures that your manual pages are built for packaging into a gem:
 
-    bundle exec rake build
-    gem spec pkg/*.gem | fgrep man/
+```ruby
+bundle exec rake build
+gem spec pkg/*.gem | fgrep man/
+```
 
 ## License
 
