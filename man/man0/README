@@ -22,7 +22,8 @@ Package:
 .SH Features
 .RS
 .IP \(bu 2
-Formats tagged and indented paragraphs (see "document format" below).
+Formats indented, tagged, and normal paragraphs: described in 
+.BR md2man (5).
 .IP \(bu 2
 Translates all HTML4 and XHTML1 entities into native roff
 \[la]http://troff.org\[ra] equivalents.
