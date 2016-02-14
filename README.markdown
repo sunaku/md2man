@@ -10,7 +10,7 @@ md2man is a Ruby library and a set of command-line programs that convert
 
 ## Features
 
-  * Formats tagged and indented paragraphs (see "document format" below).
+  * Formats indented, tagged, and normal paragraphs: described in md2man(5).
 
   * Translates all HTML4 and XHTML1 entities into native [roff] equivalents.
 
