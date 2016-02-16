@@ -1,39 +1,33 @@
 .RS
 .IP \(bu 2
-Code: 
-\[la]https://github.com/sunaku/md2man\[ra]
+Code: \[la]https://github.com/sunaku/md2man\[ra]
 .IP \(bu 2
-Docs: 
-\[la]https://sunaku.github.io/md2man/man\[ra]
+Docs: \[la]https://sunaku.github.io/md2man/man\[ra]
 .IP \(bu 2
-Bugs: 
-\[la]https://github.com/sunaku/md2man/issues\[ra]
+Bugs: \[la]https://github.com/sunaku/md2man/issues\[ra]
 .RE
 .TH md2man \- markdown to manpage
 .PP
 md2man is a Ruby library and a set of command\-line programs that convert
-Markdown
-\[la]http://daringfireball.net/projects/markdown/\[ra] into UNIX manual pages (both roff
-\[la]http://troff.org\[ra] and HTML) using Redcarpet
-\[la]https://github.com/vmg/redcarpet\[ra]\&.
+Markdown \[la]http://daringfireball.net/projects/markdown/\[ra] into UNIX manual pages (both roff \[la]http://troff.org\[ra] and HTML) using Redcarpet \[la]https://github.com/vmg/redcarpet\[ra]\&.
 .SH Features
 .RS
 .IP \(bu 2
 Formats indented, tagged, and normal paragraphs: described in 
 .BR md2man (5).
 .IP \(bu 2
-Translates all HTML4 and XHTML1 entities into native roff
-\[la]http://troff.org\[ra] equivalents.
+Translates all HTML4 and XHTML1 entities into native roff \[la]http://troff.org\[ra] equivalents.
 .IP \(bu 2
-Supports markdown extensions such as PHP Markdown Extra tables
-\[la]http://michelf.com/projects/php-markdown/extra/#table\[ra]\&.
+Supports markdown extensions such as PHP Markdown Extra tables \[la]http://michelf.com/projects/php-markdown/extra/#table\[ra]\&.
 .IP \(bu 2
 Usable from the command line as a filter in a UNIX command pipeline.
 .RE
 .SS Demonstration
 .PP
-Try converting this example Markdown file
-\[la]https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown\[ra] into a UNIX manual page:
+Try converting
+this example Markdown file \[la]https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown\[ra]
+into
+a UNIX manual page \[la]https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE\[ra]:
 .PP
 .RS
 .nf
@@ -46,8 +40,10 @@ man \-l EXAMPLE.1
 .BR md2man (1) 
 in action!](EXAMPLE.png)
 .PP
-Also try converting that example Markdown file
-\[la]https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown\[ra] into a web page:
+Next, try converting
+the same example file \[la]https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown\[ra]
+into
+a HTML web page \[la]https://sunaku.github.io/md2man/man/man0/EXAMPLE.html\[ra]:
 .PP
 .RS
 .nf
@@ -75,8 +71,7 @@ bundle exec md2man\-html \-\-help  # run it directly
 .fi
 .RE
 .SH Usage
-.SS For roff
-\[la]http://troff.org\[ra] output
+.SS For roff \[la]http://troff.org\[ra] output
 .SS At the command line
 .PP
 See 
@@ -228,8 +223,7 @@ require 'md2man/rakefile'
 .PP
 You now have a \fB\fCrake md2man\fR task that builds manual pages from Markdown files
 (with ".markdown", ".mkd", or ".md" extension) inside \fB\fCman/man*/\fR directories.
-There are also sub\-tasks to build manual pages individually as roff
-\[la]http://troff.org\[ra] or HTML.
+There are also sub\-tasks to build manual pages individually as roff \[la]http://troff.org\[ra] or HTML.
 .PP
 If you're using Bundler, this task also hooks into Bundler's gem packaging
 tasks and ensures that your manual pages are built for packaging into a gem:

@@ -20,10 +20,16 @@
 <li><p>Supports markdown extensions such as <a href="http://michelf.com/projects/php-markdown/extra/#table">PHP Markdown Extra tables</a>.</p></li>
 <li><p>Usable from the command line as a filter in a UNIX command pipeline.</p></li>
 </ul>
-<h3 id="demonstration">Demonstration<a name="demonstration" href="#demonstration" class="md2man-permalink" title="permalink"></a></h3><p>Try converting <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">this example Markdown file</a> into a UNIX manual page:</p><pre><code>md2man-roff EXAMPLE.markdown &gt; EXAMPLE.1
+<h3 id="demonstration">Demonstration<a name="demonstration" href="#demonstration" class="md2man-permalink" title="permalink"></a></h3><p>Try converting
+<a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">this example Markdown file</a>
+into
+<a href="https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE">a UNIX manual page</a>:</p><pre><code>md2man-roff EXAMPLE.markdown &gt; EXAMPLE.1
 man -l EXAMPLE.1
 </code></pre>
-<p><img src="EXAMPLE.png" alt="Obligatory screenshot of md2man(1) in action!"></p><p>Also try converting <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">that example Markdown file</a> into a web page:</p><pre><code>md2man-html EXAMPLE.markdown &gt; EXAMPLE.html
+<p><img src="EXAMPLE.png" alt="Obligatory screenshot of md2man(1) in action!"></p><p>Next, try converting
+<a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">the same example file</a>
+into
+<a href="https://sunaku.github.io/md2man/man/man0/EXAMPLE.html">a HTML web page</a>:</p><pre><code>md2man-html EXAMPLE.markdown &gt; EXAMPLE.html
 open EXAMPLE.html
 </code></pre>
 <h2 id="installation">Installation<a name="installation" href="#installation" class="md2man-permalink" title="permalink"></a></h2><pre><code>gem install md2man

@@ -1,0 +1,70 @@
+.TH FOO 1 "MARCH 1995" Linux "User Manuals"
+.SH NAME
+.PP
+foo \- frobnicate the bar library
+.SH SYNOPSIS
+.PP
+\fB\fCfoo\fR [\fB\fC\-bar\fR] [\fB\fC\-c\fR \fIconfig\-file\fP ] \fIfile\fP ...
+.SH DESCRIPTION
+.PP
+\fB\fCfoo\fR frobnicates the bar library by tweaking internal symbol tables. By
+default it parses all baz segments and rearranges them in reverse order by
+time for the 
+.BR xyzzy (1) 
+linker to find them. The symdef entry is then compressed
+using the WBG (Whiz\-Bang\-Gizmo) algorithm. All files are processed in the
+order specified.
+.SH OPTIONS
+.TP
+\fB\fC\-b\fR
+Do not write "busy" to stdout while processing.
+.TP
+\fB\fC\-c\fR \fIconfig\-file\fP
+Use the alternate system wide \fIconfig\-file\fP instead of \fI/etc/foo.conf\fP\&. This
+overrides any \fB\fCFOOCONF\fR environment variable.
+.TP
+\fB\fC\-a\fR
+In addition to the baz segments, also parse the blurfl headers.
+.TP
+\fB\fC\-r\fR
+Recursive mode. Operates as fast as lightning at the expense of a megabyte
+of virtual memory.
+.SH FILES
+.TP
+\fI/etc/foo.conf\fP
+The system wide configuration file. See 
+.BR foo (5) 
+for further details.
+.TP
+\fI~/.foorc\fP
+Per user configuration file. See 
+.BR foo (5) 
+for further details.
+.SH ENVIRONMENT
+.TP
+\fB\fCFOOCONF\fR
+If non\-null the full pathname for an alternate system wide \fI/etc/foo.conf\fP\&.
+Overridden by the \fB\fC\-c\fR option.
+.SH DIAGNOSTICS
+.PP
+The following diagnostics may be issued on stderr:
+.TP
+\fBBad magic number.\fP
+The input file does not look like an archive file.
+.TP
+\fBOld style baz segments.\fP
+\fB\fCfoo\fR can only handle new style baz segments. COBOL object libraries are not
+supported in this version.
+.SH BUGS
+.PP
+The command name should have been chosen more carefully to reflect its
+purpose.
+.SH AUTHOR
+.PP
+Jens Schweikhardt \[la]howto@schweikhardt.net\[ra]
+.SH SEE ALSO
+.PP
+.BR bar (1), 
+.BR foo (5), 
+.BR xyzzy (1), 
+Linux Man Page Howto \[la]http://www.schweikhardt.net/man_page_howto.html\[ra]
