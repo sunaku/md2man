@@ -71,7 +71,10 @@ directory 'man'
 
 file 'man/index.html' => ['man'] + webs do |t|
   buffer = ['<div class="container-fluid">']
-  webs.sort.group_by {|web| web.pathmap('%d').sub('man/', '') }.each do |subdir, dir_webs|
+  webs.
+    sort_by {|web| web.ext.ext }. # drop .?.html extensions for proper sorting
+    group_by {|web| web.pathmap('%d').sub('man/', '') }.
+  each do |subdir, dir_webs|
     buffer << %{<h2 id="#{subdir}">#{subdir}</h2>}
     dir_webs.each do |web|
       name = parse_manpage_name.call(web)
