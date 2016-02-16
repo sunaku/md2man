@@ -132,6 +132,51 @@ describe 'html engine' do
     OUTPUT
   end
 
+  it 'decorates top-level headings components in spans with CSS classes' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |# title section date source manual
+    INPUT
+<h1 id="title-section-date-source-manual"><span class="md2man-title">title</span> <span class="md2man-section">section</span> <span class="md2man-date">date</span> <span class="md2man-source">source</span> <span class="md2man-manual">manual</span><a name="title-section-date-source-manual" href="#title-section-date-source-manual" class="md2man-permalink" title="permalink"></a></h1>
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |# title section date source
+    INPUT
+<h1 id="title-section-date-source"><span class="md2man-title">title</span> <span class="md2man-section">section</span> <span class="md2man-date">date</span> <span class="md2man-source">source</span><a name="title-section-date-source" href="#title-section-date-source" class="md2man-permalink" title="permalink"></a></h1>
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |# title section date
+    INPUT
+<h1 id="title-section-date"><span class="md2man-title">title</span> <span class="md2man-section">section</span> <span class="md2man-date">date</span><a name="title-section-date" href="#title-section-date" class="md2man-permalink" title="permalink"></a></h1>
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |# title section
+    INPUT
+<h1 id="title-section"><span class="md2man-title">title</span> <span class="md2man-section">section</span><a name="title-section" href="#title-section" class="md2man-permalink" title="permalink"></a></h1>
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |# title
+    INPUT
+<h1 id="title"><span class="md2man-title">title</span><a name="title" href="#title" class="md2man-permalink" title="permalink"></a></h1>
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |#
+    INPUT
+    OUTPUT
+  end
+
+  it 'preserves any extra components found in top-level headings' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |# title section date source manual extra! extra! read all about it!
+    INPUT
+<h1 id="title-section-date-source-manual-extra-extra-read-all-about-it"><span class="md2man-title">title</span> <span class="md2man-section">section</span> <span class="md2man-date">date</span> <span class="md2man-source">source</span> <span class="md2man-manual">manual</span> extra! extra! read all about it!<a name="title-section-date-source-manual-extra-extra-read-all-about-it" href="#title-section-date-source-manual-extra-extra-read-all-about-it" class="md2man-permalink" title="permalink"></a></h1>
+    OUTPUT
+  end
+
   it 'adds permalinks to headings' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |# foo *BAR*

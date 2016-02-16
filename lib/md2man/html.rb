@@ -39,8 +39,8 @@ module Md2Man::HTML
   def header text, level, _=nil
     if level == 1 and not @h1_seen
       @h1_seen = true
-      text = HEADER_PARTS.zip(Shellwords.split(text)).map do |part, value|
-        %{<span class="md2man-#{part}">#{value}</span>} if value
+      text = Shellwords.split(text).zip(HEADER_PARTS).map do |value, part|
+        part ? %{<span class="md2man-#{part}">#{value}</span>} : value
       end.compact.join(' ')
     end
 
