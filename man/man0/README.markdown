@@ -1,12 +1,11 @@
+* Code: <https://github.com/sunaku/md2man>
+* Docs: <https://sunaku.github.io/md2man/man>
+* Bugs: <https://github.com/sunaku/md2man/issues>
+
 # md2man - markdown to manpage
 
 md2man is a Ruby library and a set of command-line programs that convert
 [Markdown] into UNIX manual pages (both [roff] and HTML) using [Redcarpet].
-
-* Manuals: <https://sunaku.github.io/md2man/man>
-* Sources: <https://github.com/sunaku/md2man>
-* Support: <https://github.com/sunaku/md2man/issues>
-* Package: <https://rubygems.org/gems/md2man>
 
 ## Features
 

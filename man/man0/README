@@ -1,3 +1,14 @@
+.RS
+.IP \(bu 2
+Code: 
+\[la]https://github.com/sunaku/md2man\[ra]
+.IP \(bu 2
+Docs: 
+\[la]https://sunaku.github.io/md2man/man\[ra]
+.IP \(bu 2
+Bugs: 
+\[la]https://github.com/sunaku/md2man/issues\[ra]
+.RE
 .TH md2man \- markdown to manpage
 .PP
 md2man is a Ruby library and a set of command\-line programs that convert
@@ -5,20 +16,6 @@ Markdown
 \[la]http://daringfireball.net/projects/markdown/\[ra] into UNIX manual pages (both roff
 \[la]http://troff.org\[ra] and HTML) using Redcarpet
 \[la]https://github.com/vmg/redcarpet\[ra]\&.
-.RS
-.IP \(bu 2
-Manuals: 
-\[la]https://sunaku.github.io/md2man/man\[ra]
-.IP \(bu 2
-Sources: 
-\[la]https://github.com/sunaku/md2man\[ra]
-.IP \(bu 2
-Support: 
-\[la]https://github.com/sunaku/md2man/issues\[ra]
-.IP \(bu 2
-Package: 
-\[la]https://rubygems.org/gems/md2man\[ra]
-.RE
 .SH Features
 .RS
 .IP \(bu 2

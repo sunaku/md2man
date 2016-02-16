@@ -29,9 +29,16 @@
     margin-top: -5em;
     font-weight: normal;
     font-size: smaller;
-    text-align: right;
+    text-align: center;
   }
 
+  h1:first-child > span.md2man-source {
+    float: right;
+  }
+
+  h1:first-child > span.md2man-title,
+  h1:first-child > span.md2man-section,
+  h1:first-child > span.md2man-manual,
   h1:first-child > a.md2man-permalink {
     display: none;
   }
