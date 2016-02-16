@@ -162,7 +162,7 @@ module Md2Man::Roff
   end
 
   def link link, title, content
-    content +
+    content + ' ' +
     if link =~ /^mailto:/
       autolink $', :email
     else
@@ -171,7 +171,7 @@ module Md2Man::Roff
   end
 
   def autolink link, link_type
-    "\n\\[la]#{link.chomp}\\[ra]"
+    "\\[la]#{link.chomp}\\[ra]"
   end
 
   def image link, title, alt_text

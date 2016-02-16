@@ -586,32 +586,46 @@ describe 'roff engine' do
       |Send [me](mailto:foo@bar.baz), e-mail.
     INPUT
       |.PP
-      |Send me
-      |\\[la]foo@bar.baz\\[ra], e\\-mail.
+      |Send me \\[la]foo@bar.baz\\[ra], e\\-mail.
     OUTPUT
 
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |Take [me](http://myself), somewhere.
     INPUT
       |.PP
-      |Take me
-      |\\[la]http://myself\\[ra], somewhere.
+      |Take me \\[la]http://myself\\[ra], somewhere.
     OUTPUT
 
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |Mail me foo@bar.baz now.
     INPUT
       |.PP
-      |Mail me#{SPACE}
-      |\\[la]foo@bar.baz\\[ra] now.
+      |Mail me \\[la]foo@bar.baz\\[ra] now.
     OUTPUT
 
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |Take me http://www.somewhere now.
     INPUT
       |.PP
-      |Take me#{SPACE}
+      |Take me \\[la]http://www.somewhere\\[ra] now.
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |Leave me
+      |http://www.somewhere now.
+    INPUT
+      |.PP
+      |Leave me
       |\\[la]http://www.somewhere\\[ra] now.
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |Tagged
+      |  paragraph http://www.should.work correctly.
+    INPUT
+      |.TP
+      |Tagged
+      |paragraph \\[la]http://www.should.work\\[ra] correctly.
     OUTPUT
   end
 
