@@ -19,7 +19,10 @@ md2man is a Ruby library and a set of command-line programs that convert
 
 ### Demonstration
 
-Try converting [this example Markdown file][example] into a UNIX manual page:
+Try converting
+[this example Markdown file][example]
+into
+[a UNIX manual page][example-roff]:
 
 ```sh
 md2man-roff EXAMPLE.markdown > EXAMPLE.1
@@ -28,12 +31,19 @@ man -l EXAMPLE.1
 
 ![Obligatory screenshot of md2man(1) in action!](EXAMPLE.png)
 
-Also try converting [that example Markdown file][example] into a web page:
+Next, try converting
+[the same example file][example]
+into
+[a HTML web page][example-html]:
 
 ```sh
 md2man-html EXAMPLE.markdown > EXAMPLE.html
 open EXAMPLE.html
 ```
+
+[example]: https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown
+[example-roff]: https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE
+[example-html]: https://sunaku.github.io/md2man/man/man0/EXAMPLE.html
 
 ## Installation
 
@@ -211,5 +221,4 @@ Released under the ISC license.  See the LICENSE file for details.
 [roff]: http://troff.org
 [Markdown]: http://daringfireball.net/projects/markdown/
 [Redcarpet]: https://github.com/vmg/redcarpet
-[example]: https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown
 [tables]: http://michelf.com/projects/php-markdown/extra/#table
