@@ -16,13 +16,7 @@ module Md2Man::Roff
   end
 
   def postprocess document
-    super.lstrip.
-
-    # ensure that spaces after URLs appear properly
-    gsub(/(^\.[UM]E) \s/, "\\1\n").
-
-    # squeeze blank lines to prevent double-spaced output
-    gsub(/^\n/, '')
+    super.lstrip.squeeze("\n") # squeeze \n\n to prevent double-spaced output
   end
 
   #---------------------------------------------------------------------------
