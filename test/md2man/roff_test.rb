@@ -17,7 +17,7 @@ describe 'roff engine' do
   SPACE = 0x20.chr
 
   def heredoc document
-    document.gsub(/^\s*\|/, '').chomp
+    document.gsub(/^\s*\|/, '')
   end
 
   it 'renders nothing as nothing' do

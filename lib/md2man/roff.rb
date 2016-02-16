@@ -16,7 +16,7 @@ module Md2Man::Roff
   end
 
   def postprocess document
-    super.strip.
+    super.lstrip.
 
     # ensure that spaces after URLs appear properly
     gsub(/(^\.[UM]E) \s/, "\\1\n").
