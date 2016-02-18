@@ -234,4 +234,24 @@ describe 'html engine' do
       |<h3 id="pipes_get_last-chain"><code>PIPES_GET_LAST(CHAIN)</code><a name="pipes_get_last-chain" href="#pipes_get_last-chain" class="md2man-permalink" title="permalink"></a></h3>
     OUTPUT
   end
+
+  it 'supports sole space or tab in codespans' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |`\s`
+    INPUT
+      |<p><code>\s</code></p>
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |`\t`
+    INPUT
+      |<p><code>\s</code></p>
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |`\n`
+    INPUT
+      |<p><code>\n</code></p>
+    OUTPUT
+  end
 end

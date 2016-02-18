@@ -975,4 +975,26 @@ describe 'roff engine' do
     OUTPUT
   end
 
+  it 'supports sole space or tab in codespans' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |`\s`
+    INPUT
+      |.PP
+      |\\fB\\fC\s\\fR
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |`\t`
+    INPUT
+      |.PP
+      |\\fB\\fC\s\\fR
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |`\n`
+    INPUT
+      |.PP
+      |\\fB\\fC\n\\fR
+    OUTPUT
+  end
 end

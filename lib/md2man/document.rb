@@ -66,7 +66,7 @@ module Md2Man::Document
   #---------------------------------------------------------------------------
 
   def codespan code
-    decode_references code, true
+    decode_references (code || ' '), true
   end
 
   def reference input_match, output_match
