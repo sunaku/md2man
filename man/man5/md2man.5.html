@@ -3,37 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="md2man 5.0.1 https://github.com/sunaku/md2man" />
-  <title>md2man(5) &mdash; manual page flavoring for the markdown(7) file format</title>
+  <title>md2man(5) &mdash; UNIX manual page flavoring for the markdown(7) file format</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man5">man5</a>/md2man.5</span></div></div><div class="container-fluid"><h1 id="md2man-5-2016-02-13-5-0-1"><span class="md2man-title">MD2MAN</span> <span class="md2man-section">5</span> <span class="md2man-date">2016-02-13</span> <span class="md2man-source">5.0.1</span><a name="md2man-5-2016-02-13-5-0-1" href="#md2man-5-2016-02-13-5-0-1" class="md2man-permalink" title="permalink"></a></h1><h2 id="name">NAME<a name="name" href="#name" class="md2man-permalink" title="permalink"></a></h2><p>md2man - manual page flavoring for the <a class="md2man-reference">markdown(7)</a> file format</p><h2 id="description">DESCRIPTION<a name="description" href="#description" class="md2man-permalink" title="permalink"></a></h2><p><a href="https://github.com/sunaku/md2man">md2man</a> makes the <a class="md2man-reference">markdown(7)</a> file format friendly for writing UNIX manual
-pages by extending its syntax, semantics, and assumed processing extensions.</p><h3 id="syntax">Syntax<a name="syntax" href="#syntax" class="md2man-permalink" title="permalink"></a></h3><p>md2man extends <a class="md2man-reference">markdown(7)</a> syntax by defining three kinds of paragraphs.</p><pre><code>This is a
-normal
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man5">man5</a>/md2man.5</span></div></div><div class="container-fluid"><h1 id="md2man-5-2016-02-13-5-0-1"><span class="md2man-title">MD2MAN</span> <span class="md2man-section">5</span> <span class="md2man-date">2016-02-13</span> <span class="md2man-source">5.0.1</span><a name="md2man-5-2016-02-13-5-0-1" href="#md2man-5-2016-02-13-5-0-1" class="md2man-permalink" title="permalink"></a></h1><h2 id="name">NAME<a name="name" href="#name" class="md2man-permalink" title="permalink"></a></h2><p>md2man - UNIX manual page flavoring for the <a class="md2man-reference">markdown(7)</a> file format</p><h2 id="description">DESCRIPTION<a name="description" href="#description" class="md2man-permalink" title="permalink"></a></h2><p><a href="https://github.com/sunaku/md2man">md2man</a> makes the <a class="md2man-reference">markdown(7)</a> file format friendly for writing UNIX manual
+pages by extending its syntax, semantics, and assumed processing extensions.</p><h3 id="syntax">Syntax<a name="syntax" href="#syntax" class="md2man-permalink" title="permalink"></a></h3><p>md2man extends <a class="md2man-reference">markdown(7)</a> syntax by distinguishing three kinds of paragraphs.</p><h4 id="normal-paragraphs">Normal paragraphs<a name="normal-paragraphs" href="#normal-paragraphs" class="md2man-permalink" title="permalink"></a></h4><p>Paragraphs whose lines are all indented by exactly zero or one additional
+spaces are considered to be &quot;normal paragraphs&quot;.  For example:</p><pre><code>This is a normal paragraph.
+
+This is also
+a normal
 paragraph.
 
-This is a
-  tagged
-  paragraph.
-
-  This is an
-  indented
-  paragraph.
-
-This
- is another
+And
+this
+ is
+ a
   normal
-   paragraph.
-</code></pre>
-<h4 id="normal-paragraphs">Normal paragraphs<a name="normal-paragraphs" href="#normal-paragraphs" class="md2man-permalink" title="permalink"></a></h4><p>Paragraphs whose lines are all indented by exactly zero or one additional
-spaces are considered to be &quot;normal paragraphs&quot;.  For example:</p><pre><code>This is a
-normal
-paragraph.
-
-This
- is another
-  normal
-   paragraph.
+   paragraph
+    too.
 </code></pre>
 <h4 id="tagged-paragraphs">Tagged paragraphs<a name="tagged-paragraphs" href="#tagged-paragraphs" class="md2man-permalink" title="permalink"></a></h4><p>Paragraphs whose first line is indented by less than two additional spaces and
 whose subsequent lines are uniformly indented by exactly two additional spaces
@@ -47,7 +35,7 @@ spaces are considered to be &quot;indented paragraphs&quot;.  For example:</p><p
   paragraph.
 </code></pre>
 <h3 id="semantics">Semantics<a name="semantics" href="#semantics" class="md2man-permalink" title="permalink"></a></h3><p>md2man extends <a class="md2man-reference">markdown(7)</a> semantics by treating top-level headings specially.</p><h4 id="top-level-headings">Top-level headings<a name="top-level-headings" href="#top-level-headings" class="md2man-permalink" title="permalink"></a></h4><p>The first top-level <code>&lt;h1&gt;</code> heading found in the input is considered to be the
-<code>.TH</code> directive in <a class="md2man-reference">roff(7)</a>, as described under &quot;Title line&quot; in <a class="md2man-reference">man-pages(7)</a>:</p>
+<code>.TH</code> directive in <a class="md2man-reference">roff(7)</a>, described under &quot;Title line&quot; in <a class="md2man-reference">man-pages(7)</a> thus:</p>
 <blockquote>
 <pre><code>.TH title section date source manual
 </code></pre>
@@ -60,5 +48,92 @@ spaces are considered to be &quot;indented paragraphs&quot;.  For example:</p><p
 <li>strikethrough</li>
 <li>fenced_code_blocks</li>
 </ul>
+<h3 id="examples">Examples<a name="examples" href="#examples" class="md2man-permalink" title="permalink"></a></h3><p>Below is a complete example of an <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> formatted manual page adapted from
+the <a href="http://www.schweikhardt.net/man_page_howto.html">Linux Man Page Howto</a>
+guide by Jens Schweikhardt.  <a href="../man0/EXAMPLE.html">The result of processing</a>
+this example with <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a> has been bundled along with this manual page.</p><pre><code>FOO 1 &quot;MARCH 1995&quot; Linux &quot;User Manuals&quot;
+=======================================
+
+NAME
+----
+
+foo - frobnicate the bar library
+
+SYNOPSIS
+--------
+
+`foo` [`-bar`] [`-c` *config-file*] *file* ...
+
+DESCRIPTION
+-----------
+
+`foo` frobnicates the bar library by tweaking internal symbol tables. By
+default it parses all baz segments and rearranges them in reverse order by
+time for the xyzzy(1) linker to find them. The symdef entry is then compressed
+using the WBG (Whiz-Bang-Gizmo) algorithm. All files are processed in the
+order specified.
+
+OPTIONS
+-------
+
+`-b`
+  Do not write &quot;busy&quot; to stdout while processing.
+
+`-c` *config-file*
+  Use the alternate system wide *config-file* instead of */etc/foo.conf*. This
+  overrides any `FOOCONF` environment variable.
+
+`-a`
+  In addition to the baz segments, also parse the blurfl headers.
+
+`-r`
+  Recursive mode. Operates as fast as lightning at the expense of a megabyte
+  of virtual memory.
+
+FILES
+-----
+
+*/etc/foo.conf*
+  The system wide configuration file. See foo(5) for further details.
+
+*~/.foorc*
+  Per user configuration file. See foo(5) for further details.
+
+ENVIRONMENT
+-----------
+
+`FOOCONF`
+  If non-null the full pathname for an alternate system wide */etc/foo.conf*.
+  Overridden by the `-c` option.
+
+DIAGNOSTICS
+-----------
+
+The following diagnostics may be issued on stderr:
+
+**Bad magic number.**
+  The input file does not look like an archive file.
+
+**Old style baz segments.**
+  `foo` can only handle new style baz segments. COBOL object libraries are not
+  supported in this version.
+
+BUGS
+----
+
+The command name should have been chosen more carefully to reflect its
+purpose.
+
+AUTHOR
+------
+
+Jens Schweikhardt &lt;howto@schweikhardt.net&gt;
+
+SEE ALSO
+--------
+
+bar(1), foo(5), xyzzy(1), [Linux Man Page Howto](
+http://www.schweikhardt.net/man_page_howto.html)
+</code></pre>
 <h2 id="see-also">SEE ALSO<a name="see-also" href="#see-also" class="md2man-permalink" title="permalink"></a></h2><p><a class="md2man-reference">markdown(7)</a>, <a class="md2man-reference">man-pages(7)</a>, <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>, <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>, <a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a></p></div></body>
 </html>

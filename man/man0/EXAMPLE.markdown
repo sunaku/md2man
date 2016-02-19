@@ -9,7 +9,7 @@ foo - frobnicate the bar library
 SYNOPSIS
 --------
 
-`foo` [`-bar`] [`-c` *config-file* ] *file* ...
+`foo` [`-bar`] [`-c` *config-file*] *file* ...
 
 DESCRIPTION
 -----------

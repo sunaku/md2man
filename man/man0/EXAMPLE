@@ -4,7 +4,7 @@
 foo \- frobnicate the bar library
 .SH SYNOPSIS
 .PP
-\fB\fCfoo\fR [\fB\fC\-bar\fR] [\fB\fC\-c\fR \fIconfig\-file\fP ] \fIfile\fP ...
+\fB\fCfoo\fR [\fB\fC\-bar\fR] [\fB\fC\-c\fR \fIconfig\-file\fP] \fIfile\fP ...
 .SH DESCRIPTION
 .PP
 \fB\fCfoo\fR frobnicates the bar library by tweaking internal symbol tables. By
