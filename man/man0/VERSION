@@ -317,6 +317,7 @@ Added an
 .BR md2man-rake (1) 
 executable that lets you run md2man's 
 .BR rake (1)
+
 tasks \fIdirectly\fP from the command line: without the need for a "Rakefile"
 in your working directory that loads the \fB\fCmd2man/rakefile\fR library.
 .IP \(bu 2

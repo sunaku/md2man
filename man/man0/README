@@ -90,6 +90,7 @@ Use the default renderer:
 .RS
 .nf
 require 'md2man/roff/engine'
+
 your_roff_output = Md2Man::Roff::ENGINE.render(your_markdown_input)
 .fi
 .RE
@@ -99,6 +100,7 @@ Build your own renderer:
 .RS
 .nf
 require 'md2man/roff/engine'
+
 engine = Redcarpet::Markdown.new(Md2Man::Roff::Engine, your_options_hash)
 your_roff_output = engine.render(your_markdown_input)
 .fi
@@ -109,9 +111,11 @@ Define your own renderer:
 .RS
 .nf
 require 'md2man/roff/engine'
+
 class YourManpageRenderer < Md2Man::Roff::Engine
   # ... your stuff here ...
 end
+
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
 your_roff_output = engine.render(your_markdown_input)
 .fi
@@ -122,10 +126,12 @@ Mix\-in your own renderer:
 .RS
 .nf
 require 'md2man/roff'
+
 class YourManpageRenderer < Redcarpet::Render::Base
   include Md2Man::Roff
   # ... your stuff here ...
 end
+
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
 your_roff_output = engine.render(your_markdown_input)
 .fi
@@ -149,6 +155,7 @@ Use the default renderer:
 .RS
 .nf
 require 'md2man/html/engine'
+
 your_html_output = Md2Man::HTML::ENGINE.render(your_markdown_input)
 .fi
 .RE
@@ -158,6 +165,7 @@ Build your own renderer:
 .RS
 .nf
 require 'md2man/html/engine'
+
 engine = Redcarpet::Markdown.new(Md2Man::HTML::Engine, your_options_hash)
 your_html_output = engine.render(your_markdown_input)
 .fi
@@ -168,9 +176,11 @@ Define your own renderer:
 .RS
 .nf
 require 'md2man/html/engine'
+
 class YourManpageRenderer < Md2Man::HTML::Engine
   # ... your stuff here ...
 end
+
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
 your_html_output = engine.render(your_markdown_input)
 .fi
@@ -181,10 +191,12 @@ Mix\-in your own renderer:
 .RS
 .nf
 require 'md2man/html'
+
 class YourManpageRenderer < Redcarpet::Render::Base
   include Md2Man::HTML
   # ... your stuff here ...
 end
+
 engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
 your_html_output = engine.render(your_markdown_input)
 .fi
