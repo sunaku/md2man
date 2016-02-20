@@ -16,7 +16,11 @@ module Md2Man::Roff
   end
 
   def postprocess document
-    super.lstrip.squeeze("\n") # squeeze \n\n to prevent double-spaced output
+    super.lstrip.
+
+    # squeeze newlines between roff directives to prevent double-spaced output
+    # and also at the end of the document, after the very last roff directive
+    gsub(/(\n){2,}(?=\.|\z)/, '\1')
   end
 
   #---------------------------------------------------------------------------

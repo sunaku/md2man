@@ -521,6 +521,39 @@ describe 'roff engine' do
     OUTPUT
 
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |    just some *paragraph*
+      |
+      |     spanning
+      |
+      |
+      |      **multiple**
+      |
+      |    >  lines
+      |    with 4-space indent
+      |
+      |
+      |    and blank lines within
+    INPUT
+      |.PP
+      |.RS
+      |.nf
+      |just some *paragraph*
+      |
+      | spanning
+      |
+      |
+      |  **multiple**
+      |
+      |>  lines
+      |with 4\\-space indent
+      |
+      |
+      |and blank lines within
+      |.fi
+      |.RE
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |normal paragraph line
       |
       |    single preformatted line
