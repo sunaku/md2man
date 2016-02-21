@@ -39,6 +39,7 @@ module Md2Man::HTML
   def header text, level, _=nil
     if level == 1 and not @h1_seen
       @h1_seen = true
+      text = CGI.unescape_html(text) # unescape &quot; for Shellwords.split()
       text = Shellwords.split(text).zip(HEADER_PARTS).map do |value, part|
         part ? %{<span class="md2man-#{part}">#{value}</span>} : value
       end.compact.join(' ')

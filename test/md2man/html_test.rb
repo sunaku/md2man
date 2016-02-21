@@ -140,6 +140,12 @@ describe 'html engine' do
     OUTPUT
 
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |# FOO 1 "MARCH 1995" Linux "User Manuals"
+    INPUT
+<h1 id="foo-1-march-1995-linux-user-manuals"><span class="md2man-title">FOO</span> <span class="md2man-section">1</span> <span class="md2man-date">MARCH 1995</span> <span class="md2man-source">Linux</span> <span class="md2man-manual">User Manuals</span><a name="foo-1-march-1995-linux-user-manuals" href="#foo-1-march-1995-linux-user-manuals" class="md2man-permalink" title="permalink"></a></h1>
+    OUTPUT
+
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |# title section date source
     INPUT
 <h1 id="title-section-date-source"><span class="md2man-title">title</span> <span class="md2man-section">section</span> <span class="md2man-date">date</span> <span class="md2man-source">source</span><a name="title-section-date-source" href="#title-section-date-source" class="md2man-permalink" title="permalink"></a></h1>
