@@ -35,7 +35,7 @@ viewer:
 man -l EXAMPLE.1
 ```
 
-![Obligatory screenshot of md2man(1) in action!](EXAMPLE.png)
+![screenshot](https://github.com/sunaku/md2man/raw/gh-pages/EXAMPLE.png)
 
 Next, try converting
 [the same example file][example]
