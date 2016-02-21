@@ -1,3 +1,44 @@
+## Version 5.0.2 (2016-02-21)
+
+This release fixes a crash, bugs in Roff output, and improves HTML output.
+
+### Patch:
+
+  * Fix crash upon encountering a sole space ` ` or tab `	` in a codespan.
+
+  * md2man-rake(1): fix sorting of manual pages in `man/index.html` listing.
+    Previously, the manual page with longest filename ended up at the top.
+
+  * md2man-html(1): emit extraneous top-level heading components that come
+    after the known list of "title section date source manual" components.
+    Previously, such extraneous components were omitted from the output.
+
+  * md2man-html(1): css: hide title, section, manual in top-level heading.
+
+  * md2man-html(1): css: center top-level heading; float source right.
+
+  * md2man-roff(1): don't chomp off the newline at end of output.
+
+  * md2man-roff(1): newline before links broke tagged paragraphs.
+
+  * md2man-roff(1): don't squeeze newlines inside code blocks.
+
+### Other:
+
+  * md2man(5): revise paragraph definitions and add complete manpage example.
+
+  * Document optional regexp argument to `-h` and `--help` in all executables.
+
+  * README: "document format" was moved into md2man(5).
+
+  * README: shorten and move project links to the top.
+
+  * README: add link to pre-rendered example HTML file.
+
+  * md2man-roff(1): we don't emit `.UM` and `.UE` directives anymore.
+
+  * md2man-roff(1): add tests for postprocess document lstrip().
+
 ## Version 5.0.1 (2016-02-13)
 
 ### Major:
