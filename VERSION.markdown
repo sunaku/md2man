@@ -1,6 +1,7 @@
-## Version 5.0.2 (2016-02-21)
+## Version 5.0.3 (2016-02-21)
 
-This release fixes a crash, bugs in Roff output, and improves HTML output.
+This release fixes a crash, fixes roff bugs, improves CSS styling for HTML
+output, and adds a complete manual page example in md2man(5) documentation.
 
 ### Patch:
 
@@ -12,6 +13,8 @@ This release fixes a crash, bugs in Roff output, and improves HTML output.
   * md2man-html(1): emit extraneous top-level heading components that come
     after the known list of "title section date source manual" components.
     Previously, such extraneous components were omitted from the output.
+
+  * md2man-html(1): &quot; escaping broke shellwords splitting of .TH heading.
 
   * md2man-html(1): css: hide title, section, manual in top-level heading.
 
@@ -38,6 +41,10 @@ This release fixes a crash, bugs in Roff output, and improves HTML output.
   * md2man-roff(1): we don't emit `.UM` and `.UE` directives anymore.
 
   * md2man-roff(1): add tests for postprocess document lstrip().
+
+  * README: rename "Demonstration" section to "Examples".
+
+  * README: move EXAMPLE.png screenshot into gh-pages branch.
 
 ## Version 5.0.1 (2016-02-13)
 
