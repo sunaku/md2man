@@ -16,7 +16,10 @@ module Md2Man::Roff
   end
 
   def postprocess document
-    super.lstrip.
+    super.
+
+    # strip newlines from the beginning, before the very first roff directive
+    lstrip.
 
     # squeeze newlines between roff directives to prevent double-spaced output
     # and also at the end of the document, after the very last roff directive

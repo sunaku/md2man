@@ -24,6 +24,28 @@ describe 'roff engine' do
     @markdown.render('').must_be_empty
   end
 
+  it 'strips leading newlines' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |
+      |
+      |two leading newlines
+    INPUT
+      |.PP
+      |two leading newlines
+    OUTPUT
+  end
+
+  it 'strips leading newlines but not leading spaces' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |
+      |
+      | two leading newlines followed by one space
+    INPUT
+      |.PP
+      | two leading newlines followed by one space
+    OUTPUT
+  end
+
   it 'renders paragraphs' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |just some paragraph
