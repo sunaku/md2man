@@ -1,3 +1,56 @@
+.SH Version 5.0.2 (2016\-02\-21)
+.PP
+This release fixes a crash, bugs in Roff output, and improves HTML output.
+.SS Patch:
+.RS
+.IP \(bu 2
+Fix crash upon encountering a sole space \fB\fC \fR or tab \fB\fC \fR in a codespan.
+.IP \(bu 2
+.BR md2man-rake (1): 
+fix sorting of manual pages in \fB\fCman/index.html\fR listing.
+Previously, the manual page with longest filename ended up at the top.
+.IP \(bu 2
+.BR md2man-html (1): 
+emit extraneous top\-level heading components that come
+after the known list of "title section date source manual" components.
+Previously, such extraneous components were omitted from the output.
+.IP \(bu 2
+.BR md2man-html (1): 
+css: hide title, section, manual in top\-level heading.
+.IP \(bu 2
+.BR md2man-html (1): 
+css: center top\-level heading; float source right.
+.IP \(bu 2
+.BR md2man-roff (1): 
+don't chomp off the newline at end of output.
+.IP \(bu 2
+.BR md2man-roff (1): 
+newline before links broke tagged paragraphs.
+.IP \(bu 2
+.BR md2man-roff (1): 
+don't squeeze newlines inside code blocks.
+.RE
+.SS Other:
+.RS
+.IP \(bu 2
+.BR md2man (5): 
+revise paragraph definitions and add complete manpage example.
+.IP \(bu 2
+Document optional regexp argument to \fB\fC\-h\fR and \fB\fC\-\-help\fR in all executables.
+.IP \(bu 2
+README: "document format" was moved into 
+.BR md2man (5).
+.IP \(bu 2
+README: shorten and move project links to the top.
+.IP \(bu 2
+README: add link to pre\-rendered example HTML file.
+.IP \(bu 2
+.BR md2man-roff (1): 
+we don't emit \fB\fC\&.UM\fR and \fB\fC\&.UE\fR directives anymore.
+.IP \(bu 2
+.BR md2man-roff (1): 
+add tests for postprocess document lstrip().
+.RE
 .SH Version 5.0.1 (2016\-02\-13)
 .SS Major:
 .RS
