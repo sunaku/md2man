@@ -22,7 +22,7 @@ Supports markdown extensions such as PHP Markdown Extra tables \[la]http://miche
 .IP \(bu 2
 Usable from the command line as a filter in a UNIX command pipeline.
 .RE
-.SS Demonstration
+.SS Examples
 .PP
 Try converting
 this example Markdown file \[la]https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown\[ra]
@@ -32,13 +32,21 @@ a UNIX manual page \[la]https://github.com/sunaku/md2man/raw/gh-pages/man/man0/E
 .RS
 .nf
 md2man\-roff EXAMPLE.markdown > EXAMPLE.1
+.fi
+.RE
+.PP
+You can view the resulting UNIX manual page \[la]https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE\[ra] in your 
+.BR man (1)
+
+viewer:
+.PP
+.RS
+.nf
 man \-l EXAMPLE.1
 .fi
 .RE
 .PP
-[Obligatory screenshot of 
-.BR md2man (1) 
-in action!](EXAMPLE.png)
+[screenshot](\[la]https://github.com/sunaku/md2man/raw/gh-pages/EXAMPLE.png\[ra])
 .PP
 Next, try converting
 the same example file \[la]https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown\[ra]
@@ -48,7 +56,15 @@ a HTML web page \[la]https://sunaku.github.io/md2man/man/man0/EXAMPLE.html\[ra]:
 .RS
 .nf
 md2man\-html EXAMPLE.markdown > EXAMPLE.html
-open EXAMPLE.html
+.fi
+.RE
+.PP
+You can view the resulting HTML manual page \[la]https://sunaku.github.io/md2man/man/man0/EXAMPLE.html\[ra] in your web
+browser:
+.PP
+.RS
+.nf
+firefox EXAMPLE.html
 .fi
 .RE
 .SH Installation

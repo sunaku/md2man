@@ -2,12 +2,13 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 5.0.2 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 5.0.3 https://github.com/sunaku/md2man" />
   <title>VERSION</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-5-0-2-2016-02-21">Version 5.0.2 (2016-02-21)<a name="version-5-0-2-2016-02-21" href="#version-5-0-2-2016-02-21" class="md2man-permalink" title="permalink"></a></h2><p>This release fixes a crash, bugs in Roff output, and improves HTML output.</p><h3 id="patch">Patch:<a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a></h3>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-5-0-3-2016-02-21">Version 5.0.3 (2016-02-21)<a name="version-5-0-3-2016-02-21" href="#version-5-0-3-2016-02-21" class="md2man-permalink" title="permalink"></a></h2><p>This release fixes a crash, fixes roff bugs, improves CSS styling for HTML
+output, and adds a complete manual page example in <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> documentation.</p><h3 id="patch">Patch:<a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Fix crash upon encountering a sole space <code> </code> or tab <code> </code> in a codespan.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a>: fix sorting of manual pages in <code>man/index.html</code> listing.
@@ -15,6 +16,7 @@ Previously, the manual page with longest filename ended up at the top.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>: emit extraneous top-level heading components that come
 after the known list of &quot;title section date source manual&quot; components.
 Previously, such extraneous components were omitted from the output.</p></li>
+<li><p><a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>: &quot; escaping broke shellwords splitting of .TH heading.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>: css: hide title, section, manual in top-level heading.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>: css: center top-level heading; float source right.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>: don&#39;t chomp off the newline at end of output.</p></li>
@@ -30,6 +32,8 @@ Previously, such extraneous components were omitted from the output.</p></li>
 <li><p>README: add link to pre-rendered example HTML file.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>: we don&#39;t emit <code>.UM</code> and <code>.UE</code> directives anymore.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>: add tests for postprocess document lstrip().</p></li>
+<li><p>README: rename &quot;Demonstration&quot; section to &quot;Examples&quot;.</p></li>
+<li><p>README: move EXAMPLE.png screenshot into gh-pages branch.</p></li>
 </ul>
 <h2 id="version-5-0-1-2016-02-13">Version 5.0.1 (2016-02-13)<a name="version-5-0-1-2016-02-13" href="#version-5-0-1-2016-02-13" class="md2man-permalink" title="permalink"></a></h2><h3 id="major">Major:<a name="major" href="#major" class="md2man-permalink" title="permalink"></a></h3>
 <ul>

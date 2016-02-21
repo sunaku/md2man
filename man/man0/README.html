@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 5.0.2 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 5.0.3 https://github.com/sunaku/md2man" />
   <title>README</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -20,17 +20,21 @@
 <li><p>Supports markdown extensions such as <a href="http://michelf.com/projects/php-markdown/extra/#table">PHP Markdown Extra tables</a>.</p></li>
 <li><p>Usable from the command line as a filter in a UNIX command pipeline.</p></li>
 </ul>
-<h3 id="demonstration">Demonstration<a name="demonstration" href="#demonstration" class="md2man-permalink" title="permalink"></a></h3><p>Try converting
+<h3 id="examples">Examples<a name="examples" href="#examples" class="md2man-permalink" title="permalink"></a></h3><p>Try converting
 <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">this example Markdown file</a>
 into
 <a href="https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE">a UNIX manual page</a>:</p><pre><code>md2man-roff EXAMPLE.markdown &gt; EXAMPLE.1
-man -l EXAMPLE.1
 </code></pre>
-<p><img src="EXAMPLE.png" alt="Obligatory screenshot of md2man(1) in action!"></p><p>Next, try converting
+<p>You can view <a href="https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE">the resulting UNIX manual page</a> in your <a class="md2man-reference">man(1)</a>
+viewer:</p><pre><code>man -l EXAMPLE.1
+</code></pre>
+<p><img src="https://github.com/sunaku/md2man/raw/gh-pages/EXAMPLE.png" alt="screenshot"></p><p>Next, try converting
 <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">the same example file</a>
 into
 <a href="https://sunaku.github.io/md2man/man/man0/EXAMPLE.html">a HTML web page</a>:</p><pre><code>md2man-html EXAMPLE.markdown &gt; EXAMPLE.html
-open EXAMPLE.html
+</code></pre>
+<p>You can view <a href="https://sunaku.github.io/md2man/man/man0/EXAMPLE.html">the resulting HTML manual page</a> in your web
+browser:</p><pre><code>firefox EXAMPLE.html
 </code></pre>
 <h2 id="installation">Installation<a name="installation" href="#installation" class="md2man-permalink" title="permalink"></a></h2><pre><code>gem install md2man
 </code></pre>

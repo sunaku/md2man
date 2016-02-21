@@ -17,7 +17,7 @@ md2man is a Ruby library and a set of command-line programs that convert
 
   * Usable from the command line as a filter in a UNIX command pipeline.
 
-### Demonstration
+### Examples
 
 Try converting
 [this example Markdown file][example]
@@ -26,10 +26,16 @@ into
 
 ```sh
 md2man-roff EXAMPLE.markdown > EXAMPLE.1
+```
+
+You can view [the resulting UNIX manual page][example-roff] in your man(1)
+viewer:
+
+```sh
 man -l EXAMPLE.1
 ```
 
-![Obligatory screenshot of md2man(1) in action!](EXAMPLE.png)
+![screenshot](https://github.com/sunaku/md2man/raw/gh-pages/EXAMPLE.png)
 
 Next, try converting
 [the same example file][example]
@@ -38,7 +44,13 @@ into
 
 ```sh
 md2man-html EXAMPLE.markdown > EXAMPLE.html
-open EXAMPLE.html
+```
+
+You can view [the resulting HTML manual page][example-html] in your web
+browser:
+
+```sh
+firefox EXAMPLE.html
 ```
 
 [example]: https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown

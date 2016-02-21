@@ -1,6 +1,9 @@
-.SH Version 5.0.2 (2016\-02\-21)
+.SH Version 5.0.3 (2016\-02\-21)
 .PP
-This release fixes a crash, bugs in Roff output, and improves HTML output.
+This release fixes a crash, fixes roff bugs, improves CSS styling for HTML
+output, and adds a complete manual page example in 
+.BR md2man (5) 
+documentation.
 .SS Patch:
 .RS
 .IP \(bu 2
@@ -14,6 +17,9 @@ Previously, the manual page with longest filename ended up at the top.
 emit extraneous top\-level heading components that come
 after the known list of "title section date source manual" components.
 Previously, such extraneous components were omitted from the output.
+.IP \(bu 2
+.BR md2man-html (1): 
+\[dq] escaping broke shellwords splitting of .TH heading.
 .IP \(bu 2
 .BR md2man-html (1): 
 css: hide title, section, manual in top\-level heading.
@@ -50,6 +56,10 @@ we don't emit \fB\fC\&.UM\fR and \fB\fC\&.UE\fR directives anymore.
 .IP \(bu 2
 .BR md2man-roff (1): 
 add tests for postprocess document lstrip().
+.IP \(bu 2
+README: rename "Demonstration" section to "Examples".
+.IP \(bu 2
+README: move EXAMPLE.png screenshot into gh\-pages branch.
 .RE
 .SH Version 5.0.1 (2016\-02\-13)
 .SS Major:
