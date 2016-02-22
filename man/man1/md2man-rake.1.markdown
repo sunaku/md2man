@@ -33,7 +33,7 @@ If no *TASK* is specified, then the `md2man` task is run by default.
 ## OPTIONS
 
 `-h` [*PATTERN*], `--help` [*PATTERN*]
-  Show this help manual and search for *PATTERN* regular expression therein.
+  Show this help manual and optionally search for *PATTERN* regular expression.
 
 Run `rake --help` to see more options.
 
