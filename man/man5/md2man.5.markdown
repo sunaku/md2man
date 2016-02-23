@@ -11,12 +11,13 @@ pages by extending its syntax, semantics, and assumed processing extensions.
 
 ### Syntax
 
-md2man extends markdown(7) syntax by distinguishing three kinds of paragraphs.
+md2man extends markdown(7) syntax by recognizing three kinds of paragraphs,
+analogous to the underlying `.PP`, `.TP`, and `.IP` directives in roff(7).
 
 #### Normal paragraphs
 
 Paragraphs whose lines are all indented by exactly zero or one additional
-spaces are considered to be "normal paragraphs".  For example:
+space are considered "normal paragraphs", analogous to `.PP` in roff(7):
 
     This is a normal paragraph.
 
@@ -35,8 +36,8 @@ spaces are considered to be "normal paragraphs".  For example:
 #### Tagged paragraphs
 
 Paragraphs whose first line is indented by less than two additional spaces and
-whose subsequent lines are uniformly indented by exactly two additional spaces
-are considered to be "tagged paragraphs".  For example:
+whose subsequent lines are all uniformly indented by exactly two additional
+spaces are considered "tagged paragraphs", analogous to `.TP` in roff(7):
 
     This is a
       tagged
@@ -45,7 +46,7 @@ are considered to be "tagged paragraphs".  For example:
 #### Indented paragraphs
 
 Paragraphs whose lines are all uniformly indented by exactly two additional
-spaces are considered to be "indented paragraphs".  For example:
+spaces are considered "indented paragraphs", analogous to `.IP` in roff(7):
 
       This is an
       indented
