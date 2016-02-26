@@ -92,7 +92,13 @@ file 'man/index.html' => ['man'] + webs do |t|
 end
 
 file 'man/style.css' => ['man', __FILE__.pathmap('%X/style.css')] do |t|
-  cp t.prerequisites.last, t.name if t.needed?
+  cp t.prerequisites.last, t.name
+
+  # add syntax highlighting theme
+  File.open(t.name, 'a') do |css|
+    require 'rouge'
+    css << Rouge::Themes::Github.render
+  end
 end
 
 mkds.zip(webs).each do |src, dst|
