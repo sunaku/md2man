@@ -67,6 +67,12 @@ parse_manpage_info = lambda do |html_file_body|
   end
 end
 
+build_html_title = lambda do |title, info|
+  # fallback to adding directory name for standalone titles, such as "README"
+  # and "man/index", so that users know what project those manuals belong to
+  [title, info || Dir.pwd.pathmap('%n')].join(' &mdash; ')
+end
+
 directory 'man'
 
 file 'man/index.html' => ['man'] + webs do |t|
@@ -86,7 +92,7 @@ file 'man/index.html' => ['man'] + webs do |t|
   buffer << '</div>'
   content = buffer.join
 
-  title = t.name.pathmap('%X')
+  title = build_html_title.call(t.name.pathmap('%X'), nil)
   output = wrap_html_template.call(title, content, nil)
   File.open(t.name, 'w') {|f| f << output }
 end
@@ -112,7 +118,7 @@ mkds.zip(webs).each do |src, dst|
 
     name = parse_manpage_name.call(dst)
     info = parse_manpage_info.call(output)
-    title = [name, info].compact.join(' &mdash; ')
+    title = build_html_title.call(name, info)
 
     subdir = dst.pathmap('%d').sub('man/', '')
     ascent = '../' * (dst.count('/') - 1)
