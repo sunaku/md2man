@@ -1,20 +1,14 @@
 .TH MD2MAN 5                        2016\-02\-21                            5.0.3
 .SH NAME
 .PP
-md2man \- UNIX manual page flavoring for the 
-.BR markdown (7) 
-file format
+md2man \- UNIX manual page flavoring for Markdown \[la]http://daringfireball.net/projects/markdown/syntax\[ra]
 .SH DESCRIPTION
 .PP
-md2man \[la]https://github.com/sunaku/md2man\[ra] makes the 
-.BR markdown (7) 
-file format friendly for writing UNIX manual
+md2man \[la]https://github.com/sunaku/md2man\[ra] makes the Markdown \[la]http://daringfireball.net/projects/markdown/syntax\[ra] format more friendly for writing UNIX manual
 pages by extending its syntax, semantics, and assumed processing extensions.
 .SS Syntax
 .PP
-md2man extends 
-.BR markdown (7) 
-syntax by recognizing three kinds of paragraphs,
+md2man extends Markdown \[la]http://daringfireball.net/projects/markdown/syntax\[ra] syntax by recognizing three kinds of paragraphs,
 analogous to the underlying \fB\fC\&.PP\fR, \fB\fC\&.TP\fR, and \fB\fC\&.IP\fR directives in 
 .BR roff (7).
 .SS Normal paragraphs
@@ -69,9 +63,7 @@ spaces are considered "indented paragraphs", analogous to \fB\fC\&.IP\fR in
 .RE
 .SS Semantics
 .PP
-md2man extends 
-.BR markdown (7) 
-semantics by treating top\-level headings specially.
+md2man extends Markdown \[la]http://daringfireball.net/projects/markdown/syntax\[ra] semantics by treating top\-level headings specially.
 .SS Top\-level headings
 .PP
 The first top\-level \fB\fC<h1>\fR heading found in the input is considered to be the
@@ -107,8 +99,7 @@ The title of the manual (e.g., \fB\fCLinux Programmer's Manual\fR).
 Any subsequent top\-level headings are treated as second\-level \fB\fC<h2>\fR headings.
 .SS Extensions
 .PP
-md2man enables the following Redcarpet \[la]https://github.com/vmg/redcarpet\[ra] extensions while reading 
-.BR markdown (7):
+md2man enables the following Redcarpet \[la]https://github.com/vmg/redcarpet\[ra] extensions while reading Markdown \[la]http://daringfireball.net/projects/markdown/syntax\[ra]:
 .RS
 .IP \(bu 2
 tables
@@ -221,8 +212,8 @@ http://www.schweikhardt.net/man_page_howto.html)
 .RE
 .SH SEE ALSO
 .PP
-.BR markdown (7), 
+Markdown \[la]http://daringfireball.net/projects/markdown/syntax\[ra], 
 .BR man-pages (7), 
+.BR roff (7), 
 .BR md2man-roff (1), 
-.BR md2man-html (1), 
-.BR md2man-rake (1)
+.BR md2man-html (1)

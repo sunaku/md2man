@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="md2man 5.0.3 https://github.com/sunaku/md2man" />
-  <title>VERSION</title>
+  <title>VERSION &mdash; md2man</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
@@ -38,7 +38,7 @@ Previously, such extraneous components were omitted from the output.</p></li>
 <h2 id="version-5-0-1-2016-02-13">Version 5.0.1 (2016-02-13)<a name="version-5-0-1-2016-02-13" href="#version-5-0-1-2016-02-13" class="md2man-permalink" title="permalink"></a></h2><h3 id="major">Major:<a name="major" href="#major" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p><code>md2man-html</code> now puts permalinks <em>after</em> heading text to avoid unsightly
-gaps at the beginning of each heading in text-mode browsers like <a class="md2man-reference">w3m(1)</a>.</p></li>
+gaps at the beginning of each heading in text-mode browsers like <a class="md2man-reference" href="http://man.cx/w3m(1)">w3m(1)</a>.</p></li>
 <li><p>Upgrade to binman version 5.x.x, which is also a major version bump.</p></li>
 </ul>
 <h3 id="other-1">Other:<a name="other-1" href="#other-1" class="md2man-permalink" title="permalink"></a></h3>
@@ -69,8 +69,8 @@ call <code>super()</code> therein to trigger these methods&#39; original impleme
 </ul>
 <h2 id="version-3-0-1-2014-07-16">Version 3.0.1 (2014-07-16)<a name="version-3-0-1-2014-07-16" href="#version-3-0-1-2014-07-16" class="md2man-permalink" title="permalink"></a></h2><p>This release restores Mac OS X support and fixes a permalink generation bug.</p><h3 id="patch-2">Patch:<a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
-<li><p>GH-13: <a class="md2man-reference">man(1)</a> on Mac OS X could not display URLs.</p><p>The version of groff on Mac OS X is too old: it lacks the an-ext.tmac
-macro package that defines styles for email addresses and general URLs.</p><pre><code>$ groff --version
+<li><p>GH-13: <a class="md2man-reference" href="http://man.cx/man(1)">man(1)</a> on Mac OS X could not display URLs.</p><p>The version of groff on Mac OS X is too old: it lacks the an-ext.tmac
+macro package that defines styles for email addresses and general URLs.</p><pre class="highlight plaintext"><code>$ groff --version
 ...
 GNU grops (groff) version 1.19.2
 GNU troff (groff) version 1.19.2
@@ -106,11 +106,11 @@ See <a href="https://github.com/sunaku/readably/pull/3">https://github.com/sunak
 makes it easy for readers to bookmark and share direct links to specific
 sections of your HTML manual pages.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a> now wraps individual components of the special <code>.TH</code>
-top-level heading in HTML <code>&lt;span&gt;</code> elements with stylable CSS classes:</p><pre><code>&lt;span class=&quot;md2man-title&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;md2man-section&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;md2man-date&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;md2man-source&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;md2man-manual&quot;&gt;...&lt;/span&gt;
+top-level heading in HTML <code>&lt;span&gt;</code> elements with stylable CSS classes:</p><pre class="highlight plaintext"><code>&lt;span class="md2man-title"&gt;...&lt;/span&gt;
+&lt;span class="md2man-section"&gt;...&lt;/span&gt;
+&lt;span class="md2man-date"&gt;...&lt;/span&gt;
+&lt;span class="md2man-source"&gt;...&lt;/span&gt;
+&lt;span class="md2man-manual"&gt;...&lt;/span&gt;
 </code></pre>
 <p>Thanks to Nick Fagerlund for requesting this feature in <a href="https://github.com/sunaku/md2man/issues/15">GH-15</a>.</p></li>
 </ul>
@@ -124,7 +124,7 @@ top-level heading in HTML <code>&lt;span&gt;</code> elements with stylable CSS c
 This raised an ArgumentError on &quot;wrong number of arguments (3 for 2)&quot;.</p><p>Thanks to zimbatm for contributing this patch.</p></li>
 <li><p>GH-17 and GH-18: Escape periods, quotes, and hyphens in code blocks.
 This fixes a bug where lines beginning with periods or single quotes
-did not appear when <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a> output was rendered using <a class="md2man-reference">man(1)</a>.</p><p>Thanks to zimbatm for reporting this bug and suggesting how to fix it.</p></li>
+did not appear when <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a> output was rendered using <a class="md2man-reference" href="http://man.cx/man(1)">man(1)</a>.</p><p>Thanks to zimbatm for reporting this bug and suggesting how to fix it.</p></li>
 </ul>
 <h2 id="version-2-0-3-2014-01-16">Version 2.0.3 (2014-01-16)<a name="version-2-0-3-2014-01-16" href="#version-2-0-3-2014-01-16" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch-5">Patch:<a name="patch-5" href="#patch-5" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
@@ -132,11 +132,11 @@ did not appear when <a class="md2man-reference" href="../man1/md2man-roff.1.html
 </ul>
 <h2 id="version-2-0-2-2013-09-08">Version 2.0.2 (2013-09-08)<a name="version-2-0-2-2013-09-08" href="#version-2-0-2-2013-09-08" class="md2man-permalink" title="permalink"></a></h2><p>Patch:</p>
 <ul>
-<li><p>GH-14: escape single quotes at beginning of lines</p><p>See the &quot;CONTROL CHARACTERS&quot; section in the <a class="md2man-reference">groff(7)</a> manual for details.</p><p>Thanks to Nick Fagerlund for reporting this bug.</p></li>
+<li><p>GH-14: escape single quotes at beginning of lines</p><p>See the &quot;CONTROL CHARACTERS&quot; section in the <a class="md2man-reference" href="http://man.cx/groff(7)">groff(7)</a> manual for details.</p><p>Thanks to Nick Fagerlund for reporting this bug.</p></li>
 <li><p>escape periods at line beginnings with &amp; escape</p></li>
-<li><p>escape text line backslashes as &quot;\e&quot; per <a class="md2man-reference">groff(7)</a></p></li>
+<li><p>escape text line backslashes as &quot;\e&quot; per <a class="md2man-reference" href="http://man.cx/groff(7)">groff(7)</a></p></li>
 <li><p>better documentation for escaping in normal_text()</p></li>
-<li><p>it&#39;s better to escape backslashes as [rs] than \e</p><p>See &quot;Single-Character Escapes&quot; section in <a class="md2man-reference">groff(7)</a>.</p></li>
+<li><p>it&#39;s better to escape backslashes as [rs] than \e</p><p>See &quot;Single-Character Escapes&quot; section in <a class="md2man-reference" href="http://man.cx/groff(7)">groff(7)</a>.</p></li>
 </ul>
 <p>Other:</p>
 <ul>
@@ -156,7 +156,7 @@ did not appear when <a class="md2man-reference" href="../man1/md2man-roff.1.html
 <h2 id="version-2-0-0-2013-05-05">Version 2.0.0 (2013-05-05)<a name="version-2-0-0-2013-05-05" href="#version-2-0-0-2013-05-05" class="md2man-permalink" title="permalink"></a></h2><p>This release renames md2man executables and libraries to highlight the fact
 that md2man provides two processing pathways: one for Roff and one for HTML.</p><p>Major:</p>
 <ul>
-<li><p>Rename <a class="md2man-reference">md2man(1)</a> executable to <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>.</p></li>
+<li><p>Rename <a class="md2man-reference" href="http://man.cx/md2man(1)">md2man(1)</a> executable to <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>.</p></li>
 <li><p>Rename <code>Md2Man::Engine</code> to <code>Md2Man::Roff::Engine</code>.</p></li>
 <li><p>Rename &quot;manpage-reference&quot; CSS class to &quot;md2man-xref&quot; in HTML output.</p></li>
 <li><p>The <code>Md2Man::Document#reference()</code> method now takes only two parameters:</p>
@@ -188,7 +188,7 @@ the output document</li>
 <h2 id="version-1-6-2-2013-05-05">Version 1.6.2 (2013-05-05)<a name="version-1-6-2-2013-05-05" href="#version-1-6-2-2013-05-05" class="md2man-permalink" title="permalink"></a></h2><p>Patch:</p>
 <ul>
 <li><p>Fix &quot;uninitialized constant Md2Man::VERSION&quot; error in <code>md2man/rakefile</code>.</p></li>
-<li><p>HTML manual page CSS: justify the lines of text just like <a class="md2man-reference">man(1)</a> does.</p></li>
+<li><p>HTML manual page CSS: justify the lines of text just like <a class="md2man-reference" href="http://man.cx/man(1)">man(1)</a> does.</p></li>
 <li><p>HTML manual page CSS: resize body to allot 78ex width for manpage text.</p></li>
 </ul>
 <h2 id="version-1-6-1-2013-05-04">Version 1.6.1 (2013-05-04)<a name="version-1-6-1-2013-05-04" href="#version-1-6-1-2013-05-04" class="md2man-permalink" title="permalink"></a></h2><p>Patch:</p>
@@ -201,7 +201,7 @@ the output document</li>
 </ul>
 <h2 id="version-1-6-0-2013-03-10">Version 1.6.0 (2013-03-10)<a name="version-1-6-0-2013-03-10" href="#version-1-6-0-2013-03-10" class="md2man-permalink" title="permalink"></a></h2><p>Minor:</p>
 <ul>
-<li><p>Added an <a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a> executable that lets you run md2man&#39;s <a class="md2man-reference">rake(1)</a>
+<li><p>Added an <a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a> executable that lets you run md2man&#39;s <a class="md2man-reference" href="http://man.cx/rake(1)">rake(1)</a>
 tasks <em>directly</em> from the command line: without the need for a &quot;Rakefile&quot;
 in your working directory that loads the <code>md2man/rakefile</code> library.</p></li>
 <li><p>In web pages generated by the <code>md2man:web</code> Rake task:</p>
@@ -292,7 +292,7 @@ your manual pages for packaging into a gem.  See the README for details.</p></li
 <li><p>roff: also indent block_code just like block_quote.</p></li>
 <li><p>roff: add paragraph above block_quote for spacing.</p></li>
 <li><p>roff: render code blocks as paragraphs for spacing.</p><p>Otherwise there&#39;s not enough space between the previous paragraph and
-the code block: it appears on the next line and appears ugly in <a class="md2man-reference">man(1)</a>.</p></li>
+the code block: it appears on the next line and appears ugly in <a class="md2man-reference" href="http://man.cx/man(1)">man(1)</a>.</p></li>
 <li><p>document: make reference regexp match more manpages.</p></li>
 </ul>
 <p>Other:</p>
@@ -367,7 +367,7 @@ bold styling.  All that matters is that the subsequent lines are indented.</p></
 </ul>
 <p>Minor:</p>
 <ul>
-<li><p>Added <a class="md2man-reference">md2man(1)</a> executable for command-line usage.</p></li>
+<li><p>Added <a class="md2man-reference" href="http://man.cx/md2man(1)">md2man(1)</a> executable for command-line usage.</p></li>
 <li><p>Added support for all HTML 4.0 and XHTML 1.0 entities.</p></li>
 <li><p>Added support for tables, horizontal rules, and more.</p></li>
 <li><p>Added <code>Md2Man::Roff</code> mixin for advanced Redcarpet2 usage.</p></li>

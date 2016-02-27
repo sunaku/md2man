@@ -2,7 +2,7 @@
 
 ## NAME
 
-md2man-html - convert md2man(5) flavored markdown(7) into HTML
+md2man-html - convert md2man(5) flavored [Markdown] text into HTML
 
 ## SYNOPSIS
 
@@ -10,7 +10,7 @@ md2man-html - convert md2man(5) flavored markdown(7) into HTML
 
 ## DESCRIPTION
 
-This program converts md2man(5) flavored markdown(7) input from the given
+This program converts the md2man(5) flavored [Markdown] text from the given
 *FILE* into HTML and then prints the result to the standard output stream.
 If *FILE* is not given, then the standard input stream is read in its place.
 
@@ -64,4 +64,6 @@ For example, the `printf(3)` cross reference would be emitted as this HTML:
 
 ## SEE ALSO
 
-md2man-roff(1), md2man-rake(1), md2man(5)
+md2man-roff(1), md2man-rake(1), md2man(5), [Markdown]
+
+[Markdown]: http://daringfireball.net/projects/markdown/syntax

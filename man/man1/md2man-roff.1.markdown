@@ -2,7 +2,7 @@
 
 ## NAME
 
-md2man-roff - convert md2man(5) flavored markdown(7) into roff(7)
+md2man-roff - convert md2man(5) flavored [Markdown] text into roff(7)
 
 ## SYNOPSIS
 
@@ -10,7 +10,7 @@ md2man-roff - convert md2man(5) flavored markdown(7) into roff(7)
 
 ## DESCRIPTION
 
-This program converts md2man(5) flavored markdown(7) input from the given
+This program converts the md2man(5) flavored [Markdown] text from the given
 *FILE* into roff(7) and then prints the result to the standard output stream.
 If *FILE* is not given, then the standard input stream is read in its place.
 
@@ -33,6 +33,7 @@ It issues a warning when it encounters these instead.  Patches are welcome!
 
 ## SEE ALSO
 
-md2man-html(1), md2man-rake(1), md2man(5)
+md2man-html(1), md2man-rake(1), md2man(5), [Markdown]
 
 [Redcarpet]: https://github.com/vmg/redcarpet
+[Markdown]: http://daringfireball.net/projects/markdown/syntax
