@@ -63,8 +63,14 @@ module Md2Man::HTML
     ].join
   end
 
+  SYNTAX_HIGHLIGHTER = Class.new do
+    require 'rouge'
+    require 'rouge/plugins/redcarpet'
+    extend Rouge::Plugins::Redcarpet
+  end
+
   def block_code code, language
-    "<pre><code>#{CGI.escape_html super}</code></pre>\n"
+    SYNTAX_HIGHLIGHTER.block_code super, language
   end
 
   #---------------------------------------------------------------------------

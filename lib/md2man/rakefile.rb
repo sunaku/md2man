@@ -67,6 +67,12 @@ parse_manpage_info = lambda do |html_file_body|
   end
 end
 
+build_html_title = lambda do |title, info|
+  # fallback to adding directory name for standalone titles, such as "README"
+  # and "man/index", so that users know what project those manuals belong to
+  [title, info || Dir.pwd.pathmap('%n')].join(' &mdash; ')
+end
+
 directory 'man'
 
 file 'man/index.html' => ['man'] + webs do |t|
@@ -86,13 +92,19 @@ file 'man/index.html' => ['man'] + webs do |t|
   buffer << '</div>'
   content = buffer.join
 
-  title = t.name.pathmap('%X')
+  title = build_html_title.call(t.name.pathmap('%X'), nil)
   output = wrap_html_template.call(title, content, nil)
   File.open(t.name, 'w') {|f| f << output }
 end
 
 file 'man/style.css' => ['man', __FILE__.pathmap('%X/style.css')] do |t|
-  cp t.prerequisites.last, t.name if t.needed?
+  cp t.prerequisites.last, t.name
+
+  # add syntax highlighting theme
+  File.open(t.name, 'a') do |css|
+    require 'rouge'
+    css << Rouge::Themes::Github.render
+  end
 end
 
 mkds.zip(webs).each do |src, dst|
@@ -106,7 +118,7 @@ mkds.zip(webs).each do |src, dst|
 
     name = parse_manpage_name.call(dst)
     info = parse_manpage_info.call(output)
-    title = [name, info].compact.join(' &mdash; ')
+    title = build_html_title.call(name, info)
 
     subdir = dst.pathmap('%d').sub('man/', '')
     ascent = '../' * (dst.count('/') - 1)

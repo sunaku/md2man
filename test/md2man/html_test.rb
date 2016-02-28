@@ -57,7 +57,7 @@ describe 'html engine' do
       |
       |    <a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a>
     INPUT
-      |<p>For example, the <code>printf(3)</code> cross reference would be emitted as this HTML:</p><pre><code>&lt;a class=&quot;md2man-reference&quot; href=&quot;../man3/printf.3.html&quot;&gt;printf(3)&lt;/a&gt;
+      |<p>For example, the <code>printf(3)</code> cross reference would be emitted as this HTML:</p><pre class="highlight plaintext"><code>&lt;a class="md2man-reference" href="../man3/printf.3.html"&gt;printf(3)&lt;/a&gt;
       |</code></pre>
       |
     OUTPUT
@@ -85,7 +85,7 @@ describe 'html engine' do
       |    containing markdown(7),
       |    roff(7), and much more!
     INPUT
-      |<pre><code>this is a code block
+      |<pre class="highlight plaintext"><code>this is a code block
       |containing markdown(7),
       |roff(7), and much more!
       |</code></pre>
@@ -121,7 +121,7 @@ describe 'html engine' do
       |      \\__/\\____/_/ /_/|_\\
       |                 >>>------>
     INPUT
-      |<pre><code>_______      _______
+      |<pre class="highlight plaintext"><code>_______      _______
       | ___  /___________ /__
       |  _  __/ __ \\  __/ /_/
       |  / /_/ /_/ / / / ,\\
@@ -232,7 +232,7 @@ describe 'html engine' do
       |
       |### `PIPES_GET_LAST(CHAIN)`
     INPUT
-      |<h3 id="macros">Macros<a name="macros" href="#macros" class="md2man-permalink" title="permalink"></a></h3><pre><code>#define PIPES_GET_LAST(CHAIN)
+      |<h3 id="macros">Macros<a name="macros" href="#macros" class="md2man-permalink" title="permalink"></a></h3><pre class="highlight plaintext"><code>#define PIPES_GET_LAST(CHAIN)
       |#define PIPES_GET_IN(CHAIN)
       |#define PIPES_GET_OUT(CHAIN)
       |#define PIPES_GET_ERR(CHAIN)
@@ -258,6 +258,30 @@ describe 'html engine' do
       |`\n`
     INPUT
       |<p><code>\n</code></p>
+    OUTPUT
+  end
+
+  it 'renders fenced code blocks' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |```
+      | Array.new(123, "abc")
+      |```
+    INPUT
+      |<pre class="highlight plaintext"><code> Array.new(123, "abc")
+      |</code></pre>
+      |
+    OUTPUT
+  end
+
+  it 'renders fenced code blocks with syntax highlighting' do
+    @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
+      |```ruby
+      | Array.new(123, "abc")
+      |```
+    INPUT
+      |<pre class="highlight ruby"><code> <span class="no">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="s2">"abc"</span><span class="p">)</span>
+      |</code></pre>
+      |
     OUTPUT
   end
 end

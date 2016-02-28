@@ -25,11 +25,11 @@ If no *TASK* is specified, then the `md2man` task is run by default.
 `md2man`
   Runs the `md2man:man` and `md2man:web` tasks, in that order.
 
-`md2man:man`
+`md2man:man` or `man`
   Builds UNIX manual pages from `*.markdown`, `*.mkd`, and `*.md` files
   found in or beneath the `man/` subdirectory in your working directory.
 
-`md2man:web`
+`md2man:web` or `web`
   Builds HTML manual pages from `*.markdown`, `*.mkd`, and `*.md` files
   found in or beneath the `man/` subdirectory in your working directory.
 
@@ -54,5 +54,7 @@ Rake.application.init File.basename(__FILE__)
 
 require 'md2man/rakefile'
 task :default => :md2man
+task :man => 'md2man:man'
+task :web => 'md2man:web'
 
 Rake.application.top_level
