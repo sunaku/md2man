@@ -2,15 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 5.0.3 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 5.1.0 https://github.com/sunaku/md2man" />
   <title>md2man(5) &mdash; UNIX manual page flavoring for Markdown</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man5">man5</a>/md2man.5</span></div></div><div class="container-fluid"><h1 id="md2man-5-2016-02-21-5-0-3"><span class="md2man-title">MD2MAN</span> <span class="md2man-section">5</span> <span class="md2man-date">2016-02-21</span> <span class="md2man-source">5.0.3</span><a name="md2man-5-2016-02-21-5-0-3" href="#md2man-5-2016-02-21-5-0-3" class="md2man-permalink" title="permalink"></a></h1><h2 id="name">NAME<a name="name" href="#name" class="md2man-permalink" title="permalink"></a></h2><p>md2man - UNIX manual page flavoring for <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a></p><h2 id="description">DESCRIPTION<a name="description" href="#description" class="md2man-permalink" title="permalink"></a></h2><p><a href="https://github.com/sunaku/md2man">md2man</a> makes the <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> format more friendly for writing UNIX manual
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man5">man5</a>/md2man.5</span></div></div><div class="container-fluid"><h1 id="md2man-5-2016-02-28-5-1-0"><span class="md2man-title">MD2MAN</span> <span class="md2man-section">5</span> <span class="md2man-date">2016-02-28</span> <span class="md2man-source">5.1.0</span><a name="md2man-5-2016-02-28-5-1-0" href="#md2man-5-2016-02-28-5-1-0" class="md2man-permalink" title="permalink"></a></h1><h2 id="name">NAME<a name="name" href="#name" class="md2man-permalink" title="permalink"></a></h2><p>md2man - UNIX manual page flavoring for <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a></p><h2 id="description">DESCRIPTION<a name="description" href="#description" class="md2man-permalink" title="permalink"></a></h2><p>md2man makes the <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> format more friendly for writing UNIX manual
 pages by extending its syntax, semantics, and assumed processing extensions.</p><h3 id="syntax">Syntax<a name="syntax" href="#syntax" class="md2man-permalink" title="permalink"></a></h3><p>md2man extends <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> syntax by recognizing three kinds of paragraphs,
-analogous to the underlying <code>.PP</code>, <code>.TP</code>, and <code>.IP</code> directives in <a class="md2man-reference" href="http://man.cx/roff(7)">roff(7)</a>.</p><h4 id="normal-paragraphs">Normal paragraphs<a name="normal-paragraphs" href="#normal-paragraphs" class="md2man-permalink" title="permalink"></a></h4><p>Paragraphs whose lines are all indented by exactly zero or one additional
-space are considered &quot;normal paragraphs&quot;, analogous to <code>.PP</code> in <a class="md2man-reference" href="http://man.cx/roff(7)">roff(7)</a>:</p><pre class="highlight plaintext"><code>This is a normal paragraph.
+analogous to the underlying <code>.PP</code>, <code>.TP</code>, and <code>.IP</code> directives in <a class="md2man-reference">roff(7)</a>.</p><h4 id="normal-paragraphs">Normal paragraphs<a name="normal-paragraphs" href="#normal-paragraphs" class="md2man-permalink" title="permalink"></a></h4><p>Paragraphs whose lines are all indented by exactly zero or one additional
+space are considered &quot;normal paragraphs&quot;, analogous to <code>.PP</code> in <a class="md2man-reference">roff(7)</a>:</p><pre class="highlight plaintext"><code>This is a normal paragraph.
 
 This is also
 a normal
@@ -26,22 +26,22 @@ this
 </code></pre>
 <h4 id="tagged-paragraphs">Tagged paragraphs<a name="tagged-paragraphs" href="#tagged-paragraphs" class="md2man-permalink" title="permalink"></a></h4><p>Paragraphs whose first line is indented by less than two additional spaces and
 whose subsequent lines are all uniformly indented by exactly two additional
-spaces are considered &quot;tagged paragraphs&quot;, analogous to <code>.TP</code> in <a class="md2man-reference" href="http://man.cx/roff(7)">roff(7)</a>:</p><pre class="highlight plaintext"><code>This is a
+spaces are considered &quot;tagged paragraphs&quot;, analogous to <code>.TP</code> in <a class="md2man-reference">roff(7)</a>:</p><pre class="highlight plaintext"><code>This is a
   tagged
   paragraph.
 </code></pre>
 <h4 id="indented-paragraphs">Indented paragraphs<a name="indented-paragraphs" href="#indented-paragraphs" class="md2man-permalink" title="permalink"></a></h4><p>Paragraphs whose lines are all uniformly indented by exactly two additional
-spaces are considered &quot;indented paragraphs&quot;, analogous to <code>.IP</code> in <a class="md2man-reference" href="http://man.cx/roff(7)">roff(7)</a>:</p><pre class="highlight plaintext"><code>  This is an
+spaces are considered &quot;indented paragraphs&quot;, analogous to <code>.IP</code> in <a class="md2man-reference">roff(7)</a>:</p><pre class="highlight plaintext"><code>  This is an
   indented
   paragraph.
 </code></pre>
 <h3 id="semantics">Semantics<a name="semantics" href="#semantics" class="md2man-permalink" title="permalink"></a></h3><p>md2man extends <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> semantics by treating top-level headings specially.</p><h4 id="top-level-headings">Top-level headings<a name="top-level-headings" href="#top-level-headings" class="md2man-permalink" title="permalink"></a></h4><p>The first top-level <code>&lt;h1&gt;</code> heading found in the input is considered to be the
-<code>.TH</code> directive in <a class="md2man-reference" href="http://man.cx/roff(7)">roff(7)</a>, described under &quot;Title line&quot; in <a class="md2man-reference" href="http://man.cx/man-pages(7)">man-pages(7)</a> thus:</p>
+<code>.TH</code> directive in <a class="md2man-reference">roff(7)</a>, described under &quot;Title line&quot; in <a class="md2man-reference">man-pages(7)</a> thus:</p>
 <blockquote>
 <pre class="highlight plaintext"><code>.TH title section date source manual
 </code></pre>
 <dl><dt>title</dt><dd>The title of the man page, written in all caps (e.g., <code>MAN-PAGES</code>).</dd></dl><dl><dt>section</dt><dd>The section number in which the man page should be placed (e.g., <code>7</code>).</dd></dl><dl><dt>date</dt><dd>The date of the last revision, written in the form YYYY-MM-DD.</dd></dl><dl><dt>source</dt><dd>The source of the command, function, or system call (e.g., <code>Linux</code>).</dd></dl><dl><dt>manual</dt><dd>The title of the manual (e.g., <code>Linux Programmer&#39;s Manual</code>).</dd></dl></blockquote>
-<p>Any subsequent top-level headings are treated as second-level <code>&lt;h2&gt;</code> headings.</p><h3 id="extensions">Extensions<a name="extensions" href="#extensions" class="md2man-permalink" title="permalink"></a></h3><p>md2man enables the following <a href="https://github.com/vmg/redcarpet">Redcarpet</a> extensions while reading <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>:</p>
+<p>Any subsequent top-level headings are treated as second-level <code>&lt;h2&gt;</code> headings.</p><h3 id="extensions">Extensions<a name="extensions" href="#extensions" class="md2man-permalink" title="permalink"></a></h3><p>md2man enables the following [Redcarpet] extensions while reading <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>:</p>
 <ul>
 <li>tables</li>
 <li>autolink</li>
@@ -136,5 +136,5 @@ Jens Schweikhardt <span class="nv">&lt;howto@schweikhardt.net&gt;</span>
 bar(1), foo(5), xyzzy(1), <span class="p">[</span><span class="nv">Linux Man Page Howto</span><span class="p">](</span>
 <span class="sx">http://www.schweikhardt.net/man_page_howto.html</span><span class="p">)</span>
 </code></pre>
-<h2 id="see-also">SEE ALSO<a name="see-also" href="#see-also" class="md2man-permalink" title="permalink"></a></h2><p><a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>, <a class="md2man-reference" href="http://man.cx/man-pages(7)">man-pages(7)</a>, <a class="md2man-reference" href="http://man.cx/roff(7)">roff(7)</a>, <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>, <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a></p></div></body>
+<h2 id="see-also">SEE ALSO<a name="see-also" href="#see-also" class="md2man-permalink" title="permalink"></a></h2><p><a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>, <a class="md2man-reference">man-pages(7)</a>, <a class="md2man-reference">roff(7)</a>, <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>, <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a></p></div></body>
 </html>

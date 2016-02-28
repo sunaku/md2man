@@ -9,6 +9,12 @@
   h6 {
     margin-top: 1em;
   }
+
+  /* deactivate external manual page cross-references */
+  a.md2man-reference:not([href]) {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 @media screen {

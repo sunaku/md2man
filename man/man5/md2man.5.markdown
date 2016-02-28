@@ -1,4 +1,4 @@
-# MD2MAN 5                        2016-02-21                            5.0.3
+# MD2MAN 5                        2016-02-28                            5.1.0
 
 ## NAME
 
@@ -6,7 +6,7 @@ md2man - UNIX manual page flavoring for [Markdown]
 
 ## DESCRIPTION
 
-[md2man] makes the [Markdown] format more friendly for writing UNIX manual
+md2man makes the [Markdown] format more friendly for writing UNIX manual
 pages by extending its syntax, semantics, and assumed processing extensions.
 
 ### Syntax
@@ -187,6 +187,4 @@ http://www.schweikhardt.net/man_page_howto.html)
 
 [Markdown], man-pages(7), roff(7), md2man-roff(1), md2man-html(1)
 
-[md2man]: https://github.com/sunaku/md2man
-[Redcarpet]: https://github.com/vmg/redcarpet
 [Markdown]: http://daringfireball.net/projects/markdown/syntax

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 5.0.3 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 5.1.0 https://github.com/sunaku/md2man" />
   <title>README &mdash; md2man</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -13,7 +13,7 @@
 <li>Bugs: <a href="https://github.com/sunaku/md2man/issues">https://github.com/sunaku/md2man/issues</a></li>
 </ul>
 <h1 id="md2man-markdown-to-manpage"><span class="md2man-title">md2man</span> <span class="md2man-section">-</span> <span class="md2man-date">markdown</span> <span class="md2man-source">to</span> <span class="md2man-manual">manpage</span><a name="md2man-markdown-to-manpage" href="#md2man-markdown-to-manpage" class="md2man-permalink" title="permalink"></a></h1><p>md2man is a Ruby library and a set of command-line programs that convert
-<a href="http://daringfireball.net/projects/markdown/">Markdown</a> into UNIX manual pages (both <a href="http://troff.org">roff</a> and HTML) using <a href="https://github.com/vmg/redcarpet">Redcarpet</a>.</p><h2 id="features">Features<a name="features" href="#features" class="md2man-permalink" title="permalink"></a></h2>
+<a href="http://daringfireball.net/projects/markdown/">Markdown</a> into UNIX manpages as well as HTML webpages using <a href="https://github.com/vmg/redcarpet">Redcarpet</a>.</p><h2 id="features">Features<a name="features" href="#features" class="md2man-permalink" title="permalink"></a></h2>
 <ul>
 <li><p>Formats indented, tagged, and normal paragraphs: described in <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a>.</p></li>
 <li><p>Translates all HTML4 and XHTML1 entities into native <a href="http://troff.org">roff</a> equivalents.</p></li>
@@ -25,7 +25,7 @@
 into
 <a href="https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE">a UNIX manual page</a>:</p><pre class="highlight shell"><code>md2man-roff EXAMPLE.markdown &gt; EXAMPLE.1
 </code></pre>
-<p>You can view <a href="https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE">the resulting UNIX manual page</a> in your <a class="md2man-reference" href="http://man.cx/man(1)">man(1)</a>
+<p>You can view <a href="https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE">the resulting UNIX manual page</a> in your <a class="md2man-reference">man(1)</a>
 viewer:</p><pre class="highlight shell"><code>man -l EXAMPLE.1
 </code></pre>
 <p><img src="https://github.com/sunaku/md2man/raw/gh-pages/EXAMPLE.png" alt="screenshot"></p><p>Next, try converting
@@ -105,10 +105,10 @@ bundle <span class="nb">exec </span>md2man-html --help  <span class="c"># run it
 <span class="n">engine</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="o">::</span><span class="no">Markdown</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">YourManpageRenderer</span><span class="p">,</span> <span class="n">your_options_hash</span><span class="p">)</span>
 <span class="n">your_html_output</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">your_markdown_input</span><span class="p">)</span>
 </code></pre>
-<h3 id="building-man-pages">Building man pages<a name="building-man-pages" href="#building-man-pages" class="md2man-permalink" title="permalink"></a></h3><h4 id="at-the-command-line-2">At the command line<a name="at-the-command-line-2" href="#at-the-command-line-2" class="md2man-permalink" title="permalink"></a></h4><p>See <a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a> manual:</p><pre class="highlight shell"><code>md2man-rake --help
+<h3 id="building-manpages">Building manpages<a name="building-manpages" href="#building-manpages" class="md2man-permalink" title="permalink"></a></h3><h4 id="at-the-command-line-2">At the command line<a name="at-the-command-line-2" href="#at-the-command-line-2" class="md2man-permalink" title="permalink"></a></h4><p>See <a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a> manual:</p><pre class="highlight shell"><code>md2man-rake --help
 </code></pre>
-<h4 id="inside-a-ruby-script-2">Inside a Ruby script<a name="inside-a-ruby-script-2" href="#inside-a-ruby-script-2" class="md2man-permalink" title="permalink"></a></h4><p>Add this snippet to your gemspec file:</p><pre class="highlight ruby"><code><span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/man?/*.?'</span><span class="p">]</span>            <span class="c1"># UNIX man pages</span>
-<span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/**/*.{html,css,js}'</span><span class="p">]</span>  <span class="c1"># HTML man pages</span>
+<h4 id="inside-a-ruby-script-2">Inside a Ruby script<a name="inside-a-ruby-script-2" href="#inside-a-ruby-script-2" class="md2man-permalink" title="permalink"></a></h4><p>Add this snippet to your gemspec file:</p><pre class="highlight ruby"><code><span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/man?/*.?'</span><span class="p">]</span>         <span class="c1"># UNIX manpages</span>
+<span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/**/*.{html,css}'</span><span class="p">]</span>  <span class="c1"># HTML manpages</span>
 <span class="n">s</span><span class="p">.</span><span class="nf">add_development_dependency</span> <span class="s1">'md2man'</span><span class="p">,</span> <span class="s1">'~&gt; 5.0'</span>
 </code></pre>
 <p>Add this line to your Rakefile:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/rakefile'</span>

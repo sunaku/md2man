@@ -9,7 +9,7 @@ Bugs: \[la]https://github.com/sunaku/md2man/issues\[ra]
 .TH md2man \- markdown to manpage
 .PP
 md2man is a Ruby library and a set of command\-line programs that convert
-Markdown \[la]http://daringfireball.net/projects/markdown/\[ra] into UNIX manual pages (both roff \[la]http://troff.org\[ra] and HTML) using Redcarpet \[la]https://github.com/vmg/redcarpet\[ra]\&.
+Markdown \[la]http://daringfireball.net/projects/markdown/\[ra] into UNIX manpages as well as HTML webpages using Redcarpet \[la]https://github.com/vmg/redcarpet\[ra]\&.
 .SH Features
 .RS
 .IP \(bu 2
@@ -217,7 +217,7 @@ engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
 your_html_output = engine.render(your_markdown_input)
 .fi
 .RE
-.SS Building man pages
+.SS Building manpages
 .SS At the command line
 .PP
 See 
@@ -235,8 +235,8 @@ Add this snippet to your gemspec file:
 .PP
 .RS
 .nf
-s.files += Dir['man/man?/*.?']            # UNIX man pages
-s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
+s.files += Dir['man/man?/*.?']         # UNIX manpages
+s.files += Dir['man/**/*.{html,css}']  # HTML manpages
 s.add_development_dependency 'md2man', '~> 5.0'
 .fi
 .RE

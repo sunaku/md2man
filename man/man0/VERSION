@@ -1,3 +1,33 @@
+.SH Version 5.1.0 (2016\-02\-28)
+.SS Minor:
+.RS
+.IP \(bu 2
+.BR md2man-html (1): 
+add syntax highlighting to fenced code blocks.
+.IP \(bu 2
+.BR md2man-rake (1): 
+add directory name to README and "man/index" title.
+.PP
+Fallback to adding directory name for standalone titles, such as "README"
+and "man/index", so that users know what project those manuals belong to.
+.IP \(bu 2
+.BR md2man-rake (1): 
+allow running task names without namespace.
+.PP
+You can now run \fB\fCmd2man\-rake man\fR instead of \fB\fCmd2man\-rake md2man:man\fR,
+and similarly \fB\fCmd2man\-rake web\fR instead of \fB\fCmd2man\-rake md2man:web\fR\&.
+.RE
+.SS Patch:
+.RS
+.IP \(bu 2
+Clarify optionalness of PATTERN in \fB\fC\-\-help\fR option.
+.IP \(bu 2
+.BR md2man (5): 
+paragraph types reflect .PP, .TP, .IP.
+.IP \(bu 2
+Link to Markdown website instead of 
+.BR markdown (7).
+.RE
 .SH Version 5.0.3 (2016\-02\-21)
 .PP
 This release fixes a crash, fixes roff bugs, improves CSS styling for HTML

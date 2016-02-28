@@ -1,4 +1,4 @@
-# MD2MAN-RAKE 1                   2016-02-21                            5.0.3
+# MD2MAN-RAKE 1                   2016-02-28                            5.1.0
 
 ## NAME
 
@@ -22,11 +22,11 @@ If no *TASK* is specified, then the `md2man` task is run by default.
 `md2man`
   Runs the `md2man:man` and `md2man:web` tasks, in that order.
 
-`md2man:man`
+`md2man:man` or `man`
   Builds UNIX manual pages from `*.markdown`, `*.mkd`, and `*.md` files
   found in or beneath the `man/` subdirectory in your working directory.
 
-`md2man:web`
+`md2man:web` or `web`
   Builds HTML manual pages from `*.markdown`, `*.mkd`, and `*.md` files
   found in or beneath the `man/` subdirectory in your working directory.
 
@@ -35,7 +35,8 @@ If no *TASK* is specified, then the `md2man` task is run by default.
 `-h` [*PATTERN*], `--help` [*PATTERN*]
   Show this help manual and optionally search for *PATTERN* regular expression.
 
-Run `rake --help` to see more options.
+...
+  Anything else is passed to rake(1); run `rake --help` for documentation.
 
 ## SEE ALSO
 

@@ -1,4 +1,4 @@
-.TH MD2MAN\-RAKE 1                   2016\-02\-21                            5.0.3
+.TH MD2MAN\-RAKE 1                   2016\-02\-28                            5.1.0
 .SH NAME
 .PP
 md2man\-rake \- run 
@@ -29,19 +29,22 @@ If no \fITASK\fP is specified, then the \fB\fCmd2man\fR task is run by default.
 \fB\fCmd2man\fR
 Runs the \fB\fCmd2man:man\fR and \fB\fCmd2man:web\fR tasks, in that order.
 .TP
-\fB\fCmd2man:man\fR
+\fB\fCmd2man:man\fR or \fB\fCman\fR
 Builds UNIX manual pages from \fB\fC*.markdown\fR, \fB\fC*.mkd\fR, and \fB\fC*.md\fR files
 found in or beneath the \fB\fCman/\fR subdirectory in your working directory.
 .TP
-\fB\fCmd2man:web\fR
+\fB\fCmd2man:web\fR or \fB\fCweb\fR
 Builds HTML manual pages from \fB\fC*.markdown\fR, \fB\fC*.mkd\fR, and \fB\fC*.md\fR files
 found in or beneath the \fB\fCman/\fR subdirectory in your working directory.
 .SH OPTIONS
 .TP
 \fB\fC\-h\fR [\fIPATTERN\fP], \fB\fC\-\-help\fR [\fIPATTERN\fP]
 Show this help manual and optionally search for \fIPATTERN\fP regular expression.
-.PP
-Run \fB\fCrake \-\-help\fR to see more options.
+.TP
+\&...
+Anything else is passed to 
+.BR rake (1); 
+run \fB\fCrake \-\-help\fR for documentation.
 .SH SEE ALSO
 .PP
 .BR rake (1), 
