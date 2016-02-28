@@ -5,7 +5,7 @@
 # md2man - markdown to manpage
 
 md2man is a Ruby library and a set of command-line programs that convert
-[Markdown] into UNIX manual pages (both [roff] and HTML) using [Redcarpet].
+[Markdown] into UNIX manpages as well as HTML webpages using [Redcarpet].
 
 ## Features
 
@@ -188,7 +188,7 @@ engine = Redcarpet::Markdown.new(YourManpageRenderer, your_options_hash)
 your_html_output = engine.render(your_markdown_input)
 ```
 
-### Building man pages
+### Building manpages
 
 #### At the command line
 
@@ -203,8 +203,8 @@ md2man-rake --help
 Add this snippet to your gemspec file:
 
 ```ruby
-s.files += Dir['man/man?/*.?']            # UNIX man pages
-s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
+s.files += Dir['man/man?/*.?']         # UNIX manpages
+s.files += Dir['man/**/*.{html,css}']  # HTML manpages
 s.add_development_dependency 'md2man', '~> 5.0'
 ```
 
@@ -231,6 +231,6 @@ gem spec pkg/*.gem | fgrep man/
 Released under the ISC license.  See the LICENSE file for details.
 
 [roff]: http://troff.org
-[Markdown]: http://daringfireball.net/projects/markdown/
 [Redcarpet]: https://github.com/vmg/redcarpet
+[Markdown]: http://daringfireball.net/projects/markdown/
 [tables]: http://michelf.com/projects/php-markdown/extra/#table

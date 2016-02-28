@@ -1,3 +1,3 @@
 module Md2Man
-  VERSION = "5.0.3"
+  VERSION = "5.1.0"
 end

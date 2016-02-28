@@ -1,3 +1,27 @@
+## Version 5.1.0 (2016-02-28)
+
+### Minor:
+
+  * md2man-html(1): add syntax highlighting to fenced code blocks.
+
+  * md2man-rake(1): add directory name to README and "man/index" title.
+
+    Fallback to adding directory name for standalone titles, such as "README"
+    and "man/index", so that users know what project those manuals belong to.
+
+  * md2man-rake(1): allow running task names without namespace.
+
+    You can now run `md2man-rake man` instead of `md2man-rake md2man:man`,
+    and similarly `md2man-rake web` instead of `md2man-rake md2man:web`.
+
+### Patch:
+
+  * Clarify optionalness of PATTERN in `--help` option.
+
+  * md2man(5): paragraph types reflect .PP, .TP, .IP.
+
+  * Link to Markdown website instead of markdown(7).
+
 ## Version 5.0.3 (2016-02-21)
 
 This release fixes a crash, fixes roff bugs, improves CSS styling for HTML
