@@ -22,11 +22,13 @@ If *FILE* is not given, then the standard input stream is read in its place.
 Each component of the `.TH` directive in roff(7), described under "Top-level
 headings" in md2man(5), is wrapped in stylable `<span>` elements as follows:
 
-    <span class="md2man-title">...</span>
-    <span class="md2man-section">...</span>
-    <span class="md2man-date">...</span>
-    <span class="md2man-source">...</span>
-    <span class="md2man-manual">...</span>
+```html
+<span class="md2man-title">...</span>
+<span class="md2man-section">...</span>
+<span class="md2man-date">...</span>
+<span class="md2man-source">...</span>
+<span class="md2man-manual">...</span>
+```
 
 ### Heading permalinks
 
@@ -36,19 +38,23 @@ lowercase, and squeezed and stripped of HTML tags and non-word characters.
 
 For example, a heading labeled `Ver<s>iON 3(2</s>!4)))` would be emitted as:
 
-    <h2 id="ver-ion-3-2-4">Ver<s>iON 3(2</s>!4)))<a name="ver-ion-3-2-4"
-    href="#ver-ion-3-2-4" class="md2man-permalink" title="permalink"></a></h2>
+```html
+<h2 id="ver-ion-3-2-4">Ver<s>iON 3(2</s>!4)))<a name="ver-ion-3-2-4"
+href="#ver-ion-3-2-4" class="md2man-permalink" title="permalink"></a></h2>
+```
 
 For example, multiple headings labeled `Hello, world!` would be emitted as:
 
-    <h2 id="hello-world">Hello, world!<a name="hello-world"
-    href="#hello-world" class="md2man-permalink" title="permalink"></a></h2>
+```html
+<h2 id="hello-world">Hello, world!<a name="hello-world"
+href="#hello-world" class="md2man-permalink" title="permalink"></a></h2>
 
-    <h2 id="hello-world-1">Hello, world!<a name="hello-world-1"
-    href="#hello-world-1" class="md2man-permalink" title="permalink"></a></h2>
+<h2 id="hello-world-1">Hello, world!<a name="hello-world-1"
+href="#hello-world-1" class="md2man-permalink" title="permalink"></a></h2>
 
-    <h2 id="hello-world-2">Hello, world!<a name="hello-world-2"
-    href="#hello-world-2" class="md2man-permalink" title="permalink"></a></h2>
+<h2 id="hello-world-2">Hello, world!<a name="hello-world-2"
+href="#hello-world-2" class="md2man-permalink" title="permalink"></a></h2>
+```
 
 ### Cross references
 
@@ -58,7 +64,9 @@ attributes.
 
 For example, the `printf(3)` cross reference would be emitted as this HTML:
 
-    <a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a>
+```html
+<a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a>
+```
 
 ## OPTIONS
 
