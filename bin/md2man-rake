@@ -50,12 +50,13 @@ rake(1), md2man-roff(1), md2man-html(1), md2man(5)
 require 'binman'
 BinMan.help
 
+# qualify relative task names by prefixing the namespace
+ARGV.map! {|arg| arg.sub(/\A(man|web)\Z/, 'md2man:\&') }
+
 require 'rake'
 Rake.application.init File.basename(__FILE__)
 
 require 'md2man/rakefile'
 task :default => :md2man
-task :man => 'md2man:man'
-task :web => 'md2man:web'
 
 Rake.application.top_level
