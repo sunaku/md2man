@@ -1,3 +1,15 @@
+## Version 5.1.1 (2016-03-04)
+
+### Patch:
+
+  * md2man-rake(1): "man" was both a folder name and a task name.
+
+        rake/invocation_chain.rb:16:in `append': Circular dependency detected:
+        TOP => md2man:man => man/test_markdown => man => md2man:man (RuntimeError)
+
+    Thanks to David Dieulivol (@born4new) for reporting this issue:
+    https://github.com/sunaku/md2man/issues/22
+
 ## Version 5.1.0 (2016-02-28)
 
 ### Minor:
