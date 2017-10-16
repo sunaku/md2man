@@ -80,6 +80,7 @@ module Md2Man::Roff
 
     if list_type == :ordered
       result << ".nr step#{@ordered_list_id} 0 1"
+      contents.gsub!(/^\.IP \\n\+\[step_tbd\]$/, ".IP \\n+[step#{@ordered_list_id}]")
       @ordered_list_id += 1
     end
 
@@ -91,7 +92,7 @@ module Md2Man::Roff
     designator =
       case list_type
       when :ordered
-        "\\n+[step#{@ordered_list_id}]"
+        "\\n+[step_tbd]"
       when :unordered
         "\\(bu 2"
       end

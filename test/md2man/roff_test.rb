@@ -739,17 +739,20 @@ describe 'roff engine' do
     @markdown.render(heredoc(<<-INPUT)).must_equal(heredoc(<<-OUTPUT))
       |Here is an ordered list:
       |
-      |1.  foo
+      |1.  foo1
+      |2.  foo2
       |    1.  bar
       |        1.  baz
-      |2.  qux
+      |3.  qux
     INPUT
       |.PP
       |Here is an ordered list:
       |.nr step2 0 1
       |.RS
       |.IP \\n+[step2]
-      |foo
+      |foo1
+      |.IP \\n+[step2]
+      |foo2
       |.nr step1 0 1
       |.RS
       |.IP \\n+[step1]
