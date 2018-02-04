@@ -1,3 +1,18 @@
+## Version 5.1.2 (2018-02-04)
+
+### Patch:
+
+  * md2man-roff(1): fix ordered list numbering for nested list items.
+
+    Thanks to thinca for contributing this patch in pull request #27:
+    https://github.com/sunaku/md2man/pull/27
+
+### Other:
+
+  * Upgrade to Rouge 3.0 for syntax highlighting.
+
+  * Upgrade to Rake 12.0 for build automation.
+
 ## Version 5.1.1 (2016-03-04)
 
 ### Patch:

@@ -264,4 +264,11 @@ gem spec pkg/*.gem | fgrep man/
 .RE
 .SH License
 .PP
+.RS
+Like my work? :+1:  Please spare a life \[la]https://sunaku.github.io/vegan-for-life.html\[ra] today as thanks!
+:cow::pig::chicken::fish::speak\fIno\fPevil::v::revolving_hearts:
+.RE
+.PP
+Copyright 2011 Suraj N. Kurapati \[la]https://github.com/sunaku\[ra]
+.PP
 Released under the ISC license.  See the LICENSE file for details.

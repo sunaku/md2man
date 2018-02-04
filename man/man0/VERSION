@@ -1,3 +1,20 @@
+.SH Version 5.1.2 (2018\-02\-04)
+.SS Patch:
+.RS
+.IP \(bu 2
+.BR md2man-roff (1): 
+fix ordered list numbering for nested list items.
+.PP
+Thanks to thinca for contributing this patch in pull request #27:
+\[la]https://github.com/sunaku/md2man/pull/27\[ra]
+.RE
+.SS Other:
+.RS
+.IP \(bu 2
+Upgrade to Rouge 3.0 for syntax highlighting.
+.IP \(bu 2
+Upgrade to Rake 12.0 for build automation.
+.RE
 .SH Version 5.1.1 (2016\-03\-04)
 .SS Patch:
 .RS

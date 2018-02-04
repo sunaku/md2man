@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 5.1.1 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 5.1.2 https://github.com/sunaku/md2man" />
   <title>README &mdash; md2man</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -23,40 +23,31 @@
 <h3 id="examples">Examples<a name="examples" href="#examples" class="md2man-permalink" title="permalink"></a></h3><p>Try converting
 <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">this example Markdown file</a>
 into
-<a href="https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE">a UNIX manual page</a>:</p><pre class="highlight shell"><code>md2man-roff EXAMPLE.markdown &gt; EXAMPLE.1
-</code></pre>
-<p>You can view <a href="https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE">the resulting UNIX manual page</a> in your <a class="md2man-reference">man(1)</a>
-viewer:</p><pre class="highlight shell"><code>man -l EXAMPLE.1
-</code></pre>
-<p><img src="https://github.com/sunaku/md2man/raw/gh-pages/EXAMPLE.png" alt="screenshot"></p><p>Next, try converting
+<a href="https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE">a UNIX manual page</a>:</p><div class="highlight"><pre class="highlight shell"><code>md2man-roff EXAMPLE.markdown <span class="o">&gt;</span> EXAMPLE.1
+</code></pre></div><p>You can view <a href="https://github.com/sunaku/md2man/raw/gh-pages/man/man0/EXAMPLE">the resulting UNIX manual page</a> in your <a class="md2man-reference">man(1)</a>
+viewer:</p><div class="highlight"><pre class="highlight shell"><code>man <span class="nt">-l</span> EXAMPLE.1
+</code></pre></div><p><img src="https://github.com/sunaku/md2man/raw/gh-pages/EXAMPLE.png" alt="screenshot"></p><p>Next, try converting
 <a href="https://raw.github.com/sunaku/md2man/master/EXAMPLE.markdown">the same example file</a>
 into
-<a href="https://sunaku.github.io/md2man/man/man0/EXAMPLE.html">a HTML web page</a>:</p><pre class="highlight shell"><code>md2man-html EXAMPLE.markdown &gt; EXAMPLE.html
-</code></pre>
-<p>You can view <a href="https://sunaku.github.io/md2man/man/man0/EXAMPLE.html">the resulting HTML manual page</a> in your web
-browser:</p><pre class="highlight shell"><code>firefox EXAMPLE.html
-</code></pre>
-<h2 id="installation">Installation<a name="installation" href="#installation" class="md2man-permalink" title="permalink"></a></h2><pre class="highlight shell"><code>gem install md2man
-</code></pre>
-<h3 id="development">Development<a name="development" href="#development" class="md2man-permalink" title="permalink"></a></h3><pre class="highlight shell"><code>git clone https://github.com/sunaku/md2man
+<a href="https://sunaku.github.io/md2man/man/man0/EXAMPLE.html">a HTML web page</a>:</p><div class="highlight"><pre class="highlight shell"><code>md2man-html EXAMPLE.markdown <span class="o">&gt;</span> EXAMPLE.html
+</code></pre></div><p>You can view <a href="https://sunaku.github.io/md2man/man/man0/EXAMPLE.html">the resulting HTML manual page</a> in your web
+browser:</p><div class="highlight"><pre class="highlight shell"><code>firefox EXAMPLE.html
+</code></pre></div><h2 id="installation">Installation<a name="installation" href="#installation" class="md2man-permalink" title="permalink"></a></h2><div class="highlight"><pre class="highlight shell"><code>gem <span class="nb">install </span>md2man
+</code></pre></div><h3 id="development">Development<a name="development" href="#development" class="md2man-permalink" title="permalink"></a></h3><div class="highlight"><pre class="highlight shell"><code>git clone https://github.com/sunaku/md2man
 <span class="nb">cd </span>md2man
-bundle install
-bundle <span class="nb">exec </span>rake --tasks        <span class="c"># packaging tasks</span>
-bundle <span class="nb">exec </span>md2man-roff --help  <span class="c"># run it directly</span>
-bundle <span class="nb">exec </span>md2man-html --help  <span class="c"># run it directly</span>
-</code></pre>
-<h2 id="usage">Usage<a name="usage" href="#usage" class="md2man-permalink" title="permalink"></a></h2><h3 id="for-roff-output">For <a href="http://troff.org">roff</a> output<a name="for-roff-output" href="#for-roff-output" class="md2man-permalink" title="permalink"></a></h3><h4 id="at-the-command-line">At the command line<a name="at-the-command-line" href="#at-the-command-line" class="md2man-permalink" title="permalink"></a></h4><p>See <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a> manual:</p><pre class="highlight shell"><code>md2man-roff --help
-</code></pre>
-<h4 id="inside-a-ruby-script">Inside a Ruby script<a name="inside-a-ruby-script" href="#inside-a-ruby-script" class="md2man-permalink" title="permalink"></a></h4><p>Use the default renderer:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/roff/engine'</span>
+bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>rake <span class="nt">--tasks</span>        <span class="c"># packaging tasks</span>
+bundle <span class="nb">exec </span>md2man-roff <span class="nt">--help</span>  <span class="c"># run it directly</span>
+bundle <span class="nb">exec </span>md2man-html <span class="nt">--help</span>  <span class="c"># run it directly</span>
+</code></pre></div><h2 id="usage">Usage<a name="usage" href="#usage" class="md2man-permalink" title="permalink"></a></h2><h3 id="for-roff-output">For <a href="http://troff.org">roff</a> output<a name="for-roff-output" href="#for-roff-output" class="md2man-permalink" title="permalink"></a></h3><h4 id="at-the-command-line">At the command line<a name="at-the-command-line" href="#at-the-command-line" class="md2man-permalink" title="permalink"></a></h4><p>See <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a> manual:</p><div class="highlight"><pre class="highlight shell"><code>md2man-roff <span class="nt">--help</span>
+</code></pre></div><h4 id="inside-a-ruby-script">Inside a Ruby script<a name="inside-a-ruby-script" href="#inside-a-ruby-script" class="md2man-permalink" title="permalink"></a></h4><p>Use the default renderer:</p><div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/roff/engine'</span>
 
 <span class="n">your_roff_output</span> <span class="o">=</span> <span class="no">Md2Man</span><span class="o">::</span><span class="no">Roff</span><span class="o">::</span><span class="no">ENGINE</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">your_markdown_input</span><span class="p">)</span>
-</code></pre>
-<p>Build your own renderer:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/roff/engine'</span>
+</code></pre></div><p>Build your own renderer:</p><div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/roff/engine'</span>
 
 <span class="n">engine</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="o">::</span><span class="no">Markdown</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Md2Man</span><span class="o">::</span><span class="no">Roff</span><span class="o">::</span><span class="no">Engine</span><span class="p">,</span> <span class="n">your_options_hash</span><span class="p">)</span>
 <span class="n">your_roff_output</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">your_markdown_input</span><span class="p">)</span>
-</code></pre>
-<p>Define your own renderer:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/roff/engine'</span>
+</code></pre></div><p>Define your own renderer:</p><div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/roff/engine'</span>
 
 <span class="k">class</span> <span class="nc">YourManpageRenderer</span> <span class="o">&lt;</span> <span class="no">Md2Man</span><span class="o">::</span><span class="no">Roff</span><span class="o">::</span><span class="no">Engine</span>
   <span class="c1"># ... your stuff here ...</span>
@@ -64,8 +55,7 @@ bundle <span class="nb">exec </span>md2man-html --help  <span class="c"># run it
 
 <span class="n">engine</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="o">::</span><span class="no">Markdown</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">YourManpageRenderer</span><span class="p">,</span> <span class="n">your_options_hash</span><span class="p">)</span>
 <span class="n">your_roff_output</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">your_markdown_input</span><span class="p">)</span>
-</code></pre>
-<p>Mix-in your own renderer:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/roff'</span>
+</code></pre></div><p>Mix-in your own renderer:</p><div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/roff'</span>
 
 <span class="k">class</span> <span class="nc">YourManpageRenderer</span> <span class="o">&lt;</span> <span class="no">Redcarpet</span><span class="o">::</span><span class="no">Render</span><span class="o">::</span><span class="no">Base</span>
   <span class="kp">include</span> <span class="no">Md2Man</span><span class="o">::</span><span class="no">Roff</span>
@@ -74,19 +64,15 @@ bundle <span class="nb">exec </span>md2man-html --help  <span class="c"># run it
 
 <span class="n">engine</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="o">::</span><span class="no">Markdown</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">YourManpageRenderer</span><span class="p">,</span> <span class="n">your_options_hash</span><span class="p">)</span>
 <span class="n">your_roff_output</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">your_markdown_input</span><span class="p">)</span>
-</code></pre>
-<h3 id="for-html-output">For HTML output<a name="for-html-output" href="#for-html-output" class="md2man-permalink" title="permalink"></a></h3><h4 id="at-the-command-line-1">At the command line<a name="at-the-command-line-1" href="#at-the-command-line-1" class="md2man-permalink" title="permalink"></a></h4><p>See <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a> manual:</p><pre class="highlight shell"><code>md2man-html --help
-</code></pre>
-<h4 id="inside-a-ruby-script-1">Inside a Ruby script<a name="inside-a-ruby-script-1" href="#inside-a-ruby-script-1" class="md2man-permalink" title="permalink"></a></h4><p>Use the default renderer:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/html/engine'</span>
+</code></pre></div><h3 id="for-html-output">For HTML output<a name="for-html-output" href="#for-html-output" class="md2man-permalink" title="permalink"></a></h3><h4 id="at-the-command-line-1">At the command line<a name="at-the-command-line-1" href="#at-the-command-line-1" class="md2man-permalink" title="permalink"></a></h4><p>See <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a> manual:</p><div class="highlight"><pre class="highlight shell"><code>md2man-html <span class="nt">--help</span>
+</code></pre></div><h4 id="inside-a-ruby-script-1">Inside a Ruby script<a name="inside-a-ruby-script-1" href="#inside-a-ruby-script-1" class="md2man-permalink" title="permalink"></a></h4><p>Use the default renderer:</p><div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/html/engine'</span>
 
 <span class="n">your_html_output</span> <span class="o">=</span> <span class="no">Md2Man</span><span class="o">::</span><span class="no">HTML</span><span class="o">::</span><span class="no">ENGINE</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">your_markdown_input</span><span class="p">)</span>
-</code></pre>
-<p>Build your own renderer:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/html/engine'</span>
+</code></pre></div><p>Build your own renderer:</p><div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/html/engine'</span>
 
 <span class="n">engine</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="o">::</span><span class="no">Markdown</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Md2Man</span><span class="o">::</span><span class="no">HTML</span><span class="o">::</span><span class="no">Engine</span><span class="p">,</span> <span class="n">your_options_hash</span><span class="p">)</span>
 <span class="n">your_html_output</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">your_markdown_input</span><span class="p">)</span>
-</code></pre>
-<p>Define your own renderer:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/html/engine'</span>
+</code></pre></div><p>Define your own renderer:</p><div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/html/engine'</span>
 
 <span class="k">class</span> <span class="nc">YourManpageRenderer</span> <span class="o">&lt;</span> <span class="no">Md2Man</span><span class="o">::</span><span class="no">HTML</span><span class="o">::</span><span class="no">Engine</span>
   <span class="c1"># ... your stuff here ...</span>
@@ -94,8 +80,7 @@ bundle <span class="nb">exec </span>md2man-html --help  <span class="c"># run it
 
 <span class="n">engine</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="o">::</span><span class="no">Markdown</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">YourManpageRenderer</span><span class="p">,</span> <span class="n">your_options_hash</span><span class="p">)</span>
 <span class="n">your_html_output</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">your_markdown_input</span><span class="p">)</span>
-</code></pre>
-<p>Mix-in your own renderer:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/html'</span>
+</code></pre></div><p>Mix-in your own renderer:</p><div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/html'</span>
 
 <span class="k">class</span> <span class="nc">YourManpageRenderer</span> <span class="o">&lt;</span> <span class="no">Redcarpet</span><span class="o">::</span><span class="no">Render</span><span class="o">::</span><span class="no">Base</span>
   <span class="kp">include</span> <span class="no">Md2Man</span><span class="o">::</span><span class="no">HTML</span>
@@ -104,20 +89,19 @@ bundle <span class="nb">exec </span>md2man-html --help  <span class="c"># run it
 
 <span class="n">engine</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="o">::</span><span class="no">Markdown</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">YourManpageRenderer</span><span class="p">,</span> <span class="n">your_options_hash</span><span class="p">)</span>
 <span class="n">your_html_output</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">your_markdown_input</span><span class="p">)</span>
-</code></pre>
-<h3 id="building-manpages">Building manpages<a name="building-manpages" href="#building-manpages" class="md2man-permalink" title="permalink"></a></h3><h4 id="at-the-command-line-2">At the command line<a name="at-the-command-line-2" href="#at-the-command-line-2" class="md2man-permalink" title="permalink"></a></h4><p>See <a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a> manual:</p><pre class="highlight shell"><code>md2man-rake --help
-</code></pre>
-<h4 id="inside-a-ruby-script-2">Inside a Ruby script<a name="inside-a-ruby-script-2" href="#inside-a-ruby-script-2" class="md2man-permalink" title="permalink"></a></h4><p>Add this snippet to your gemspec file:</p><pre class="highlight ruby"><code><span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/man?/*.?'</span><span class="p">]</span>         <span class="c1"># UNIX manpages</span>
+</code></pre></div><h3 id="building-manpages">Building manpages<a name="building-manpages" href="#building-manpages" class="md2man-permalink" title="permalink"></a></h3><h4 id="at-the-command-line-2">At the command line<a name="at-the-command-line-2" href="#at-the-command-line-2" class="md2man-permalink" title="permalink"></a></h4><p>See <a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a> manual:</p><div class="highlight"><pre class="highlight shell"><code>md2man-rake <span class="nt">--help</span>
+</code></pre></div><h4 id="inside-a-ruby-script-2">Inside a Ruby script<a name="inside-a-ruby-script-2" href="#inside-a-ruby-script-2" class="md2man-permalink" title="permalink"></a></h4><p>Add this snippet to your gemspec file:</p><div class="highlight"><pre class="highlight ruby"><code><span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/man?/*.?'</span><span class="p">]</span>         <span class="c1"># UNIX manpages</span>
 <span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/**/*.{html,css}'</span><span class="p">]</span>  <span class="c1"># HTML manpages</span>
 <span class="n">s</span><span class="p">.</span><span class="nf">add_development_dependency</span> <span class="s1">'md2man'</span><span class="p">,</span> <span class="s1">'~&gt; 5.0'</span>
-</code></pre>
-<p>Add this line to your Rakefile:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/rakefile'</span>
-</code></pre>
-<p>You now have a <code>rake md2man</code> task that builds manual pages from Markdown files
+</code></pre></div><p>Add this line to your Rakefile:</p><div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'md2man/rakefile'</span>
+</code></pre></div><p>You now have a <code>rake md2man</code> task that builds manual pages from Markdown files
 (with &quot;.markdown&quot;, &quot;.mkd&quot;, or &quot;.md&quot; extension) inside <code>man/man*/</code> directories.
 There are also sub-tasks to build manual pages individually as <a href="http://troff.org">roff</a> or HTML.</p><p>If you&#39;re using Bundler, this task also hooks into Bundler&#39;s gem packaging
-tasks and ensures that your manual pages are built for packaging into a gem:</p><pre class="highlight ruby"><code><span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="n">build</span>
+tasks and ensures that your manual pages are built for packaging into a gem:</p><div class="highlight"><pre class="highlight ruby"><code><span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="n">build</span>
 <span class="n">gem</span> <span class="n">spec</span> <span class="n">pkg</span><span class="o">/*</span><span class="p">.</span><span class="nf">gem</span> <span class="o">|</span> <span class="n">fgrep</span> <span class="n">man</span><span class="o">/</span>
-</code></pre>
-<h2 id="license">License<a name="license" href="#license" class="md2man-permalink" title="permalink"></a></h2><p>Released under the ISC license.  See the LICENSE file for details.</p></div></body>
+</code></pre></div><h2 id="license">License<a name="license" href="#license" class="md2man-permalink" title="permalink"></a></h2>
+<blockquote>
+<p>Like my work? :+1:  Please <a href="https://sunaku.github.io/vegan-for-life.html">spare a life</a> today as thanks!
+:cow::pig::chicken::fish::speak<em>no</em>evil::v::revolving_hearts:</p></blockquote>
+<p>Copyright 2011 Suraj N. Kurapati <a href="https://github.com/sunaku">https://github.com/sunaku</a></p><p>Released under the ISC license.  See the LICENSE file for details.</p></div></body>
 </html>

@@ -2,17 +2,26 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 5.1.1 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 5.1.2 https://github.com/sunaku/md2man" />
   <title>VERSION &mdash; md2man</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-5-1-1-2016-03-04">Version 5.1.1 (2016-03-04)<a name="version-5-1-1-2016-03-04" href="#version-5-1-1-2016-03-04" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch">Patch:<a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a></h3>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-5-1-2-2018-02-04">Version 5.1.2 (2018-02-04)<a name="version-5-1-2-2018-02-04" href="#version-5-1-2-2018-02-04" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch">Patch:<a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
-<li><p><a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a>: &quot;man&quot; was both a folder name and a task name.</p><pre class="highlight plaintext"><code>rake/invocation_chain.rb:16:in `append': Circular dependency detected:
+<li><p><a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>: fix ordered list numbering for nested list items.</p><p>Thanks to thinca for contributing this patch in pull request #27:
+<a href="https://github.com/sunaku/md2man/pull/27">https://github.com/sunaku/md2man/pull/27</a></p></li>
+</ul>
+<h3 id="other">Other:<a name="other" href="#other" class="md2man-permalink" title="permalink"></a></h3>
+<ul>
+<li><p>Upgrade to Rouge 3.0 for syntax highlighting.</p></li>
+<li><p>Upgrade to Rake 12.0 for build automation.</p></li>
+</ul>
+<h2 id="version-5-1-1-2016-03-04">Version 5.1.1 (2016-03-04)<a name="version-5-1-1-2016-03-04" href="#version-5-1-1-2016-03-04" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch-1">Patch:<a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a></h3>
+<ul>
+<li><p><a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a>: &quot;man&quot; was both a folder name and a task name.</p><div class="highlight"><pre class="highlight plaintext"><code>rake/invocation_chain.rb:16:in `append': Circular dependency detected:
 TOP =&gt; md2man:man =&gt; man/test_markdown =&gt; man =&gt; md2man:man (RuntimeError)
-</code></pre>
-<p>Thanks to David Dieulivol (@born4new) for reporting this issue:
+</code></pre></div><p>Thanks to David Dieulivol (@born4new) for reporting this issue:
 <a href="https://github.com/sunaku/md2man/issues/22">https://github.com/sunaku/md2man/issues/22</a></p></li>
 </ul>
 <h2 id="version-5-1-0-2016-02-28">Version 5.1.0 (2016-02-28)<a name="version-5-1-0-2016-02-28" href="#version-5-1-0-2016-02-28" class="md2man-permalink" title="permalink"></a></h2><h3 id="minor">Minor:<a name="minor" href="#minor" class="md2man-permalink" title="permalink"></a></h3>
@@ -23,14 +32,14 @@ and &quot;man/index&quot;, so that users know what project those manuals belong 
 <li><p><a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a>: allow running task names without namespace.</p><p>You can now run <code>md2man-rake man</code> instead of <code>md2man-rake md2man:man</code>,
 and similarly <code>md2man-rake web</code> instead of <code>md2man-rake md2man:web</code>.</p></li>
 </ul>
-<h3 id="patch-1">Patch:<a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a></h3>
+<h3 id="patch-2">Patch:<a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Clarify optionalness of PATTERN in <code>--help</code> option.</p></li>
 <li><p><a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a>: paragraph types reflect .PP, .TP, .IP.</p></li>
 <li><p>Link to Markdown website instead of <a class="md2man-reference">markdown(7)</a>.</p></li>
 </ul>
 <h2 id="version-5-0-3-2016-02-21">Version 5.0.3 (2016-02-21)<a name="version-5-0-3-2016-02-21" href="#version-5-0-3-2016-02-21" class="md2man-permalink" title="permalink"></a></h2><p>This release fixes a crash, fixes roff bugs, improves CSS styling for HTML
-output, and adds a complete manual page example in <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> documentation.</p><h3 id="patch-2">Patch:<a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a></h3>
+output, and adds a complete manual page example in <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> documentation.</p><h3 id="patch-3">Patch:<a name="patch-3" href="#patch-3" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Fix crash upon encountering a sole space <code> </code> or tab <code> </code> in a codespan.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-rake.1.html">md2man-rake(1)</a>: fix sorting of manual pages in <code>man/index.html</code> listing.
@@ -45,7 +54,7 @@ Previously, such extraneous components were omitted from the output.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>: newline before links broke tagged paragraphs.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a>: don&#39;t squeeze newlines inside code blocks.</p></li>
 </ul>
-<h3 id="other">Other:<a name="other" href="#other" class="md2man-permalink" title="permalink"></a></h3>
+<h3 id="other-1">Other:<a name="other-1" href="#other-1" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p><a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a>: revise paragraph definitions and add complete manpage example.</p></li>
 <li><p>Document optional regexp argument to <code>-h</code> and <code>--help</code> in all executables.</p></li>
@@ -63,11 +72,11 @@ Previously, such extraneous components were omitted from the output.</p></li>
 gaps at the beginning of each heading in text-mode browsers like <a class="md2man-reference">w3m(1)</a>.</p></li>
 <li><p>Upgrade to binman version 5.x.x, which is also a major version bump.</p></li>
 </ul>
-<h3 id="other-1">Other:<a name="other-1" href="#other-1" class="md2man-permalink" title="permalink"></a></h3>
+<h3 id="other-2">Other:<a name="other-2" href="#other-2" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li>README: use fenced code blocks to get syntax highlighting on GitHub.</li>
 </ul>
-<h2 id="version-4-0-1-2016-02-10">Version 4.0.1 (2016-02-10)<a name="version-4-0-1-2016-02-10" href="#version-4-0-1-2016-02-10" class="md2man-permalink" title="permalink"></a></h2><h3 id="other-2">Other:<a name="other-2" href="#other-2" class="md2man-permalink" title="permalink"></a></h3>
+<h2 id="version-4-0-1-2016-02-10">Version 4.0.1 (2016-02-10)<a name="version-4-0-1-2016-02-10" href="#version-4-0-1-2016-02-10" class="md2man-permalink" title="permalink"></a></h2><h3 id="other-3">Other:<a name="other-3" href="#other-3" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Make all permalinks appear in the same size.</p></li>
 <li><p>Change permalink symbols from hearts to stars.</p></li>
@@ -85,19 +94,18 @@ call <code>super()</code> therein to trigger these methods&#39; original impleme
 <li><code>Md2Man::Document#codespan(code)</code></li>
 </ul></li>
 </ul>
-<h2 id="version-3-0-2-2014-10-26">Version 3.0.2 (2014-10-26)<a name="version-3-0-2-2014-10-26" href="#version-3-0-2-2014-10-26" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch-3">Patch:<a name="patch-3" href="#patch-3" class="md2man-permalink" title="permalink"></a></h3>
+<h2 id="version-3-0-2-2014-10-26">Version 3.0.2 (2014-10-26)<a name="version-3-0-2-2014-10-26" href="#version-3-0-2-2014-10-26" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch-4">Patch:<a name="patch-4" href="#patch-4" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li>Update bootstrap 2.3.2 CDN URL; previous one died.</li>
 </ul>
-<h2 id="version-3-0-1-2014-07-16">Version 3.0.1 (2014-07-16)<a name="version-3-0-1-2014-07-16" href="#version-3-0-1-2014-07-16" class="md2man-permalink" title="permalink"></a></h2><p>This release restores Mac OS X support and fixes a permalink generation bug.</p><h3 id="patch-4">Patch:<a name="patch-4" href="#patch-4" class="md2man-permalink" title="permalink"></a></h3>
+<h2 id="version-3-0-1-2014-07-16">Version 3.0.1 (2014-07-16)<a name="version-3-0-1-2014-07-16" href="#version-3-0-1-2014-07-16" class="md2man-permalink" title="permalink"></a></h2><p>This release restores Mac OS X support and fixes a permalink generation bug.</p><h3 id="patch-5">Patch:<a name="patch-5" href="#patch-5" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>GH-13: <a class="md2man-reference">man(1)</a> on Mac OS X could not display URLs.</p><p>The version of groff on Mac OS X is too old: it lacks the an-ext.tmac
-macro package that defines styles for email addresses and general URLs.</p><pre class="highlight plaintext"><code>$ groff --version
+macro package that defines styles for email addresses and general URLs.</p><div class="highlight"><pre class="highlight plaintext"><code>$ groff --version
 ...
 GNU grops (groff) version 1.19.2
 GNU troff (groff) version 1.19.2
-</code></pre>
-<p>This patch drops those URL macros in favor of simpler angled brackets.</p><p>Thanks to Sorin Ionescu for reporting this issue in GH-13:
+</code></pre></div><p>This patch drops those URL macros in favor of simpler angled brackets.</p><p>Thanks to Sorin Ionescu for reporting this issue in GH-13:
 <a href="https://github.com/sunaku/md2man/issues/13">https://github.com/sunaku/md2man/issues/13</a></p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>: cross references were escaped in heading permalink IDs.</p></li>
 </ul>
@@ -111,13 +119,13 @@ have for jumping to specific locations in your HTML manuals after upgrading.</p>
 <li><p>Make permalink anchors unique by appending a count in <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>.</p></li>
 <li><p>Rename <code>md2man-xref</code> CSS class to <code>md2man-reference</code> in <a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a>.</p></li>
 </ul>
-<h2 id="version-2-1-1-2014-06-21">Version 2.1.1 (2014-06-21)<a name="version-2-1-1-2014-06-21" href="#version-2-1-1-2014-06-21" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch-5">Patch:<a name="patch-5" href="#patch-5" class="md2man-permalink" title="permalink"></a></h3>
+<h2 id="version-2-1-1-2014-06-21">Version 2.1.1 (2014-06-21)<a name="version-2-1-1-2014-06-21" href="#version-2-1-1-2014-06-21" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch-6">Patch:<a name="patch-6" href="#patch-6" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Bootstrap CSS failed to load for HTML manuals served under HTTPS.
 See <a href="https://github.com/sunaku/readably/pull/3">https://github.com/sunaku/readably/pull/3</a> for the details.</p></li>
 <li><p>Drop redundant nil check in <code>Md2Man::Roff::Engine.escape()</code>.</p></li>
 </ul>
-<h3 id="other-3">Other:<a name="other-3" href="#other-3" class="md2man-permalink" title="permalink"></a></h3>
+<h3 id="other-4">Other:<a name="other-4" href="#other-4" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>GitHub now supports relative links from the README.</p></li>
 <li><p>README: add links to package, manuals, and GitHub.</p></li>
@@ -128,19 +136,18 @@ See <a href="https://github.com/sunaku/readably/pull/3">https://github.com/sunak
 makes it easy for readers to bookmark and share direct links to specific
 sections of your HTML manual pages.</p></li>
 <li><p><a class="md2man-reference" href="../man1/md2man-html.1.html">md2man-html(1)</a> now wraps individual components of the special <code>.TH</code>
-top-level heading in HTML <code>&lt;span&gt;</code> elements with stylable CSS classes:</p><pre class="highlight plaintext"><code>&lt;span class="md2man-title"&gt;...&lt;/span&gt;
+top-level heading in HTML <code>&lt;span&gt;</code> elements with stylable CSS classes:</p><div class="highlight"><pre class="highlight plaintext"><code>&lt;span class="md2man-title"&gt;...&lt;/span&gt;
 &lt;span class="md2man-section"&gt;...&lt;/span&gt;
 &lt;span class="md2man-date"&gt;...&lt;/span&gt;
 &lt;span class="md2man-source"&gt;...&lt;/span&gt;
 &lt;span class="md2man-manual"&gt;...&lt;/span&gt;
-</code></pre>
-<p>Thanks to Nick Fagerlund for requesting this feature in <a href="https://github.com/sunaku/md2man/issues/15">GH-15</a>.</p></li>
+</code></pre></div><p>Thanks to Nick Fagerlund for requesting this feature in <a href="https://github.com/sunaku/md2man/issues/15">GH-15</a>.</p></li>
 </ul>
-<h3 id="other-4">Other:<a name="other-4" href="#other-4" class="md2man-permalink" title="permalink"></a></h3>
+<h3 id="other-5">Other:<a name="other-5" href="#other-5" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p><a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> now documents the special <code>.TH</code> format of top-level headings.</p><p>Thanks to Nick Fagerlund for requesting this documentation in <a href="https://github.com/sunaku/md2man/issues/15">GH-15</a>.</p></li>
 </ul>
-<h2 id="version-2-0-4-2014-04-26">Version 2.0.4 (2014-04-26)<a name="version-2-0-4-2014-04-26" href="#version-2-0-4-2014-04-26" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch-6">Patch:<a name="patch-6" href="#patch-6" class="md2man-permalink" title="permalink"></a></h3>
+<h2 id="version-2-0-4-2014-04-26">Version 2.0.4 (2014-04-26)<a name="version-2-0-4-2014-04-26" href="#version-2-0-4-2014-04-26" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch-7">Patch:<a name="patch-7" href="#patch-7" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>GH-16: Redcarpet 3.1 added a third parameter to its <code>header()</code> method.
 This raised an ArgumentError on &quot;wrong number of arguments (3 for 2)&quot;.</p><p>Thanks to zimbatm for contributing this patch.</p></li>
@@ -148,7 +155,7 @@ This raised an ArgumentError on &quot;wrong number of arguments (3 for 2)&quot;.
 This fixes a bug where lines beginning with periods or single quotes
 did not appear when <a class="md2man-reference" href="../man1/md2man-roff.1.html">md2man-roff(1)</a> output was rendered using <a class="md2man-reference">man(1)</a>.</p><p>Thanks to zimbatm for reporting this bug and suggesting how to fix it.</p></li>
 </ul>
-<h2 id="version-2-0-3-2014-01-16">Version 2.0.3 (2014-01-16)<a name="version-2-0-3-2014-01-16" href="#version-2-0-3-2014-01-16" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch-7">Patch:<a name="patch-7" href="#patch-7" class="md2man-permalink" title="permalink"></a></h3>
+<h2 id="version-2-0-3-2014-01-16">Version 2.0.3 (2014-01-16)<a name="version-2-0-3-2014-01-16" href="#version-2-0-3-2014-01-16" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch-8">Patch:<a name="patch-8" href="#patch-8" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Use CSS3 <code>-ch</code> suffix for accurate 80-character width in HTML output.</p><p><a href="http://www.w3.org/TR/css3-values/#font-relative-lengths">http://www.w3.org/TR/css3-values/#font-relative-lengths</a></p></li>
 </ul>
