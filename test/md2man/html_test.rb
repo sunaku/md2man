@@ -57,9 +57,8 @@ describe 'html engine' do
       |
       |    <a class="md2man-reference" href="../man3/printf.3.html">printf(3)</a>
     INPUT
-      |<p>For example, the <code>printf(3)</code> cross reference would be emitted as this HTML:</p><pre class="highlight plaintext"><code>&lt;a class="md2man-reference" href="../man3/printf.3.html"&gt;printf(3)&lt;/a&gt;
-      |</code></pre>
-      |
+      |<p>For example, the <code>printf(3)</code> cross reference would be emitted as this HTML:</p><div class="highlight"><pre class="highlight plaintext"><code>&lt;a class="md2man-reference" href="../man3/printf.3.html"&gt;printf(3)&lt;/a&gt;
+      |</code></pre></div>
     OUTPUT
   end
 
@@ -85,11 +84,10 @@ describe 'html engine' do
       |    containing markdown(7),
       |    roff(7), and much more!
     INPUT
-      |<pre class="highlight plaintext"><code>this is a code block
+      |<div class="highlight"><pre class="highlight plaintext"><code>this is a code block
       |containing markdown(7),
       |roff(7), and much more!
-      |</code></pre>
-      |
+      |</code></pre></div>
     OUTPUT
   end
 
@@ -121,14 +119,13 @@ describe 'html engine' do
       |      \\__/\\____/_/ /_/|_\\
       |                 >>>------>
     INPUT
-      |<pre class="highlight plaintext"><code>_______      _______
+      |<div class="highlight"><pre class="highlight plaintext"><code>_______      _______
       | ___  /___________ /__
       |  _  __/ __ \\  __/ /_/
       |  / /_/ /_/ / / / ,\\
       |  \\__/\\____/_/ /_/|_\\
       |             &gt;&gt;&gt;------&gt;
-      |</code></pre>
-      |
+      |</code></pre></div>
     OUTPUT
   end
 
@@ -232,12 +229,11 @@ describe 'html engine' do
       |
       |### `PIPES_GET_LAST(CHAIN)`
     INPUT
-      |<h3 id="macros">Macros<a name="macros" href="#macros" class="md2man-permalink" title="permalink"></a></h3><pre class="highlight plaintext"><code>#define PIPES_GET_LAST(CHAIN)
+      |<h3 id="macros">Macros<a name="macros" href="#macros" class="md2man-permalink" title="permalink"></a></h3><div class="highlight"><pre class="highlight plaintext"><code>#define PIPES_GET_LAST(CHAIN)
       |#define PIPES_GET_IN(CHAIN)
       |#define PIPES_GET_OUT(CHAIN)
       |#define PIPES_GET_ERR(CHAIN)
-      |</code></pre>
-      |<h3 id="pipes_get_last-chain"><code>PIPES_GET_LAST(CHAIN)</code><a name="pipes_get_last-chain" href="#pipes_get_last-chain" class="md2man-permalink" title="permalink"></a></h3>
+      |</code></pre></div><h3 id="pipes_get_last-chain"><code>PIPES_GET_LAST(CHAIN)</code><a name="pipes_get_last-chain" href="#pipes_get_last-chain" class="md2man-permalink" title="permalink"></a></h3>
     OUTPUT
   end
 
@@ -267,9 +263,8 @@ describe 'html engine' do
       | Array.new(123, "abc")
       |```
     INPUT
-      |<pre class="highlight plaintext"><code> Array.new(123, "abc")
-      |</code></pre>
-      |
+      |<div class="highlight"><pre class="highlight plaintext"><code> Array.new(123, "abc")
+      |</code></pre></div>
     OUTPUT
   end
 
@@ -279,9 +274,8 @@ describe 'html engine' do
       | Array.new(123, "abc")
       |```
     INPUT
-      |<pre class="highlight ruby"><code> <span class="no">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="s2">"abc"</span><span class="p">)</span>
-      |</code></pre>
-      |
+      |<div class="highlight"><pre class="highlight ruby"><code> <span class="no">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="s2">"abc"</span><span class="p">)</span>
+      |</code></pre></div>
     OUTPUT
   end
 end

@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.1'
   s.add_runtime_dependency 'binman', '~> 5.0'
   s.add_runtime_dependency 'redcarpet', '~> 3.0'
-  s.add_runtime_dependency 'rouge', '~> 1.0'
+  s.add_runtime_dependency 'rouge', '~> 3.0'
   s.add_development_dependency 'minitest', '~> 5.0'
   s.add_development_dependency 'rake', '~> 10.1'
 end
